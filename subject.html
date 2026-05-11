@@ -2,6 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
+  <meta name="description" content="과목별 1:1 맞춤 과외 전문. 교육청 등록 교사로만 수업. 첫 수업 무료."/>
+  <meta name="keywords" content="과외,수학과외,영어과외,국어과외,탐구과외,검정고시,내신과외,수능과외"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:type" content="website"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>과목 과외 — 스터디멘토</title>
   <style>
@@ -398,7 +402,13 @@ function render(key) {
   const d = SUBJECTS[key] || SUBJECTS.math;
   const col = COLORS[key] || '#f9fe44';
 
-  document.title = d.name + ' 과외 — 스터디멘토';
+  document.title = d.name + ' 과외 전문 — 스터디멘토';
+  document.querySelector('meta[name="description"]').setAttribute('content',
+    `${d.name} 과외 전문. 교육청 등록 교사로만 수업. 초·중·고 전 학년 1:1 맞춤 수업. 첫 수업 무료.`
+  );
+  document.querySelector('meta[name="keywords"]').setAttribute('content',
+    `${d.name} 과외, ${d.name} 내신, ${d.name} 수능, 초등 ${d.name} 과외, 중등 ${d.name} 과외, 고등 ${d.name} 과외, 1:1 ${d.name} 과외`
+  );
   document.getElementById('hero-breadcrumb').textContent = d.name;
   document.getElementById('hero-tag').textContent = d.tag;
   document.getElementById('hero-h1').innerHTML = d.h1.split('\n').join('<br>');

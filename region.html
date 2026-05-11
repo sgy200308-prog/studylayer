@@ -2,6 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
+  <meta name="description" content="지역별 1:1 맞춤 과외 전문. 교육청 등록 교사로만 수업. 첫 수업 무료."/>
+  <meta name="keywords" content="과외,지역과외,1:1과외,수학과외,영어과외,국어과외,내신과외"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:type" content="website"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>지역 과외 — 스터디멘토</title>
   <style>
@@ -441,6 +445,15 @@ function render(key) {
     </div>`
   ).join('');
   document.getElementById('cta-title').innerHTML = key + ' 과외<br>지금 시작하세요';
+
+  // SEO 메타태그 동적 업데이트
+  document.querySelector('meta[name="description"]').setAttribute('content',
+    `${d.badge} 전문 1:1 맞춤 과외. ${key} 지역 학교 교재와 기출 완벽 분석. 교육청 등록 교사로만 수업. 첫 수업 무료.`
+  );
+  document.querySelector('meta[name="keywords"]').setAttribute('content',
+    `${key} 과외, ${key} 수학과외, ${key} 영어과외, ${key} 국어과외, ${key} 탐구과외, ${key} 검정고시, ${key} 내신과외, ${key} 초등과외, ${key} 중등과외, ${key} 고등과외`
+  );
+  document.querySelector('title').textContent = `${key} 과외 전문 — 스터디멘토`;
 
   // 탭 활성화
   document.querySelectorAll('.region-tab').forEach(t => {
