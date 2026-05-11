@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>과목 과외 — 스터디멘토</title>
+  <style>
+    @font-face { font-family:'S-CoreDream'; font-weight:300; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); }
+    @font-face { font-family:'S-CoreDream'; font-weight:400; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); }
+    @font-face { font-family:'S-CoreDream'; font-weight:700; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff'); }
+    @font-face { font-family:'S-CoreDream'; font-weight:900; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8ExtraBold.woff') format('woff'); }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["'S-CoreDream'", 'sans-serif'] },
+          colors: {
+            lime:'#f9fe44', sky:'#6f98fa', peach:'#f09663',
+            mint:'#deef75', lav:'#939afc', coral:'#f6c2f8', ylw:'#f9fe44'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior:smooth; }
+    body { font-family:'S-CoreDream',sans-serif !important; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee { animation:marquee 22s linear infinite; }
+    .faq-ans { max-height:0; overflow:hidden; transition:max-height .35s ease,padding .25s; }
+    .faq-open .faq-ans { max-height:200px; padding-bottom:1rem; }
+    .faq-ico { transition:transform .2s; display:inline-block; }
+    .faq-open .faq-ico { transform:rotate(45deg); }
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.on { opacity:1; transform:none; }
+    #mobileDrawer { transform:translateX(100%); transition:transform .3s ease; }
+    #mobileDrawer.open { transform:translateX(0); }
+  </style>
+</head>
+<body style="font-family:'S-CoreDream',sans-serif;background:#fff;color:#111;overflow-x:hidden">
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-10 h-14 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+  <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#7eec97]">스터디</span>멘토</a>
+    <ul class="hidden md:flex gap-1 text-sm text-gray-500 font-medium items-center" id="gnb">
+    <li><a href="index.html" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">홈</a></li>
+    <li class="relative group">
+      <button class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all flex items-center gap-1" style="font-family:inherit;background:none;border:none;cursor:pointer;font-size:14px;color:#6b7280">
+        과외 <span style="font-size:10px;opacity:.6">▾</span>
+      </button>
+      <div class="absolute top-full left-0 mt-1 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+        <a href="subject.html?s=korean"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">✍️ 국어</a>
+        <a href="subject.html?s=english" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">📖 영어</a>
+        <a href="subject.html?s=math"    class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">📐 수학</a>
+        <a href="subject.html?s=science" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🔬 탐구</a>
+        <div class="border-t border-gray-100 my-1"></div>
+        <a href="subject.html?s=gd"      class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">📋 검정고시</a>
+      </div>
+    </li>
+    <li class="relative group">
+      <button class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all flex items-center gap-1" style="font-family:inherit;background:none;border:none;cursor:pointer;font-size:14px;color:#6b7280">
+        지역 <span style="font-size:10px;opacity:.6">▾</span>
+      </button>
+      <div class="absolute top-full left-0 mt-1 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+        <a href="region.html?r=서울"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🏙️ 서울</a>
+        <a href="region.html?r=경기"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🌿 경기</a>
+        <a href="region.html?r=충청"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🌻 충청</a>
+        <a href="region.html?r=대전"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🌾 대전</a>
+        <a href="region.html?r=부산"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🐟 부산</a>
+        <a href="region.html?r=대구"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🍎 대구</a>
+        <a href="region.html?r=경상"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">⛰️ 경상</a>
+        <a href="region.html?r=전라"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🌊 전라</a>
+        <a href="region.html?r=광주"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🌸 광주</a>
+        <a href="region.html?r=온라인" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">💻 온라인</a>
+        <a href="region.html?r=제주"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">🍊 제주</a>
+      </div>
+    </li>
+    <li><a href="#academy" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">학원</a></li>
+    <li><a href="subject.html?s=gd" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">검정고시</a></li>
+  </ul>
+  <div class="flex items-center gap-3">
+    <a href="tel:010-2069-8522" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#7eec97] transition-colors">📞 무료 상담</a>
+    <button id="burgerBtn" class="md:hidden flex flex-col gap-[5px] p-1.5">
+      <span class="block w-5 h-0.5 bg-gray-800 transition-all" id="b1"></span>
+      <span class="block w-5 h-0.5 bg-gray-800 transition-all" id="b2"></span>
+      <span class="block w-5 h-0.5 bg-gray-800 transition-all" id="b3"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- 모바일 드로어 -->
+<div id="mobileDrawer" class="fixed inset-0 z-40 bg-white flex flex-col pt-14 md:hidden">
+  <nav class="flex flex-col px-6 py-8 gap-1 flex-1">
+    <a href="index.html" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">홈 <span class="text-gray-200">→</span></a>
+    <div class="py-3 border-b border-gray-100">
+      <div class="text-xs font-bold tracking-[2px] uppercase text-gray-300 mb-2">과외</div>
+      <div class="grid grid-cols-2 gap-2">
+        <a href="subject.html?s=korean"  class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">✍️ 국어</a>
+        <a href="subject.html?s=english" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">📖 영어</a>
+        <a href="subject.html?s=math"    class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">📐 수학</a>
+        <a href="subject.html?s=science" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">🔬 탐구</a>
+      </div>
+    </div>
+    <div class="py-3 border-b border-gray-100">
+      <div class="text-xs font-bold tracking-[2px] uppercase text-gray-300 mb-2">지역</div>
+      <div class="grid grid-cols-3 gap-2">
+        <a href="region.html?r=서울"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🏙️ 서울</a>
+        <a href="region.html?r=경기"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🌿 경기</a>
+        <a href="region.html?r=충청"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🌻 충청</a>
+        <a href="region.html?r=대전"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🌾 대전</a>
+        <a href="region.html?r=부산"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🐟 부산</a>
+        <a href="region.html?r=대구"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🍎 대구</a>
+        <a href="region.html?r=경상"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">⛰️ 경상</a>
+        <a href="region.html?r=전라"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🌊 전라</a>
+        <a href="region.html?r=광주"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🌸 광주</a>
+        <a href="region.html?r=제주"  class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700">🍊 제주</a>
+      </div>
+    </div>
+    <a href="#academy"          class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">학원 <span class="text-gray-200">→</span></a>
+    <a href="subject.html?s=gd" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">검정고시 <span class="text-gray-200">→</span></a>
+  </nav>
+  <div class="px-6 pb-10">
+    <a href="tel:010-2069-8522" class="block w-full bg-gray-900 text-white text-center font-bold py-4 rounded-2xl text-base">📞 무료 상담</a>
+  </div>
+</div>
+
+<!-- 과목 탭 바 -->
+<div class="mt-14 bg-white border-b border-gray-100 overflow-x-auto">
+  <div class="flex px-5 md:px-10 gap-0 min-w-max">
+    <a href="subject.html?s=math"    id="tab-math"    class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">📐 수학</a>
+    <a href="subject.html?s=english" id="tab-english" class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">📖 영어</a>
+    <a href="subject.html?s=korean"  id="tab-korean"  class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">✍️ 국어</a>
+    <a href="subject.html?s=science" id="tab-science" class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">🔬 탐구</a>
+    <a href="subject.html?s=social"  id="tab-social"  class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">🌏 사회</a>
+    <a href="subject.html?s=coding"  id="tab-coding"  class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">💻 코딩</a>
+    <a href="subject.html?s=gd"      id="tab-gd"      class="subj-tab px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 transition-all whitespace-nowrap">📋 검정고시</a>
+  </div>
+</div>
+
+<!-- 히어로 -->
+<section class="bg-gray-900 px-5 py-16 md:px-16 md:py-20">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div>
+      <p class="text-xs text-gray-600 mb-4"><a href="index.html" class="hover:text-white transition-colors">홈</a> / <span id="hero-breadcrumb" class="text-gray-400"></span></p>
+      <div id="hero-tag" class="text-[10px] font-bold tracking-[2.5px] uppercase text-[#f9fe44] mb-3"></div>
+      <h1 id="hero-h1" class="text-4xl md:text-5xl font-black tracking-[-2px] leading-[1.12] text-white mb-5"></h1>
+      <p id="hero-desc" class="text-sm font-light text-white/50 leading-relaxed mb-8 max-w-sm"></p>
+      <a href="tel:010-2069-8522" class="inline-flex items-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-7 py-3.5 rounded-2xl hover:bg-white transition-colors">📞 무료 상담 신청</a>
+    </div>
+    <div id="hero-stats" class="grid grid-cols-2 gap-px bg-white/10 rounded-2xl overflow-hidden"></div>
+  </div>
+</section>
+
+<!-- 마퀴 -->
+<div class="bg-gray-800 py-3 overflow-hidden border-y border-gray-700">
+  <div class="flex whitespace-nowrap marquee">
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/30 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f9fe44] inline-block"></span>커리큘럼</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f9fe44] tracking-widest uppercase">/ 수업 방식</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/30 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#6f98fa] inline-block"></span>수강 후기</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#6f98fa] tracking-widest uppercase">/ 자주 묻는 질문</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/30 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f09663] inline-block"></span>무료 상담</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f09663] tracking-widest uppercase">/ 1:1 맞춤</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/30 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f9fe44] inline-block"></span>커리큘럼</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f9fe44] tracking-widest uppercase">/ 수업 방식</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/30 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#6f98fa] inline-block"></span>수강 후기</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#6f98fa] tracking-widest uppercase">/ 자주 묻는 질문</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/30 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f09663] inline-block"></span>무료 상담</span>
+    <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f09663] tracking-widest uppercase">/ 1:1 맞춤</span>
+  </div>
+</div>
+
+<!-- 커리큘럼 -->
+<section class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">Curriculum</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-gray-900 mb-3">학년별 커리큘럼</h2>
+    <p class="text-sm font-light text-gray-400 leading-relaxed mb-12">초등·중등·고등 학년별로 최적화된 커리큘럼으로 수업합니다.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal" id="curr-grid"></div>
+  </div>
+</section>
+
+<!-- 수업 방식 -->
+<section class="px-5 py-14 md:px-16 md:py-20 bg-gray-900">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-600 mb-3">수업 방식</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-white mb-14">이렇게 수업합니다</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 reveal">
+      <div class="bg-[#f9fe44] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-yellow-700/50 mb-4">STEP 01</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">현재 수준 진단</p><p class="text-xs text-gray-600 leading-relaxed font-light">학습 진단으로 약점과 현재 수준을 정확히 파악합니다.</p></div>
+      <div class="bg-[#6f98fa] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-blue-700/50 mb-4">STEP 02</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">맞춤 계획 수립</p><p class="text-xs text-gray-600 leading-relaxed font-light">시험 일정을 역산해 주차별 목표와 진도를 설계합니다.</p></div>
+      <div class="bg-[#deef75] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-green-700/50 mb-4">STEP 03</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">1:1 집중 수업</p><p class="text-xs text-gray-600 leading-relaxed font-light">학교 교재·기출 중심으로 개념→유형→실전 수업합니다.</p></div>
+      <div class="bg-[#939afc] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-purple-700/50 mb-4">STEP 04</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">수업 후 피드백</p><p class="text-xs text-gray-600 leading-relaxed font-light">매 수업 후 학습 내용과 숙제를 학부모님께 전달합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 후기 -->
+<section class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">Reviews</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-gray-900 mb-12" id="review-title"></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal" id="review-grid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="px-5 py-14 md:px-16 md:py-20 bg-gray-50 border-t border-gray-100">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">FAQ</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-gray-900 mb-12">자주 묻는 질문</h2>
+    <div class="divide-y divide-gray-100 border-t border-gray-100 reveal">
+      <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 선생님은 어떤 분들인가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">교육청에 정식으로 등록된 현직 교사 및 자격증을 보유한 교원만 수업을 진행합니다. 모든 선생님은 등록 전 자격 확인 절차를 거칩니다.</div></div>
+      <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">첫 수업이 정말 무료인가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">네, 첫 수업은 완전 무료입니다. 수업을 직접 경험해 보신 후 계속 진행 여부를 결정하시면 됩니다. 어떠한 부담도 없습니다.</div></div>
+      <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">선생님이 마음에 안 들면 어떻게 하나요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">언제든지 말씀해 주시면 조건 없이 새 선생님을 연결해 드립니다. 추가 비용은 없습니다.</div></div>
+      <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">온라인 수업도 가능한가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">방문 과외와 온라인 과외 모두 가능합니다. 학생 상황에 맞게 자유롭게 선택하실 수 있어요.</div></div>
+      <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 일정은 어떻게 잡나요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">선생님과 학생이 직접 협의해 일정을 잡습니다. 학원·학교 일정에 맞춰 유연하게 조율 가능합니다.</div></div>
+      <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업료는 얼마인가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">수업료는 학년·과목·횟수에 따라 다릅니다. 무료 상담을 통해 정확히 안내해 드립니다.</div></div>
+    
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
+  <div class="max-w-5xl mx-auto">
+    <div class="bg-gray-900 rounded-3xl px-8 py-14 md:px-14 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-40 h-40 bg-[#f9fe44]/10 rounded-full translate-x-8 -translate-y-8 pointer-events-none"></div>
+      <div class="absolute bottom-0 left-16 w-28 h-28 bg-[#939afc]/10 rounded-full translate-y-6 pointer-events-none"></div>
+      <div class="relative">
+        <h2 id="cta-title" class="text-3xl md:text-4xl font-black tracking-[-2px] leading-[1.1] text-white mb-2"></h2>
+        <p class="text-sm font-light text-white/40">첫 수업 무료 · 24시간 내 매칭</p>
+      </div>
+      <div class="relative flex flex-col gap-3">
+        <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-8 py-4 rounded-2xl hover:bg-white transition-colors">📞 무료 상담</a>
+        <p class="text-[11px] text-white/30 text-center">평일·주말 오전 9시 — 오후 10시</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer class="bg-gray-900 px-5 py-10 md:px-16">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-white/[0.08]">
+      <div>
+        <p class="font-black text-white text-lg tracking-tight"><span class="text-[#f9fe44]">스터디</span>멘토</p>
+        <p class="text-xs text-white/30 mt-1.5">초·중·고 1:1 맞춤 과외</p>
+      </div>
+      <div class="flex flex-wrap gap-x-12 gap-y-6">
+        <div>
+          <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">과목</p>
+          <div class="flex flex-col gap-2">
+            <a href="subject.html?s=math"    class="text-xs text-white/40 hover:text-white transition-colors">수학</a>
+            <a href="subject.html?s=english" class="text-xs text-white/40 hover:text-white transition-colors">영어</a>
+            <a href="subject.html?s=korean"  class="text-xs text-white/40 hover:text-white transition-colors">국어</a>
+            <a href="subject.html?s=science" class="text-xs text-white/40 hover:text-white transition-colors">과학</a>
+            <a href="subject.html?s=social"  class="text-xs text-white/40 hover:text-white transition-colors">사회</a>
+            <a href="subject.html?s=coding"  class="text-xs text-white/40 hover:text-white transition-colors">코딩</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">학년</p>
+          <div class="flex flex-col gap-2">
+            <a href="#" class="text-xs text-white/40 hover:text-white transition-colors">초등 과외</a>
+            <a href="#" class="text-xs text-white/40 hover:text-white transition-colors">중등 과외</a>
+            <a href="#" class="text-xs text-white/40 hover:text-white transition-colors">고등 과외</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">안내</p>
+          <div class="flex flex-col gap-2">
+            <a href="index.html#process" class="text-xs text-white/40 hover:text-white transition-colors">수업 방식</a>
+            <a href="index.html#reviews" class="text-xs text-white/40 hover:text-white transition-colors">수강 후기</a>
+            <a href="tel:010-2069-8522"  class="text-xs text-white/40 hover:text-white transition-colors">무료 상담</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-6">
+      <p class="text-[11px] text-white/20">© 2026 스터디멘토. All rights reserved.</p>
+      <a href="tel:010-2069-8522" class="text-sm font-bold text-white/40 hover:text-white transition-colors">010-2069-8522</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COLORS = { math:'#6f98fa', english:'#f9fe44', korean:'#f09663', science:'#deef75', social:'#f9fe44', coding:'#939afc', gd:'#939afc' };
+
+const SUBJECTS = {
+  math:{
+    name:'수학', tag:'수학 과외', h1:'수학,\n제대로 잡겠습니다',
+    desc:'개념부터 심화까지, 학교 시험에 최적화된 수학 1:1 과외입니다. 단순 문제풀이가 아닌 원리를 이해하는 수업으로 어떤 유형도 스스로 풀 수 있게 만들어 드립니다.',
+    stats:[{n:'98%',l:'수학 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'1,200+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'초등',color:'#6f98fa',title:'기초부터 탄탄하게',items:['자연수·분수·소수 개념 정립','연산 정확도 & 속도 훈련','도형·측정 기초 완성','교과서 단원별 집중 수업']},
+      {lv:'중등',color:'#f9fe44',title:'내신 완벽 대비',items:['방정식·함수 개념 완성','학교 기출 분석 및 유형 정리','서술형 풀이법 훈련','중간·기말 집중 특강']},
+      {lv:'고등',color:'#f09663',title:'수능·내신 동시 대비',items:['수1·수2·미적분 전 범위','수능 기출 30개년 분석','킬러문항 공략법','내신 변형문제 완벽 대응']}
+    ],
+    reviews:[
+      {badge:'초5 · 수학',color:'#f9fe44',text:'연산이 너무 약했는데 <strong>개념부터 차근차근</strong> 잡아주셔서 수학을 이제 좋아해요!',name:'김○○ 학부모',sub:'초등학교 5학년 자녀',chip:'기초 완성'},
+      {badge:'중2 · 수학',color:'#6f98fa',text:'<strong>내신 성적 향상</strong>으로 올랐어요. 기출 분석이 정말 탁월하셨어요.',name:'이○○ 학생',sub:'중학교 2학년',chip:'실력 향상'},
+      {badge:'고3 · 수학',color:'#939afc',text:'수능 수학 <strong>성적 향상</strong>까지 올렸습니다. 킬러 문항 전략이 핵심이었어요.',name:'박○○ 학생',sub:'고등학교 3학년',chip:'수능 목표 달성'}
+    ]
+  },
+  english:{
+    name:'영어', tag:'영어 과외', h1:'영어,\n자신감을 만듭니다',
+    desc:'듣기·말하기·읽기·쓰기 전 영역을 아우르는 1:1 영어 과외입니다. 내신 대비부터 수능 영어, 회화까지 목표에 맞게 맞춤 수업합니다.',
+    stats:[{n:'97%',l:'영어 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'950+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'초등',color:'#f9fe44',title:'파닉스·기초 회화',items:['알파벳·파닉스 완성','기초 문법 및 패턴 학습','영어 일기·받아쓰기 훈련','교과서 단어·본문 완벽 암기']},
+      {lv:'중등',color:'#6f98fa',title:'내신·문법 완성',items:['중학 핵심 문법 전 범위','학교 기출 지문 분석','서술형·영작문 훈련','독해 속도 및 정확도 향상']},
+      {lv:'고등',color:'#f09663',title:'수능·내신 동시 공략',items:['수능 유형별 풀이 전략','빈칸·순서·삽입 킬러 유형','학교 기출 변형 문제 대비','어법·어휘 집중 완성']}
+    ],
+    reviews:[
+      {badge:'초4 · 영어',color:'#f9fe44',text:'파닉스부터 차근차근 잡아주셔서 <strong>영어를 두려워하지 않게</strong> 됐어요.',name:'정○○ 학부모',sub:'초등학교 4학년 자녀',chip:'기초 완성'},
+      {badge:'중3 · 영어',color:'#6f98fa',text:'중학 문법을 완전히 정리하고 <strong>내신 목표 달성</strong> 받았습니다!',name:'최○○ 학생',sub:'중학교 3학년',chip:'목표 달성'},
+      {badge:'고2 · 영어',color:'#939afc',text:'수능 영어 <strong>성적 향상</strong>으로 올랐어요.',name:'윤○○ 학생',sub:'고등학교 2학년',chip:'실력 향상'}
+    ]
+  },
+  korean:{
+    name:'국어', tag:'국어 과외', h1:'국어,\n논리로 완성합니다',
+    desc:'문학·비문학·문법·쓰기를 체계적으로 잡는 1:1 국어 과외입니다. 독해력과 논리적 사고력을 기르고 서술형과 논술까지 대비합니다.',
+    stats:[{n:'96%',l:'국어 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'780+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'초등',color:'#f09663',title:'독해·어휘 기초',items:['낱말·문장 독해력 기초','교과서 문학 작품 이해','독서록·일기 쓰기 훈련','맞춤법·띄어쓰기 완성']},
+      {lv:'중등',color:'#f9fe44',title:'문학·비문학 완성',items:['현대시·소설 분석법','비문학 지문 독해 전략','중학 문법 전 범위 정리','서술형 답안 작성 훈련']},
+      {lv:'고등',color:'#6f98fa',title:'수능·내신 전략',items:['수능 국어 유형별 공략','문학·비문학 고난도 지문','언어와 매체 / 화법과 작문','논술·서술형 심화 훈련']}
+    ],
+    reviews:[
+      {badge:'초5 · 국어',color:'#f09663',text:'독서 이해력이 부족했는데 <strong>3개월 만에 독해 속도가 확</strong> 빨라졌어요.',name:'강○○ 학부모',sub:'초등학교 5학년 자녀',chip:'독해력 향상'},
+      {badge:'중2 · 국어',color:'#f9fe44',text:'비문학이 너무 어려웠는데 <strong>지문 분석법</strong>을 배우고 나서 완전히 달라졌어요.',name:'오○○ 학생',sub:'중학교 2학년',chip:'실력 향상'},
+      {badge:'고3 · 국어',color:'#939afc',text:'수능 국어 <strong>성적 향상</strong>으로 올랐습니다.',name:'한○○ 학생',sub:'고등학교 3학년',chip:'실력 향상'}
+    ]
+  },
+  science:{
+    name:'탐구', tag:'탐구 과외 (과학 + 사회)', h1:'탐구,\n제대로 파고듭니다',
+    desc:'과학과 사회, 두 과목을 한 번에. 단순 암기가 아닌 원리와 흐름으로 이해하는 1:1 탐구 과외입니다.',
+    stats:[{n:'95%',l:'탐구 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'1,160+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'초등',color:'#deef75',title:'호기심·기초 탐구',items:['과학적 관찰·실험 기초','교과서 핵심 개념 이해','탐구 보고서 작성법','생물·지구과학 기초 완성']},
+      {lv:'중등',color:'#6f98fa',title:'물화생지 전 영역',items:['물리·화학·생물·지구과학','학교 기출 유형별 분석','실험·서술형 완벽 대비','개념 마인드맵 정리법']},
+      {lv:'고등',color:'#f9fe44',title:'수능과학·내신 대비',items:['물리학1·2 / 화학1·2','생명과학1·2 / 지구과학1·2','수능 킬러 문항 전략','학교 시험 변형 문제 대응']}
+    ],
+    reviews:[
+      {badge:'중1 · 과학',color:'#deef75',text:'과학이 너무 어려웠는데 <strong>원리 중심 수업</strong>으로 개념이 명확히 잡혔어요.',name:'서○○ 학생',sub:'중학교 1학년',chip:'기초 완성'},
+      {badge:'중3 · 과학',color:'#6f98fa',text:'물리가 특히 약했는데 <strong>내신 성적 향상</strong>으로 올랐어요!',name:'임○○ 학생',sub:'중학교 3학년',chip:'실력 향상'},
+      {badge:'고2 · 화학',color:'#f9fe44',text:'화학1 수능 모의고사 <strong>성적 향상</strong>으로 향상됐습니다.',name:'조○○ 학생',sub:'고등학교 2학년',chip:'실력 향상'}
+    ]
+  },
+  social:{
+    name:'사회', tag:'사회 과외', h1:'사회,\n흐름으로 읽습니다',
+    desc:'암기가 아닌 흐름과 구조로 이해하는 1:1 사회 과외입니다. 역사·지리·일반사회·도덕을 맥락 중심으로 가르칩니다.',
+    stats:[{n:'94%',l:'사회 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'520+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'초등',color:'#f9fe44',title:'기초 개념·역사',items:['한국사 주요 사건 흐름','사회·도덕 교과서 핵심','지도·지리 기초 이해','사회현상 탐구 기초']},
+      {lv:'중등',color:'#f09663',title:'역사·일반사회 완성',items:['한국사 전 범위 정리','세계사 주요 흐름 파악','사회·문화·정치 개념 완성','서술형·논술형 답안 작성']},
+      {lv:'고등',color:'#6f98fa',title:'수능사회·내신 대비',items:['한국지리·세계지리','한국사·동아시아사','생활과 윤리·사회문화','수능 선택과목 집중 공략']}
+    ],
+    reviews:[
+      {badge:'중2 · 역사',color:'#f9fe44',text:'역사를 외우는 과목으로만 알았는데 <strong>흐름으로 이해</strong>하니 훨씬 쉬워졌어요.',name:'권○○ 학생',sub:'중학교 2학년',chip:'흥미 향상'},
+      {badge:'중3 · 사회',color:'#f09663',text:'사회 내신이 늘 4등급이었는데 <strong>성적이 향상됐어요</strong>.',name:'문○○ 학생',sub:'중학교 3학년',chip:'실력 향상'},
+      {badge:'고2 · 생활과윤리',color:'#939afc',text:'수능 생윤 <strong>성적 향상</strong>으로 올랐습니다.',name:'손○○ 학생',sub:'고등학교 2학년',chip:'실력 향상'}
+    ]
+  },
+  coding:{
+    name:'코딩', tag:'코딩 과외', h1:'코딩,\n논리적으로 생각합니다',
+    desc:'스크래치부터 파이썬까지, 수준별 1:1 코딩 과외입니다. 단순 코드 암기가 아닌 논리적 사고력과 문제 해결 능력을 키웁니다.',
+    stats:[{n:'97%',l:'코딩 만족도'},{n:'SW특기',l:'전형 합격 다수'},{n:'380+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'초등',color:'#939afc',title:'스크래치·기초 코딩',items:['스크래치로 기초 개념 학습','순차·반복·조건 구조 이해','간단한 게임·애니메이션 제작','코딩 사고력 기초 완성']},
+      {lv:'중등',color:'#6f98fa',title:'파이썬·알고리즘 기초',items:['파이썬 기초 문법 완성','자료구조·알고리즘 입문','정보올림피아드(KOI) 대비','SW 창작 프로젝트 제작']},
+      {lv:'고등',color:'#f9fe44',title:'심화·입시·대회 대비',items:['파이썬·C++ 심화','알고리즘 최적화 전략','KOI·정보올림피아드 준비','SW특기자 전형 포트폴리오']}
+    ],
+    reviews:[
+      {badge:'초3 · 코딩',color:'#939afc',text:'스크래치로 직접 게임을 만드니 <strong>코딩이 너무 재미있다</strong>고 매일 하고 싶어해요.',name:'류○○ 학부모',sub:'초등학교 3학년 자녀',chip:'흥미 UP'},
+      {badge:'중2 · 파이썬',color:'#6f98fa',text:'파이썬 기초부터 알고리즘까지 <strong>체계적으로 배워서</strong> 학교 정보 수업이 쉬워졌어요.',name:'신○○ 학생',sub:'중학교 2학년',chip:'학교 수업 향상'},
+      {badge:'고1 · 알고리즘',color:'#f9fe44',text:'KOI 준비했는데 <strong>지역대회 입상</strong>했어요! 알고리즘 전략이 도움됐습니다.',name:'안○○ 학생',sub:'고등학교 1학년',chip:'대회 입상'}
+    ]
+  }
+  ,gd:{
+    name:'검정고시', tag:'검정고시 전문 과외', h1:'검정고시,\n확실하게 합격합니다',
+    desc:'중졸·고졸 검정고시 전 과목을 1:1로 밀착 지도합니다. 짧은 기간 안에 합격을 목표로 핵심만 짚어드립니다.',
+    stats:[{n:'98%',l:'합격률'},{n:'3개월',l:'평균 합격 기간'},{n:'500+',l:'합격생 배출'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'기초',color:'#939afc',title:'기초 다지기',items:['국어·수학·영어 기초 완성','검정고시 출제 유형 파악','핵심 개념 압축 정리','취약 과목 집중 진단']},
+      {lv:'심화',color:'#6f98fa',title:'기출 집중 공략',items:['최근 10년 기출 완전 분석','과목별 고득점 전략 수립','오답 유형 반복 훈련','모의고사 실전 풀이']},
+      {lv:'마무리',color:'#f9fe44',title:'실전 마무리',items:['시험 직전 요약 노트 정리','시간 배분 전략 훈련','멘탈 관리 및 컨디션 코칭','합격 후 상급 학교 진학 상담']}
+    ],
+    reviews:[
+      {badge:'검정고시 · 고졸',color:'#939afc',text:'독학으로 계속 실패했는데 <strong>3개월 만에 고졸 검정고시 합격</strong>했어요!',name:'김○○',sub:'고졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'검정고시 · 중졸',color:'#6f98fa',text:'기초가 너무 부족했는데 선생님이 <strong>처음부터 차근차근</strong> 잡아주셨어요.',name:'이○○',sub:'중졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'검정고시 · 고졸',color:'#f9fe44',text:'짧은 기간 안에 <strong>전 과목 60점 이상</strong>으로 합격했습니다. 감사해요!',name:'박○○',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
+    ]
+  }
+};
+
+function render(key) {
+  const d = SUBJECTS[key] || SUBJECTS.math;
+  const col = COLORS[key] || '#f9fe44';
+
+  document.title = d.name + ' 과외 — 스터디멘토';
+  document.getElementById('hero-breadcrumb').textContent = d.name;
+  document.getElementById('hero-tag').textContent = d.tag;
+  document.getElementById('hero-h1').innerHTML = d.h1.split('\n').join('<br>');
+  document.getElementById('hero-desc').textContent = d.desc;
+
+  // 히어로 스탯
+  document.getElementById('hero-stats').innerHTML = d.stats.map(s =>
+    `<div class="bg-white/5 p-6 flex flex-col justify-end">
+      <div class="text-2xl md:text-3xl font-black tracking-tight text-white mb-1" style="color:${col}">${s.n}</div>
+      <div class="text-xs text-white/40 leading-relaxed">${s.l}</div>
+    </div>`
+  ).join('');
+
+  // 커리큘럼 — 탐구(science)면 과학+사회 합쳐서 렌더
+  const isExplore = key === 'science';
+  const cardHTML = curr => curr.map(item =>
+    `<div class="rounded-3xl p-7" style="background:${item.color}">
+      <span class="inline-block text-[10px] font-black tracking-[2px] uppercase bg-black/10 px-3 py-1 rounded-full mb-4 text-gray-800">${item.lv}</span>
+      <div class="text-base font-black text-gray-900 mb-4">${item.title}</div>
+      <ul class="space-y-2">${item.items.map(i => `<li class="text-xs font-light text-gray-700 flex gap-2 leading-relaxed"><span class="text-gray-500 flex-shrink-0 mt-0.5">—</span>${i}</li>`).join('')}</ul>
+    </div>`
+  ).join('');
+
+  if (isExplore) {
+    document.getElementById('curr-grid').innerHTML =
+      `<div class="col-span-full mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-[#deef75] px-4 py-1.5 rounded-full">🔬 과학 커리큘럼</span></div>`
+      + cardHTML(SUBJECTS.science.curr) +
+      `<div class="col-span-full mt-5 mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-[#f9fe44] px-4 py-1.5 rounded-full">🌏 사회 커리큘럼</span></div>`
+      + cardHTML(SUBJECTS.social.curr);
+  } else {
+    document.getElementById('curr-grid').innerHTML = cardHTML(d.curr);
+  }
+
+  // 후기 — 탐구면 과학+사회 합치기
+  const reviewData = isExplore ? [...SUBJECTS.science.reviews, ...SUBJECTS.social.reviews] : d.reviews;
+  document.getElementById('review-title').textContent = isExplore ? '탐구 수강 후기' : d.name + ' 수강 후기';
+  document.getElementById('review-grid').innerHTML = reviewData.map(r =>
+    `<div class="rounded-3xl p-7 border-2" style="background:${r.color}20;border-color:${r.color}">
+      <span class="inline-block text-[11px] font-black px-3 py-1 rounded-full mb-4" style="background:${r.color};color:#111">${r.badge}</span>
+      <p class="text-sm leading-relaxed text-gray-700 mb-6">${r.text}</p>
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-xs font-black text-gray-900">${r.name}</p>
+          <p class="text-[11px] text-gray-400 mt-0.5">${r.sub}</p>
+        </div>
+        <span class="text-xs font-black text-gray-900 bg-white/70 px-3 py-1 rounded-full">${r.chip}</span>
+      </div>
+    </div>`
+  ).join('');
+
+  // CTA
+  document.getElementById('cta-title').innerHTML = d.name + ' 과외<br>지금 시작하세요';
+
+  // 탭 활성화
+  document.querySelectorAll('.subj-tab').forEach(t => {
+    t.classList.remove('text-gray-900','border-gray-900');
+    t.classList.add('text-gray-400','border-transparent');
+  });
+  const at = document.getElementById('tab-'+key);
+  if(at){ at.classList.add('text-gray-900','border-gray-900'); at.classList.remove('text-gray-400','border-transparent'); }
+
+  // nav 활성화
+  document.querySelectorAll('nav a[id^="nav-"]').forEach(a => {
+    a.style.color = a.id === 'nav-'+key ? col : '';
+    a.style.fontWeight = a.id === 'nav-'+key ? '900' : '';
+  });
+
+  // reveal 재실행
+  document.querySelectorAll('.reveal').forEach(el => { el.classList.remove('on'); setTimeout(()=>el.classList.add('on'),100); });
+}
+
+// URL 파라미터
+const key = new URLSearchParams(location.search).get('s') || 'math';
+render(key);
+
+// FAQ
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('faq-open'));
+});
+
+// Reveal
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('on'); }), {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// 햄버거
+const bBtn=document.getElementById('burgerBtn'),drawer=document.getElementById('mobileDrawer');
+const b1=document.getElementById('b1'),b2=document.getElementById('b2'),b3=document.getElementById('b3');
+let open=false;
+bBtn.addEventListener('click',()=>{
+  open=!open; drawer.classList.toggle('open',open);
+  b1.style.transform=open?'rotate(45deg) translate(4px,4px)':'';
+  b2.style.opacity=open?'0':'1';
+  b3.style.transform=open?'rotate(-45deg) translate(4px,-4px)':'';
+});
+document.querySelectorAll('.drawer-link').forEach(l=>l.addEventListener('click',()=>{
+  open=false;drawer.classList.remove('open');
+  b1.style.transform='';b2.style.opacity='1';b3.style.transform='';
+}));
+</script>
+</body>
+</html>
