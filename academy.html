@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>학원 찾기 — 스터디멘토</title>
+  <style>
+    @font-face { font-family:'S-CoreDream'; font-weight:300; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); }
+    @font-face { font-family:'S-CoreDream'; font-weight:400; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); }
+    @font-face { font-family:'S-CoreDream'; font-weight:700; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff'); }
+    @font-face { font-family:'S-CoreDream'; font-weight:900; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8ExtraBold.woff') format('woff'); }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ["'S-CoreDream'", 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body { font-family:'S-CoreDream',sans-serif !important; }
+    #mobileDrawer { transform:translateX(100%); transition:transform .3s ease; }
+    #mobileDrawer.open { transform:translateX(0); }
+    .region-btn.active { background:#18181b; color:#f9fe44; }
+    .academy-card { transition: transform .2s, box-shadow .2s; }
+    .academy-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body style="font-family:'S-CoreDream',sans-serif;background:#f4f4f4;color:#111;overflow-x:hidden">
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-10 h-14 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+  <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#7eec97]">스터디</span>멘토</a>
+  <ul class="hidden md:flex gap-1 text-sm text-gray-500 font-medium items-center">
+    <li><a href="index.html" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">홈</a></li>
+    <li class="relative group">
+      <button class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all flex items-center gap-1" style="font-family:inherit;background:none;border:none;cursor:pointer;font-size:14px;color:#6b7280">과외 <span style="font-size:10px;opacity:.6">▾</span></button>
+      <div class="absolute top-full left-0 mt-1 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+        <a href="subject.html?s=korean"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">✍️ 국어</a>
+        <a href="subject.html?s=english" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">📖 영어</a>
+        <a href="subject.html?s=math"    class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">📐 수학</a>
+        <a href="subject.html?s=science" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🔬 탐구</a>
+        <div class="border-t border-gray-100 my-1"></div>
+        <a href="subject.html?s=gd"      class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">📋 검정고시</a>
+      </div>
+    </li>
+    <li class="relative group">
+      <button class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all flex items-center gap-1" style="font-family:inherit;background:none;border:none;cursor:pointer;font-size:14px;color:#6b7280">지역 <span style="font-size:10px;opacity:.6">▾</span></button>
+      <div class="absolute top-full left-0 mt-1 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+        <a href="region.html?r=서울"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🏙️ 서울</a>
+        <a href="region.html?r=경기"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🌿 경기</a>
+        <a href="region.html?r=충청"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🌻 충청</a>
+        <a href="region.html?r=대전"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🌾 대전</a>
+        <a href="region.html?r=부산"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🐟 부산</a>
+        <a href="region.html?r=대구"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🍎 대구</a>
+        <a href="region.html?r=경상"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">⛰️ 경상</a>
+        <a href="region.html?r=전라"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🌊 전라</a>
+        <a href="region.html?r=광주"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🌸 광주</a>
+        <a href="region.html?r=제주"  class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50">🍊 제주</a>
+      </div>
+    </li>
+    <li><a href="academy.html" class="px-4 py-2 rounded-full bg-gray-900 text-white font-bold">학원</a></li>
+    <li><a href="subject.html?s=gd" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">검정고시</a></li>
+  </ul>
+  <div class="flex items-center gap-3">
+    <a href="tel:010-2069-8522" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#7eec97] hover:text-black transition-colors">📞 무료 상담</a>
+    <button id="burgerBtn" class="md:hidden flex flex-col gap-[5px] p-1.5">
+      <span class="block w-5 h-0.5 bg-gray-800" id="b1"></span>
+      <span class="block w-5 h-0.5 bg-gray-800" id="b2"></span>
+      <span class="block w-5 h-0.5 bg-gray-800" id="b3"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- 모바일 드로어 -->
+<div id="mobileDrawer" class="fixed inset-0 z-40 bg-white flex flex-col pt-14 md:hidden">
+  <nav class="flex flex-col px-6 py-8 gap-1 flex-1">
+    <a href="index.html" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">홈 <span class="text-gray-200">→</span></a>
+    <div class="py-3 border-b border-gray-100">
+      <div class="text-xs font-bold tracking-[2px] uppercase text-gray-300 mb-2">과외</div>
+      <div class="grid grid-cols-2 gap-2">
+        <a href="subject.html?s=korean"  class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">✍️ 국어</a>
+        <a href="subject.html?s=english" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">📖 영어</a>
+        <a href="subject.html?s=math"    class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">📐 수학</a>
+        <a href="subject.html?s=science" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700">🔬 탐구</a>
+      </div>
+    </div>
+    <a href="academy.html" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">학원 찾기 <span class="text-gray-200">→</span></a>
+    <a href="subject.html?s=gd" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">검정고시 <span class="text-gray-200">→</span></a>
+  </nav>
+  <div class="px-6 pb-10">
+    <a href="tel:010-2069-8522" class="block w-full bg-gray-900 text-white text-center font-bold py-4 rounded-2xl">📞 무료 상담</a>
+  </div>
+</div>
+
+<!-- 헤더 -->
+<div class="mt-14 bg-gray-900 px-5 py-12 md:px-16 md:py-16">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">Academy</p>
+    <h1 class="text-4xl md:text-5xl font-black tracking-[-2px] text-white mb-3">학원 찾기</h1>
+    <p class="text-sm font-light text-white/50">전국 스터디멘토 학원을 지역별로 찾아보세요.</p>
+    <div class="mt-6 flex items-center gap-3">
+      <span class="text-[#f9fe44] font-black text-2xl" id="total-count">0</span>
+      <span class="text-white/40 text-sm">개 학원</span>
+    </div>
+  </div>
+</div>
+
+<!-- 지역 필터 탭 -->
+<div class="bg-white border-b border-gray-100 overflow-x-auto sticky top-14 z-30">
+  <div class="flex px-5 md:px-10 gap-0 min-w-max" id="regionTabs">
+    <button onclick="filterRegion('전체')" class="region-btn active px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">전체</button>
+    <button onclick="filterRegion('서울')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🏙️ 서울</button>
+    <button onclick="filterRegion('경기')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🌿 경기</button>
+    <button onclick="filterRegion('인천')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🌊 인천</button>
+    <button onclick="filterRegion('충청')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🌻 충청</button>
+    <button onclick="filterRegion('대전')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🌾 대전</button>
+    <button onclick="filterRegion('부산')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🐟 부산</button>
+    <button onclick="filterRegion('대구')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🍎 대구</button>
+    <button onclick="filterRegion('경상')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">⛰️ 경상</button>
+    <button onclick="filterRegion('전라')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🌊 전라</button>
+    <button onclick="filterRegion('광주')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🌸 광주</button>
+    <button onclick="filterRegion('제주')" class="region-btn px-5 py-3.5 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap transition-all" style="background:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">🍊 제주</button>
+  </div>
+</div>
+
+<!-- 카드 그리드 -->
+<div class="px-5 py-10 md:px-16 md:py-14">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="academyGrid"></div>
+    <!-- 비어있을 때 -->
+    <div id="emptyState" class="hidden text-center py-20">
+      <div class="text-4xl mb-4">🏫</div>
+      <p class="text-gray-400 font-light">해당 지역에 등록된 학원이 없습니다.</p>
+      <p class="text-gray-300 text-sm mt-2 font-light">곧 추가될 예정이에요!</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="px-5 py-12 md:px-16 md:py-16 bg-white border-t border-gray-100">
+  <div class="max-w-5xl mx-auto">
+    <div class="bg-gray-900 rounded-3xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-36 h-36 bg-[#f9fe44]/10 rounded-full translate-x-6 -translate-y-6 pointer-events-none"></div>
+      <div class="relative">
+        <h2 class="text-3xl font-black tracking-[-2px] leading-[1.1] text-white mb-2">우리 동네 학원<br/>문의하기</h2>
+        <p class="text-sm font-light text-white/40">원하는 학원이 없으면 직접 상담해 드려요.</p>
+      </div>
+      <div class="relative flex flex-col gap-3">
+        <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-8 py-4 rounded-2xl hover:bg-white transition-colors">📞 무료 상담 신청</a>
+        <p class="text-[11px] text-white/30 text-center">첫 수업 무료 · 평일·주말 09:00 — 22:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer class="bg-gray-900 px-5 py-10 md:px-16">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-white/[0.08]">
+      <div>
+        <p class="font-black text-white text-lg"><span class="text-[#f9fe44]">스터디</span>멘토</p>
+        <p class="text-xs text-white/30 mt-1.5">초·중·고 1:1 맞춤 과외</p>
+      </div>
+      <div class="flex flex-wrap gap-x-12 gap-y-6">
+        <div>
+          <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">과목</p>
+          <div class="flex flex-col gap-2">
+            <a href="subject.html?s=korean"  class="text-xs text-white/40 hover:text-white transition-colors">국어</a>
+            <a href="subject.html?s=english" class="text-xs text-white/40 hover:text-white transition-colors">영어</a>
+            <a href="subject.html?s=math"    class="text-xs text-white/40 hover:text-white transition-colors">수학</a>
+            <a href="subject.html?s=science" class="text-xs text-white/40 hover:text-white transition-colors">탐구</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">학원</p>
+          <div class="flex flex-col gap-2">
+            <a href="academy.html" class="text-xs text-white/40 hover:text-white transition-colors">전체 학원</a>
+            <a href="academy.html?r=서울" class="text-xs text-white/40 hover:text-white transition-colors">서울</a>
+            <a href="academy.html?r=경기" class="text-xs text-white/40 hover:text-white transition-colors">경기</a>
+            <a href="academy.html?r=충청" class="text-xs text-white/40 hover:text-white transition-colors">충청</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">안내</p>
+          <div class="flex flex-col gap-2">
+            <a href="index.html" class="text-xs text-white/40 hover:text-white transition-colors">홈</a>
+            <a href="tel:010-2069-8522" class="text-xs text-white/40 hover:text-white transition-colors">무료 상담</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-6">
+      <p class="text-[11px] text-white/20">© 2026 스터디멘토. All rights reserved.</p>
+      <a href="tel:010-2069-8522" class="text-sm font-bold text-white/40 hover:text-white transition-colors">010-2069-8522</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════
+// 학원 데이터 — 여기에 지점 추가하면 됩니다!
+// 형식: { region:'지역', district:'구/시', name:'학원명', address:'주소', schools:{ elem:[], middle:[], high:[] } }
+// ══════════════════════════════════════
+const ACADEMIES = [
+  // ── 서울 ──
+  {
+    region:'서울', district:'노원구',
+    name:'하계점와와학습코칭학원',
+    address:'서울 노원구 노원로 257 401호',
+    schools:{ elem:[], middle:['하계중','녹천중','상명중','태릉중','공릉중'], high:['혜성여고','대진고','상명고','월계고'] }
+  },
+  {
+    region:'서울', district:'강북구',
+    name:'삼각산점와와학습코칭학원',
+    address:'서울 강북구 미아동 811-9 두산위브테라스파크 상가 402/403호',
+    schools:{ elem:['길음초','송천초','미양초'], middle:['삼각산중','길음중','미양중'], high:['삼각산고','미양고','영훈고','혜화여고'] }
+  },
+  {
+    region:'서울', district:'영등포구',
+    name:'당산점와와학습코칭학원',
+    address:'서울 영등포구 당산로44길 3 삼성타운 504',
+    schools:{ elem:['당서초','영동초','당중초'], middle:['당산중','당산서중','선유중'], high:['선유고','여의도고','여의도여고','영등포고','관악고'] }
+  },
+  {
+    region:'서울', district:'은평구',
+    name:'와와학습코칭학원',
+    address:'서울특별시 은평구 진관동 진관2로 29-21 드림스퀘어 제 8층 804호 805호',
+    schools:{ elem:['은진초','은빛초','진관초','신도초'], middle:['진관중','신도중','연천중'], high:['진관고','신도고','대성고','선일여고'] }
+  },
+  // ── 경기 (샘플) ──
+  {
+    region:'경기', district:'수원시',
+    name:'수원영통점학원',
+    address:'경기도 수원시 영통구 영통로 123 (샘플)',
+    schools:{ elem:[], middle:['영통중','매탄중'], high:['영통고','매탄고'] }
+  },
+  // ── 충청 (샘플) ──
+  {
+    region:'충청', district:'청주시',
+    name:'청주본점학원',
+    address:'충청북도 청주시 흥덕구 (샘플)',
+    schools:{ elem:[], middle:[], high:[] }
+  },
+];
+
+let currentRegion = '전체';
+
+function renderCards(region) {
+  const grid = document.getElementById('academyGrid');
+  const empty = document.getElementById('emptyState');
+  const filtered = region === '전체' ? ACADEMIES : ACADEMIES.filter(a => a.region === region);
+
+  document.getElementById('total-count').textContent = filtered.length;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+
+  grid.innerHTML = filtered.map(a => `
+    <div class="academy-card bg-white rounded-2xl p-6 border border-gray-100">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <span class="inline-block text-[11px] font-bold text-[#6f98fa] bg-blue-50 px-2.5 py-1 rounded-full mb-2">${a.region} ${a.district}</span>
+          <h3 class="text-base font-black text-gray-900 leading-tight">${a.name}</h3>
+        </div>
+        <span class="text-xl">🏫</span>
+      </div>
+      <p class="text-xs text-gray-400 font-light mb-4 flex items-start gap-1.5">
+        <span class="flex-shrink-0 mt-0.5">📍</span>${a.address}
+      </p>
+      ${a.schools.elem.length ? `<div class="flex flex-wrap gap-1.5 mb-2"><span class="text-[10px] font-bold text-yellow-700 bg-yellow-50 px-2 py-0.5 rounded-full">초등</span>${a.schools.elem.map(s=>`<span class="text-[11px] text-yellow-700 font-medium">${s}</span>`).join(' ')}</div>` : ''}
+      ${a.schools.middle.length ? `<div class="flex flex-wrap gap-1.5 mb-2"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full">중등</span>${a.schools.middle.map(s=>`<span class="text-[11px] text-green-700 font-medium">${s}</span>`).join(' ')}</div>` : ''}
+      ${a.schools.high.length ? `<div class="flex flex-wrap gap-1.5 mb-3"><span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">고등</span>${a.schools.high.map(s=>`<span class="text-[11px] text-blue-700 font-medium">${s}</span>`).join(' ')}</div>` : ''}
+      <div class="flex gap-2 mt-4 pt-4 border-t border-gray-50">
+        <a href="tel:010-2069-8522" class="flex-1 flex items-center justify-center gap-1.5 bg-gray-900 text-white text-xs font-bold py-2.5 rounded-xl hover:bg-[#f9fe44] hover:text-gray-900 transition-colors">📞 상담</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterRegion(region) {
+  currentRegion = region;
+  document.querySelectorAll('.region-btn').forEach(b => {
+    b.classList.remove('active');
+    b.style.borderBottomColor = 'transparent';
+    b.style.color = '#9ca3af';
+  });
+  event.target.classList.add('active');
+  event.target.style.borderBottomColor = '#18181b';
+  event.target.style.color = '#18181b';
+  renderCards(region);
+}
+
+// URL 파라미터로 지역 자동 선택
+const urlRegion = new URLSearchParams(location.search).get('r');
+if (urlRegion) {
+  const targetBtn = [...document.querySelectorAll('.region-btn')].find(b => b.textContent.includes(urlRegion));
+  if (targetBtn) { targetBtn.click(); }
+  else renderCards('전체');
+} else {
+  renderCards('전체');
+}
+
+// 햄버거
+const bBtn=document.getElementById('burgerBtn'),drawer=document.getElementById('mobileDrawer');
+const b1=document.getElementById('b1'),b2=document.getElementById('b2'),b3=document.getElementById('b3');
+let open=false;
+bBtn.addEventListener('click',()=>{
+  open=!open; drawer.classList.toggle('open',open);
+  b1.style.transform=open?'rotate(45deg) translate(4px,4px)':'';
+  b2.style.opacity=open?'0':'1';
+  b3.style.transform=open?'rotate(-45deg) translate(4px,-4px)':'';
+});
+document.querySelectorAll('.drawer-link').forEach(l=>l.addEventListener('click',()=>{
+  open=false; drawer.classList.remove('open');
+  b1.style.transform=''; b2.style.opacity='1'; b3.style.transform='';
+}));
+</script>
+</body>
+</html>
