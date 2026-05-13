@@ -7,7 +7,7 @@
  <meta name="robots" content="index, follow"/>
  <meta property="og:type" content="website"/>
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <title>지역 과외 — 스터디멘토</title>
+ <title>지역 과외 — 스터디레이어</title>
  <style>
  @font-face { font-family:'S-CoreDream'; font-weight:300; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); }
  @font-face { font-family:'S-CoreDream'; font-weight:400; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); }
@@ -46,7 +46,7 @@
 
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-10 h-14 bg-white/90 backdrop-blur-sm border-b border-gray-100">
- <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#7eec97]">스터디</span>멘토</a>
+ <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#7eec97]">스터디</span>레이어</a>
  <ul class="hidden md:flex gap-1 text-sm text-gray-500 font-medium items-center" id="gnb">
  <li><a href="index.html" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">홈</a></li>
  <li class="relative group">
@@ -256,7 +256,7 @@
  <div class="max-w-5xl mx-auto">
  <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-white/[0.08]">
  <div>
- <p class="font-black text-white text-lg tracking-tight"><span class="text-[#f9fe44]">스터디</span>멘토</p>
+ <p class="font-black text-white text-lg tracking-tight"><span class="text-[#f9fe44]">스터디</span>레이어</p>
  <p class="text-xs text-white/30 mt-1.5">초·중·고 1:1 맞춤 과외</p>
  </div>
  <div class="flex flex-wrap gap-x-12 gap-y-6">
@@ -291,7 +291,7 @@
  </div>
  </div>
  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-6">
- <p class="text-[11px] text-white/20">© 2026 스터디멘토. All rights reserved.</p>
+ <p class="text-[11px] text-white/20">© 2026 스터디레이어. All rights reserved.</p>
  <a href="tel:010-2069-8522" class="text-sm font-bold text-white/40 hover:text-white transition-colors">010-2069-8522</a>
  </div>
  </div>
@@ -424,7 +424,7 @@ const REGIONS = {
 
 function render(key) {
  const d = REGIONS[key] || REGIONS['서울'];
- document.title = d.badge + ' — 스터디멘토';
+ document.title = d.badge + ' — 스터디레이어';
  document.getElementById('hero-region').textContent = key;
  document.getElementById('hero-badge').textContent = d.badge;
  document.getElementById('hero-h1').innerHTML = d.h1.split('\n').join('<br>');
@@ -453,7 +453,7 @@ function render(key) {
  document.querySelector('meta[name="keywords"]').setAttribute('content',
  `${key} 과외, ${key} 수학과외, ${key} 영어과외, ${key} 국어과외, ${key} 탐구과외, ${key} 검정고시, ${key} 내신과외, ${key} 초등과외, ${key} 중등과외, ${key} 고등과외`
  );
- document.querySelector('title').textContent = `${key} 과외 전문 — 스터디멘토`;
+ document.querySelector('title').textContent = `${key} 과외 전문 — 스터디레이어`;
 
  // 탭 활성화
  document.querySelectorAll('.region-tab').forEach(t => {
