@@ -489,17 +489,7 @@
  <div style="font-size:12px;color:#aaa">전국 어디서나</div>
  </div>
  </div>
-
-  <!-- 선택된 지역/지점 정보 바 -->
- <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#888">
- <span id="cityAddr">충청북도 청주시 (청주본점 / 충청 전역)</span>
- </div>
- <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#888">
- <span id="cityHours">평일·주말 09:00 — 22:00</span>
- </div>
- </div>
-
- <!-- 지역 맞춤 설명 박스 -->
+    <!-- 지역 맞춤 설명 박스 -->
  <div id="cityDescBox" style="margin-top:12px;border-radius:20px;padding:22px 24px;background:#18181b;display:none">
  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
  <span id="cityDescBadge" style="background:#f9fe44;color:#111;font-size:11px;font-weight:900;padding:3px 12px;border-radius:999px"></span>
@@ -573,6 +563,79 @@
  </div>
  </div>
 </section>
+
+<section id="gd-section" class="px-5 py-14 md:px-16 md:py-20 bg-gray-900 border-t border-gray-800">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">검정고시</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-white mb-3 leading-tight">목표에 맞게<br/>골라서 준비하세요</h2>
+    <p class="text-sm font-light text-white/40 mb-10">중졸·고졸 검정고시, 목표에 따라 맞춤 커리큘럼으로 준비합니다.</p>
+
+    <!-- 목표 탭 -->
+    <div class="flex gap-2 mb-8 overflow-x-auto">
+      <button onclick="selectGd(this,'jungjeol')" id="gd-jungjeol" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">중졸</button>
+      <button onclick="selectGd(this,'gojol')"   id="gd-gojol"   class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">고졸</button>
+      <button onclick="selectGd(this,'highscore')" id="gd-highscore" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">고득점</button>
+      <button onclick="selectGd(this,'pass')"   id="gd-pass"    class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">합격</button>
+    </div>
+
+    <!-- 내용 카드 -->
+    <div id="gd-content" class="bg-white/5 rounded-3xl p-7 border border-white/10 mb-8">
+      <p id="gd-title" class="text-xl font-black text-[#f9fe44] mb-3"></p>
+      <p id="gd-desc" class="text-sm font-light text-white/70 leading-relaxed mb-6"></p>
+      <div id="gd-points" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+    </div>
+
+    <a href="subject.html?s=gd" class="inline-flex items-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-7 py-3.5 rounded-2xl hover:bg-white transition-colors">검정고시 자세히 보기</a>
+  </div>
+</section>
+
+<script>
+const GD_DATA = {
+  jungjeol: {
+    title: '중졸 검정고시',
+    desc: '중학교 과정을 이수하지 못했거나, 더 빠르게 학력을 취득하고 싶은 분을 위한 과정입니다. 국어·수학·영어·사회·과학·도덕·기술가정 7과목을 집중 준비합니다.',
+    points: ['전 과목 60점 이상 합격', '평균 2~3개월 준비', '기초부터 차근차근']
+  },
+  gojol: {
+    title: '고졸 검정고시',
+    desc: '고등학교 학력을 빠르게 취득하여 대학 진학이나 취업에 활용할 수 있습니다. 국어·수학·영어·사회·과학·한국사·도덕 7과목을 체계적으로 준비합니다.',
+    points: ['전 과목 60점 이상 합격', '평균 3~4개월 준비', '대학 진학·취업 연계']
+  },
+  highscore: {
+    title: '고득점 전략',
+    desc: '단순 합격을 넘어 높은 점수로 원하는 대학에 진학하거나 장학금 수혜를 목표로 합니다. 과목별 취약점을 정밀 분석하고 고난도 문제 집중 훈련을 진행합니다.',
+    points: ['평균 80점 이상 목표', '과목별 집중 심화', '입시 전략 병행']
+  },
+  pass: {
+    title: '빠른 합격 플랜',
+    desc: '최단 기간 안에 합격을 목표로 핵심 내용만 압축해서 수업합니다. 기출 문제 분석과 반복 훈련으로 시험 출제 패턴을 완전히 익힙니다.',
+    points: ['최소 6주 집중 과정', '기출 100% 분석', '합격 보장 커리큘럼']
+  }
+};
+
+function selectGd(el, key) {
+  document.querySelectorAll('.gd-btn').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = 'rgba(255,255,255,0.6)';
+    b.style.borderColor = 'rgba(255,255,255,0.2)';
+  });
+  el.style.background = '#f9fe44';
+  el.style.color = '#111';
+  el.style.borderColor = '#f9fe44';
+
+  const d = GD_DATA[key];
+  document.getElementById('gd-title').textContent = d.title;
+  document.getElementById('gd-desc').textContent = d.desc;
+  document.getElementById('gd-points').innerHTML = d.points.map(p =>
+    `<div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,0.1)">
+      <p style="font-size:13px;font-weight:900;color:#f9fe44;margin:0">${p}</p>
+    </div>`
+  ).join('');
+}
+
+// 기본 선택
+selectGd(document.getElementById('gd-jungjeol'), 'jungjeol');
+</script>
 
 <section id="faq" class="bg-gray-50 px-5 py-16 md:px-16 md:py-24 border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
@@ -1141,17 +1204,7 @@
  <div style="font-size:12px;color:#aaa">전국 어디서나</div>
  </div>
  </div>
-
-  <!-- 선택된 지역/지점 정보 바 -->
- <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#888">
- <span id="cityAddr">충청북도 청주시 (청주본점 / 충청 전역)</span>
- </div>
- <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#888">
- <span id="cityHours">평일·주말 09:00 — 22:00</span>
- </div>
- </div>
-
- <!-- 지역 맞춤 설명 박스 -->
+    <!-- 지역 맞춤 설명 박스 -->
  <div id="cityDescBox" style="margin-top:12px;border-radius:20px;padding:22px 24px;background:#18181b;display:none">
  <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
  <span id="cityDescBadge" style="background:#f9fe44;color:#111;font-size:11px;font-weight:900;padding:3px 12px;border-radius:999px"></span>
