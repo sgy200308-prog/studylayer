@@ -309,72 +309,30 @@
 <!-- CITIES -->
 
 <section id="subjects" class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
- <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">과목 선택</p>
- <h2 class="text-3xl md:text-4xl font-black tracking-[-2px] leading-tight text-gray-900 mb-10">어떤 과목이<br/>필요하세요?</h2>
- <!-- 과목 카드 5개 -->
- <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal mb-14">
- <a href="subject.html?s=korean" class="flex flex-col items-center gap-2.5 bg-[#f09663] hover:scale-105 transition-transform rounded-3xl py-9 px-4 cursor-pointer">
- <span class="text-3xl"></span>
- <span class="text-lg font-black text-gray-900">국어</span>
- <span class="text-xs text-gray-700 font-medium">전 학년</span>
- <span class="text-xs text-gray-600 font-light mt-0.5">보기 →</span>
- </a>
- <a href="subject.html?s=english" class="flex flex-col items-center gap-2.5 bg-[#f9fe44] hover:scale-105 transition-transform rounded-3xl py-9 px-4 cursor-pointer">
- <span class="text-3xl"></span>
- <span class="text-lg font-black text-gray-900">영어</span>
- <span class="text-xs text-gray-700 font-medium">전 학년</span>
- <span class="text-xs text-gray-600 font-light mt-0.5">보기 →</span>
- </a>
- <a href="subject.html?s=math" class="flex flex-col items-center gap-2.5 bg-[#6f98fa] hover:scale-105 transition-transform rounded-3xl py-9 px-4 cursor-pointer">
- <span class="text-3xl"></span>
- <span class="text-lg font-black text-gray-900">수학</span>
- <span class="text-xs text-gray-700 font-medium">전 학년</span>
- <span class="text-xs text-gray-600 font-light mt-0.5">보기 →</span>
- </a>
- <a href="subject.html?s=science" class="flex flex-col items-center gap-2.5 bg-[#deef75] hover:scale-105 transition-transform rounded-3xl py-9 px-4 cursor-pointer">
- <span class="text-3xl"></span>
- <span class="text-lg font-black text-gray-900">탐구</span>
- <span class="text-xs text-gray-700 font-medium">중·고등</span>
- <span class="text-xs text-gray-600 font-light mt-0.5">보기 →</span>
- </a>
- <a href="subject.html?s=gd" class="flex flex-col items-center gap-2.5 bg-[#939afc] hover:scale-105 transition-transform rounded-3xl py-9 px-4 cursor-pointer col-span-2 sm:col-span-1">
- <span class="text-3xl"></span>
- <span class="text-lg font-black text-gray-900">검정고시</span>
- <span class="text-xs text-gray-700 font-medium">전 과목</span>
- <span class="text-xs text-gray-600 font-light mt-0.5">보기 →</span>
- </a>
- </div>
-
- <!-- 홈 카테고리 카드 4개 -->
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-4">더 찾아보기</p>
- <div class="grid grid-cols-2 gap-3 reveal">
- <a href="#cities" class="group relative overflow-hidden rounded-3xl bg-gray-900 px-6 py-8 hover:scale-[1.02] transition-transform cursor-pointer">
- <div class="absolute top-0 right-0 text-6xl opacity-20 translate-x-2 -translate-y-2 pointer-events-none"></div>
- <div class="text-2xl mb-3"></div>
- <div class="text-base font-black text-white leading-tight mb-1">지역별</div>
- <div class="text-xs text-white/50 font-light">내 동네 과외 찾기</div>
- </a>
- <a href="#grade" class="group relative overflow-hidden rounded-3xl px-6 py-8 hover:scale-[1.02] transition-transform cursor-pointer" style="background:#f6c2f8">
- <div class="absolute top-0 right-0 text-6xl opacity-20 translate-x-2 -translate-y-2 pointer-events-none"></div>
- <div class="text-2xl mb-3"></div>
- <div class="text-base font-black text-gray-900 leading-tight mb-1">학년별</div>
- <div class="text-xs text-gray-700 font-light">초등 · 중등 · 고등</div>
- </a>
- <a href="academy.html" class="group relative overflow-hidden rounded-3xl px-6 py-8 hover:scale-[1.02] transition-transform cursor-pointer" style="background:#7eec97">
- <div class="absolute top-0 right-0 text-6xl opacity-20 translate-x-2 -translate-y-2 pointer-events-none"></div>
- <div class="text-2xl mb-3"></div>
- <div class="text-base font-black text-gray-900 leading-tight mb-1">학원</div>
- <div class="text-xs text-gray-700 font-light">근처 학원 알아보기</div>
- </a>
- <a href="subject.html?s=gd" class="group relative overflow-hidden rounded-3xl bg-gray-900 px-6 py-8 hover:scale-[1.02] transition-transform cursor-pointer">
- <div class="absolute top-0 right-0 text-6xl opacity-20 translate-x-2 -translate-y-2 pointer-events-none"></div>
- <div class="text-2xl mb-3"></div>
- <div class="text-base font-black text-white leading-tight mb-1">검정고시</div>
- <div class="text-xs text-white/50 font-light">합격률 1위 전문 과외</div>
- </a>
- </div>
- </div>
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">과목 선택</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-2px] leading-tight text-gray-900 mb-10">어떤 과목이<br/>필요하세요?</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <a href="subject.html?s=korean"  class="flex items-center justify-center bg-[#f09663] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
+        <span class="text-xl font-black text-gray-900">국어</span>
+      </a>
+      <a href="subject.html?s=english" class="flex items-center justify-center bg-[#f9fe44] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
+        <span class="text-xl font-black text-gray-900">영어</span>
+      </a>
+      <a href="subject.html?s=math"    class="flex items-center justify-center bg-[#6f98fa] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
+        <span class="text-xl font-black text-gray-900">수학</span>
+      </a>
+      <a href="subject.html?s=science" class="flex items-center justify-center bg-[#deef75] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
+        <span class="text-xl font-black text-gray-900">탐구</span>
+      </a>
+      <a href="subject.html?s=coding"  class="flex items-center justify-center bg-[#939afc] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
+        <span class="text-xl font-black text-gray-900">코딩</span>
+      </a>
+      <a href="subject.html?s=gd"      class="flex items-center justify-center bg-[#f6c2f8] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
+        <span class="text-xl font-black text-gray-900">검정고시</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <section id="academy-preview" class="px-5 py-14 md:px-16 md:py-20 bg-gray-900 border-t border-gray-800">
