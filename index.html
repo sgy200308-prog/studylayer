@@ -125,41 +125,43 @@
 
 <!-- 모바일 드로어 -->
 <div id="mobileDrawer" class="fixed inset-0 z-40 bg-white flex flex-col pt-14 md:hidden">
- <nav class="flex flex-col px-6 py-8 gap-1 flex-1">
- <a href="index.html" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">홈 <span class="text-gray-200">→</span></a>
- <div class="py-3 border-b border-gray-100">
- <div class="text-xs font-bold tracking-[2px] uppercase text-gray-300 mb-2">과외</div>
- <div class="grid grid-cols-2 gap-2">
- <a href="subject.html?s=korean" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 국어</a>
- <a href="subject.html?s=english" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 영어</a>
- <a href="subject.html?s=math" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 수학</a>
- <a href="subject.html?s=science" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 탐구</a>
-        <a href="subject.html?s=coding" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 코딩</a>
-        <a href="subject.html?s=speaking" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 회화</a>
- </div>
- </div>
- <div class="py-3 border-b border-gray-100">
- <div class="text-xs font-bold tracking-[2px] uppercase text-gray-300 mb-2">지역</div>
- <div class="grid grid-cols-3 gap-2">
- <a href="region.html?r=서울" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 서울</a>
- <a href="region.html?r=경기" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 경기</a>
- <a href="region.html?r=충청" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 충청</a>
- <a href="region.html?r=대전" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 대전</a>
- <a href="region.html?r=부산" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 부산</a>
- <a href="region.html?r=대구" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 대구</a>
- <a href="region.html?r=경상" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 경상</a>
- <a href="region.html?r=전라" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 전라</a>
- <a href="region.html?r=광주" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 광주</a>
- <a href="region.html?r=제주" class="drawer-link flex items-center gap-1 py-2 text-sm font-bold text-gray-700"> 제주</a>
- </div>
- </div>
- <a href="academy.html" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">학원 <span class="text-gray-200">→</span></a>
- <a href="subject.html?s=gd" class="drawer-link py-4 text-xl font-bold text-gray-900 border-b border-gray-100 flex justify-between">검정고시 <span class="text-gray-200">→</span></a>
- </nav>
- <div class="px-6 pb-10">
- <a href="tel:010-2069-8522" class="block w-full bg-gray-900 text-white text-center font-bold py-4 rounded-2xl text-base"> 무료 상담 신청</a>
- <p class="text-center text-xs text-gray-400 mt-3">평일·주말 오전 9시 — 오후 10시</p>
- </div>
+  <nav class="flex flex-col px-6 py-6 gap-0 flex-1 overflow-y-auto">
+    <a href="index.html" class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">홈 <span class="text-gray-300 text-sm">→</span></a>
+    <div class="border-b border-gray-100">
+      <button onclick="toggleDrawer('drawerSubject')" class="w-full py-4 text-xl font-black text-gray-900 flex justify-between items-center" style="font-family:inherit;background:none;border:none;cursor:pointer">
+        과외 <span id="drawerSubjectArrow" class="text-gray-300 text-sm" style="transition:transform .2s">▾</span>
+      </button>
+      <div id="drawerSubject" class="hidden pb-3 grid grid-cols-2 gap-2">
+        <a href="subject.html?s=korean"   class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">국어</a>
+        <a href="subject.html?s=english"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">영어</a>
+        <a href="subject.html?s=math"     class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">수학</a>
+        <a href="subject.html?s=science"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">탐구</a>
+        <a href="subject.html?s=coding"   class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">코딩</a>
+        <a href="subject.html?s=speaking" class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">회화</a>
+      </div>
+    </div>
+    <div class="border-b border-gray-100">
+      <button onclick="toggleDrawer('drawerRegion')" class="w-full py-4 text-xl font-black text-gray-900 flex justify-between items-center" style="font-family:inherit;background:none;border:none;cursor:pointer">
+        지역 <span id="drawerRegionArrow" class="text-gray-300 text-sm" style="transition:transform .2s">▾</span>
+      </button>
+      <div id="drawerRegion" class="hidden pb-3 grid grid-cols-3 gap-2">
+        <a href="region.html?r=서울"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">서울</a>
+        <a href="region.html?r=경기"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">경기</a>
+        <a href="region.html?r=충청"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">충청</a>
+        <a href="region.html?r=대전"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">대전</a>
+        <a href="region.html?r=부산"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">부산</a>
+        <a href="region.html?r=대구"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">대구</a>
+        <a href="region.html?r=광주"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">광주</a>
+        <a href="region.html?r=전라"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">전라</a>
+        <a href="region.html?r=제주"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">제주</a>
+      </div>
+    </div>
+    <a href="academy.html"      class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">학원 <span class="text-gray-300 text-sm">→</span></a>
+    <a href="subject.html?s=gd" class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">검정고시 <span class="text-gray-300 text-sm">→</span></a>
+  </nav>
+  <div class="px-6 pb-10">
+    <a href="tel:010-2069-8522" class="block w-full bg-gray-900 text-white text-center font-black py-4 rounded-2xl text-base">무료 상담</a>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -559,7 +561,7 @@ const GD_DATA = {
   highscore: {
     title: '고득점 커리큘럼',
     desc: '단순 합격을 넘어 80점 이상 고득점을 목표로 합니다. 대학 입시 서류에 검정고시 점수가 반영되므로 높은 점수가 유리합니다. 과목별 취약점을 정밀 분석하고 고난도 문제 집중 훈련으로 고득점을 실현합니다.',
-    points: ['평균 80점 이상 목표', '과목별 취약점 정밀 분석', '대학 입시 서류 경쟁력 강화']
+    points: ['95점 이상 목표', '과목별 취약점 정밀 분석', '대학 입시 서류 경쟁력 강화']
   },
   pass: {
     title: '합격 커리큘럼',
@@ -668,6 +670,14 @@ if (bBtn) {
     b3.style.transform = menuOpen ? 'rotate(-45deg) translate(4px,-4px)' : '';
   });
 }
+function toggleDrawer(id) {
+  const el = document.getElementById(id);
+  const arrow = document.getElementById(id + 'Arrow');
+  const isOpen = !el.classList.contains('hidden');
+  el.classList.toggle('hidden', isOpen);
+  if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
 document.querySelectorAll('.drawer-link').forEach(l => l.addEventListener('click', () => {
   menuOpen = false;
   if(drawer) drawer.classList.remove('open');
