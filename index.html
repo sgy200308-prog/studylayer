@@ -134,6 +134,7 @@
  <a href="subject.html?s=english" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 영어</a>
  <a href="subject.html?s=math" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 수학</a>
  <a href="subject.html?s=science" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 탐구</a>
+        <a href="subject.html?s=coding" class="drawer-link flex items-center gap-2 py-2 text-base font-bold text-gray-700"> 코딩</a>
  </div>
  </div>
  <div class="py-3 border-b border-gray-100">
@@ -378,7 +379,7 @@
   </div>
 </section>
 
-<section id="cities" class="bg-gray-50 py-14 px-5 md:px-16 border-b border-gray-100">
+<section id="cities" style="opacity:1" class="bg-gray-50 py-14 px-5 md:px-16 border-b border-gray-100">
  <div class="max-w-5xl mx-auto">
 
  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
@@ -527,25 +528,65 @@
     <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">검정고시</p>
     <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-white mb-3 leading-tight">목표에 맞게<br/>골라서 준비하세요</h2>
     <p class="text-sm font-light text-white/40 mb-10">중졸·고졸 검정고시, 목표에 따라 맞춤 커리큘럼으로 준비합니다.</p>
-
-    <!-- 목표 탭 -->
-    <div class="flex gap-2 mb-8 overflow-x-auto">
-      <button onclick="selectGd(this,'jungjeol')" id="gd-jungjeol" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">중졸</button>
-      <button onclick="selectGd(this,'gojol')"   id="gd-gojol"   class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">고졸</button>
-      <button onclick="selectGd(this,'highscore')" id="gd-highscore" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">고득점</button>
-      <button onclick="selectGd(this,'pass')"   id="gd-pass"    class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 bg-transparent cursor-pointer transition-all" style="font-family:inherit">합격</button>
+    <div class="flex gap-2 mb-8 overflow-x-auto pb-1">
+      <button onclick="selectGd(this,'jungjeol')" id="gd-jungjeol" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 cursor-pointer transition-all" style="font-family:inherit;background:transparent">중졸</button>
+      <button onclick="selectGd(this,'gojol')"    id="gd-gojol"    class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 cursor-pointer transition-all" style="font-family:inherit;background:transparent">고졸</button>
+      <button onclick="selectGd(this,'highscore')" id="gd-highscore" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 cursor-pointer transition-all" style="font-family:inherit;background:transparent">고득점</button>
+      <button onclick="selectGd(this,'pass')"     id="gd-pass"     class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 cursor-pointer transition-all" style="font-family:inherit;background:transparent">합격</button>
     </div>
-
-    <!-- 내용 카드 -->
     <div id="gd-content" class="bg-white/5 rounded-3xl p-7 border border-white/10 mb-8">
       <p id="gd-title" class="text-xl font-black text-[#f9fe44] mb-3"></p>
-      <p id="gd-desc" class="text-sm font-light text-white/70 leading-relaxed mb-6"></p>
+      <p id="gd-desc"  class="text-sm font-light text-white/70 leading-relaxed mb-6"></p>
       <div id="gd-points" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
     </div>
-
     <a href="subject.html?s=gd" class="inline-flex items-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-7 py-3.5 rounded-2xl hover:bg-white transition-colors">검정고시 자세히 보기</a>
   </div>
 </section>
+<script>
+const GD_DATA = {
+  jungjeol: {
+    title: '중졸 검정고시',
+    desc: '중학교 과정을 이수하지 못했거나, 더 빠르게 학력을 취득하고 싶은 분을 위한 과정입니다. 국어·수학·영어·사회·과학·도덕·기술가정 7과목을 준비하며, 각 과목 60점 이상이면 합격입니다. 기초가 부족해도 처음부터 차근차근 잡아드립니다.',
+    points: ['7과목 전 과목 60점 이상 합격', '평균 2~3개월 준비 기간', '기초부터 1:1 밀착 지도']
+  },
+  gojol: {
+    title: '고졸 검정고시',
+    desc: '고등학교 학력을 취득해 대학 진학이나 취업에 활용할 수 있습니다. 국어·수학·영어·사회·과학·한국사·도덕 7과목을 체계적으로 준비합니다. 중졸 합격자라면 바로 도전 가능하며, 대학 수시·정시 지원 자격도 갖출 수 있습니다.',
+    points: ['7과목 전 과목 60점 이상 합격', '평균 3~4개월 준비 기간', '대학 진학·취업 연계 가능']
+  },
+  highscore: {
+    title: '고득점 커리큘럼',
+    desc: '단순 합격을 넘어 80점 이상 고득점을 목표로 합니다. 대학 진학 시 검정고시 점수가 수시 서류에 반영되기 때문에 높은 점수가 유리합니다. 과목별 취약점을 정밀 분석하고 고난도 문제 집중 훈련으로 고득점을 실현합니다.',
+    points: ['평균 80점 이상 목표', '과목별 취약점 정밀 분석', '대학 입시 서류 경쟁력 강화']
+  },
+  pass: {
+    title: '합격 커리큘럼',
+    desc: '최단 기간 안에 확실한 합격을 목표로 핵심만 압축해서 수업합니다. 최근 5~10년 기출 문제를 완전 분석하고 출제 패턴을 익혀 시험장에서 바로 적용할 수 있도록 훈련합니다. 시간이 촉박한 분께 최적화된 과정입니다.',
+    points: ['최소 6주 집중 과정', '기출 10년치 완전 분석', '시험 직전 모의고사 반복 훈련']
+  }
+};
+
+function selectGd(el, key) {
+  document.querySelectorAll('.gd-btn').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = 'rgba(255,255,255,0.6)';
+    b.style.borderColor = 'rgba(255,255,255,0.2)';
+  });
+  el.style.background = '#f9fe44';
+  el.style.color = '#111';
+  el.style.borderColor = '#f9fe44';
+  const d = GD_DATA[key];
+  document.getElementById('gd-title').textContent = d.title;
+  document.getElementById('gd-desc').textContent = d.desc;
+  document.getElementById('gd-points').innerHTML = d.points.map(p =>
+    `<div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,0.1)">
+      <p style="font-size:13px;font-weight:900;color:#f9fe44;margin:0">${p}</p>
+    </div>`
+  ).join('');
+}
+
+selectGd(document.getElementById('gd-jungjeol'), 'jungjeol');
+</script>
 
 <script>
 const GD_DATA = {
@@ -652,5 +693,70 @@ selectGd(document.getElementById('gd-jungjeol'), 'jungjeol');
  </div>
  </div>
 </footer>
+
+<script>
+// 햄버거 메뉴
+const bBtn = document.getElementById('burgerBtn');
+const drawer = document.getElementById('mobileDrawer');
+const b1 = document.getElementById('b1');
+const b2 = document.getElementById('b2');
+const b3 = document.getElementById('b3');
+let menuOpen = false;
+if (bBtn) {
+  bBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    drawer.classList.toggle('open', menuOpen);
+    b1.style.transform = menuOpen ? 'rotate(45deg) translate(4px,4px)' : '';
+    b2.style.opacity = menuOpen ? '0' : '1';
+    b3.style.transform = menuOpen ? 'rotate(-45deg) translate(4px,-4px)' : '';
+  });
+}
+document.querySelectorAll('.drawer-link').forEach(l => l.addEventListener('click', () => {
+  menuOpen = false;
+  if(drawer) drawer.classList.remove('open');
+  if(b1) { b1.style.transform = ''; b2.style.opacity = '1'; b3.style.transform = ''; }
+}));
+
+// reveal 스크롤 애니메이션
+const revealIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, {threshold: 0.05});
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+// 지역 선택
+function selectCity(el, name) {
+  document.querySelectorAll('.city-card').forEach(c => {
+    c.style.background = '#fff';
+    c.style.borderColor = '#e8e8e8';
+    const t1 = c.querySelector('div:nth-child(1)');
+    const t2 = c.querySelector('div:nth-child(2)');
+    if(t1) t1.style.color = '#111';
+    if(t2) t2.style.color = '#aaa';
+  });
+  el.style.background = '#18181b';
+  el.style.borderColor = '#18181b';
+  const t1 = el.querySelector('div:nth-child(1)');
+  const t2 = el.querySelector('div:nth-child(2)');
+  if(t1) t1.style.color = '#f9fe44';
+  if(t2) t2.style.color = 'rgba(255,255,255,0.4)';
+  const box = document.getElementById('cityDescBox');
+  const badge = document.getElementById('cityDescBadge');
+  const text = document.getElementById('cityDescText');
+  const d = cityData[name];
+  if (box && d && d.desc) {
+    if(badge) badge.textContent = name;
+    if(text) text.textContent = d.desc;
+    box.style.display = 'block';
+    box.style.opacity = '0';
+    box.style.transform = 'translateY(8px)';
+    requestAnimationFrame(() => {
+      box.style.transition = 'opacity .3s ease, transform .3s ease';
+      box.style.opacity = '1';
+      box.style.transform = 'translateY(0)';
+    });
+  }
+}
+</script>
+
 </body>
 </html>
