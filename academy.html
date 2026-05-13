@@ -540,6 +540,43 @@ function activateDistrictBtn(district) {
  });
 }
 
+
+function renderCards(region, district) {
+  const grid = document.getElementById('academyGrid');
+  const empty = document.getElementById('emptyState');
+  let filtered = region === '전체' ? ACADEMIES : ACADEMIES.filter(a => a.region === region);
+  if (district && district !== '전체') filtered = filtered.filter(a => a.district === district);
+
+  document.getElementById('total-count').textContent = filtered.length;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+
+  grid.innerHTML = filtered.map(a => `
+    <div class="academy-card bg-white rounded-2xl p-6 border border-gray-100">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <span class="inline-block text-[11px] font-bold text-[#6f98fa] bg-blue-50 px-2.5 py-1 rounded-full mb-2">${a.region} ${a.district}</span>
+          <h3 class="text-base font-black text-gray-900 leading-tight">${a.name}</h3>
+        </div>
+      </div>
+      <p class="text-xs text-gray-400 font-light mb-4 flex items-start gap-1.5">
+        <span class="flex-shrink-0 mt-0.5"></span>${a.address}
+      </p>
+      ${a.schools.elem && a.schools.elem.length ? `<div class="flex flex-wrap gap-1.5 mb-2"><span class="text-[10px] font-bold text-yellow-700 bg-yellow-50 px-2 py-0.5 rounded-full">초등</span>${a.schools.elem.map(s=>`<span class="text-[11px] text-yellow-700 font-medium">${s}</span>`).join(' ')}</div>` : ''}
+      ${a.schools.middle && a.schools.middle.length ? `<div class="flex flex-wrap gap-1.5 mb-2"><span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full">중등</span>${a.schools.middle.map(s=>`<span class="text-[11px] text-green-700 font-medium">${s}</span>`).join(' ')}</div>` : ''}
+      ${a.schools.high && a.schools.high.length ? `<div class="flex flex-wrap gap-1.5 mb-3"><span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">고등</span>${a.schools.high.map(s=>`<span class="text-[11px] text-blue-700 font-medium">${s}</span>`).join(' ')}</div>` : ''}
+      <div class="flex gap-2 mt-4 pt-4 border-t border-gray-50">
+        <a href="tel:010-2069-8522" class="flex-1 flex items-center justify-center gap-1.5 bg-gray-900 text-white text-xs font-bold py-2.5 rounded-xl hover:bg-[#f9fe44] hover:text-gray-900 transition-colors">상담</a>
+      </div>
+    </div>
+  `).join('');
+}
+
 function selectRegion(region) {
  currentRegion = region;
  currentDistrict = '전체';
