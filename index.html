@@ -166,41 +166,30 @@
 
 <!-- HERO -->
 <section id="hero" class="pt-14 min-h-screen flex flex-col">
+  <div class="relative flex-1 flex flex-col items-center justify-center bg-white px-4 pt-10 pb-6 min-h-[320px] md:min-h-[520px]">
 
- <!-- 폴더 오브젝트 씬 -->
- <div class="relative flex-1 flex flex-col items-center justify-center overflow-hidden bg-white px-4 pt-10 pb-6 min-h-[320px] md:min-h-[520px]">
+    <!-- 회전 뱃지 2개 -->
+    <div class="absolute top-2 left-[5%]" style="z-index:5">
+      <svg viewBox="0 0 100 100" class="w-14 h-14 md:w-24 md:h-24 spin-badge" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#f09663"/>
+        <path id="tp1" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none"/>
+        <text font-size="9.5" font-weight="700" fill="#1a1a1a" letter-spacing="1.5">
+          <textPath href="#tp1"> 수학 · 영어 · 국어 · 과학 ·&nbsp;</textPath>
+        </text>
+      </svg>
+    </div>
+    <div class="absolute top-1 right-[5%]" style="z-index:5">
+      <svg viewBox="0 0 100 100" class="w-14 h-14 md:w-24 md:h-24 spin-badge" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#939afc"/>
+        <path id="tp2" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none"/>
+        <text font-size="9.5" font-weight="700" fill="#1a1a1a" letter-spacing="1.5">
+          <textPath href="#tp2"> 1:1 맞춤 · 내신 대비 ·&nbsp;&nbsp;</textPath>
+        </text>
+      </svg>
+    </div>
 
- <!-- 배경 blob 색상 원들 -->
-
- <!-- 회전 뱃지들 -->
- <div class="absolute top-6 left-[10%] f2">
- <svg viewBox="0 0 100 100" class="w-14 h-14 md:w-24 md:h-24 spin-badge" fill="none">
- <circle cx="50" cy="50" r="46" fill="#f9fe44"/>
- <path id="tp1" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none"/>
- <text font-size="9.5" font-weight="700" fill="#1a1a1a" letter-spacing="1.5">
- <textPath href="#tp1"> 수학 · 영어 · 국어 · 과학 ·&nbsp;</textPath>
- </text>
- </svg>
- </div>
- <div class="absolute top-3 right-[12%] f4">
- <svg viewBox="0 0 100 100" class="w-14 h-14 md:w-24 md:h-24 spin-badge" fill="none">
- <circle cx="50" cy="50" r="46" fill="#939afc"/>
- <path id="tp2" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none"/>
- <text font-size="9.5" font-weight="700" fill="#1a1a1a" letter-spacing="1.5">
- <textPath href="#tp2"> 1:1 맞춤 · 내신 대비 ·&nbsp;&nbsp;</textPath>
- </text>
- </svg>
- </div>
-
- <!-- 메인 폴더 오브젝트들 -->
- <div class="relative z-10 flex items-end justify-center gap-2 md:gap-6 mt-6 px-2">
-
- <!-- 국어 (피치) -->
- <a href="subject.html?s=korean" class="f3 folder-shadow flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
- <svg viewBox="0 0 120 100" class="w-14 md:w-24" fill="none">
- <rect x="0" y="18" width="120" height="82" rx="12" fill="#f09663"/>
-
- <!-- 영어 (노랑, 크게) -->
+    <!-- 폴더 5개 -->
+    <div class="relative flex items-end justify-center gap-2 md:gap-6 mt-6 px-2" style="z-index:10">
       <!-- 과외 (오렌지) -->
       <a href="subject.html" class="f0 folder-shadow flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
         <svg viewBox="0 0 120 100" class="w-14 md:w-24" fill="none">
@@ -210,7 +199,6 @@
         </svg>
         <span class="mt-2 text-xs font-black text-gray-700 bg-white rounded-full px-3 py-0.5 shadow-sm">과외</span>
       </a>
-
       <!-- 학원 (민트) -->
       <a href="academy.html" class="f1 folder-shadow flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
         <svg viewBox="0 0 120 100" class="w-14 md:w-24" fill="none">
@@ -220,7 +208,6 @@
         </svg>
         <span class="mt-2 text-xs font-black text-gray-700 bg-white rounded-full px-3 py-0.5 shadow-sm">학원</span>
       </a>
-
       <!-- 검정고시 (퍼플) -->
       <a href="subject.html?s=gd" class="f2 folder-shadow flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
         <svg viewBox="0 0 120 100" class="w-14 md:w-24" fill="none">
@@ -228,10 +215,9 @@
           <rect x="0" y="8" width="52" height="20" rx="8" fill="#7a80f0"/>
           <rect x="0" y="18" width="120" height="8" fill="#7a80f0"/>
         </svg>
-        <span class="mt-2 text-xs font-black text-gray-700 bg-white rounded-full px-3 py-0.5 shadow-sm">검정고시</span>
+        <span class="mt-2 text-xs font-black text-gray-700 bg-white rounded-full px-3 py-0.5 shadow-sm whitespace-nowrap">검정고시</span>
       </a>
-
-      <!-- 코딩 (라벤더) -->
+      <!-- 코딩 (핑크) -->
       <a href="subject.html?s=coding" class="f3 folder-shadow flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
         <svg viewBox="0 0 120 100" class="w-14 md:w-24" fill="none">
           <rect x="0" y="18" width="120" height="82" rx="12" fill="#f6c2f8"/>
@@ -240,7 +226,6 @@
         </svg>
         <span class="mt-2 text-xs font-black text-gray-700 bg-white rounded-full px-3 py-0.5 shadow-sm">코딩</span>
       </a>
-
       <!-- 회화 (노랑) -->
       <a href="subject.html?s=speaking" class="f4 folder-shadow flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
         <svg viewBox="0 0 120 100" class="w-14 md:w-24" fill="none">
@@ -250,30 +235,20 @@
         </svg>
         <span class="mt-2 text-xs font-black text-gray-700 bg-white rounded-full px-3 py-0.5 shadow-sm">회화</span>
       </a>
+    </div>
+  </div>
 
- <!-- 바닥 그라데이션 -->
- <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
- </div>
-
- <!-- 히어로 텍스트 -->
- <div class="px-6 py-12 md:py-16 md:px-16 border-t border-gray-100">
- <div class="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8">
- <div>
- <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-[-3px] leading-[1.05] text-gray-900 mb-4">
- 성적을<br/><span class="text-[#7eec97]">정확하게</span><br/>올립니다
- </h1>
- <p id="region-description" class="text-sm md:text-base font-light text-gray-400 leading-relaxed max-w-sm">
- 초·중·고 전 과목, 학생의 학교 교재와 수준에 딱 맞는 선생님을 연결합니다.
- </p>
- </div>
- <div class="flex flex-col gap-3 md:items-end">
- <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-bold text-sm px-7 py-4 rounded-2xl hover:bg-[#7eec97] transition-colors">
- 무료 상담
- </a>
- <p class="text-xs text-gray-300">첫 수업 무료 · 평일·주말 오전 9시 — 오후 10시</p>
- </div>
- </div>
- </div>
+  <!-- 히어로 텍스트 -->
+  <div class="bg-white px-5 pb-12 pt-8 md:px-16">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-black tracking-[-3px] leading-[1.05] text-gray-900 mb-5">
+        성적을<br/><span class="text-[#7eec97]">정확하게</span><br/>올립니다
+      </h1>
+      <p class="text-sm font-light text-gray-400 leading-relaxed mb-8 max-w-sm">초·중·고 전 과목, 학생의 학교 교재와 수준에 딱 맞는 선생님을 연결합니다.</p>
+      <a href="tel:010-2069-8522" class="inline-flex items-center justify-center w-full sm:w-auto gap-2 bg-gray-900 text-white font-black text-base px-10 py-4 rounded-2xl hover:bg-[#7eec97] hover:text-gray-900 transition-colors">무료 상담</a>
+      <p class="text-xs text-gray-300 mt-3 font-light">첫 수업 무료 · 평일·주말 오전 9시 — 오후 10시</p>
+    </div>
+  </div>
 </section>
 
 <!-- MARQUEE -->
