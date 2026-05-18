@@ -10,7 +10,10 @@
  <meta property="og:description" content="교육청 등록 교사로만 수업. 첫 수업 무료. 전국 초·중·고 맞춤 과외 연결."/>
  <meta property="og:type" content="website"/>
  <meta name="naver-site-verification" content="studylayer"/>
- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <title>스터디레이어 — 1:1 맞춤 과외</title>
  <style>
  @font-face { font-family:'S-CoreDream'; font-weight:300; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); }
@@ -115,7 +118,7 @@
  <li><a href="subject.html?s=gd" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">검정고시</a></li>
  </ul>
  <div class="flex items-center gap-3">
- <a href="tel:010-2069-8522" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#7eec97] transition-colors"> 무료 상담</a>
+ <a href="tel:010-2069-8522" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#7eec97] transition-colors"> 무료 테스트 신청</a>
  <button id="burgerBtn" class="md:hidden flex flex-col gap-[5px] p-1.5" aria-label="메뉴">
  <span class="w-5 h-0.5 bg-gray-800 block transition-all" id="b1"></span>
  <span class="w-5 h-0.5 bg-gray-800 block transition-all" id="b2"></span>
@@ -127,10 +130,10 @@
 <!-- 모바일 드로어 -->
 <div id="mobileDrawer" class="fixed inset-0 z-40 bg-white flex flex-col pt-14 md:hidden">
   <nav class="flex flex-col px-6 py-6 gap-0 flex-1 overflow-y-auto">
-    <a href="index.html" class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">홈 <span class="text-gray-300 text-sm">→</span></a>
+    <a href="index.html" class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">홈 <span class="text-gray-500 text-sm">→</span></a>
     <div class="border-b border-gray-100">
       <button onclick="toggleDrawer('drawerSubject')" class="w-full py-4 text-xl font-black text-gray-900 flex justify-between items-center" style="font-family:inherit;background:none;border:none;cursor:pointer">
-        과외 <span id="drawerSubjectArrow" class="text-gray-300 text-sm" style="transition:transform .2s">▾</span>
+        과외 <span id="drawerSubjectArrow" class="text-gray-500 text-sm" style="transition:transform .2s">▾</span>
       </button>
       <div id="drawerSubject" class="hidden pb-3 grid grid-cols-2 gap-2">
         <a href="subject.html?s=korean"   class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700">국어</a>
@@ -143,7 +146,7 @@
     </div>
     <div class="border-b border-gray-100">
       <button onclick="toggleDrawer('drawerRegion')" class="w-full py-4 text-xl font-black text-gray-900 flex justify-between items-center" style="font-family:inherit;background:none;border:none;cursor:pointer">
-        지역 <span id="drawerRegionArrow" class="text-gray-300 text-sm" style="transition:transform .2s">▾</span>
+        지역 <span id="drawerRegionArrow" class="text-gray-500 text-sm" style="transition:transform .2s">▾</span>
       </button>
       <div id="drawerRegion" class="hidden pb-3 grid grid-cols-3 gap-2">
         <a href="region.html?r=서울"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">서울</a>
@@ -157,11 +160,11 @@
         <a href="region.html?r=제주"  class="drawer-link py-2.5 px-3 bg-gray-50 rounded-xl text-sm font-bold text-gray-700 text-center">제주</a>
       </div>
     </div>
-    <a href="academy.html"      class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">학원 <span class="text-gray-300 text-sm">→</span></a>
-    <a href="subject.html?s=gd" class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">검정고시 <span class="text-gray-300 text-sm">→</span></a>
+    <a href="academy.html"      class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">학원 <span class="text-gray-500 text-sm">→</span></a>
+    <a href="subject.html?s=gd" class="drawer-link py-4 text-xl font-black text-gray-900 border-b border-gray-100 flex justify-between items-center">검정고시 <span class="text-gray-500 text-sm">→</span></a>
   </nav>
   <div class="px-6 pb-10">
-    <a href="tel:010-2069-8522" class="block w-full bg-gray-900 text-white text-center font-black py-4 rounded-2xl text-base">무료 상담</a>
+    <a href="tel:010-2069-8522" class="block w-full bg-gray-900 text-white text-center font-black py-4 rounded-2xl text-base">무료 테스트 신청</a>
   </div>
 </div>
 
@@ -253,11 +256,11 @@
         <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-[-3px] leading-[1.05] text-gray-900 mb-4">
           성적을<br/><span class="text-[#7eec97]">정확하게</span><br/>올립니다
         </h1>
-        <p class="text-sm font-light text-gray-400 leading-relaxed max-w-sm">초·중·고 전 과목, 학생의 학교 교재와 수준에 딱 맞는 선생님을 연결합니다.</p>
+        <p class="text-sm font-light text-gray-600 leading-relaxed max-w-sm">초·중·고 전 과목, 학생의 학교 교재와 수준에 딱 맞는 선생님을 연결합니다.</p>
       </div>
       <div class="flex flex-col gap-3">
-        <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-black text-base px-10 py-4 rounded-2xl hover:bg-[#7eec97] hover:text-gray-900 transition-colors">무료 상담</a>
-        <p class="text-xs text-gray-300 font-light text-center">첫 수업 무료 · 평일·주말 오전 9시 — 오후 10시</p>
+        <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-black text-base px-10 py-4 rounded-2xl hover:bg-[#7eec97] hover:text-gray-900 transition-colors">무료 테스트 신청</a>
+        <p class="text-xs text-gray-500 font-light text-center">첫 수업 무료 · 평일·주말 오전 9시 — 오후 10시</p>
       </div>
     </div>
   </div>
@@ -266,25 +269,25 @@
 <!-- MARQUEE -->
 <div class="bg-gray-900 py-3.5 overflow-hidden border-y border-gray-800">
  <div class="flex whitespace-nowrap marquee gap-0">
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 수학 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 수학 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#f9fe44] tracking-widest uppercase">/ 영어 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 국어 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 국어 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#6f98fa] tracking-widest uppercase">/ 과학 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 사회 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 사회 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#f09663] tracking-widest uppercase">/ 코딩 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 내신 대비</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 내신 대비</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#deef75] tracking-widest uppercase">/ 수능 대비</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 초등 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 초등 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#939afc] tracking-widest uppercase">/ 중등 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 고등 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 고등 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#f9fe44] tracking-widest uppercase">/ 수학 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 영어 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 영어 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#6f98fa] tracking-widest uppercase">/ 국어 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 과학 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 과학 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#f09663] tracking-widest uppercase">/ 사회 과외</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 코딩 과외</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 코딩 과외</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#deef75] tracking-widest uppercase">/ 내신 대비</span>
- <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/50 tracking-widest uppercase"> 수능 대비</span>
+ <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-white/70 tracking-widest uppercase"> 수능 대비</span>
  <span class="inline-flex items-center gap-3 px-8 text-xs font-bold text-[#939afc] tracking-widest uppercase">/ 고등 과외</span>
  </div>
 </div>
@@ -295,7 +298,7 @@
 
 <section id="subjects" class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
   <div class="max-w-5xl mx-auto">
-    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">과목 선택</p>
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">과목 선택</p>
     <h2 class="text-3xl md:text-4xl font-black tracking-[-2px] leading-tight text-gray-900 mb-10">어떤 과목이<br/>필요하세요?</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
       <a href="subject.html?s=korean"  class="flex items-center justify-center bg-[#f09663] hover:scale-105 transition-transform rounded-3xl py-10 px-4 cursor-pointer">
@@ -320,86 +323,248 @@
   </div>
 </section>
 
-<section id="cities" style="opacity:1" class="bg-gray-50 py-14 px-5 md:px-16 border-b border-gray-100">
- <div class="max-w-5xl mx-auto">
-
- <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
- <div>
- <p style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#aaa;margin-bottom:10px">지역별 과외</p>
- <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-1.5px;line-height:1.2;color:#111;margin-bottom:6px">우리 동네<br/>선생님 찾기</h2>
- <p style="font-size:13px;font-weight:300;color:#888;line-height:1.8">지역을 선택하면 해당 지역 맞춤 과외 정보를 바로 확인할 수 있어요.</p>
- </div>
+<section id="cities" class="bg-white py-14 px-5 md:px-16 border-t border-gray-100">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">지역별 과외</p>
+    <h2 class="text-3xl md:text-4xl font-black tracking-[-2px] leading-tight text-gray-900 mb-10">우리 동네<br/>선생님 찾기</h2>
+    
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#f6c2f8"></span>
+        <h3 class="text-base font-black text-gray-900">고양</h3>
+        <span class="text-xs text-gray-600">14개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/고양-구산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">구산동</a>
+<a href="local/고양-덕이동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">덕이동</a>
+<a href="local/고양-마두동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">마두동</a>
+<a href="local/고양-백석동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">백석동</a>
+<a href="local/고양-삼송동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">삼송동</a>
+<a href="local/고양-원당동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">원당동</a>
+<a href="local/고양-장항동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">장항동</a>
+<a href="local/고양-주엽동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">주엽동</a>
+<a href="local/고양-중산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">중산동</a>
+<a href="local/고양-탄현동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">탄현동</a>
+<a href="local/고양-풍동동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">풍동동</a>
+<a href="local/고양-행신동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">행신동</a>
+<a href="local/고양-화정동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">화정동</a>
+<a href="local/고양-후곡동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">후곡동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#7eec97"></span>
+        <h3 class="text-base font-black text-gray-900">광주</h3>
+        <span class="text-xs text-gray-600">7개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/광주-상무동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">상무동</a>
+<a href="local/광주-선운동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">선운동</a>
+<a href="local/광주-수완동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">수완동</a>
+<a href="local/광주-운남동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">운남동</a>
+<a href="local/광주-첨단동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">첨단동</a>
+<a href="local/광주-치평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">치평동</a>
+<a href="local/광주-화정동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">화정동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#deef75"></span>
+        <h3 class="text-base font-black text-gray-900">남양주</h3>
+        <span class="text-xs text-gray-600">8개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/남양주-다산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">다산동</a>
+<a href="local/남양주-도농동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">도농동</a>
+<a href="local/남양주-별가람동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">별가람동</a>
+<a href="local/남양주-별내동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">별내동</a>
+<a href="local/남양주-지금동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">지금동</a>
+<a href="local/남양주-청학동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">청학동</a>
+<a href="local/남양주-평내동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">평내동</a>
+<a href="local/남양주-호평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">호평동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#f09663"></span>
+        <h3 class="text-base font-black text-gray-900">대구</h3>
+        <span class="text-xs text-gray-600">9개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/대구-만촌동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">만촌동</a>
+<a href="local/대구-범어동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">범어동</a>
+<a href="local/대구-수성동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">수성동</a>
+<a href="local/대구-신월성동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">신월성동</a>
+<a href="local/대구-월성동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">월성동</a>
+<a href="local/대구-이곡동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">이곡동</a>
+<a href="local/대구-죽전동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">죽전동</a>
+<a href="local/대구-지산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">지산동</a>
+<a href="local/대구-황금동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">황금동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#6f98fa"></span>
+        <h3 class="text-base font-black text-gray-900">대전</h3>
+        <span class="text-xs text-gray-600">17개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/대전-관저동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">관저동</a>
+<a href="local/대전-관평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">관평동</a>
+<a href="local/대전-노은동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">노은동</a>
+<a href="local/대전-대흥동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">대흥동</a>
+<a href="local/대전-도안동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">도안동</a>
+<a href="local/대전-둔산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">둔산동</a>
+<a href="local/대전-문화동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">문화동</a>
+<a href="local/대전-반석동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">반석동</a>
+<a href="local/대전-법동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">법동</a>
+<a href="local/대전-송촌동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">송촌동</a>
+<a href="local/대전-신성동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">신성동</a>
+<a href="local/대전-월평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">월평동</a>
+<a href="local/대전-죽동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">죽동</a>
+<a href="local/대전-중리동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">중리동</a>
+<a href="local/대전-지족동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">지족동</a>
+<a href="local/대전-탄방동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">탄방동</a>
+<a href="local/대전-태평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">태평동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#f9fe44"></span>
+        <h3 class="text-base font-black text-gray-900">부산</h3>
+        <span class="text-xs text-gray-600">5개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/부산-반송동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">반송동</a>
+<a href="local/부산-반여동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">반여동</a>
+<a href="local/부산-우동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">우동</a>
+<a href="local/부산-좌동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">좌동</a>
+<a href="local/부산-중동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">중동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#f09663"></span>
+        <h3 class="text-base font-black text-gray-900">아산</h3>
+        <span class="text-xs text-gray-600">2개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/아산-신도시-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">신도시</a>
+<a href="local/아산-탕정동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">탕정동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#f09663"></span>
+        <h3 class="text-base font-black text-gray-900">용인</h3>
+        <span class="text-xs text-gray-600">9개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/용인-구갈동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">구갈동</a>
+<a href="local/용인-동백동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">동백동</a>
+<a href="local/용인-보라동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">보라동</a>
+<a href="local/용인-상현동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">상현동</a>
+<a href="local/용인-성복동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">성복동</a>
+<a href="local/용인-신봉동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">신봉동</a>
+<a href="local/용인-죽전동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">죽전동</a>
+<a href="local/용인-풍덕천동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">풍덕천동</a>
+<a href="local/용인-홍덕동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">홍덕동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#6f98fa"></span>
+        <h3 class="text-base font-black text-gray-900">인천</h3>
+        <span class="text-xs text-gray-600">6개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/인천-갈산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">갈산동</a>
+<a href="local/인천-동춘동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">동춘동</a>
+<a href="local/인천-부평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">부평동</a>
+<a href="local/인천-삼산동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">삼산동</a>
+<a href="local/인천-송도동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">송도동</a>
+<a href="local/인천-연수동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">연수동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#deef75"></span>
+        <h3 class="text-base font-black text-gray-900">제주</h3>
+        <span class="text-xs text-gray-600">5개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/제주-노형동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">노형동</a>
+<a href="local/제주-아라동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">아라동</a>
+<a href="local/제주-연동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">연동</a>
+<a href="local/제주-오라동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">오라동</a>
+<a href="local/제주-이도동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">이도동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#7eec97"></span>
+        <h3 class="text-base font-black text-gray-900">천안</h3>
+        <span class="text-xs text-gray-600">9개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/천안-구성동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">구성동</a>
+<a href="local/천안-두정동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">두정동</a>
+<a href="local/천안-백석동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">백석동</a>
+<a href="local/천안-봉명동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">봉명동</a>
+<a href="local/천안-불당동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">불당동</a>
+<a href="local/천안-성성동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">성성동</a>
+<a href="local/천안-신방동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">신방동</a>
+<a href="local/천안-쌍용동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">쌍용동</a>
+<a href="local/천안-청당동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">청당동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#f9fe44"></span>
+        <h3 class="text-base font-black text-gray-900">청주</h3>
+        <span class="text-xs text-gray-600">21개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/청주-가경동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">가경동</a>
+<a href="local/청주-강서동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">강서동</a>
+<a href="local/청주-개신동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">개신동</a>
+<a href="local/청주-금천동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">금천동</a>
+<a href="local/청주-내덕동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">내덕동</a>
+<a href="local/청주-모충동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">모충동</a>
+<a href="local/청주-방서동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">방서동</a>
+<a href="local/청주-복대동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">복대동</a>
+<a href="local/청주-봉명동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">봉명동</a>
+<a href="local/청주-분동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">분동</a>
+<a href="local/청주-분평동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">분평동</a>
+<a href="local/청주-사창동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">사창동</a>
+<a href="local/청주-산남동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">산남동</a>
+<a href="local/청주-서현동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">서현동</a>
+<a href="local/청주-성화동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">성화동</a>
+<a href="local/청주-수곡동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">수곡동</a>
+<a href="local/청주-신봉동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">신봉동</a>
+<a href="local/청주-용암동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">용암동</a>
+<a href="local/청주-우암동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">우암동</a>
+<a href="local/청주-율량동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">율량동</a>
+<a href="local/청주-율봉동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">율봉동</a>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="inline-block w-3 h-3 rounded-full" style="background:#939afc"></span>
+        <h3 class="text-base font-black text-gray-900">화성</h3>
+        <span class="text-xs text-gray-600">7개 지역</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="local/화성-동탄1신도시-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">동탄1신도시</a>
+<a href="local/화성-동탄2신도시-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">동탄2신도시</a>
+<a href="local/화성-동탄역-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">동탄역</a>
+<a href="local/화성-목동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">목동</a>
+<a href="local/화성-반송동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">반송동</a>
+<a href="local/화성-봉담읍-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">봉담읍</a>
+<a href="local/화성-영천동-과외.html" class="text-xs font-bold text-gray-700 bg-white rounded-full px-3 py-1.5 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">영천동</a>
+      </div>
+    </div>
   </div>
-
- <!-- 지역별 카드 그리드 -->
- <div id="cityGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px">
- <div onclick="location.href='region.html?r=서울'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">서울</div>
- <div style="font-size:12px;color:#aaa">강남·강북·마포 외</div>
- </div>
- <div onclick="location.href='region.html?r=경기'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">경기</div>
- <div style="font-size:12px;color:#aaa">분당·수원·일산 외</div>
- </div>
- <div onclick="location.href='region.html?r=충청'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">충청</div>
- <div style="font-size:12px;color:#aaa">청주·천안·아산 외</div>
- </div>
- <div onclick="location.href='region.html?r=대전'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">대전</div>
- <div style="font-size:12px;color:#aaa">유성·서·동구 외</div>
- </div>
- <div onclick="location.href='region.html?r=부산'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">부산</div>
- <div style="font-size:12px;color:#aaa">해운대·수영·사하 외</div>
- </div>
- <div onclick="location.href='region.html?r=대구'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">대구</div>
- <div style="font-size:12px;color:#aaa">수성·달서·중구 외</div>
- </div>
- <div onclick="location.href='region.html?r=경상'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">경상</div>
- <div style="font-size:12px;color:#aaa">창원·구미·포항 외</div>
- </div>
- <div onclick="location.href='region.html?r=전라'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">전라</div>
- <div style="font-size:12px;color:#aaa">전주·순천·여수 외</div>
- </div>
- <div onclick="location.href='region.html?r=광주'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">광주</div>
- <div style="font-size:12px;color:#aaa">북·남·서·동·광산구</div>
- </div>
- <div onclick="location.href='region.html?r=제주'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">제주</div>
- <div style="font-size:12px;color:#aaa">제주시·서귀포시</div>
- </div>
- <div onclick="location.href='region.html?r=온라인'" class="city-card" style="background:#fff;border:1.5px solid #e8e8e8;border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s">
- <div style="font-size:22px;margin-bottom:7px"></div>
- <div style="font-size:16px;font-weight:900;color:#111;margin-bottom:4px">온라인</div>
- <div style="font-size:12px;color:#aaa">전국 어디서나</div>
- </div>
- </div>
-    <!-- 지역 맞춤 설명 박스 -->
- <div id="cityDescBox" style="margin-top:12px;border-radius:20px;padding:22px 24px;background:#18181b;display:none">
- <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
- <span id="cityDescBadge" style="background:#f9fe44;color:#111;font-size:11px;font-weight:900;padding:3px 12px;border-radius:999px"></span>
- <span style="font-size:11px;color:rgba(255,255,255,0.35);font-weight:400">지역 맞춤 안내</span>
- </div>
- <p id="cityDescText" style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;font-weight:300;margin-bottom:16px"></p>
- <a href="tel:010-2069-8522" style="display:inline-flex;align-items:center;gap:6px;background:#f9fe44;color:#111;font-size:13px;font-weight:900;padding:10px 20px;border-radius:999px;text-decoration:none"> 이 지역 무료 상담 신청</a>
- </div>
-
- </div>
 </section>
 
 <section id="academy-preview" class="px-5 py-14 md:px-16 md:py-20 bg-gray-900 border-t border-gray-800">
@@ -412,31 +577,31 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
       <a href="academy.html?r=서울" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">서울</p>
-        <p class="text-xs text-white/40 font-light">24개 지점</p>
+        <p class="text-xs text-white/70 font-light">24개 지점</p>
       </a>
       <a href="academy.html?r=경기" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">경기</p>
-        <p class="text-xs text-white/40 font-light">100개 지점</p>
+        <p class="text-xs text-white/70 font-light">100개 지점</p>
       </a>
       <a href="academy.html?r=인천" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">인천</p>
-        <p class="text-xs text-white/40 font-light">10개 지점</p>
+        <p class="text-xs text-white/70 font-light">10개 지점</p>
       </a>
       <a href="academy.html?r=대전" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">대전</p>
-        <p class="text-xs text-white/40 font-light">9개 지점</p>
+        <p class="text-xs text-white/70 font-light">9개 지점</p>
       </a>
       <a href="academy.html?r=충청" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">충청</p>
-        <p class="text-xs text-white/40 font-light">13개 지점</p>
+        <p class="text-xs text-white/70 font-light">13개 지점</p>
       </a>
       <a href="academy.html?r=대구" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">대구</p>
-        <p class="text-xs text-white/40 font-light">16개 지점</p>
+        <p class="text-xs text-white/70 font-light">16개 지점</p>
       </a>
       <a href="academy.html?r=경상" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10">
         <p class="text-sm font-black text-white mb-1">경상</p>
-        <p class="text-xs text-white/40 font-light">18개 지점</p>
+        <p class="text-xs text-white/70 font-light">18개 지점</p>
       </a>
       <a href="academy.html" class="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl px-5 py-4 border border-white/10 flex items-center justify-center">
         <p class="text-sm font-black text-white/60">전체 보기 →</p>
@@ -447,7 +612,7 @@
 
 <section id="process" class="px-5 py-16 md:px-16 md:py-24 border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">How it works</p>
+ <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">How it works</p>
  <h2 class="text-4xl md:text-5xl font-black tracking-[-2px] leading-tight text-gray-900 mb-14">4단계로<br/>시작합니다</h2>
  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 reveal">
  <div class="bg-[#f9fe44] rounded-3xl p-7">
@@ -476,14 +641,14 @@
 
 <section id="reviews" class="px-5 py-16 md:px-16 md:py-24 border-t border-gray-100 bg-white">
  <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">Reviews</p>
+ <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">Reviews</p>
  <h2 class="text-4xl md:text-5xl font-black tracking-[-2px] leading-tight text-gray-900 mb-12">수강생 후기</h2>
  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
  <div class="bg-[#fffbe6] rounded-3xl p-7 border border-[#f9fe44]">
  <span class="inline-block text-[11px] font-bold text-yellow-700 bg-[#f9fe44] px-3 py-1 rounded-full mb-4">고2 · 수학</span>
  <p class="text-sm leading-relaxed text-gray-700 mb-6">수학 5등급이었는데 <strong class="font-black text-gray-900">3개월 만에 2등급</strong>으로 올랐어요. 학교 기출 분석이 정말 탁월하셨어요.</p>
  <div class="flex items-center justify-between">
- <div><p class="text-xs font-black text-gray-900">이OO 학생</p><p class="text-[11px] text-gray-400 mt-0.5">고등학교 2학년</p></div>
+ <div><p class="text-xs font-black text-gray-900">이OO 학생</p><p class="text-[11px] text-gray-600 mt-0.5">고등학교 2학년</p></div>
  <span class="text-xs font-black text-yellow-700 bg-[#f9fe44] px-3 py-1 rounded-full">실력 향상</span>
  </div>
  </div>
@@ -491,7 +656,7 @@
  <span class="inline-block text-[11px] font-bold text-blue-700 bg-[#6f98fa] px-3 py-1 rounded-full mb-4">중3 · 영어</span>
  <p class="text-sm leading-relaxed text-gray-700 mb-6">영어 내신이 제자리였는데 <strong class="font-black text-gray-900">첫 시험에 바로 1등급</strong> 받았습니다!</p>
  <div class="flex items-center justify-between">
- <div><p class="text-xs font-black text-gray-900">박OO 학부모</p><p class="text-[11px] text-gray-400 mt-0.5">중학교 3학년 자녀</p></div>
+ <div><p class="text-xs font-black text-gray-900">박OO 학부모</p><p class="text-[11px] text-gray-600 mt-0.5">중학교 3학년 자녀</p></div>
  <span class="text-xs font-black text-blue-700 bg-[#6f98fa] px-3 py-1 rounded-full">목표 달성</span>
  </div>
  </div>
@@ -499,7 +664,7 @@
  <span class="inline-block text-[11px] font-bold text-purple-700 bg-[#939afc] px-3 py-1 rounded-full mb-4">초5 · 수학</span>
  <p class="text-sm leading-relaxed text-gray-700 mb-6">매 수업 <strong class="font-black text-gray-900">상세 피드백</strong>으로 아이의 진도를 정확히 파악할 수 있었어요.</p>
  <div class="flex items-center justify-between">
- <div><p class="text-xs font-black text-gray-900">최OO 학부모</p><p class="text-[11px] text-gray-400 mt-0.5">초등학교 5학년 자녀</p></div>
+ <div><p class="text-xs font-black text-gray-900">최OO 학부모</p><p class="text-[11px] text-gray-600 mt-0.5">초등학교 5학년 자녀</p></div>
  <span class="text-xs font-black text-purple-700 bg-[#939afc] px-3 py-1 rounded-full">재등록 완료</span>
  </div>
  </div>
@@ -511,7 +676,7 @@
   <div class="max-w-5xl mx-auto">
     <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">검정고시</p>
     <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-white mb-3 leading-tight">목표에 맞게<br/>골라서 준비하세요</h2>
-    <p class="text-sm font-light text-white/40 mb-10">중졸·고졸 검정고시, 목표에 따라 맞춤 커리큘럼으로 준비합니다.</p>
+    <p class="text-sm font-light text-white/70 mb-10">중졸·고졸 검정고시, 목표에 따라 맞춤 커리큘럼으로 준비합니다.</p>
     <div class="flex gap-2 mb-8 overflow-x-auto pb-1">
       <button onclick="selectGd(this,'jungjeol')" id="gd-jungjeol" class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 cursor-pointer transition-all" style="font-family:inherit;background:transparent">중졸</button>
       <button onclick="selectGd(this,'gojol')"    id="gd-gojol"    class="gd-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 text-white/60 cursor-pointer transition-all" style="font-family:inherit;background:transparent">고졸</button>
@@ -577,15 +742,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <section id="faq" class="bg-gray-50 px-5 py-16 md:px-16 md:py-24 border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-300 mb-3">FAQ</p>
+ <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">FAQ</p>
  <h2 class="text-4xl md:text-5xl font-black tracking-[-2px] leading-tight text-gray-900 mb-12">자주 묻는 질문</h2>
  <div class="divide-y divide-gray-100 border-t border-gray-100 reveal">
- <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 선생님은 어떤 분들인가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">교육청에 정식으로 등록된 현직 교사 및 자격증을 보유한 교원만 수업을 진행합니다. 모든 선생님은 등록 전 자격 확인 절차를 거칩니다.</div></div>
- <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">첫 수업이 정말 무료인가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">네, 첫 수업은 완전 무료입니다. 수업을 직접 경험해 보신 후 계속 진행 여부를 결정하시면 됩니다. 어떠한 부담도 없습니다.</div></div>
- <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">선생님이 마음에 안 들면 어떻게 하나요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">언제든지 말씀해 주시면 조건 없이 새 선생님을 연결해 드립니다. 추가 비용은 없습니다.</div></div>
- <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">온라인 수업도 가능한가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">방문 과외와 온라인 과외 모두 가능합니다. 학생 상황에 맞게 자유롭게 선택하실 수 있어요.</div></div>
- <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 일정은 어떻게 잡나요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">선생님과 학생이 직접 협의해 일정을 잡습니다. 학원·학교 일정에 맞춰 유연하게 조율 가능합니다.</div></div>
- <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업료는 얼마인가요?</span><span class="faq-ico text-xl text-gray-300 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-400 leading-relaxed">수업료는 학년·과목·횟수에 따라 다릅니다. 무료 상담을 통해 정확히 안내해 드립니다.</div></div>
+ <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 선생님은 어떤 분들인가요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">교육청에 정식으로 등록된 현직 교사 및 자격증을 보유한 교원만 수업을 진행합니다. 모든 선생님은 등록 전 자격 확인 절차를 거칩니다.</div></div>
+ <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">첫 수업이 정말 무료인가요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">네, 첫 수업은 완전 무료입니다. 수업을 직접 경험해 보신 후 계속 진행 여부를 결정하시면 됩니다. 어떠한 부담도 없습니다.</div></div>
+ <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">선생님이 마음에 안 들면 어떻게 하나요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">언제든지 말씀해 주시면 조건 없이 새 선생님을 연결해 드립니다. 추가 비용은 없습니다.</div></div>
+ <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">온라인 수업도 가능한가요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">방문 과외와 온라인 과외 모두 가능합니다. 학생 상황에 맞게 자유롭게 선택하실 수 있어요.</div></div>
+ <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 일정은 어떻게 잡나요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">선생님과 학생이 직접 협의해 일정을 잡습니다. 학원·학교 일정에 맞춰 유연하게 조율 가능합니다.</div></div>
+ <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업료는 얼마인가요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">수업료는 학년·과목·횟수에 따라 다릅니다. 무료 테스트 신청을 통해 정확히 안내해 드립니다.</div></div>
  
  </div>
 </section>
@@ -594,41 +759,41 @@ document.addEventListener('DOMContentLoaded', () => {
  <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-white/[0.08]">
  <div>
  <p class="font-black text-white text-lg tracking-tight"><span class="text-[#f9fe44]">스터디</span>레이어</p>
- <p class="text-xs text-white/30 mt-1.5">초·중·고 1:1 맞춤 과외</p>
+ <p class="text-xs text-white/60 mt-1.5">초·중·고 1:1 맞춤 과외</p>
  </div>
  <div class="flex flex-wrap gap-x-12 gap-y-6">
  <div>
  <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">과목</p>
  <div class="flex flex-col gap-2">
- <a href="subject.html?s=math" class="text-xs text-white/40 hover:text-white transition-colors">수학</a>
- <a href="subject.html?s=english" class="text-xs text-white/40 hover:text-white transition-colors">영어</a>
- <a href="subject.html?s=korean" class="text-xs text-white/40 hover:text-white transition-colors">국어</a>
- <a href="subject.html?s=science" class="text-xs text-white/40 hover:text-white transition-colors">과학</a>
- <a href="subject.html?s=social" class="text-xs text-white/40 hover:text-white transition-colors">사회</a>
- <a href="subject.html?s=coding" class="text-xs text-white/40 hover:text-white transition-colors">코딩</a>
+ <a href="subject.html?s=math" class="text-xs text-white/70 hover:text-white transition-colors">수학</a>
+ <a href="subject.html?s=english" class="text-xs text-white/70 hover:text-white transition-colors">영어</a>
+ <a href="subject.html?s=korean" class="text-xs text-white/70 hover:text-white transition-colors">국어</a>
+ <a href="subject.html?s=science" class="text-xs text-white/70 hover:text-white transition-colors">과학</a>
+ <a href="subject.html?s=social" class="text-xs text-white/70 hover:text-white transition-colors">사회</a>
+ <a href="subject.html?s=coding" class="text-xs text-white/70 hover:text-white transition-colors">코딩</a>
  </div>
  </div>
  <div>
  <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">학년</p>
  <div class="flex flex-col gap-2">
- <a href="#" class="text-xs text-white/40 hover:text-white transition-colors">초등 과외</a>
- <a href="#" class="text-xs text-white/40 hover:text-white transition-colors">중등 과외</a>
- <a href="#" class="text-xs text-white/40 hover:text-white transition-colors">고등 과외</a>
+ <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">초등 과외</a>
+ <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">중등 과외</a>
+ <a href="#" class="text-xs text-white/70 hover:text-white transition-colors">고등 과외</a>
  </div>
  </div>
  <div>
  <p class="text-[10px] font-bold tracking-[2px] uppercase text-white/25 mb-3">안내</p>
  <div class="flex flex-col gap-2">
- <a href="#process" class="text-xs text-white/40 hover:text-white transition-colors">수업 방식</a>
- <a href="#reviews" class="text-xs text-white/40 hover:text-white transition-colors">수강 후기</a>
- <a href="tel:010-2069-8522" class="text-xs text-white/40 hover:text-white transition-colors">무료 상담</a>
+ <a href="#process" class="text-xs text-white/70 hover:text-white transition-colors">수업 방식</a>
+ <a href="#reviews" class="text-xs text-white/70 hover:text-white transition-colors">수강 후기</a>
+ <a href="tel:010-2069-8522" class="text-xs text-white/70 hover:text-white transition-colors">무료 테스트 신청</a>
  </div>
  </div>
  </div>
  </div>
  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-6">
  <p class="text-[11px] text-white/20">© 2026 스터디레이어. All rights reserved.</p>
- <a href="tel:010-2069-8522" class="text-sm font-bold text-white/40 hover:text-white transition-colors">010-2069-8522</a>
+ <a href="tel:010-2069-8522" class="text-sm font-bold text-white/70 hover:text-white transition-colors">010-2069-8522</a>
  </div>
  </div>
 </footer>
