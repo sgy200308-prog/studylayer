@@ -2007,17 +2007,6 @@ function drillTo(level, provIdx, cityIdx) {
     document.getElementById('bread-province').textContent = prov.name;
     document.getElementById('bread-sep2').style.display = 'none';
     document.getElementById('bread-city').style.display = 'none';
-
-    // 시가 1개면 바로 dong으로
-    if (prov.cities.length === 1) {
-      const city = prov.cities[0];
-      if (city.dongs.length > 0) {
-        drillTo(2, provIdx, 0);
-      } else {
-        location.href = city.url;
-      }
-      return;
-    }
     panel.innerHTML = renderCities(prov.cities, provIdx);
 
   } else if (level === 2) {
