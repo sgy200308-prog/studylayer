@@ -25,18 +25,18 @@
 
     /* ── 컬러 시스템 ── */
     :root {
-      --blue:      #2563EB;
+      --blue:   #2563EB;
       --blue-dark: #1D4ED8;
-      --blue-mid:  #3B82F6;
+      --blue-mid: #3B82F6;
       --blue-soft: #EFF6FF;
       --blue-pale: #DBEAFE;
-      --ink:       #0F172A;
-      --ink-sub:   #475569;
-      --ink-mute:  #94A3B8;
-      --line:      #E2E8F0;
-      --bg:        #FFFFFF;
-      --bg-off:    #F8FAFC;
-      --dark:      #0F172A;
+      --ink:    #0F172A;
+      --ink-sub:  #475569;
+      --ink-mute: #94A3B8;
+      --line:   #E2E8F0;
+      --bg:    #FFFFFF;
+      --bg-off:  #F8FAFC;
+      --dark:   #0F172A;
       --dark-card: #1E293B;
     }
 
@@ -374,14 +374,14 @@
       right: 24px;
     }
     @media(min-width:768px) {
-      .hero-float-card.card-left  { bottom: 56px; left: 48px; }
+      .hero-float-card.card-left { bottom: 56px; left: 48px; }
       .hero-float-card.card-right { bottom: 56px; right: 48px; }
     }
     .hfc-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase; }
     .hfc-value { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1.2; }
-    .hfc-sub   { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 3px; }
-    .hfc-row   { display: flex; align-items: center; gap: 10px; }
-    .hfc-icon  { font-size: 22px; }
+    .hfc-sub  { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+    .hfc-row  { display: flex; align-items: center; gap: 10px; }
+    .hfc-icon { font-size: 22px; }
 
     /* ── 마퀴 ── */
     .marquee-wrap {
@@ -667,7 +667,7 @@
       font-weight: 700;
       color: rgba(255,255,255,0.9);
     }
-    .gd-point::before { content: '✓ '; color: var(--blue-mid); }
+    .gd-point::before { content: ' '; color: var(--blue-mid); }
 
     /* ── FAQ ── */
     .faq-item { border-bottom: 1px solid var(--line); }
@@ -1031,8 +1031,81 @@
       transform: translateY(-2px);
     }
 
+    /* ── 지역 탭 ── */
+    .rtab-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+    .rtab {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:12px 22px; border-radius:40px; font-size:15px;
+      font-weight:700; font-family:inherit; cursor:pointer;
+      border:1.5px solid var(--line); background:var(--bg);
+      color:var(--ink-sub); transition:all .18s; white-space:nowrap;
+    }
+    .rtab:hover { border-color:var(--blue); color:var(--blue); }
+    .rtab.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+
+    /* 브레드크럼 */
+    .drill-bread {
+      display:flex; align-items:center; gap:8px;
+      margin-bottom:20px; flex-wrap:wrap;
+    }
+    .bread-btn {
+      font-family:inherit; font-size:14px; font-weight:700;
+      color:var(--blue); background:none; border:none;
+      cursor:pointer; padding:0; text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .bread-sep { color:var(--ink-mute); font-size:14px; }
+    .bread-cur { font-size:14px; font-weight:700; color:var(--ink); }
+
+    /* 드릴 그리드 — 도/시 레벨 */
+    .drill-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    }
+    @media(min-width:480px){ .drill-grid{ grid-template-columns:repeat(3,1fr); } }
+    @media(min-width:768px){ .drill-grid{ grid-template-columns:repeat(4,1fr); } }
+    @media(min-width:1024px){ .drill-grid{ grid-template-columns:repeat(5,1fr); } }
+
+    .drill-card {
+      display:flex; align-items:center; gap:10px;
+      padding:16px 18px; border-radius:14px;
+      border:1.5px solid var(--line); background:var(--bg);
+      cursor:pointer; font-family:inherit; text-align:left;
+      transition:all .18s; text-decoration:none; color:var(--ink);
+    }
+    .drill-card:hover {
+      border-color:var(--blue); background:var(--blue-soft);
+      transform:translateY(-2px);
+    }
+    .drill-card .dc-icon { font-size:18px; flex-shrink:0; }
+    .drill-card .dc-name { font-size:15px; font-weight:900; flex:1; }
+    .drill-card .dc-arr { font-size:12px; color:var(--ink-mute); }
+
+    /* 동 그리드 — 작은 칩 */
+    .dong-chip-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+    }
+    @media(min-width:480px){ .dong-chip-grid{ grid-template-columns:repeat(4,1fr); } }
+    @media(min-width:768px){ .dong-chip-grid{ grid-template-columns:repeat(6,1fr); } }
+    @media(min-width:1024px){ .dong-chip-grid{ grid-template-columns:repeat(8,1fr); } }
+
+    .dong-chip {
+      display:flex; align-items:center; justify-content:center;
+      padding:12px 8px; border-radius:10px;
+      border:1.5px solid var(--line); background:var(--bg);
+      font-size:13px; font-weight:700; color:var(--ink-sub);
+      text-decoration:none; transition:all .15s;
+    }
+    .dong-chip:hover {
+      border-color:var(--blue); color:var(--blue);
+      background:var(--blue-soft);
+    }
+
     /* 구분선 */
-    .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+    .divider { border:none; border-top:1px solid var(--line); margin:0; }
   </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -1096,8 +1169,7 @@
   <div class="drawer-nav">
     <a href="index.html" class="drawer-link">홈 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
     <div style="border-bottom:1px solid var(--line)">
-      <button onclick="toggleDrawer('drawerSubject')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
-        과외 <span id="drawerSubjectArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
+      <button onclick="toggleDrawer('drawerSubject')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">과외 <span id="drawerSubjectArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
       </button>
       <div id="drawerSubject" class="drawer-sub closed">
         <a href="subject.html?s=korean">국어</a>
@@ -1109,8 +1181,7 @@
       </div>
     </div>
     <div style="border-bottom:1px solid var(--line)">
-      <button onclick="toggleDrawer('drawerRegion')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
-        지역 <span id="drawerRegionArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
+      <button onclick="toggleDrawer('drawerRegion')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">지역 <span id="drawerRegionArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
       </button>
       <div id="drawerRegion" class="drawer-sub closed" style="grid-template-columns:1fr 1fr 1fr">
         <a href="region.html?r=서울">서울</a>
@@ -1169,8 +1240,7 @@
   <!-- 중앙 텍스트 -->
   <div class="hero-content">
     <div class="hero-tag">
-      <span class="hero-tag-dot"></span>
-      첫 수업 무료
+      <span class="hero-tag-dot"></span>첫 수업 무료
     </div>
     <h1 class="hero-h1">성적을<br/><em>정확하게</em><br/>올립니다</h1>
     <p class="hero-sub">초·중·고 전 과목, 학생의 학교 교재와<br/>수준에 딱 맞는 선생님을 연결합니다.</p>
@@ -1190,7 +1260,7 @@
   <!-- 플로팅 카드: 선생님 매칭 (우하단) -->
   <div class="hero-float-card card-right">
     <div class="hfc-row">
-      <div class="hfc-icon">👩‍🏫</div>
+      <div class="hfc-icon">‍</div>
       <div>
         <div class="hfc-label">선생님 매칭</div>
         <div class="hfc-value" style="font-size:16px">24시간 내 연결</div>
@@ -1305,433 +1375,37 @@
   </div>
 </section>
 
-<!-- ══════════════════ 지역 통합 탭 ══════════════════ -->
+
+
+<!-- ══════════════════ 지역 드릴다운 ══════════════════ -->
 <section class="section" id="region-finder" style="border-top:1px solid var(--line)">
   <div class="section-inner">
 
-    <!-- 헤더 -->
     <div class="section-head">
       <p class="label">지역별 수업 찾기</p>
       <h2 class="section-title" style="margin-top:10px">우리 동네<br/>수업 찾기</h2>
       <p style="margin-top:14px;font-size:15px;color:var(--ink-sub);font-weight:400">원하는 카테고리를 선택하세요</p>
     </div>
 
-    <!-- 탭 버튼 -->
+    <!-- 카테고리 탭 -->
     <div class="rtab-row">
-      <button class="rtab active" onclick="switchTab(this,'tab-tutor')">🏠 지역별 과외</button>
-      <button class="rtab" onclick="switchTab(this,'tab-academy')">🏫 학원 찾기</button>
-      <button class="rtab" onclick="switchTab(this,'tab-gd')">📝 검정고시</button>
-      <button class="rtab" onclick="openModal()">✉️ 문의하기</button>
+      <button class="rtab active" id="cat-tutor" onclick="switchCat('tutor')">지역별 과외</button>
+      <button class="rtab"    id="cat-academy" onclick="switchCat('academy')">학원 찾기</button>
+      <button class="rtab"    id="cat-gd"   onclick="switchCat('gd')">검정고시</button>
+      <button class="rtab"    onclick="openModal()">문의하기</button>
     </div>
 
-    <!-- 탭 패널: 과외 -->
-    <div id="tab-tutor" class="rtab-panel active">
-
-      <!-- 도시 선택 칩 -->
-      <div class="city-chips">
-        <button class="city-chip active" onclick="selectCity(this,'city-청주')">청주 <span>21</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-대전')">대전 <span>17</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-고양')">고양 <span>14</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-천안')">천안 <span>9</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-용인')">용인 <span>9</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-대구')">대구 <span>9</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-남양주')">남양주 <span>8</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-화성')">화성 <span>7</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-광주')">광주 <span>7</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-인천')">인천 <span>6</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-제주')">제주 <span>5</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-부산')">부산 <span>5</span></button>
-        <button class="city-chip" onclick="selectCity(this,'city-아산')">아산 <span>2</span></button>
-        <!-- 추가 도시: region.html로 연결 -->
-        <a href="region.html?r=서울" class="city-chip" style="text-decoration:none">서울</a>
-        <a href="region.html?r=수원" class="city-chip" style="text-decoration:none">수원</a>
-        <a href="region.html?r=성남" class="city-chip" style="text-decoration:none">성남</a>
-        <a href="region.html?r=부천" class="city-chip" style="text-decoration:none">부천</a>
-        <a href="region.html?r=안산" class="city-chip" style="text-decoration:none">안산</a>
-        <a href="region.html?r=안양" class="city-chip" style="text-decoration:none">안양</a>
-        <a href="region.html?r=평택" class="city-chip" style="text-decoration:none">평택</a>
-        <a href="region.html?r=의정부" class="city-chip" style="text-decoration:none">의정부</a>
-        <a href="region.html?r=파주" class="city-chip" style="text-decoration:none">파주</a>
-        <a href="region.html?r=시흥" class="city-chip" style="text-decoration:none">시흥</a>
-        <a href="region.html?r=김포" class="city-chip" style="text-decoration:none">김포</a>
-        <a href="region.html?r=광명" class="city-chip" style="text-decoration:none">광명</a>
-        <a href="region.html?r=군포" class="city-chip" style="text-decoration:none">군포</a>
-        <a href="region.html?r=하남" class="city-chip" style="text-decoration:none">하남</a>
-        <a href="region.html?r=오산" class="city-chip" style="text-decoration:none">오산</a>
-        <a href="region.html?r=이천" class="city-chip" style="text-decoration:none">이천</a>
-        <a href="region.html?r=양주" class="city-chip" style="text-decoration:none">양주</a>
-        <a href="region.html?r=구리" class="city-chip" style="text-decoration:none">구리</a>
-        <a href="region.html?r=안성" class="city-chip" style="text-decoration:none">안성</a>
-        <a href="region.html?r=춘천" class="city-chip" style="text-decoration:none">춘천</a>
-        <a href="region.html?r=원주" class="city-chip" style="text-decoration:none">원주</a>
-        <a href="region.html?r=강릉" class="city-chip" style="text-decoration:none">강릉</a>
-        <a href="region.html?r=속초" class="city-chip" style="text-decoration:none">속초</a>
-        <a href="region.html?r=충주" class="city-chip" style="text-decoration:none">충주</a>
-        <a href="region.html?r=제천" class="city-chip" style="text-decoration:none">제천</a>
-        <a href="region.html?r=공주" class="city-chip" style="text-decoration:none">공주</a>
-        <a href="region.html?r=서산" class="city-chip" style="text-decoration:none">서산</a>
-        <a href="region.html?r=논산" class="city-chip" style="text-decoration:none">논산</a>
-        <a href="region.html?r=당진" class="city-chip" style="text-decoration:none">당진</a>
-        <a href="region.html?r=세종" class="city-chip" style="text-decoration:none">세종</a>
-        <a href="region.html?r=전주" class="city-chip" style="text-decoration:none">전주</a>
-        <a href="region.html?r=군산" class="city-chip" style="text-decoration:none">군산</a>
-        <a href="region.html?r=익산" class="city-chip" style="text-decoration:none">익산</a>
-        <a href="region.html?r=정읍" class="city-chip" style="text-decoration:none">정읍</a>
-        <a href="region.html?r=남원" class="city-chip" style="text-decoration:none">남원</a>
-        <a href="region.html?r=목포" class="city-chip" style="text-decoration:none">목포</a>
-        <a href="region.html?r=여수" class="city-chip" style="text-decoration:none">여수</a>
-        <a href="region.html?r=순천" class="city-chip" style="text-decoration:none">순천</a>
-        <a href="region.html?r=나주" class="city-chip" style="text-decoration:none">나주</a>
-        <a href="region.html?r=광양" class="city-chip" style="text-decoration:none">광양</a>
-        <a href="region.html?r=포항" class="city-chip" style="text-decoration:none">포항</a>
-        <a href="region.html?r=경주" class="city-chip" style="text-decoration:none">경주</a>
-        <a href="region.html?r=김천" class="city-chip" style="text-decoration:none">김천</a>
-        <a href="region.html?r=안동" class="city-chip" style="text-decoration:none">안동</a>
-        <a href="region.html?r=구미" class="city-chip" style="text-decoration:none">구미</a>
-        <a href="region.html?r=영주" class="city-chip" style="text-decoration:none">영주</a>
-        <a href="region.html?r=경산" class="city-chip" style="text-decoration:none">경산</a>
-        <a href="region.html?r=창원" class="city-chip" style="text-decoration:none">창원</a>
-        <a href="region.html?r=진주" class="city-chip" style="text-decoration:none">진주</a>
-        <a href="region.html?r=통영" class="city-chip" style="text-decoration:none">통영</a>
-        <a href="region.html?r=사천" class="city-chip" style="text-decoration:none">사천</a>
-        <a href="region.html?r=김해" class="city-chip" style="text-decoration:none">김해</a>
-        <a href="region.html?r=밀양" class="city-chip" style="text-decoration:none">밀양</a>
-        <a href="region.html?r=거제" class="city-chip" style="text-decoration:none">거제</a>
-        <a href="region.html?r=양산" class="city-chip" style="text-decoration:none">양산</a>
-        <a href="region.html?r=울산" class="city-chip" style="text-decoration:none">울산</a>
-        <a href="region.html?r=서귀포" class="city-chip" style="text-decoration:none">서귀포</a>
-        <a href="region.html?r=온라인" class="city-chip" style="text-decoration:none">온라인</a>
-      </div>
-
-      <!-- 청주 -->
-      <div id="city-청주" class="city-dong-panel active">
-        <div class="dong-grid">
-          <a href="local/청주-가경동-과외.html" class="dong-card">가경동</a>
-          <a href="local/청주-강서동-과외.html" class="dong-card">강서동</a>
-          <a href="local/청주-개신동-과외.html" class="dong-card">개신동</a>
-          <a href="local/청주-금천동-과외.html" class="dong-card">금천동</a>
-          <a href="local/청주-내덕동-과외.html" class="dong-card">내덕동</a>
-          <a href="local/청주-모충동-과외.html" class="dong-card">모충동</a>
-          <a href="local/청주-방서동-과외.html" class="dong-card">방서동</a>
-          <a href="local/청주-복대동-과외.html" class="dong-card">복대동</a>
-          <a href="local/청주-봉명동-과외.html" class="dong-card">봉명동</a>
-          <a href="local/청주-분동-과외.html" class="dong-card">분동</a>
-          <a href="local/청주-분평동-과외.html" class="dong-card">분평동</a>
-          <a href="local/청주-사창동-과외.html" class="dong-card">사창동</a>
-          <a href="local/청주-산남동-과외.html" class="dong-card">산남동</a>
-          <a href="local/청주-서현동-과외.html" class="dong-card">서현동</a>
-          <a href="local/청주-성화동-과외.html" class="dong-card">성화동</a>
-          <a href="local/청주-수곡동-과외.html" class="dong-card">수곡동</a>
-          <a href="local/청주-신봉동-과외.html" class="dong-card">신봉동</a>
-          <a href="local/청주-용암동-과외.html" class="dong-card">용암동</a>
-          <a href="local/청주-우암동-과외.html" class="dong-card">우암동</a>
-          <a href="local/청주-율량동-과외.html" class="dong-card">율량동</a>
-          <a href="local/청주-율봉동-과외.html" class="dong-card">율봉동</a>
-        </div>
-      </div>
-
-      <!-- 대전 -->
-      <div id="city-대전" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/대전-관저동-과외.html" class="dong-card">관저동</a>
-          <a href="local/대전-관평동-과외.html" class="dong-card">관평동</a>
-          <a href="local/대전-노은동-과외.html" class="dong-card">노은동</a>
-          <a href="local/대전-대흥동-과외.html" class="dong-card">대흥동</a>
-          <a href="local/대전-도안동-과외.html" class="dong-card">도안동</a>
-          <a href="local/대전-둔산동-과외.html" class="dong-card">둔산동</a>
-          <a href="local/대전-문화동-과외.html" class="dong-card">문화동</a>
-          <a href="local/대전-반석동-과외.html" class="dong-card">반석동</a>
-          <a href="local/대전-법동-과외.html" class="dong-card">법동</a>
-          <a href="local/대전-송촌동-과외.html" class="dong-card">송촌동</a>
-          <a href="local/대전-신성동-과외.html" class="dong-card">신성동</a>
-          <a href="local/대전-월평동-과외.html" class="dong-card">월평동</a>
-          <a href="local/대전-죽동-과외.html" class="dong-card">죽동</a>
-          <a href="local/대전-중리동-과외.html" class="dong-card">중리동</a>
-          <a href="local/대전-지족동-과외.html" class="dong-card">지족동</a>
-          <a href="local/대전-탄방동-과외.html" class="dong-card">탄방동</a>
-          <a href="local/대전-태평동-과외.html" class="dong-card">태평동</a>
-        </div>
-      </div>
-
-      <!-- 고양 -->
-      <div id="city-고양" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/고양-구산동-과외.html" class="dong-card">구산동</a>
-          <a href="local/고양-덕이동-과외.html" class="dong-card">덕이동</a>
-          <a href="local/고양-마두동-과외.html" class="dong-card">마두동</a>
-          <a href="local/고양-백석동-과외.html" class="dong-card">백석동</a>
-          <a href="local/고양-삼송동-과외.html" class="dong-card">삼송동</a>
-          <a href="local/고양-원당동-과외.html" class="dong-card">원당동</a>
-          <a href="local/고양-장항동-과외.html" class="dong-card">장항동</a>
-          <a href="local/고양-주엽동-과외.html" class="dong-card">주엽동</a>
-          <a href="local/고양-중산동-과외.html" class="dong-card">중산동</a>
-          <a href="local/고양-탄현동-과외.html" class="dong-card">탄현동</a>
-          <a href="local/고양-풍동동-과외.html" class="dong-card">풍동동</a>
-          <a href="local/고양-행신동-과외.html" class="dong-card">행신동</a>
-          <a href="local/고양-화정동-과외.html" class="dong-card">화정동</a>
-          <a href="local/고양-후곡동-과외.html" class="dong-card">후곡동</a>
-        </div>
-      </div>
-
-      <!-- 천안 -->
-      <div id="city-천안" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/천안-구성동-과외.html" class="dong-card">구성동</a>
-          <a href="local/천안-두정동-과외.html" class="dong-card">두정동</a>
-          <a href="local/천안-백석동-과외.html" class="dong-card">백석동</a>
-          <a href="local/천안-봉명동-과외.html" class="dong-card">봉명동</a>
-          <a href="local/천안-불당동-과외.html" class="dong-card">불당동</a>
-          <a href="local/천안-성성동-과외.html" class="dong-card">성성동</a>
-          <a href="local/천안-신방동-과외.html" class="dong-card">신방동</a>
-          <a href="local/천안-쌍용동-과외.html" class="dong-card">쌍용동</a>
-          <a href="local/천안-청당동-과외.html" class="dong-card">청당동</a>
-        </div>
-      </div>
-
-      <!-- 용인 -->
-      <div id="city-용인" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/용인-구갈동-과외.html" class="dong-card">구갈동</a>
-          <a href="local/용인-동백동-과외.html" class="dong-card">동백동</a>
-          <a href="local/용인-보라동-과외.html" class="dong-card">보라동</a>
-          <a href="local/용인-상현동-과외.html" class="dong-card">상현동</a>
-          <a href="local/용인-성복동-과외.html" class="dong-card">성복동</a>
-          <a href="local/용인-신봉동-과외.html" class="dong-card">신봉동</a>
-          <a href="local/용인-죽전동-과외.html" class="dong-card">죽전동</a>
-          <a href="local/용인-풍덕천동-과외.html" class="dong-card">풍덕천동</a>
-          <a href="local/용인-홍덕동-과외.html" class="dong-card">홍덕동</a>
-        </div>
-      </div>
-
-      <!-- 대구 -->
-      <div id="city-대구" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/대구-만촌동-과외.html" class="dong-card">만촌동</a>
-          <a href="local/대구-범어동-과외.html" class="dong-card">범어동</a>
-          <a href="local/대구-수성동-과외.html" class="dong-card">수성동</a>
-          <a href="local/대구-신월성동-과외.html" class="dong-card">신월성동</a>
-          <a href="local/대구-월성동-과외.html" class="dong-card">월성동</a>
-          <a href="local/대구-이곡동-과외.html" class="dong-card">이곡동</a>
-          <a href="local/대구-죽전동-과외.html" class="dong-card">죽전동</a>
-          <a href="local/대구-지산동-과외.html" class="dong-card">지산동</a>
-          <a href="local/대구-황금동-과외.html" class="dong-card">황금동</a>
-        </div>
-      </div>
-
-      <!-- 남양주 -->
-      <div id="city-남양주" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/남양주-다산동-과외.html" class="dong-card">다산동</a>
-          <a href="local/남양주-도농동-과외.html" class="dong-card">도농동</a>
-          <a href="local/남양주-별가람동-과외.html" class="dong-card">별가람동</a>
-          <a href="local/남양주-별내동-과외.html" class="dong-card">별내동</a>
-          <a href="local/남양주-지금동-과외.html" class="dong-card">지금동</a>
-          <a href="local/남양주-청학동-과외.html" class="dong-card">청학동</a>
-          <a href="local/남양주-평내동-과외.html" class="dong-card">평내동</a>
-          <a href="local/남양주-호평동-과외.html" class="dong-card">호평동</a>
-        </div>
-      </div>
-
-      <!-- 화성 -->
-      <div id="city-화성" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/화성-동탄1신도시-과외.html" class="dong-card">동탄1신도시</a>
-          <a href="local/화성-동탄2신도시-과외.html" class="dong-card">동탄2신도시</a>
-          <a href="local/화성-동탄역-과외.html" class="dong-card">동탄역</a>
-          <a href="local/화성-목동-과외.html" class="dong-card">목동</a>
-          <a href="local/화성-반송동-과외.html" class="dong-card">반송동</a>
-          <a href="local/화성-봉담읍-과외.html" class="dong-card">봉담읍</a>
-          <a href="local/화성-영천동-과외.html" class="dong-card">영천동</a>
-        </div>
-      </div>
-
-      <!-- 광주 -->
-      <div id="city-광주" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/광주-상무동-과외.html" class="dong-card">상무동</a>
-          <a href="local/광주-선운동-과외.html" class="dong-card">선운동</a>
-          <a href="local/광주-수완동-과외.html" class="dong-card">수완동</a>
-          <a href="local/광주-운남동-과외.html" class="dong-card">운남동</a>
-          <a href="local/광주-첨단동-과외.html" class="dong-card">첨단동</a>
-          <a href="local/광주-치평동-과외.html" class="dong-card">치평동</a>
-          <a href="local/광주-화정동-과외.html" class="dong-card">화정동</a>
-        </div>
-      </div>
-
-      <!-- 인천 -->
-      <div id="city-인천" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/인천-갈산동-과외.html" class="dong-card">갈산동</a>
-          <a href="local/인천-동춘동-과외.html" class="dong-card">동춘동</a>
-          <a href="local/인천-부평동-과외.html" class="dong-card">부평동</a>
-          <a href="local/인천-삼산동-과외.html" class="dong-card">삼산동</a>
-          <a href="local/인천-송도동-과외.html" class="dong-card">송도동</a>
-          <a href="local/인천-연수동-과외.html" class="dong-card">연수동</a>
-        </div>
-      </div>
-
-      <!-- 제주 -->
-      <div id="city-제주" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/제주-노형동-과외.html" class="dong-card">노형동</a>
-          <a href="local/제주-아라동-과외.html" class="dong-card">아라동</a>
-          <a href="local/제주-연동-과외.html" class="dong-card">연동</a>
-          <a href="local/제주-오라동-과외.html" class="dong-card">오라동</a>
-          <a href="local/제주-이도동-과외.html" class="dong-card">이도동</a>
-        </div>
-      </div>
-
-      <!-- 부산 -->
-      <div id="city-부산" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/부산-반송동-과외.html" class="dong-card">반송동</a>
-          <a href="local/부산-반여동-과외.html" class="dong-card">반여동</a>
-          <a href="local/부산-우동-과외.html" class="dong-card">우동</a>
-          <a href="local/부산-좌동-과외.html" class="dong-card">좌동</a>
-          <a href="local/부산-중동-과외.html" class="dong-card">중동</a>
-        </div>
-      </div>
-
-      <!-- 아산 -->
-      <div id="city-아산" class="city-dong-panel">
-        <div class="dong-grid">
-          <a href="local/아산-신도시-과외.html" class="dong-card">신도시</a>
-          <a href="local/아산-탕정동-과외.html" class="dong-card">탕정동</a>
-        </div>
-      </div>
-
+    <!-- 브레드크럼 -->
+    <div class="drill-bread" id="drill-bread" style="display:none">
+      <button class="bread-btn" onclick="drillTo(0)">전체</button>
+      <span class="bread-sep">›</span>
+      <span class="bread-cur" id="bread-province"></span>
+      <span class="bread-sep" id="bread-sep2" style="display:none">›</span>
+      <span class="bread-cur" id="bread-city" style="display:none"></span>
     </div>
 
-    <!-- 탭 패널: 학원 -->
-    <div id="tab-academy" class="rtab-panel">
-      <div class="region-grid">
-        <a href="academy.html?r=서울" class="region-card"><span class="rc-icon">🏙</span><span class="rc-name">서울</span><span class="rc-count">24개</span></a>
-        <a href="academy.html?r=수원" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">수원</span></a>
-        <a href="academy.html?r=성남" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">성남</span></a>
-        <a href="academy.html?r=고양" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">고양</span></a>
-        <a href="academy.html?r=용인" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">용인</span></a>
-        <a href="academy.html?r=부천" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">부천</span></a>
-        <a href="academy.html?r=안산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">안산</span></a>
-        <a href="academy.html?r=안양" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">안양</span></a>
-        <a href="academy.html?r=남양주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">남양주</span></a>
-        <a href="academy.html?r=화성" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">화성</span></a>
-        <a href="academy.html?r=평택" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">평택</span></a>
-        <a href="academy.html?r=의정부" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">의정부</span></a>
-        <a href="academy.html?r=파주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">파주</span></a>
-        <a href="academy.html?r=시흥" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">시흥</span></a>
-        <a href="academy.html?r=김포" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">김포</span></a>
-        <a href="academy.html?r=광명" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">광명</span></a>
-        <a href="academy.html?r=군포" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">군포</span></a>
-        <a href="academy.html?r=하남" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">하남</span></a>
-        <a href="academy.html?r=오산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">오산</span></a>
-        <a href="academy.html?r=이천" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">이천</span></a>
-        <a href="academy.html?r=인천" class="region-card"><span class="rc-icon">⚓</span><span class="rc-name">인천</span><span class="rc-count">10개</span></a>
-        <a href="academy.html?r=춘천" class="region-card"><span class="rc-icon">🏔</span><span class="rc-name">춘천</span></a>
-        <a href="academy.html?r=원주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">원주</span></a>
-        <a href="academy.html?r=강릉" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">강릉</span></a>
-        <a href="academy.html?r=속초" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">속초</span></a>
-        <a href="academy.html?r=청주" class="region-card"><span class="rc-icon">🌾</span><span class="rc-name">청주</span></a>
-        <a href="academy.html?r=충주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">충주</span></a>
-        <a href="academy.html?r=제천" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">제천</span></a>
-        <a href="academy.html?r=천안" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">천안</span></a>
-        <a href="academy.html?r=아산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">아산</span></a>
-        <a href="academy.html?r=공주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">공주</span></a>
-        <a href="academy.html?r=서산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">서산</span></a>
-        <a href="academy.html?r=당진" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">당진</span></a>
-        <a href="academy.html?r=대전" class="region-card"><span class="rc-icon">⚗️</span><span class="rc-name">대전</span><span class="rc-count">9개</span></a>
-        <a href="academy.html?r=세종" class="region-card"><span class="rc-icon">🏛</span><span class="rc-name">세종</span></a>
-        <a href="academy.html?r=전주" class="region-card"><span class="rc-icon">🌻</span><span class="rc-name">전주</span></a>
-        <a href="academy.html?r=군산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">군산</span></a>
-        <a href="academy.html?r=익산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">익산</span></a>
-        <a href="academy.html?r=정읍" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">정읍</span></a>
-        <a href="academy.html?r=목포" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">목포</span></a>
-        <a href="academy.html?r=여수" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">여수</span></a>
-        <a href="academy.html?r=순천" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">순천</span></a>
-        <a href="academy.html?r=광양" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">광양</span></a>
-        <a href="academy.html?r=광주" class="region-card"><span class="rc-icon">🌸</span><span class="rc-name">광주</span><span class="rc-count">6개</span></a>
-        <a href="academy.html?r=대구" class="region-card"><span class="rc-icon">🍎</span><span class="rc-name">대구</span><span class="rc-count">16개</span></a>
-        <a href="academy.html?r=포항" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">포항</span></a>
-        <a href="academy.html?r=경주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">경주</span></a>
-        <a href="academy.html?r=구미" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">구미</span></a>
-        <a href="academy.html?r=안동" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">안동</span></a>
-        <a href="academy.html?r=경산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">경산</span></a>
-        <a href="academy.html?r=창원" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">창원</span></a>
-        <a href="academy.html?r=진주" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">진주</span></a>
-        <a href="academy.html?r=김해" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">김해</span></a>
-        <a href="academy.html?r=거제" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">거제</span></a>
-        <a href="academy.html?r=양산" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">양산</span></a>
-        <a href="academy.html?r=밀양" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">밀양</span></a>
-        <a href="academy.html?r=통영" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">통영</span></a>
-        <a href="academy.html?r=부산" class="region-card"><span class="rc-icon">🌊</span><span class="rc-name">부산</span><span class="rc-count">5개</span></a>
-        <a href="academy.html?r=울산" class="region-card"><span class="rc-icon">🏭</span><span class="rc-name">울산</span><span class="rc-count">4개</span></a>
-        <a href="academy.html?r=제주" class="region-card"><span class="rc-icon">🍊</span><span class="rc-name">제주</span></a>
-        <a href="academy.html" class="region-card" style="border-style:dashed;border-color:var(--blue)"><span class="rc-icon">+</span><span class="rc-name" style="color:var(--blue)">전체 보기</span></a>
-      </div>
-    </div>
-
-    <!-- 탭 패널: 검정고시 -->
-    <div id="tab-gd" class="rtab-panel">
-      <div class="region-grid">
-        <a href="local2/서울-검정고시.html" class="region-card"><span class="rc-icon">🏙</span><span class="rc-name">서울</span></a>
-        <a href="local2/수원-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">수원</span></a>
-        <a href="local2/성남-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">성남</span></a>
-        <a href="local2/고양-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">고양</span></a>
-        <a href="local2/용인-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">용인</span></a>
-        <a href="local2/부천-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">부천</span></a>
-        <a href="local2/안산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">안산</span></a>
-        <a href="local2/안양-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">안양</span></a>
-        <a href="local2/남양주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">남양주</span></a>
-        <a href="local2/화성-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">화성</span></a>
-        <a href="local2/평택-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">평택</span></a>
-        <a href="local2/의정부-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">의정부</span></a>
-        <a href="local2/파주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">파주</span></a>
-        <a href="local2/시흥-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">시흥</span></a>
-        <a href="local2/김포-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">김포</span></a>
-        <a href="local2/인천-검정고시.html" class="region-card"><span class="rc-icon">⚓</span><span class="rc-name">인천</span></a>
-        <a href="local2/춘천-검정고시.html" class="region-card"><span class="rc-icon">🏔</span><span class="rc-name">춘천</span></a>
-        <a href="local2/원주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">원주</span></a>
-        <a href="local2/강릉-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">강릉</span></a>
-        <a href="local2/청주-검정고시.html" class="region-card"><span class="rc-icon">🌾</span><span class="rc-name">청주</span></a>
-        <a href="local2/충주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">충주</span></a>
-        <a href="local2/제천-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">제천</span></a>
-        <a href="local2/천안-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">천안</span></a>
-        <a href="local2/아산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">아산</span></a>
-        <a href="local2/공주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">공주</span></a>
-        <a href="local2/서산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">서산</span></a>
-        <a href="local2/논산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">논산</span></a>
-        <a href="local2/대전-검정고시.html" class="region-card"><span class="rc-icon">⚗️</span><span class="rc-name">대전</span></a>
-        <a href="local2/세종-검정고시.html" class="region-card"><span class="rc-icon">🏛</span><span class="rc-name">세종</span></a>
-        <a href="local2/전주-검정고시.html" class="region-card"><span class="rc-icon">🌻</span><span class="rc-name">전주</span></a>
-        <a href="local2/군산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">군산</span></a>
-        <a href="local2/익산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">익산</span></a>
-        <a href="local2/정읍-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">정읍</span></a>
-        <a href="local2/남원-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">남원</span></a>
-        <a href="local2/목포-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">목포</span></a>
-        <a href="local2/여수-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">여수</span></a>
-        <a href="local2/순천-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">순천</span></a>
-        <a href="local2/나주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">나주</span></a>
-        <a href="local2/광양-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">광양</span></a>
-        <a href="local2/광주-검정고시.html" class="region-card"><span class="rc-icon">🌸</span><span class="rc-name">광주</span></a>
-        <a href="local2/대구-검정고시.html" class="region-card"><span class="rc-icon">🍎</span><span class="rc-name">대구</span></a>
-        <a href="local2/포항-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">포항</span></a>
-        <a href="local2/경주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">경주</span></a>
-        <a href="local2/김천-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">김천</span></a>
-        <a href="local2/안동-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">안동</span></a>
-        <a href="local2/구미-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">구미</span></a>
-        <a href="local2/영주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">영주</span></a>
-        <a href="local2/경산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">경산</span></a>
-        <a href="local2/창원-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">창원</span></a>
-        <a href="local2/진주-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">진주</span></a>
-        <a href="local2/김해-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">김해</span></a>
-        <a href="local2/거제-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">거제</span></a>
-        <a href="local2/양산-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">양산</span></a>
-        <a href="local2/밀양-검정고시.html" class="region-card"><span class="rc-icon">📍</span><span class="rc-name">밀양</span></a>
-        <a href="local2/부산-검정고시.html" class="region-card"><span class="rc-icon">🌊</span><span class="rc-name">부산</span></a>
-        <a href="local2/울산-검정고시.html" class="region-card"><span class="rc-icon">🏭</span><span class="rc-name">울산</span></a>
-        <a href="local2/제주-검정고시.html" class="region-card"><span class="rc-icon">🍊</span><span class="rc-name">제주</span></a>
-        <a href="subject.html?s=gd" class="region-card" style="border-style:dashed;border-color:var(--blue)"><span class="rc-icon">+</span><span class="rc-name" style="color:var(--blue)">전체 보기</span></a>
-      </div>
-    </div>
+    <!-- 드릴다운 패널 -->
+    <div id="drill-panel"></div>
 
   </div>
 </section>
@@ -1792,7 +1466,7 @@
       <div class="review-card">
         <div>
           <div class="review-badge">중3 · 영어</div>
-          <p class="review-text" style="margin-top:16px">영어 내신이 제자리였는데 <strong>첫 시험에 바로 1등급</strong> 받았습니다!</p>
+          <p class="review-text" style="margin-top:16px">영어 내신이 제자리였는데 <strong>첫 시험에 바로 1등급</strong>받았습니다!</p>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between">
           <div>
@@ -1934,7 +1608,7 @@
         <div class="modal-head-label">무료 테스트 신청</div>
         <div class="modal-head-title">지금 바로 신청하세요</div>
       </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal()"></button>
     </div>
     <div class="modal-body">
       <form id="consultForm" action="https://formspree.io/f/meedggkz" method="POST">
@@ -1988,7 +1662,7 @@
         <button type="submit" class="form-submit">무료 테스트 신청하기</button>
       </form>
       <div class="form-success" id="formSuccess">
-        <h3>신청 완료! 🎉</h3>
+        <h3>신청 완료! </h3>
         <p>24시간 내로 연락드릴게요</p>
       </div>
     </div>
@@ -2005,14 +1679,410 @@ function selectCity(btn, panelId) {
   document.getElementById(panelId).classList.add('active');
 }
 
-// ── 지역 탭 ──
-function switchTab(btn, panelId) {
-  document.querySelectorAll('.rtab').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.rtab-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  const panel = document.getElementById(panelId);
-  if (panel) panel.classList.add('active');
+// ══════════════════════════════════════════
+// 지역 드릴다운 데이터 & 로직
+// ══════════════════════════════════════════
+const REGION_DATA = {
+  tutor: {
+    provinces: [
+      { name:'서울', icon:'', cities:[
+        { name:'서울 전체', url:'region.html?r=서울', dongs:[] }
+      ]},
+      { name:'경기', icon:'', cities:[
+        { name:'수원', url:'region.html?r=수원', dongs:[] },
+        { name:'성남', url:'region.html?r=성남', dongs:[] },
+        { name:'고양', url:'region.html?r=고양', dongs:['구산동','덕이동','마두동','백석동','삼송동','원당동','장항동','주엽동','중산동','탄현동','풍동동','행신동','화정동','후곡동'] },
+        { name:'용인', url:'region.html?r=용인', dongs:['구갈동','동백동','보라동','상현동','성복동','신봉동','죽전동','풍덕천동','홍덕동'] },
+        { name:'남양주', url:'region.html?r=남양주', dongs:['다산동','도농동','별가람동','별내동','지금동','청학동','평내동','호평동'] },
+        { name:'화성', url:'region.html?r=화성', dongs:['동탄1신도시','동탄2신도시','동탄역','목동','반송동','봉담읍','영천동'] },
+        { name:'부천', url:'region.html?r=부천', dongs:[] },
+        { name:'안산', url:'region.html?r=안산', dongs:[] },
+        { name:'안양', url:'region.html?r=안양', dongs:[] },
+        { name:'평택', url:'region.html?r=평택', dongs:[] },
+        { name:'의정부', url:'region.html?r=의정부', dongs:[] },
+        { name:'파주', url:'region.html?r=파주', dongs:[] },
+        { name:'시흥', url:'region.html?r=시흥', dongs:[] },
+        { name:'김포', url:'region.html?r=김포', dongs:[] },
+        { name:'광명', url:'region.html?r=광명', dongs:[] },
+        { name:'군포', url:'region.html?r=군포', dongs:[] },
+        { name:'하남', url:'region.html?r=하남', dongs:[] },
+        { name:'오산', url:'region.html?r=오산', dongs:[] },
+        { name:'이천', url:'region.html?r=이천', dongs:[] },
+        { name:'양주', url:'region.html?r=양주', dongs:[] },
+        { name:'구리', url:'region.html?r=구리', dongs:[] },
+        { name:'안성', url:'region.html?r=안성', dongs:[] },
+        { name:'포천', url:'region.html?r=포천', dongs:[] },
+        { name:'의왕', url:'region.html?r=의왕', dongs:[] },
+        { name:'여주', url:'region.html?r=여주', dongs:[] },
+      ]},
+      { name:'인천', icon:'', cities:[
+        { name:'인천 전체', url:'region.html?r=인천', dongs:['갈산동','동춘동','부평동','삼산동','송도동','연수동'] }
+      ]},
+      { name:'강원', icon:'', cities:[
+        { name:'춘천', url:'region.html?r=춘천', dongs:[] },
+        { name:'원주', url:'region.html?r=원주', dongs:[] },
+        { name:'강릉', url:'region.html?r=강릉', dongs:[] },
+        { name:'동해', url:'region.html?r=동해', dongs:[] },
+        { name:'속초', url:'region.html?r=속초', dongs:[] },
+        { name:'태백', url:'region.html?r=태백', dongs:[] },
+        { name:'삼척', url:'region.html?r=삼척', dongs:[] },
+      ]},
+      { name:'충북', icon:'', cities:[
+        { name:'청주', url:'region.html?r=청주', dongs:['가경동','강서동','개신동','금천동','내덕동','모충동','방서동','복대동','봉명동','분동','분평동','사창동','산남동','서현동','성화동','수곡동','신봉동','용암동','우암동','율량동','율봉동'] },
+        { name:'충주', url:'region.html?r=충주', dongs:[] },
+        { name:'제천', url:'region.html?r=제천', dongs:[] },
+        { name:'보은', url:'region.html?r=보은', dongs:[] },
+        { name:'옥천', url:'region.html?r=옥천', dongs:[] },
+        { name:'영동', url:'region.html?r=영동', dongs:[] },
+      ]},
+      { name:'충남', icon:'', cities:[
+        { name:'천안', url:'region.html?r=천안', dongs:['구성동','두정동','백석동','봉명동','불당동','성성동','신방동','쌍용동','청당동'] },
+        { name:'아산', url:'region.html?r=아산', dongs:['신도시','탕정동'] },
+        { name:'공주', url:'region.html?r=공주', dongs:[] },
+        { name:'보령', url:'region.html?r=보령', dongs:[] },
+        { name:'서산', url:'region.html?r=서산', dongs:[] },
+        { name:'논산', url:'region.html?r=논산', dongs:[] },
+        { name:'계룡', url:'region.html?r=계룡', dongs:[] },
+        { name:'당진', url:'region.html?r=당진', dongs:[] },
+      ]},
+      { name:'대전', icon:'', cities:[
+        { name:'대전 전체', url:'region.html?r=대전', dongs:['관저동','관평동','노은동','대흥동','도안동','둔산동','문화동','반석동','법동','송촌동','신성동','월평동','죽동','중리동','지족동','탄방동','태평동'] }
+      ]},
+      { name:'세종', icon:'', cities:[
+        { name:'세종 전체', url:'region.html?r=세종', dongs:[] }
+      ]},
+      { name:'전북', icon:'', cities:[
+        { name:'전주', url:'region.html?r=전주', dongs:[] },
+        { name:'군산', url:'region.html?r=군산', dongs:[] },
+        { name:'익산', url:'region.html?r=익산', dongs:[] },
+        { name:'정읍', url:'region.html?r=정읍', dongs:[] },
+        { name:'남원', url:'region.html?r=남원', dongs:[] },
+        { name:'김제', url:'region.html?r=김제', dongs:[] },
+      ]},
+      { name:'전남', icon:'', cities:[
+        { name:'목포', url:'region.html?r=목포', dongs:[] },
+        { name:'여수', url:'region.html?r=여수', dongs:[] },
+        { name:'순천', url:'region.html?r=순천', dongs:[] },
+        { name:'나주', url:'region.html?r=나주', dongs:[] },
+        { name:'광양', url:'region.html?r=광양', dongs:[] },
+      ]},
+      { name:'광주', icon:'', cities:[
+        { name:'광주 전체', url:'region.html?r=광주', dongs:['상무동','선운동','수완동','운남동','첨단동','치평동','화정동'] }
+      ]},
+      { name:'경북', icon:'', cities:[
+        { name:'포항', url:'region.html?r=포항', dongs:[] },
+        { name:'경주', url:'region.html?r=경주', dongs:[] },
+        { name:'김천', url:'region.html?r=김천', dongs:[] },
+        { name:'안동', url:'region.html?r=안동', dongs:[] },
+        { name:'구미', url:'region.html?r=구미', dongs:[] },
+        { name:'영주', url:'region.html?r=영주', dongs:[] },
+        { name:'영천', url:'region.html?r=영천', dongs:[] },
+        { name:'상주', url:'region.html?r=상주', dongs:[] },
+        { name:'문경', url:'region.html?r=문경', dongs:[] },
+        { name:'경산', url:'region.html?r=경산', dongs:[] },
+      ]},
+      { name:'경남', icon:'', cities:[
+        { name:'창원', url:'region.html?r=창원', dongs:[] },
+        { name:'진주', url:'region.html?r=진주', dongs:[] },
+        { name:'통영', url:'region.html?r=통영', dongs:[] },
+        { name:'사천', url:'region.html?r=사천', dongs:[] },
+        { name:'김해', url:'region.html?r=김해', dongs:[] },
+        { name:'밀양', url:'region.html?r=밀양', dongs:[] },
+        { name:'거제', url:'region.html?r=거제', dongs:[] },
+        { name:'양산', url:'region.html?r=양산', dongs:[] },
+      ]},
+      { name:'대구', icon:'', cities:[
+        { name:'대구 전체', url:'region.html?r=대구', dongs:['만촌동','범어동','수성동','신월성동','월성동','이곡동','죽전동','지산동','황금동'] }
+      ]},
+      { name:'부산', icon:'', cities:[
+        { name:'부산 전체', url:'region.html?r=부산', dongs:['반송동','반여동','우동','좌동','중동'] }
+      ]},
+      { name:'울산', icon:'', cities:[
+        { name:'울산 전체', url:'region.html?r=울산', dongs:[] }
+      ]},
+      { name:'제주', icon:'', cities:[
+        { name:'제주시', url:'region.html?r=제주시', dongs:['노형동','아라동','연동','오라동','이도동'] },
+        { name:'서귀포', url:'region.html?r=서귀포', dongs:[] },
+      ]},
+    ]
+  },
+  academy: {
+    provinces: [
+      { name:'서울', icon:'', cities:[
+        { name:'서울 전체', url:'academy.html?r=서울', count:'24개', dongs:[] }
+      ]},
+      { name:'경기', icon:'', cities:[
+        { name:'수원', url:'academy.html?r=수원', dongs:[] },
+        { name:'성남', url:'academy.html?r=성남', dongs:[] },
+        { name:'고양', url:'academy.html?r=고양', dongs:[] },
+        { name:'용인', url:'academy.html?r=용인', dongs:[] },
+        { name:'부천', url:'academy.html?r=부천', dongs:[] },
+        { name:'안산', url:'academy.html?r=안산', dongs:[] },
+        { name:'안양', url:'academy.html?r=안양', dongs:[] },
+        { name:'남양주', url:'academy.html?r=남양주', dongs:[] },
+        { name:'화성', url:'academy.html?r=화성', dongs:[] },
+        { name:'평택', url:'academy.html?r=평택', dongs:[] },
+        { name:'의정부', url:'academy.html?r=의정부', dongs:[] },
+        { name:'파주', url:'academy.html?r=파주', dongs:[] },
+        { name:'시흥', url:'academy.html?r=시흥', dongs:[] },
+        { name:'김포', url:'academy.html?r=김포', dongs:[] },
+        { name:'광명', url:'academy.html?r=광명', dongs:[] },
+        { name:'군포', url:'academy.html?r=군포', dongs:[] },
+        { name:'하남', url:'academy.html?r=하남', dongs:[] },
+        { name:'오산', url:'academy.html?r=오산', dongs:[] },
+        { name:'이천', url:'academy.html?r=이천', dongs:[] },
+      ]},
+      { name:'인천', icon:'', cities:[{ name:'인천 전체', url:'academy.html?r=인천', count:'10개', dongs:[] }]},
+      { name:'강원', icon:'', cities:[
+        { name:'춘천', url:'academy.html?r=춘천', dongs:[] },
+        { name:'원주', url:'academy.html?r=원주', dongs:[] },
+        { name:'강릉', url:'academy.html?r=강릉', dongs:[] },
+        { name:'속초', url:'academy.html?r=속초', dongs:[] },
+      ]},
+      { name:'충북', icon:'', cities:[
+        { name:'청주', url:'academy.html?r=청주', dongs:[] },
+        { name:'충주', url:'academy.html?r=충주', dongs:[] },
+        { name:'제천', url:'academy.html?r=제천', dongs:[] },
+      ]},
+      { name:'충남', icon:'', cities:[
+        { name:'천안', url:'academy.html?r=천안', dongs:[] },
+        { name:'아산', url:'academy.html?r=아산', dongs:[] },
+        { name:'공주', url:'academy.html?r=공주', dongs:[] },
+        { name:'서산', url:'academy.html?r=서산', dongs:[] },
+        { name:'당진', url:'academy.html?r=당진', dongs:[] },
+      ]},
+      { name:'대전', icon:'', cities:[{ name:'대전 전체', url:'academy.html?r=대전', count:'9개', dongs:[] }]},
+      { name:'세종', icon:'', cities:[{ name:'세종 전체', url:'academy.html?r=세종', dongs:[] }]},
+      { name:'전북', icon:'', cities:[
+        { name:'전주', url:'academy.html?r=전주', dongs:[] },
+        { name:'군산', url:'academy.html?r=군산', dongs:[] },
+        { name:'익산', url:'academy.html?r=익산', dongs:[] },
+        { name:'정읍', url:'academy.html?r=정읍', dongs:[] },
+      ]},
+      { name:'전남', icon:'', cities:[
+        { name:'목포', url:'academy.html?r=목포', dongs:[] },
+        { name:'여수', url:'academy.html?r=여수', dongs:[] },
+        { name:'순천', url:'academy.html?r=순천', dongs:[] },
+        { name:'광양', url:'academy.html?r=광양', dongs:[] },
+      ]},
+      { name:'광주', icon:'', cities:[{ name:'광주 전체', url:'academy.html?r=광주', count:'6개', dongs:[] }]},
+      { name:'경북', icon:'', cities:[
+        { name:'포항', url:'academy.html?r=포항', dongs:[] },
+        { name:'경주', url:'academy.html?r=경주', dongs:[] },
+        { name:'구미', url:'academy.html?r=구미', dongs:[] },
+        { name:'안동', url:'academy.html?r=안동', dongs:[] },
+        { name:'경산', url:'academy.html?r=경산', dongs:[] },
+      ]},
+      { name:'경남', icon:'', cities:[
+        { name:'창원', url:'academy.html?r=창원', dongs:[] },
+        { name:'진주', url:'academy.html?r=진주', dongs:[] },
+        { name:'김해', url:'academy.html?r=김해', dongs:[] },
+        { name:'거제', url:'academy.html?r=거제', dongs:[] },
+        { name:'양산', url:'academy.html?r=양산', dongs:[] },
+        { name:'밀양', url:'academy.html?r=밀양', dongs:[] },
+        { name:'통영', url:'academy.html?r=통영', dongs:[] },
+      ]},
+      { name:'대구', icon:'', cities:[{ name:'대구 전체', url:'academy.html?r=대구', count:'16개', dongs:[] }]},
+      { name:'부산', icon:'', cities:[{ name:'부산 전체', url:'academy.html?r=부산', count:'5개', dongs:[] }]},
+      { name:'울산', icon:'', cities:[{ name:'울산 전체', url:'academy.html?r=울산', count:'4개', dongs:[] }]},
+      { name:'제주', icon:'', cities:[
+        { name:'제주시', url:'academy.html?r=제주시', dongs:[] },
+        { name:'서귀포', url:'academy.html?r=서귀포', dongs:[] },
+      ]},
+    ]
+  },
+  gd: {
+    provinces: [
+      { name:'서울', icon:'', cities:[{ name:'서울 전체', url:'local2/서울-검정고시.html', dongs:[] }]},
+      { name:'경기', icon:'', cities:[
+        { name:'수원', url:'local2/수원-검정고시.html', dongs:[] },
+        { name:'성남', url:'local2/성남-검정고시.html', dongs:[] },
+        { name:'고양', url:'local2/고양-검정고시.html', dongs:[] },
+        { name:'용인', url:'local2/용인-검정고시.html', dongs:[] },
+        { name:'부천', url:'local2/부천-검정고시.html', dongs:[] },
+        { name:'안산', url:'local2/안산-검정고시.html', dongs:[] },
+        { name:'안양', url:'local2/안양-검정고시.html', dongs:[] },
+        { name:'남양주', url:'local2/남양주-검정고시.html', dongs:[] },
+        { name:'화성', url:'local2/화성-검정고시.html', dongs:[] },
+        { name:'평택', url:'local2/평택-검정고시.html', dongs:[] },
+        { name:'의정부', url:'local2/의정부-검정고시.html', dongs:[] },
+        { name:'파주', url:'local2/파주-검정고시.html', dongs:[] },
+        { name:'시흥', url:'local2/시흥-검정고시.html', dongs:[] },
+        { name:'김포', url:'local2/김포-검정고시.html', dongs:[] },
+      ]},
+      { name:'인천', icon:'', cities:[{ name:'인천 전체', url:'local2/인천-검정고시.html', dongs:[] }]},
+      { name:'강원', icon:'', cities:[
+        { name:'춘천', url:'local2/춘천-검정고시.html', dongs:[] },
+        { name:'원주', url:'local2/원주-검정고시.html', dongs:[] },
+        { name:'강릉', url:'local2/강릉-검정고시.html', dongs:[] },
+      ]},
+      { name:'충북', icon:'', cities:[
+        { name:'청주', url:'local2/청주-검정고시.html', dongs:[] },
+        { name:'충주', url:'local2/충주-검정고시.html', dongs:[] },
+        { name:'제천', url:'local2/제천-검정고시.html', dongs:[] },
+      ]},
+      { name:'충남', icon:'', cities:[
+        { name:'천안', url:'local2/천안-검정고시.html', dongs:[] },
+        { name:'아산', url:'local2/아산-검정고시.html', dongs:[] },
+        { name:'공주', url:'local2/공주-검정고시.html', dongs:[] },
+        { name:'서산', url:'local2/서산-검정고시.html', dongs:[] },
+        { name:'논산', url:'local2/논산-검정고시.html', dongs:[] },
+      ]},
+      { name:'대전', icon:'', cities:[{ name:'대전 전체', url:'local2/대전-검정고시.html', dongs:[] }]},
+      { name:'세종', icon:'', cities:[{ name:'세종 전체', url:'local2/세종-검정고시.html', dongs:[] }]},
+      { name:'전북', icon:'', cities:[
+        { name:'전주', url:'local2/전주-검정고시.html', dongs:[] },
+        { name:'군산', url:'local2/군산-검정고시.html', dongs:[] },
+        { name:'익산', url:'local2/익산-검정고시.html', dongs:[] },
+        { name:'정읍', url:'local2/정읍-검정고시.html', dongs:[] },
+        { name:'남원', url:'local2/남원-검정고시.html', dongs:[] },
+      ]},
+      { name:'전남', icon:'', cities:[
+        { name:'목포', url:'local2/목포-검정고시.html', dongs:[] },
+        { name:'여수', url:'local2/여수-검정고시.html', dongs:[] },
+        { name:'순천', url:'local2/순천-검정고시.html', dongs:[] },
+        { name:'나주', url:'local2/나주-검정고시.html', dongs:[] },
+        { name:'광양', url:'local2/광양-검정고시.html', dongs:[] },
+      ]},
+      { name:'광주', icon:'', cities:[{ name:'광주 전체', url:'local2/광주-검정고시.html', dongs:[] }]},
+      { name:'경북', icon:'', cities:[
+        { name:'포항', url:'local2/포항-검정고시.html', dongs:[] },
+        { name:'경주', url:'local2/경주-검정고시.html', dongs:[] },
+        { name:'김천', url:'local2/김천-검정고시.html', dongs:[] },
+        { name:'안동', url:'local2/안동-검정고시.html', dongs:[] },
+        { name:'구미', url:'local2/구미-검정고시.html', dongs:[] },
+        { name:'영주', url:'local2/영주-검정고시.html', dongs:[] },
+        { name:'경산', url:'local2/경산-검정고시.html', dongs:[] },
+      ]},
+      { name:'경남', icon:'', cities:[
+        { name:'창원', url:'local2/창원-검정고시.html', dongs:[] },
+        { name:'진주', url:'local2/진주-검정고시.html', dongs:[] },
+        { name:'김해', url:'local2/김해-검정고시.html', dongs:[] },
+        { name:'거제', url:'local2/거제-검정고시.html', dongs:[] },
+        { name:'양산', url:'local2/양산-검정고시.html', dongs:[] },
+        { name:'밀양', url:'local2/밀양-검정고시.html', dongs:[] },
+      ]},
+      { name:'대구', icon:'', cities:[{ name:'대구 전체', url:'local2/대구-검정고시.html', dongs:[] }]},
+      { name:'부산', icon:'', cities:[{ name:'부산 전체', url:'local2/부산-검정고시.html', dongs:[] }]},
+      { name:'울산', icon:'', cities:[{ name:'울산 전체', url:'local2/울산-검정고시.html', dongs:[] }]},
+      { name:'제주', icon:'', cities:[{ name:'제주 전체', url:'local2/제주-검정고시.html', dongs:[] }]},
+    ]
+  }
+};
+
+// 현재 카테고리/도/시 상태
+let curCat = 'tutor';
+let curProvIdx = null;
+let curCityIdx = null;
+
+function switchCat(cat) {
+  curCat = cat;
+  curProvIdx = null;
+  curCityIdx = null;
+  // 탭 활성화
+  ['tutor','academy','gd'].forEach(c => {
+    const el = document.getElementById('cat-' + c);
+    if (el) el.classList.toggle('active', c === cat);
+  });
+  drillTo(0);
 }
+
+function drillTo(level, provIdx, cityIdx) {
+  const bread = document.getElementById('drill-bread');
+  const panel = document.getElementById('drill-panel');
+  const data = REGION_DATA[curCat];
+
+  if (level === 0) {
+    // 도 목록
+    curProvIdx = null; curCityIdx = null;
+    bread.style.display = 'none';
+    panel.innerHTML = renderProvinces(data.provinces);
+
+  } else if (level === 1) {
+    // 시 목록
+    curProvIdx = provIdx;
+    curCityIdx = null;
+    const prov = data.provinces[provIdx];
+    bread.style.display = 'flex';
+    document.getElementById('bread-province').textContent = prov.name;
+    document.getElementById('bread-sep2').style.display = 'none';
+    document.getElementById('bread-city').style.display = 'none';
+
+    // 시가 1개면 바로 dong으로
+    if (prov.cities.length === 1) {
+      const city = prov.cities[0];
+      if (city.dongs.length > 0) {
+        drillTo(2, provIdx, 0);
+      } else {
+        location.href = city.url;
+      }
+      return;
+    }
+    panel.innerHTML = renderCities(prov.cities, provIdx);
+
+  } else if (level === 2) {
+    // 동 목록 or 바로 이동
+    curCityIdx = cityIdx;
+    const prov = data.provinces[provIdx];
+    const city = prov.cities[cityIdx];
+
+    if (city.dongs.length === 0) {
+      location.href = city.url;
+      return;
+    }
+
+    bread.style.display = 'flex';
+    document.getElementById('bread-province').textContent = prov.name;
+    document.getElementById('bread-sep2').style.display = '';
+    document.getElementById('bread-city').style.display = '';
+    document.getElementById('bread-city').textContent = city.name;
+
+    panel.innerHTML = renderDongs(city);
+  }
+}
+
+function renderProvinces(provinces) {
+  return `<div class="drill-grid">` +
+    provinces.map((p, i) => `
+      <button class="drill-card" onclick="drillTo(1,${i})">
+        <span class="dc-name">${p.name}</span>
+        <span class="dc-arr">›</span>
+      </button>`).join('') +
+    `</div>`;
+}
+
+function renderCities(cities, provIdx) {
+  return `<div class="drill-grid">` +
+    cities.map((c, i) => `
+      <button class="drill-card" onclick="drillTo(2,${provIdx},${i})">
+        <span class="dc-name">${c.name}</span>
+        ${c.count ? `<span style="font-size:11px;color:var(--ink-mute);background:var(--bg-off);border:1px solid var(--line);border-radius:20px;padding:2px 8px">${c.count}</span>` : `<span class="dc-arr">›</span>`}
+      </button>`).join('') +
+    `</div>`;
+}
+
+function renderDongs(city) {
+  // city.url 에서 도시명 추출: region.html?r=청주 → 청주
+  const cityName = city.url.includes('?r=')
+    ? city.url.split('?r=')[1]
+    : city.url.split('/').pop().replace('-검정고시.html','').replace('-과외.html','');
+
+  return `<div class="dong-chip-grid">` +
+    city.dongs.map(d =>
+      `<a href="local/${cityName}-${d}-과외.html" class="dong-chip">${d}</a>`
+    ).join('') +
+    `<a href="${city.url}" class="dong-chip" style="border-color:var(--blue);color:var(--blue)">전체 보기</a>` +
+    `</div>`;
+}
+
+// 초기 렌더
+document.addEventListener('DOMContentLoaded', () => {
+  drillTo(0);
+});
+
+// ── 지역 탭 (구버전 호환용 더미) ──
+function switchTab(){}
+function selectCity(){}
 
 // ── 모달 ──
 function openModal() {
