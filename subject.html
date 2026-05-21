@@ -21,8 +21,8 @@
  extend: {
  fontFamily: { sans: ["'S-CoreDream'", 'sans-serif'] },
  colors: {
- lime:'#f9fe44', sky:'#6f98fa', peach:'#f09663',
- mint:'#deef75', lav:'#939afc', coral:'#f6c2f8', ylw:'#f9fe44'
+ lime:'#3182F6', sky:'#3182F6', peach:'#EAF2FF',
+ mint:'#EAF2FF', lav:'#3182F6', coral:'#EAF2FF', ylw:'#3182F6'
  }
  }
  }
@@ -59,7 +59,7 @@
 
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-10 h-14 bg-white/90 backdrop-blur-sm border-b border-gray-100">
- <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#7eec97]">스터디</span>레이어</a>
+ <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#3182F6]">스터디</span>레이어</a>
  <ul class="hidden md:flex gap-1 text-sm text-gray-500 font-medium items-center" id="gnb">
  <li><a href="index.html" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">홈</a></li>
  <li class="relative group">
@@ -97,7 +97,7 @@
  <li><a href="subject.html?s=gd" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">검정고시</a></li>
  </ul>
  <div class="flex items-center gap-3">
- <a href="tel:010-2069-8522" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#7eec97] transition-colors"> 무료 테스트 신청</a>
+ <a href="tel:010-2069-8522" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-[#3182F6] transition-colors"> 무료 테스트 신청</a>
  <button id="burgerBtn" class="md:hidden flex flex-col gap-[5px] p-1.5">
  <span class="block w-5 h-0.5 bg-gray-800 transition-all" id="b1"></span>
  <span class="block w-5 h-0.5 bg-gray-800 transition-all" id="b2"></span>
@@ -182,10 +182,10 @@ function toggleDrawer(id) {
  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
  <div>
  <p class="text-xs text-gray-600 mb-4"><a href="index.html" class="hover:text-white transition-colors">홈</a> / <span id="hero-breadcrumb" class="text-gray-600"></span></p>
- <div id="hero-tag" class="text-[10px] font-bold tracking-[2.5px] uppercase text-[#f9fe44] mb-3"></div>
+ <div id="hero-tag" class="text-[10px] font-bold tracking-[2.5px] uppercase text-[#3182F6] mb-3"></div>
  <h1 id="hero-h1" class="text-4xl md:text-5xl font-black tracking-[-2px] leading-[1.12] text-white mb-5"></h1>
  <p id="hero-desc" class="text-sm font-light text-white/70 leading-relaxed mb-8 max-w-sm"></p>
- <a href="tel:010-2069-8522" class="inline-flex items-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-7 py-3.5 rounded-2xl hover:bg-white transition-colors"> 무료 테스트 신청</a>
+ <a href="tel:010-2069-8522" class="inline-flex items-center gap-2 bg-[#3182F6] text-gray-900 font-black text-sm px-7 py-3.5 rounded-2xl hover:bg-white transition-colors"> 무료 테스트 신청</a>
  </div>
  <div id="hero-stats" class="grid grid-cols-2 gap-px bg-white/10 rounded-2xl overflow-hidden"></div>
  </div>
@@ -194,25 +194,25 @@ function toggleDrawer(id) {
 <!-- 마퀴 -->
 <div class="bg-gray-800 py-3 overflow-hidden border-y border-gray-700">
  <div class="flex whitespace-nowrap marquee">
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f9fe44] inline-block"></span>커리큘럼</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f9fe44] tracking-widest uppercase">/ 수업 방식</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#6f98fa] inline-block"></span>수강 후기</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#6f98fa] tracking-widest uppercase">/ 자주 묻는 질문</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f09663] inline-block"></span>무료 테스트 신청</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f09663] tracking-widest uppercase">/ 1:1 맞춤</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f9fe44] inline-block"></span>커리큘럼</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f9fe44] tracking-widest uppercase">/ 수업 방식</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#6f98fa] inline-block"></span>수강 후기</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#6f98fa] tracking-widest uppercase">/ 자주 묻는 질문</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#f09663] inline-block"></span>무료 테스트 신청</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#f09663] tracking-widest uppercase">/ 1:1 맞춤</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>커리큘럼</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 수업 방식</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>수강 후기</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 자주 묻는 질문</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#EAF2FF] inline-block"></span>무료 테스트 신청</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#EAF2FF] tracking-widest uppercase">/ 1:1 맞춤</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>커리큘럼</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 수업 방식</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>수강 후기</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 자주 묻는 질문</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#EAF2FF] inline-block"></span>무료 테스트 신청</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#EAF2FF] tracking-widest uppercase">/ 1:1 맞춤</span>
  </div>
 </div>
 
 <!-- 커리큘럼 -->
 <section class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">Curriculum</p>
+ <p class="text-[11px] font-black tracking-[4px] uppercase text-[#3182F6] mb-3">Curriculum</p>
  <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-gray-900 mb-3">학년별 커리큘럼</h2>
  <p class="text-sm font-light text-gray-600 leading-relaxed mb-12">초등·중등·고등 학년별로 최적화된 커리큘럼으로 수업합니다.</p>
  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal" id="curr-grid"></div>
@@ -225,10 +225,10 @@ function toggleDrawer(id) {
  <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-600 mb-3">수업 방식</p>
  <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-white mb-14">이렇게 수업합니다</h2>
  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 reveal">
- <div class="bg-[#f9fe44] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-yellow-700/50 mb-4">STEP 01</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">현재 수준 진단</p><p class="text-xs text-gray-600 leading-relaxed font-light">학습 진단으로 약점과 현재 수준을 정확히 파악합니다.</p></div>
- <div class="bg-[#6f98fa] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-blue-700/50 mb-4">STEP 02</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">맞춤 계획 수립</p><p class="text-xs text-gray-600 leading-relaxed font-light">시험 일정을 역산해 주차별 목표와 진도를 설계합니다.</p></div>
- <div class="bg-[#deef75] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-green-700/50 mb-4">STEP 03</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">1:1 집중 수업</p><p class="text-xs text-gray-600 leading-relaxed font-light">학교 교재·기출 중심으로 개념→유형→실전 수업합니다.</p></div>
- <div class="bg-[#939afc] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-purple-700/50 mb-4">STEP 04</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">수업 후 피드백</p><p class="text-xs text-gray-600 leading-relaxed font-light">매 수업 후 학습 내용과 숙제를 학부모님께 전달합니다.</p></div>
+ <div class="bg-[#3182F6] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-yellow-700/50 mb-4">STEP 01</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">현재 수준 진단</p><p class="text-xs text-gray-600 leading-relaxed font-light">학습 진단으로 약점과 현재 수준을 정확히 파악합니다.</p></div>
+ <div class="bg-[#3182F6] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-blue-700/50 mb-4">STEP 02</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">맞춤 계획 수립</p><p class="text-xs text-gray-600 leading-relaxed font-light">시험 일정을 역산해 주차별 목표와 진도를 설계합니다.</p></div>
+ <div class="bg-[#EAF2FF] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-green-700/50 mb-4">STEP 03</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">1:1 집중 수업</p><p class="text-xs text-gray-600 leading-relaxed font-light">학교 교재·기출 중심으로 개념→유형→실전 수업합니다.</p></div>
+ <div class="bg-[#3182F6] rounded-3xl p-7"><p class="text-[10px] font-bold tracking-[2px] text-purple-700/50 mb-4">STEP 04</p><p class="text-base font-black text-gray-900 mb-2 leading-tight">수업 후 피드백</p><p class="text-xs text-gray-600 leading-relaxed font-light">매 수업 후 학습 내용과 숙제를 학부모님께 전달합니다.</p></div>
  </div>
  </div>
 </section>
@@ -236,7 +236,7 @@ function toggleDrawer(id) {
 <!-- 후기 -->
 <section class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">Reviews</p>
+ <p class="text-[11px] font-black tracking-[4px] uppercase text-[#3182F6] mb-3">Reviews</p>
  <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-gray-900 mb-12" id="review-title"></h2>
  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal" id="review-grid"></div>
  </div>
@@ -245,7 +245,7 @@ function toggleDrawer(id) {
 <!-- FAQ -->
 <section class="px-5 py-14 md:px-16 md:py-20 bg-gray-50 border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[10px] font-bold tracking-[3px] uppercase text-gray-500 mb-3">FAQ</p>
+ <p class="text-[11px] font-black tracking-[4px] uppercase text-[#3182F6] mb-3">FAQ</p>
  <h2 class="text-3xl md:text-4xl font-black tracking-[-1.5px] text-gray-900 mb-12">자주 묻는 질문</h2>
  <div class="divide-y divide-gray-100 border-t border-gray-100 reveal">
  <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 선생님은 어떤 분들인가요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">교육청에 정식으로 등록된 현직 교사 및 자격증을 보유한 교원만 수업을 진행합니다. 모든 선생님은 등록 전 자격 확인 절차를 거칩니다.</div></div>
@@ -262,14 +262,14 @@ function toggleDrawer(id) {
 <section class="px-5 py-14 md:px-16 md:py-20 bg-white border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
  <div class="bg-gray-900 rounded-3xl px-8 py-14 md:px-14 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden">
- <div class="absolute top-0 right-0 w-40 h-40 bg-[#f9fe44]/10 rounded-full translate-x-8 -translate-y-8 pointer-events-none"></div>
- <div class="absolute bottom-0 left-16 w-28 h-28 bg-[#939afc]/10 rounded-full translate-y-6 pointer-events-none"></div>
+ <div class="absolute top-0 right-0 w-40 h-40 bg-[#3182F6]/10 rounded-full translate-x-8 -translate-y-8 pointer-events-none"></div>
+ <div class="absolute bottom-0 left-16 w-28 h-28 bg-[#3182F6]/10 rounded-full translate-y-6 pointer-events-none"></div>
  <div class="relative">
  <h2 id="cta-title" class="text-3xl md:text-4xl font-black tracking-[-2px] leading-[1.1] text-white mb-2"></h2>
  <p class="text-sm font-light text-white/70">첫 수업 무료 · 24시간 내 매칭</p>
  </div>
  <div class="relative flex flex-col gap-3">
- <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-[#f9fe44] text-gray-900 font-black text-sm px-8 py-4 rounded-2xl hover:bg-white transition-colors"> 무료 테스트 신청</a>
+ <a href="tel:010-2069-8522" class="inline-flex items-center justify-center gap-2 bg-[#3182F6] text-gray-900 font-black text-sm px-8 py-4 rounded-2xl hover:bg-white transition-colors"> 무료 테스트 신청</a>
  <p class="text-[11px] text-white/60 text-center">평일·주말 오전 9시 — 오후 10시</p>
  </div>
  </div>
@@ -281,7 +281,7 @@ function toggleDrawer(id) {
  <div class="max-w-5xl mx-auto">
  <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-white/[0.08]">
  <div>
- <p class="font-black text-white text-lg tracking-tight"><span class="text-[#f9fe44]">스터디</span>레이어</p>
+ <p class="font-black text-white text-lg tracking-tight"><span class="text-[#3182F6]">스터디</span>레이어</p>
  <p class="text-xs text-white/60 mt-1.5">초·중·고 1:1 맞춤 과외</p>
  </div>
  <div class="flex flex-wrap gap-x-12 gap-y-6">
@@ -321,7 +321,7 @@ function toggleDrawer(id) {
 </footer>
 
 <script>
-const COLORS = { speaking:'#f9fe44', math:'#6f98fa', english:'#f9fe44', korean:'#f09663', science:'#deef75', social:'#f9fe44', coding:'#939afc', gd:'#939afc' };
+const COLORS = { speaking:'#3182F6', math:'#3182F6', english:'#3182F6', korean:'#EAF2FF', science:'#EAF2FF', social:'#3182F6', coding:'#3182F6', gd:'#3182F6' };
 
 const SUBJECTS = {
  math:{
@@ -329,14 +329,14 @@ const SUBJECTS = {
  desc:'개념부터 심화까지, 학교 시험에 최적화된 수학 1:1 과외입니다. 단순 문제풀이가 아닌 원리를 이해하는 수업으로 어떤 유형도 스스로 풀 수 있게 만들어 드립니다.',
  stats:[{n:'98%',l:'수학 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'1,200+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
  curr:[
- {lv:'초등',color:'#6f98fa',title:'기초부터 탄탄하게',items:['자연수·분수·소수 개념 정립','연산 정확도 & 속도 훈련','도형·측정 기초 완성','교과서 단원별 집중 수업']},
- {lv:'중등',color:'#f9fe44',title:'내신 완벽 대비',items:['방정식·함수 개념 완성','학교 기출 분석 및 유형 정리','서술형 풀이법 훈련','중간·기말 집중 특강']},
- {lv:'고등',color:'#f09663',title:'수능·내신 동시 대비',items:['수1·수2·미적분 전 범위','수능 기출 30개년 분석','킬러문항 공략법','내신 변형문제 완벽 대응']}
+ {lv:'초등',color:'#3182F6',title:'기초부터 탄탄하게',items:['자연수·분수·소수 개념 정립','연산 정확도 & 속도 훈련','도형·측정 기초 완성','교과서 단원별 집중 수업']},
+ {lv:'중등',color:'#3182F6',title:'내신 완벽 대비',items:['방정식·함수 개념 완성','학교 기출 분석 및 유형 정리','서술형 풀이법 훈련','중간·기말 집중 특강']},
+ {lv:'고등',color:'#EAF2FF',title:'수능·내신 동시 대비',items:['수1·수2·미적분 전 범위','수능 기출 30개년 분석','킬러문항 공략법','내신 변형문제 완벽 대응']}
  ],
  reviews:[
- {badge:'초5 · 수학',color:'#f9fe44',text:'연산이 너무 약했는데 <strong>개념부터 차근차근</strong> 잡아주셔서 수학을 이제 좋아해요!',name:'김OO 학부모',sub:'초등학교 5학년 자녀',chip:'기초 완성'},
- {badge:'중2 · 수학',color:'#6f98fa',text:'<strong>내신 성적 향상</strong>으로 올랐어요. 기출 분석이 정말 탁월하셨어요.',name:'이OO 학생',sub:'중학교 2학년',chip:'실력 향상'},
- {badge:'고3 · 수학',color:'#939afc',text:'수능 수학 <strong>성적 향상</strong>까지 올렸습니다. 킬러 문항 전략이 핵심이었어요.',name:'박OO 학생',sub:'고등학교 3학년',chip:'수능 목표 달성'}
+ {badge:'초5 · 수학',color:'#3182F6',text:'연산이 너무 약했는데 <strong>개념부터 차근차근</strong> 잡아주셔서 수학을 이제 좋아해요!',name:'김OO 학부모',sub:'초등학교 5학년 자녀',chip:'기초 완성'},
+ {badge:'중2 · 수학',color:'#3182F6',text:'<strong>내신 성적 향상</strong>으로 올랐어요. 기출 분석이 정말 탁월하셨어요.',name:'이OO 학생',sub:'중학교 2학년',chip:'실력 향상'},
+ {badge:'고3 · 수학',color:'#3182F6',text:'수능 수학 <strong>성적 향상</strong>까지 올렸습니다. 킬러 문항 전략이 핵심이었어요.',name:'박OO 학생',sub:'고등학교 3학년',chip:'수능 목표 달성'}
  ]
  },
  english:{
@@ -344,14 +344,14 @@ const SUBJECTS = {
  desc:'듣기·말하기·읽기·쓰기 전 영역을 아우르는 1:1 영어 과외입니다. 내신 대비부터 수능 영어, 회화까지 목표에 맞게 맞춤 수업합니다.',
  stats:[{n:'97%',l:'영어 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'950+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
  curr:[
- {lv:'초등',color:'#f9fe44',title:'파닉스·기초 회화',items:['알파벳·파닉스 완성','기초 문법 및 패턴 학습','영어 일기·받아쓰기 훈련','교과서 단어·본문 완벽 암기']},
- {lv:'중등',color:'#6f98fa',title:'내신·문법 완성',items:['중학 핵심 문법 전 범위','학교 기출 지문 분석','서술형·영작문 훈련','독해 속도 및 정확도 향상']},
- {lv:'고등',color:'#f09663',title:'수능·내신 동시 공략',items:['수능 유형별 풀이 전략','빈칸·순서·삽입 킬러 유형','학교 기출 변형 문제 대비','어법·어휘 집중 완성']}
+ {lv:'초등',color:'#3182F6',title:'파닉스·기초 회화',items:['알파벳·파닉스 완성','기초 문법 및 패턴 학습','영어 일기·받아쓰기 훈련','교과서 단어·본문 완벽 암기']},
+ {lv:'중등',color:'#3182F6',title:'내신·문법 완성',items:['중학 핵심 문법 전 범위','학교 기출 지문 분석','서술형·영작문 훈련','독해 속도 및 정확도 향상']},
+ {lv:'고등',color:'#EAF2FF',title:'수능·내신 동시 공략',items:['수능 유형별 풀이 전략','빈칸·순서·삽입 킬러 유형','학교 기출 변형 문제 대비','어법·어휘 집중 완성']}
  ],
  reviews:[
- {badge:'초4 · 영어',color:'#f9fe44',text:'파닉스부터 차근차근 잡아주셔서 <strong>영어를 두려워하지 않게</strong> 됐어요.',name:'정OO 학부모',sub:'초등학교 4학년 자녀',chip:'기초 완성'},
- {badge:'중3 · 영어',color:'#6f98fa',text:'중학 문법을 완전히 정리하고 <strong>내신 목표 달성</strong> 받았습니다!',name:'최OO 학생',sub:'중학교 3학년',chip:'목표 달성'},
- {badge:'고2 · 영어',color:'#939afc',text:'수능 영어 <strong>성적 향상</strong>으로 올랐어요.',name:'윤OO 학생',sub:'고등학교 2학년',chip:'실력 향상'}
+ {badge:'초4 · 영어',color:'#3182F6',text:'파닉스부터 차근차근 잡아주셔서 <strong>영어를 두려워하지 않게</strong> 됐어요.',name:'정OO 학부모',sub:'초등학교 4학년 자녀',chip:'기초 완성'},
+ {badge:'중3 · 영어',color:'#3182F6',text:'중학 문법을 완전히 정리하고 <strong>내신 목표 달성</strong> 받았습니다!',name:'최OO 학생',sub:'중학교 3학년',chip:'목표 달성'},
+ {badge:'고2 · 영어',color:'#3182F6',text:'수능 영어 <strong>성적 향상</strong>으로 올랐어요.',name:'윤OO 학생',sub:'고등학교 2학년',chip:'실력 향상'}
  ]
  },
  korean:{
@@ -359,14 +359,14 @@ const SUBJECTS = {
  desc:'문학·비문학·문법·쓰기를 체계적으로 잡는 1:1 국어 과외입니다. 독해력과 논리적 사고력을 기르고 서술형과 논술까지 대비합니다.',
  stats:[{n:'96%',l:'국어 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'780+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
  curr:[
- {lv:'초등',color:'#f09663',title:'독해·어휘 기초',items:['낱말·문장 독해력 기초','교과서 문학 작품 이해','독서록·일기 쓰기 훈련','맞춤법·띄어쓰기 완성']},
- {lv:'중등',color:'#f9fe44',title:'문학·비문학 완성',items:['현대시·소설 분석법','비문학 지문 독해 전략','중학 문법 전 범위 정리','서술형 답안 작성 훈련']},
- {lv:'고등',color:'#6f98fa',title:'수능·내신 전략',items:['수능 국어 유형별 공략','문학·비문학 고난도 지문','언어와 매체 / 화법과 작문','논술·서술형 심화 훈련']}
+ {lv:'초등',color:'#EAF2FF',title:'독해·어휘 기초',items:['낱말·문장 독해력 기초','교과서 문학 작품 이해','독서록·일기 쓰기 훈련','맞춤법·띄어쓰기 완성']},
+ {lv:'중등',color:'#3182F6',title:'문학·비문학 완성',items:['현대시·소설 분석법','비문학 지문 독해 전략','중학 문법 전 범위 정리','서술형 답안 작성 훈련']},
+ {lv:'고등',color:'#3182F6',title:'수능·내신 전략',items:['수능 국어 유형별 공략','문학·비문학 고난도 지문','언어와 매체 / 화법과 작문','논술·서술형 심화 훈련']}
  ],
  reviews:[
- {badge:'초5 · 국어',color:'#f09663',text:'독서 이해력이 부족했는데 <strong>3개월 만에 독해 속도가 확</strong> 빨라졌어요.',name:'강OO 학부모',sub:'초등학교 5학년 자녀',chip:'독해력 향상'},
- {badge:'중2 · 국어',color:'#f9fe44',text:'비문학이 너무 어려웠는데 <strong>지문 분석법</strong>을 배우고 나서 완전히 달라졌어요.',name:'오OO 학생',sub:'중학교 2학년',chip:'실력 향상'},
- {badge:'고3 · 국어',color:'#939afc',text:'수능 국어 <strong>성적 향상</strong>으로 올랐습니다.',name:'한OO 학생',sub:'고등학교 3학년',chip:'실력 향상'}
+ {badge:'초5 · 국어',color:'#EAF2FF',text:'독서 이해력이 부족했는데 <strong>3개월 만에 독해 속도가 확</strong> 빨라졌어요.',name:'강OO 학부모',sub:'초등학교 5학년 자녀',chip:'독해력 향상'},
+ {badge:'중2 · 국어',color:'#3182F6',text:'비문학이 너무 어려웠는데 <strong>지문 분석법</strong>을 배우고 나서 완전히 달라졌어요.',name:'오OO 학생',sub:'중학교 2학년',chip:'실력 향상'},
+ {badge:'고3 · 국어',color:'#3182F6',text:'수능 국어 <strong>성적 향상</strong>으로 올랐습니다.',name:'한OO 학생',sub:'고등학교 3학년',chip:'실력 향상'}
  ]
  },
  science:{
@@ -374,14 +374,14 @@ const SUBJECTS = {
  desc:'과학과 사회, 두 과목을 한 번에. 단순 암기가 아닌 원리와 흐름으로 이해하는 1:1 탐구 과외입니다.',
  stats:[{n:'95%',l:'탐구 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'1,160+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
  curr:[
-      {lv:'과학',color:'#deef75',title:'과학 과외',items:['중학교 통합과학 핵심 개념','고등 생명과학·지구과학·물리학·화학 I','수능 탐구 과목 전략 수립','학교별 기출 문제 분석']},
-      {lv:'사회',color:'#6f98fa',title:'사회 과외',items:['중학교 사회·역사 내신 완성','고등 생활과윤리·사회문화·한국지리','수능 사탐 과목 전략 수립','서술형·수행평가 완벽 대비']},
-      {lv:'한국사',color:'#f09663',title:'한국사 과외',items:['중학교 역사 내신 완성','고등 한국사 개념+흐름 정리','수능 한국사 필수 개념 압축','한국사능력검정시험 대비']}
+      {lv:'과학',color:'#EAF2FF',title:'과학 과외',items:['중학교 통합과학 핵심 개념','고등 생명과학·지구과학·물리학·화학 I','수능 탐구 과목 전략 수립','학교별 기출 문제 분석']},
+      {lv:'사회',color:'#3182F6',title:'사회 과외',items:['중학교 사회·역사 내신 완성','고등 생활과윤리·사회문화·한국지리','수능 사탐 과목 전략 수립','서술형·수행평가 완벽 대비']},
+      {lv:'한국사',color:'#EAF2FF',title:'한국사 과외',items:['중학교 역사 내신 완성','고등 한국사 개념+흐름 정리','수능 한국사 필수 개념 압축','한국사능력검정시험 대비']}
     ],
     reviews:[
-      {badge:'고득점 · 고졸',color:'#939afc',text:'고졸 검정고시에서 <strong>평균 88점</strong>으로 합격해 원하는 대학에 지원할 수 있었어요.',name:'최OO',sub:'고졸 검정고시 고득점 합격',chip:'88점 합격'},
-      {badge:'고득점 · 고졸',color:'#6f98fa',text:'취약과목이었던 수학을 <strong>집중 공략해 82점</strong>을 받았어요.',name:'정OO',sub:'수학 고득점 달성',chip:'목표 달성'},
-      {badge:'고득점 · 중졸',color:'#f9fe44',text:'중졸 검정고시 <strong>전 과목 90점 이상</strong>으로 합격했습니다!',name:'강OO',sub:'중졸 검정고시 합격',chip:'전 과목 90+'}
+      {badge:'고득점 · 고졸',color:'#3182F6',text:'고졸 검정고시에서 <strong>평균 88점</strong>으로 합격해 원하는 대학에 지원할 수 있었어요.',name:'최OO',sub:'고졸 검정고시 고득점 합격',chip:'88점 합격'},
+      {badge:'고득점 · 고졸',color:'#3182F6',text:'취약과목이었던 수학을 <strong>집중 공략해 82점</strong>을 받았어요.',name:'정OO',sub:'수학 고득점 달성',chip:'목표 달성'},
+      {badge:'고득점 · 중졸',color:'#3182F6',text:'중졸 검정고시 <strong>전 과목 90점 이상</strong>으로 합격했습니다!',name:'강OO',sub:'중졸 검정고시 합격',chip:'전 과목 90+'}
     ]
   }
   ,gd_pass:{
@@ -389,14 +389,14 @@ const SUBJECTS = {
     desc:'시간이 촉박한 분을 위한 압축 합격 과정입니다. 핵심만 짚고 기출 패턴을 완전히 익혀 최단 기간 안에 합격을 실현합니다.',
     stats:[{n:'6주',l:'최단 합격 기간'},{n:'기출',l:'10년치 완전 분석'},{n:'핵심',l:'압축 수업'},{n:'24h',l:'매칭 소요'}],
     curr:[
-      {lv:'1~2주',color:'#939afc',title:'핵심 개념 압축',items:['과목별 핵심 개념만 압축 정리','검정고시 출제 빈도 분석','자주 나오는 유형 우선 공략','취약 과목 집중 진단']},
-      {lv:'3~4주',color:'#6f98fa',title:'기출 완전 정복',items:['최근 10년 기출 완전 분석','출제 패턴 완전 습득','오답 유형 반복 훈련','과목별 60점 이상 확보 전략']},
-      {lv:'5~6주',color:'#f9fe44',title:'실전 마무리',items:['모의고사 실전 반복 풀이','시간 배분 전략 완성','시험 당일 컨디션 관리','합격 후 상급 학교 진학 상담']}
+      {lv:'1~2주',color:'#3182F6',title:'핵심 개념 압축',items:['과목별 핵심 개념만 압축 정리','검정고시 출제 빈도 분석','자주 나오는 유형 우선 공략','취약 과목 집중 진단']},
+      {lv:'3~4주',color:'#3182F6',title:'기출 완전 정복',items:['최근 10년 기출 완전 분석','출제 패턴 완전 습득','오답 유형 반복 훈련','과목별 60점 이상 확보 전략']},
+      {lv:'5~6주',color:'#3182F6',title:'실전 마무리',items:['모의고사 실전 반복 풀이','시간 배분 전략 완성','시험 당일 컨디션 관리','합격 후 상급 학교 진학 상담']}
     ],
     reviews:[
-      {badge:'합격 · 고졸',color:'#939afc',text:'독학으로 계속 실패했는데 <strong>6주 만에 고졸 합격</strong>했어요!',name:'윤OO',sub:'고졸 검정고시 합격',chip:'6주 합격'},
-      {badge:'합격 · 중졸',color:'#6f98fa',text:'기초도 없었는데 <strong>핵심만 압축</strong>해서 가르쳐 주셔서 바로 합격했어요.',name:'조OO',sub:'중졸 검정고시 합격',chip:'합격 완료'},
-      {badge:'합격 · 고졸',color:'#f9fe44',text:'<strong>8주 만에 전 과목 합격</strong>. 기출 분석이 정말 탁월했어요.',name:'임OO',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
+      {badge:'합격 · 고졸',color:'#3182F6',text:'독학으로 계속 실패했는데 <strong>6주 만에 고졸 합격</strong>했어요!',name:'윤OO',sub:'고졸 검정고시 합격',chip:'6주 합격'},
+      {badge:'합격 · 중졸',color:'#3182F6',text:'기초도 없었는데 <strong>핵심만 압축</strong>해서 가르쳐 주셔서 바로 합격했어요.',name:'조OO',sub:'중졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'합격 · 고졸',color:'#3182F6',text:'<strong>8주 만에 전 과목 합격</strong>. 기출 분석이 정말 탁월했어요.',name:'임OO',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
     ]
   }
   ,speaking:{
@@ -404,14 +404,14 @@ const SUBJECTS = {
     desc:'문법 중심이 아닌 실전 회화 중심 수업입니다. 일상 대화부터 비즈니스 영어, 공인시험(OPIc·토익스피킹)까지 목표에 맞게 준비합니다.',
     stats:[{n:'1:1',l:'맞춤 수업'},{n:'원어민급',l:'발음 교정'},{n:'24h',l:'매칭 소요'},{n:'무료',l:'첫 수업'}],
     curr:[
-      {lv:'입문',color:'#f9fe44',title:'기초 회화',items:['기본 문장 패턴 완성','일상 대화 표현 익히기','발음·억양 교정','영어에 대한 자신감 키우기']},
-      {lv:'중급',color:'#6f98fa',title:'실전 회화',items:['다양한 주제 자유 토론','원어민식 표현 습득','뉴스·영화로 배우는 영어','OPIc·토익스피킹 기초']},
-      {lv:'고급',color:'#939afc',title:'고급·시험 대비',items:['OPIc AL·IH 목표','토익스피킹 레벨 7·8','비즈니스 영어 회화','프레젠테이션·인터뷰 영어']}
+      {lv:'입문',color:'#3182F6',title:'기초 회화',items:['기본 문장 패턴 완성','일상 대화 표현 익히기','발음·억양 교정','영어에 대한 자신감 키우기']},
+      {lv:'중급',color:'#3182F6',title:'실전 회화',items:['다양한 주제 자유 토론','원어민식 표현 습득','뉴스·영화로 배우는 영어','OPIc·토익스피킹 기초']},
+      {lv:'고급',color:'#3182F6',title:'고급·시험 대비',items:['OPIc AL·IH 목표','토익스피킹 레벨 7·8','비즈니스 영어 회화','프레젠테이션·인터뷰 영어']}
     ],
     reviews:[
-      {badge:'성인 · 회화',color:'#f9fe44',text:'영어로 말하는 게 너무 두려웠는데 <strong>3개월 만에 OPIc IM</strong> 받았어요!',name:'김OO',sub:'직장인 수강생',chip:'OPIc IM'},
-      {badge:'고2 · 회화',color:'#6f98fa',text:'해외여행 전에 급하게 배웠는데 <strong>실제로 외국인과 대화</strong>할 수 있었어요.',name:'이OO 학생',sub:'고등학교 2학년',chip:'실력 향상'},
-      {badge:'성인 · 비즈니스',color:'#939afc',text:'비즈니스 영어가 필요했는데 <strong>실무에 바로 쓸 수 있는</strong> 표현들을 배웠어요.',name:'박OO',sub:'직장인 수강생',chip:'비즈니스 영어'}
+      {badge:'성인 · 회화',color:'#3182F6',text:'영어로 말하는 게 너무 두려웠는데 <strong>3개월 만에 OPIc IM</strong> 받았어요!',name:'김OO',sub:'직장인 수강생',chip:'OPIc IM'},
+      {badge:'고2 · 회화',color:'#3182F6',text:'해외여행 전에 급하게 배웠는데 <strong>실제로 외국인과 대화</strong>할 수 있었어요.',name:'이OO 학생',sub:'고등학교 2학년',chip:'실력 향상'},
+      {badge:'성인 · 비즈니스',color:'#3182F6',text:'비즈니스 영어가 필요했는데 <strong>실무에 바로 쓸 수 있는</strong> 표현들을 배웠어요.',name:'박OO',sub:'직장인 수강생',chip:'비즈니스 영어'}
     ]
   }
   ,gd:{
@@ -419,15 +419,15 @@ const SUBJECTS = {
     desc:'중졸·고졸 검정고시 전 과목을 1:1로 밀착 지도합니다. 목표에 맞게 중졸·고졸·고득점·합격 플랜을 선택하세요.',
     stats:[{n:'98%',l:'합격률'},{n:'3개월',l:'평균 합격 기간'},{n:'500+',l:'합격생 배출'},{n:'24h',l:'매칭 소요'}],
     curr:[
-      {lv:'중졸',color:'#939afc',title:'중졸 검정고시',items:['국어·수학·영어·사회·과학·도덕·기술가정 7과목','전 과목 60점 이상 합격 목표','평균 2~3개월 준비 기간','기초부터 1:1 밀착 지도']},
-      {lv:'고졸',color:'#6f98fa',title:'고졸 검정고시',items:['국어·수학·영어·사회·과학·한국사·도덕 7과목','전 과목 60점 이상 합격 목표','평균 3~4개월 준비 기간','대학 진학·취업 연계 가능']},
-      {lv:'고득점',color:'#f9fe44',title:'고득점 커리큘럼',items:['95점 이상 고득점 목표','과목별 취약점 정밀 분석','고난도 문제 집중 훈련','대학 입시 서류 경쟁력 강화']},
-      {lv:'합격',color:'#7eec97',title:'합격 커리큘럼',items:['최소 6주 집중 합격 과정','기출 10년치 완전 분석','시험 출제 패턴 완전 습득','시험 직전 모의고사 반복 훈련']}
+      {lv:'중졸',color:'#3182F6',title:'중졸 검정고시',items:['국어·수학·영어·사회·과학·도덕·기술가정 7과목','전 과목 60점 이상 합격 목표','평균 2~3개월 준비 기간','기초부터 1:1 밀착 지도']},
+      {lv:'고졸',color:'#3182F6',title:'고졸 검정고시',items:['국어·수학·영어·사회·과학·한국사·도덕 7과목','전 과목 60점 이상 합격 목표','평균 3~4개월 준비 기간','대학 진학·취업 연계 가능']},
+      {lv:'고득점',color:'#3182F6',title:'고득점 커리큘럼',items:['95점 이상 고득점 목표','과목별 취약점 정밀 분석','고난도 문제 집중 훈련','대학 입시 서류 경쟁력 강화']},
+      {lv:'합격',color:'#3182F6',title:'합격 커리큘럼',items:['최소 6주 집중 합격 과정','기출 10년치 완전 분석','시험 출제 패턴 완전 습득','시험 직전 모의고사 반복 훈련']}
     ],
     reviews:[
-      {badge:'검정고시 · 고졸',color:'#939afc',text:'독학으로 계속 실패했는데 <strong>3개월 만에 고졸 검정고시 합격</strong>했어요!',name:'김OO',sub:'고졸 검정고시 합격',chip:'합격 완료'},
-      {badge:'검정고시 · 중졸',color:'#6f98fa',text:'기초가 너무 부족했는데 선생님이 <strong>처음부터 차근차근</strong> 잡아주셔서 합격했어요.',name:'이OO',sub:'중졸 검정고시 합격',chip:'합격 완료'},
-      {badge:'검정고시 · 고졸',color:'#f9fe44',text:'짧은 기간 안에 <strong>전 과목 60점 이상</strong>으로 합격했습니다. 감사해요!',name:'박OO',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
+      {badge:'검정고시 · 고졸',color:'#3182F6',text:'독학으로 계속 실패했는데 <strong>3개월 만에 고졸 검정고시 합격</strong>했어요!',name:'김OO',sub:'고졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'검정고시 · 중졸',color:'#3182F6',text:'기초가 너무 부족했는데 선생님이 <strong>처음부터 차근차근</strong> 잡아주셔서 합격했어요.',name:'이OO',sub:'중졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'검정고시 · 고졸',color:'#3182F6',text:'짧은 기간 안에 <strong>전 과목 60점 이상</strong>으로 합격했습니다. 감사해요!',name:'박OO',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
     ]
   }
   ,gd_high:{
@@ -435,14 +435,14 @@ const SUBJECTS = {
     desc:'단순 합격을 넘어 95점 이상 고득점을 목표로 합니다. 대학 입시 서류에 검정고시 점수가 반영되므로 높은 점수가 유리합니다. 과목별 취약점을 정밀 분석하고 고난도 문제를 집중 훈련합니다.',
     stats:[{n:'95점+',l:'목표 점수'},{n:'과목별',l:'취약점 분석'},{n:'입시',l:'서류 경쟁력'},{n:'24h',l:'매칭 소요'}],
     curr:[
-      {lv:'진단',color:'#939afc',title:'취약점 정밀 진단',items:['과목별 현재 수준 정밀 분석','취약 단원 집중 진단','목표 점수 역산 계획 수립','맞춤 커리큘럼 설계']},
-      {lv:'심화',color:'#6f98fa',title:'고득점 집중 훈련',items:['고난도 문제 유형 집중 공략','과목별 95점 이상 전략','오답 패턴 완전 제거','모의고사 반복 실전 훈련']},
-      {lv:'마무리',color:'#f9fe44',title:'실전 마무리',items:['시험 직전 핵심 요약 정리','시간 배분 전략 훈련','대학 입시 연계 상담','합격 후 진학 전략 수립']}
+      {lv:'진단',color:'#3182F6',title:'취약점 정밀 진단',items:['과목별 현재 수준 정밀 분석','취약 단원 집중 진단','목표 점수 역산 계획 수립','맞춤 커리큘럼 설계']},
+      {lv:'심화',color:'#3182F6',title:'고득점 집중 훈련',items:['고난도 문제 유형 집중 공략','과목별 95점 이상 전략','오답 패턴 완전 제거','모의고사 반복 실전 훈련']},
+      {lv:'마무리',color:'#3182F6',title:'실전 마무리',items:['시험 직전 핵심 요약 정리','시간 배분 전략 훈련','대학 입시 연계 상담','합격 후 진학 전략 수립']}
     ],
     reviews:[
-      {badge:'고득점 · 고졸',color:'#939afc',text:'고졸 검정고시에서 <strong>평균 96점</strong>으로 합격해 원하는 대학에 지원할 수 있었어요.',name:'최OO',sub:'고졸 검정고시 고득점 합격',chip:'96점 합격'},
-      {badge:'합격 · 고졸',color:'#6f98fa',text:'3개월 공부해서 <strong>전 과목 무사히 합격</strong>했어요. 혼자였으면 정말 힘들었을 것 같아요.',name:'정OO',sub:'고졸 검정고시 합격',chip:'합격 완료'},
-      {badge:'단기 · 중졸',color:'#f9fe44',text:'중졸 검정고시 <strong>6주 만에 합격</strong>했어요! 핵심만 짚어줘서 시간 낭비가 없었어요.',name:'강OO',sub:'중졸 검정고시 단기 합격',chip:'6주 합격'}
+      {badge:'고득점 · 고졸',color:'#3182F6',text:'고졸 검정고시에서 <strong>평균 96점</strong>으로 합격해 원하는 대학에 지원할 수 있었어요.',name:'최OO',sub:'고졸 검정고시 고득점 합격',chip:'96점 합격'},
+      {badge:'합격 · 고졸',color:'#3182F6',text:'3개월 공부해서 <strong>전 과목 무사히 합격</strong>했어요. 혼자였으면 정말 힘들었을 것 같아요.',name:'정OO',sub:'고졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'단기 · 중졸',color:'#3182F6',text:'중졸 검정고시 <strong>6주 만에 합격</strong>했어요! 핵심만 짚어줘서 시간 낭비가 없었어요.',name:'강OO',sub:'중졸 검정고시 단기 합격',chip:'6주 합격'}
     ]
   }
   ,gd_pass:{
@@ -450,21 +450,21 @@ const SUBJECTS = {
     desc:'시간이 촉박한 분을 위한 압축 합격 과정입니다. 핵심만 짚고 기출 패턴을 완전히 익혀 최단 기간 안에 합격을 실현합니다.',
     stats:[{n:'6주',l:'최단 합격 기간'},{n:'기출',l:'10년치 완전 분석'},{n:'핵심',l:'압축 수업'},{n:'24h',l:'매칭 소요'}],
     curr:[
-      {lv:'1~2주',color:'#939afc',title:'핵심 개념 압축',items:['과목별 핵심 개념만 압축 정리','검정고시 출제 빈도 분석','자주 나오는 유형 우선 공략','취약 과목 집중 진단']},
-      {lv:'3~4주',color:'#6f98fa',title:'기출 완전 정복',items:['최근 10년 기출 완전 분석','출제 패턴 완전 습득','오답 유형 반복 훈련','과목별 60점 이상 확보 전략']},
-      {lv:'5~6주',color:'#f9fe44',title:'실전 마무리',items:['모의고사 실전 반복 풀이','시간 배분 전략 완성','시험 당일 컨디션 관리','합격 후 상급 학교 진학 상담']}
+      {lv:'1~2주',color:'#3182F6',title:'핵심 개념 압축',items:['과목별 핵심 개념만 압축 정리','검정고시 출제 빈도 분석','자주 나오는 유형 우선 공략','취약 과목 집중 진단']},
+      {lv:'3~4주',color:'#3182F6',title:'기출 완전 정복',items:['최근 10년 기출 완전 분석','출제 패턴 완전 습득','오답 유형 반복 훈련','과목별 60점 이상 확보 전략']},
+      {lv:'5~6주',color:'#3182F6',title:'실전 마무리',items:['모의고사 실전 반복 풀이','시간 배분 전략 완성','시험 당일 컨디션 관리','합격 후 상급 학교 진학 상담']}
     ],
     reviews:[
-      {badge:'합격 · 고졸',color:'#939afc',text:'독학으로 계속 실패했는데 <strong>6주 만에 고졸 합격</strong>했어요! 기출만 제대로 풀었더니 됐어요.',name:'윤OO',sub:'고졸 검정고시 합격',chip:'6주 합격'},
-      {badge:'합격 · 중졸',color:'#6f98fa',text:'기초도 없었는데 핵심만 압축해서 가르쳐 주셔서 <strong>첫 시도에 바로 합격</strong>했어요.',name:'조OO',sub:'중졸 검정고시 합격',chip:'첫 시도 합격'},
-      {badge:'합격 · 고졸',color:'#f9fe44',text:'직장 다니면서 준비했는데 <strong>8주 만에 전 과목 합격</strong>. 짧게 공부하고 합격할 수 있어서 좋았어요.',name:'임OO',sub:'고졸 검정고시 합격',chip:'직장인 합격'}
+      {badge:'합격 · 고졸',color:'#3182F6',text:'독학으로 계속 실패했는데 <strong>6주 만에 고졸 합격</strong>했어요! 기출만 제대로 풀었더니 됐어요.',name:'윤OO',sub:'고졸 검정고시 합격',chip:'6주 합격'},
+      {badge:'합격 · 중졸',color:'#3182F6',text:'기초도 없었는데 핵심만 압축해서 가르쳐 주셔서 <strong>첫 시도에 바로 합격</strong>했어요.',name:'조OO',sub:'중졸 검정고시 합격',chip:'첫 시도 합격'},
+      {badge:'합격 · 고졸',color:'#3182F6',text:'직장 다니면서 준비했는데 <strong>8주 만에 전 과목 합격</strong>. 짧게 공부하고 합격할 수 있어서 좋았어요.',name:'임OO',sub:'고졸 검정고시 합격',chip:'직장인 합격'}
     ]
   }
 };
 
 function render(key) {
  const d = SUBJECTS[key] || SUBJECTS.math;
- const col = COLORS[key] || '#f9fe44';
+ const col = COLORS[key] || '#3182F6';
 
  document.title = d.name + ' 과외 전문 — 스터디레이어';
  document.querySelector('meta[name="description"]').setAttribute('content',
@@ -498,9 +498,9 @@ function render(key) {
 
  if (isExplore) {
  document.getElementById('curr-grid').innerHTML =
- `<div class="col-span-full mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-[#deef75] px-4 py-1.5 rounded-full"> 과학 커리큘럼</span></div>`
+ `<div class="col-span-full mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-[#EAF2FF] px-4 py-1.5 rounded-full"> 과학 커리큘럼</span></div>`
  + cardHTML(SUBJECTS.science.curr) +
- `<div class="col-span-full mt-5 mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-[#f9fe44] px-4 py-1.5 rounded-full"> 사회 커리큘럼</span></div>`
+ `<div class="col-span-full mt-5 mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-[#3182F6] px-4 py-1.5 rounded-full"> 사회 커리큘럼</span></div>`
  + cardHTML(SUBJECTS.social.curr);
  } else {
  document.getElementById('curr-grid').innerHTML = cardHTML(d.curr);
