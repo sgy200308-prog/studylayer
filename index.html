@@ -2285,15 +2285,9 @@ function drillTo(level, provIdx, cityIdx) {
     panel.innerHTML = renderCities(prov.cities, provIdx);
 
   } else if (level === 2) {
-    // 동 목록 or 바로 이동
     curCityIdx = cityIdx;
     const prov = data.provinces[provIdx];
     const city = prov.cities[cityIdx];
-
-    if (city.dongs.length === 0) {
-      location.href = city.url;
-      return;
-    }
 
     bread.style.display = 'flex';
     document.getElementById('bread-province').textContent = prov.name;
@@ -2301,15 +2295,48 @@ function drillTo(level, provIdx, cityIdx) {
     document.getElementById('bread-city').style.display = '';
     document.getElementById('bread-city').textContent = city.name;
 
-    panel.innerHTML = renderDongs(city);
-  }
-}
+    // 1순위: 구(districts) 데이터가 있으면 구 선택 단계
+    if (city.districts && city.districts.length > 0) {
+      panel.innerHTML = renderDistricts(city.districts, provIdx, cityIdx);
+    }
+    // 2순위: 동(dongs) 데이터가 있으면 동 선택 단계
+    else if (city.dongs && city.dongs.length > 0) {
+      panel.innerHTML = renderDongs(city);
+    }
+    // 3순위: 둘 다 없으면 해당 도시 페이지로 이동
+    else {
+      location.href = city.url;
+    }
+  } else if (level === 3) {
+    // 구 선택 후 동 목록
+    curDistIdx = distIdx;
+    const prov = data.provinces[provIdx];
+    const city = prov.cities[cityIdx];
+    const dist = city.districts[distIdx];
 
-function renderProvinces(provinces) {
+    document.getElementById('bread-city').textContent = city.name + ' · ' + dist.name;
+
+    if (dist.dongs && dist.dongs.length > 0) {
+      panel.innerHTML = renderDongs(dist);
+    } else {
+      // 동 데이터 없으면 해당 시 페이지로
+      location.href = city.url;
+    }
+  }(provinces) {
   return `<div class="drill-grid">` +
     provinces.map((p, i) => `
       <button class="drill-card" onclick="drillTo(1,${i})">
         <span class="dc-name">${p.name}</span>
+        <span class="dc-arr">›</span>
+      </button>`).join('') +
+    `</div>`;
+}
+
+function renderDistricts(districts, provIdx, cityIdx) {
+  return `<div class="drill-grid">` +
+    districts.map((d, i) => `
+      <button class="drill-card" onclick="drillTo(3,${provIdx},${cityIdx},${i})">
+        <span class="dc-name">${d.name}</span>
         <span class="dc-arr">›</span>
       </button>`).join('') +
     `</div>`;
