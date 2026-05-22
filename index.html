@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="naver-site-verification" content="81eb0e0503f6af06de36a3a6420d7e08b20ffd36"/>
-  <meta name="description" content="초·중·고 전 과목 1:1 맞춤 과외 전문. 교육청 등록 교사로만 수업 진행. 첫 수업 무료. 수학·영어·국어·탐구·검정고시 과외 연결."/>
+  <meta name="description" content="초·중·고 전 과목 1:1 맞춤 과외 전문. 교육청 등록 교사로만 수업 진행. 1:1 상담. 수학·영어·국어·탐구·검정고시 과외 연결."/>
   <meta name="keywords" content="과외,1:1과외,수학과외,영어과외,국어과외,탐구과외,검정고시,초등과외,중등과외,고등과외,내신과외,수능과외"/>
   <meta name="robots" content="index, follow"/>
   <meta property="og:title" content="스터디레이어 — 1:1 맞춤 과외"/>
-  <meta property="og:description" content="교육청 등록 교사로만 수업. 첫 수업 무료. 전국 초·중·고 맞춤 과외 연결."/>
+  <meta property="og:description" content="교육청 등록 교사로만 수업. 1:1 상담. 전국 초·중·고 맞춤 과외 연결."/>
   <meta property="og:type" content="website"/>
   <meta name="naver-site-verification" content="studylayer"/>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
@@ -1125,37 +1125,51 @@
     <li><a href="index.html">홈</a></li>
     <li class="nav-dropdown">
       <button>과외 ▾</button>
-      <div class="dropdown-menu">
-        <a href="subject.html?s=korean">국어</a>
-        <a href="subject.html?s=english">영어</a>
-        <a href="subject.html?s=math">수학</a>
-        <a href="subject.html?s=science">탐구</a>
-        <a href="subject.html?s=coding">코딩</a>
-        <hr/>
-        <a href="subject.html?s=gd">검정고시</a>
-      </div>
-    </li>
-    <li class="nav-dropdown">
-      <button>지역 ▾</button>
-      <div class="dropdown-menu">
-        <a href="region.html?r=서울">서울</a>
-        <a href="region.html?r=경기">경기</a>
-        <a href="region.html?r=충청">충청</a>
-        <a href="region.html?r=대전">대전</a>
-        <a href="region.html?r=부산">부산</a>
-        <a href="region.html?r=대구">대구</a>
-        <a href="region.html?r=광주">광주</a>
-        <a href="region.html?r=전라">전라</a>
-        <a href="region.html?r=제주">제주</a>
+      <div class="dropdown-menu" style="min-width:520px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;padding:16px">
+        <!-- 지역별 -->
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">지역별</div>
+          <a href="region.html?r=서울">서울</a>
+          <a href="region.html?r=경기">경기</a>
+          <a href="region.html?r=인천">인천</a>
+          <a href="region.html?r=대전">대전</a>
+          <a href="region.html?r=대구">대구</a>
+          <a href="region.html?r=부산">부산</a>
+          <a href="region.html?r=광주">광주</a>
+          <a href="region.html?r=충청">충청</a>
+          <a href="region.html?r=경상">경상</a>
+          <a href="region.html?r=전라">전라</a>
+          <a href="region.html?r=제주">제주</a>
+          <a href="region.html" style="color:var(--blue);font-weight:900">전체 지역 →</a>
+        </div>
+        <!-- 학년별 -->
+        <div style="border-left:1px solid var(--line);padding-left:12px">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">학년별</div>
+          <a href="subject.html?grade=초등">초등 과외</a>
+          <a href="subject.html?grade=중등">중등 과외</a>
+          <a href="subject.html?grade=고등">고등 과외</a>
+          <a href="subject.html?grade=수능">수능 대비</a>
+          <a href="subject.html?grade=내신">내신 대비</a>
+        </div>
+        <!-- 과목별 -->
+        <div style="border-left:1px solid var(--line);padding-left:12px">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">과목별</div>
+          <a href="subject.html?s=korean">국어</a>
+          <a href="subject.html?s=english">영어</a>
+          <a href="subject.html?s=math">수학</a>
+          <a href="subject.html?s=science">탐구</a>
+          <a href="subject.html?s=coding">코딩</a>
+        </div>
       </div>
     </li>
     <li><a href="academy.html">학원</a></li>
+    <li><a href="subject.html?s=speaking">영어회화</a></li>
     <li><a href="subject.html?s=gd">검정고시</a></li>
-    <li><a href="#" class="nav-cta" onclick="openModal();return false;">무료 테스트 신청</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal();return false;">상담 신청</a></li>
   </ul>
 
   <div style="display:flex;align-items:center;gap:12px">
-    <a href="#" onclick="openModal();return false;" class="nav-cta" style="display:none" id="navCtaMobile">무료 테스트</a>
+    <a href="#" onclick="openModal();return false;" class="nav-cta" style="display:none" id="navCtaMobile">상담</a>
     <button class="burger" id="burgerBtn" aria-label="메뉴">
       <span id="b1"></span>
       <span id="b2"></span>
@@ -1168,38 +1182,55 @@
 <div id="mobileDrawer">
   <div class="drawer-nav">
     <a href="index.html" class="drawer-link">홈 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+
+    <!-- 과외 accordion -->
     <div style="border-bottom:1px solid var(--line)">
-      <button onclick="toggleDrawer('drawerSubject')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">과외 <span id="drawerSubjectArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
+      <button onclick="toggleDrawer('drawerTutor')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
+        과외 <span id="drawerTutorArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
       </button>
-      <div id="drawerSubject" class="drawer-sub closed">
-        <a href="subject.html?s=korean">국어</a>
-        <a href="subject.html?s=english">영어</a>
-        <a href="subject.html?s=math">수학</a>
-        <a href="subject.html?s=science">탐구</a>
-        <a href="subject.html?s=coding">코딩</a>
-        <a href="subject.html?s=speaking">회화</a>
+      <div id="drawerTutor" class="drawer-sub closed" style="display:none;padding-bottom:16px">
+        <!-- 지역별 -->
+        <div style="margin-bottom:12px">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;margin-bottom:8px">지역별</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <a href="region.html?r=서울" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">서울</a>
+            <a href="region.html?r=경기" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">경기</a>
+            <a href="region.html?r=대전" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">대전</a>
+            <a href="region.html?r=대구" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">대구</a>
+            <a href="region.html?r=부산" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">부산</a>
+            <a href="region.html" style="padding:8px 10px;background:var(--blue-soft);border-radius:8px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none">전체 →</a>
+          </div>
+        </div>
+        <!-- 학년별 -->
+        <div style="margin-bottom:12px">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;margin-bottom:8px">학년별</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <a href="subject.html?grade=초등" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">초등</a>
+            <a href="subject.html?grade=중등" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">중등</a>
+            <a href="subject.html?grade=고등" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">고등</a>
+            <a href="subject.html?grade=수능" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">수능</a>
+          </div>
+        </div>
+        <!-- 과목별 -->
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;margin-bottom:8px">과목별</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <a href="subject.html?s=korean" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">국어</a>
+            <a href="subject.html?s=english" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">영어</a>
+            <a href="subject.html?s=math" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">수학</a>
+            <a href="subject.html?s=science" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">탐구</a>
+            <a href="subject.html?s=coding" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">코딩</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div style="border-bottom:1px solid var(--line)">
-      <button onclick="toggleDrawer('drawerRegion')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">지역 <span id="drawerRegionArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
-      </button>
-      <div id="drawerRegion" class="drawer-sub closed" style="grid-template-columns:1fr 1fr 1fr">
-        <a href="region.html?r=서울">서울</a>
-        <a href="region.html?r=경기">경기</a>
-        <a href="region.html?r=충청">충청</a>
-        <a href="region.html?r=대전">대전</a>
-        <a href="region.html?r=부산">부산</a>
-        <a href="region.html?r=대구">대구</a>
-        <a href="region.html?r=광주">광주</a>
-        <a href="region.html?r=전라">전라</a>
-        <a href="region.html?r=제주">제주</a>
-      </div>
-    </div>
+
     <a href="academy.html" class="drawer-link">학원 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+    <a href="subject.html?s=speaking" class="drawer-link">영어회화 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
     <a href="subject.html?s=gd" class="drawer-link">검정고시 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
   </div>
   <div style="padding:0 24px 40px">
-    <button onclick="openModal()" class="btn-primary" style="width:100%;justify-content:center">무료 테스트 신청</button>
+    <button onclick="openModal()" class="btn-primary" style="width:100%;justify-content:center">상담 신청</button>
   </div>
 </div>
 
@@ -1240,12 +1271,12 @@
   <!-- 중앙 텍스트 -->
   <div class="hero-content">
     <div class="hero-tag">
-      <span class="hero-tag-dot"></span>첫 수업 무료
+      <span class="hero-tag-dot"></span>1:1 상담
     </div>
     <h1 class="hero-h1">성적을<br/><em>정확하게</em><br/>올립니다</h1>
     <p class="hero-sub">초·중·고 전 과목, 학생의 학교 교재와<br/>수준에 딱 맞는 선생님을 연결합니다.</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="openModal()">무료 테스트 신청 →</button>
+      <button class="btn-primary" onclick="openModal()">상담 신청 →</button>
       <p class="hero-note">평일·주말 오전 9시 — 오후 10시</p>
     </div>
   </div>
@@ -1420,7 +1451,7 @@
     <div class="step-grid reveal">
       <div class="step-card">
         <div class="step-num">01</div>
-        <div class="step-title">무료 상담 신청</div>
+        <div class="step-title">상담 신청</div>
         <div class="step-desc">전화로 학생의 현재 수준, 목표 과목, 학년을 말씀해 주세요.</div>
       </div>
       <div class="step-card">
@@ -1549,7 +1580,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-btn"><span class="faq-q">수업료는 얼마인가요?</span><span class="faq-ico">+</span></button>
-        <div class="faq-body"><p class="faq-a">수업료는 학년·과목·횟수에 따라 다릅니다. 무료 테스트 신청을 통해 정확히 안내해 드립니다.</p></div>
+        <div class="faq-body"><p class="faq-a">수업료는 학년·과목·횟수에 따라 다릅니다. 상담 신청을 통해 정확히 안내해 드립니다.</p></div>
       </div>
     </div>
   </div>
@@ -1558,8 +1589,8 @@
 <!-- ══════════════════ CTA ══════════════════ -->
 <section class="cta-section">
   <h2>지금 바로<br/>시작하세요</h2>
-  <p>첫 수업 무료 — 부담 없이 경험해 보세요</p>
-  <button class="btn-white" onclick="openModal()">무료 테스트 신청하기 →</button>
+  <p>지금 바로 상담하고 시작하세요</p>
+  <button class="btn-white" onclick="openModal()">상담 신청하기 →</button>
 </section>
 
 <!-- ══════════════════ FOOTER ══════════════════ -->
@@ -1605,8 +1636,8 @@
   <div class="modal-box">
     <div class="modal-head">
       <div>
-        <div class="modal-head-label">무료 테스트 신청</div>
-        <div class="modal-head-title">지금 바로 신청하세요</div>
+        <div class="modal-head-label">상담 신청</div>
+        <div class="modal-head-title">지금 바로 상담하세요</div>
       </div>
       <button class="modal-close" onclick="closeModal()"></button>
     </div>
@@ -1659,7 +1690,7 @@
             <textarea name="학습고민" rows="3" placeholder="현재 어떤 부분이 가장 어려우신가요?" class="form-textarea" style="font-family:inherit"></textarea>
           </div>
         </div>
-        <button type="submit" class="form-submit">무료 테스트 신청하기</button>
+        <button type="submit" class="form-submit">상담 신청하기</button>
       </form>
       <div class="form-success" id="formSuccess">
         <h3>신청 완료! </h3>
@@ -2051,17 +2082,19 @@ function renderCities(cities, provIdx) {
 }
 
 function renderDongs(city) {
-  // city.url 에서 도시명 추출: region.html?r=청주 → 청주
   const cityName = city.url.includes('?r=')
     ? city.url.split('?r=')[1]
     : city.url.split('/').pop().replace('-검정고시.html','').replace('-과외.html','');
 
-  return `<div class="dong-chip-grid">` +
-    city.dongs.map(d =>
-      `<a href="local/${cityName}-${d}-과외.html" class="dong-chip">${d}</a>`
-    ).join('') +
-    `<a href="${city.url}" class="dong-chip" style="border-color:var(--blue);color:var(--blue)">전체 보기</a>` +
-    `</div>`;
+  // 실제 GitHub local/ 폴더의 파일명 형식: 청주-가경동-과외.html
+  const dongLinks = city.dongs.map(d =>
+    `<a href="local/${cityName}-${d}-과외.html" class="dong-chip">${d}</a>`
+  ).join('');
+
+  return `<div class="dong-chip-grid">${dongLinks}</div>
+  <a href="${city.url}" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none">
+    ${cityName} 전체 과외 보기 →
+  </a>`;
 }
 
 // 초기 렌더
@@ -2115,6 +2148,15 @@ document.getElementById('burgerBtn').addEventListener('click', () => {
   b2.style.opacity = menuOpen ? '0' : '1';
   b3.style.transform = menuOpen ? 'rotate(-45deg) translate(4px,-4px)' : '';
 });
+
+function toggleDrawer(id) {
+  const el = document.getElementById(id);
+  const arrow = document.getElementById(id + 'Arrow');
+  if (!el) return;
+  const isOpen = el.style.display === 'block';
+  el.style.display = isOpen ? 'none' : 'block';
+  if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
 function toggleDrawer(id) {
   const el = document.getElementById(id);
   const arrow = document.getElementById(id + 'Arrow');
