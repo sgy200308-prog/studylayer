@@ -81,8 +81,34 @@
     .spin-badge { animation: spin-slow 12s linear infinite; }
     .marquee { animation: marquee 20s linear infinite; }
 
-    .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease,transform .6s ease; }
-    .reveal.on { opacity:1; transform:none; }
+    /* ── 스크롤 애니메이션 (Easy Ease / cubic-bezier) ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.on { opacity: 1; transform: translateY(0); }
+
+    /* 딜레이 변형 */
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+
+    /* 좌/우 슬라이드 변형 */
+    .reveal-left  { opacity:0; transform:translateX(-28px);
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right { opacity:0; transform:translateX(28px);
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.on, .reveal-right.on { opacity:1; transform:translate(0); }
+
+    /* 스케일 팝 변형 */
+    .reveal-pop { opacity:0; transform:scale(0.94) translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-pop.on { opacity:1; transform:scale(1) translateY(0); }
 
     /* ── NAV ── */
     .nav {
@@ -246,6 +272,14 @@
       position: relative;
       display: flex;
       flex-direction: column;
+    }
+    /* 모바일: 히어로 높이 40vh */
+    @media(max-width:767px) {
+      .hero { min-height: 40vh; }
+      .hero-content { padding: 48px 20px 56px; }
+      .hero-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); letter-spacing: -2px; }
+      .hero-sub { font-size: 14px; }
+      .spin-wrap svg { width: 52px !important; height: 52px !important; }
     }
 
     /* 풀스크린 이미지 */
@@ -1179,58 +1213,131 @@
 </nav>
 
 <!-- ══════════════════ 모바일 드로어 ══════════════════ -->
+<style>
+  .drawer-accordion {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .4s cubic-bezier(0.16,1,0.3,1), opacity .3s ease;
+  }
+  .drawer-acc-arrow { transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+  .drawer-sub-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--ink-mute); text-transform: uppercase; margin-bottom: 8px; display: block;
+  }
+  .drawer-chip-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 14px; }
+  .drawer-chip {
+    padding: 9px 10px; background: var(--bg-off); border-radius: 8px;
+    font-size: 13px; font-weight: 700; color: var(--ink-sub);
+    text-decoration: none; text-align: center; border: 1.5px solid transparent;
+    transition: border-color .15s, color .15s;
+  }
+  .drawer-chip:hover { border-color: var(--blue); color: var(--blue); }
+  .drawer-chip.blue { background: var(--blue-soft); color: var(--blue); }
+</style>
+
 <div id="mobileDrawer">
   <div class="drawer-nav">
     <a href="index.html" class="drawer-link">홈 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
 
-    <!-- 과외 accordion -->
+    <!-- ── 과외 (최상위) ── -->
     <div style="border-bottom:1px solid var(--line)">
-      <button onclick="toggleDrawer('drawerTutor')" style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
-        과외 <span id="drawerTutorArrow" style="color:var(--ink-mute);font-size:12px;transition:transform .2s">▾</span>
+      <button onclick="toggleDrawerAccordion('drawerTutor')"
+        style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:18px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
+        과외
+        <span id="drawerTutorArrow" class="drawer-acc-arrow" style="color:var(--ink-mute);font-size:14px">▾</span>
       </button>
-      <div id="drawerTutor" class="drawer-sub closed" style="display:none;padding-bottom:16px">
-        <!-- 지역별 -->
-        <div style="margin-bottom:12px">
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;margin-bottom:8px">지역별</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-            <a href="region.html?r=서울" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">서울</a>
-            <a href="region.html?r=경기" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">경기</a>
-            <a href="region.html?r=대전" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">대전</a>
-            <a href="region.html?r=대구" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">대구</a>
-            <a href="region.html?r=부산" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">부산</a>
-            <a href="region.html" style="padding:8px 10px;background:var(--blue-soft);border-radius:8px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none">전체 →</a>
+      <div id="drawerTutor" class="drawer-accordion" style="padding:0 0 16px">
+
+        <!-- 지역별 서브 아코디언 -->
+        <div style="margin-bottom:4px;border-radius:12px;overflow:hidden;border:1px solid var(--line)">
+          <button onclick="toggleDrawerAccordion('drawerRegion')"
+            style="font-family:inherit;background:var(--bg-off);border:none;cursor:pointer;width:100%;padding:13px 14px;font-size:14px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
+            지역별
+            <span id="drawerRegionArrow" class="drawer-acc-arrow" style="color:var(--ink-mute);font-size:12px">▾</span>
+          </button>
+          <div id="drawerRegion" class="drawer-accordion" style="padding:12px 14px 14px">
+            <div class="drawer-chip-grid">
+              <a href="region.html?r=서울" class="drawer-chip">서울</a>
+              <a href="region.html?r=경기" class="drawer-chip">경기</a>
+              <a href="region.html?r=인천" class="drawer-chip">인천</a>
+              <a href="region.html?r=대전" class="drawer-chip">대전</a>
+              <a href="region.html?r=충청" class="drawer-chip">충청</a>
+              <a href="region.html?r=대구" class="drawer-chip">대구</a>
+              <a href="region.html?r=부산" class="drawer-chip">부산</a>
+              <a href="region.html?r=광주" class="drawer-chip">광주</a>
+              <a href="region.html?r=경상" class="drawer-chip">경상</a>
+              <a href="region.html?r=전라" class="drawer-chip">전라</a>
+              <a href="region.html?r=제주" class="drawer-chip">제주</a>
+              <a href="index.html#region-finder" data-scroll="#region-finder" class="drawer-chip blue">전체 →</a>
+            </div>
           </div>
         </div>
-        <!-- 학년별 -->
-        <div style="margin-bottom:12px">
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;margin-bottom:8px">학년별</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-            <a href="subject.html?grade=초등" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">초등</a>
-            <a href="subject.html?grade=중등" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">중등</a>
-            <a href="subject.html?grade=고등" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">고등</a>
-            <a href="subject.html?grade=수능" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">수능</a>
+
+        <!-- 학년별 서브 아코디언 -->
+        <div style="margin-bottom:4px;border-radius:12px;overflow:hidden;border:1px solid var(--line)">
+          <button onclick="toggleDrawerAccordion('drawerGrade')"
+            style="font-family:inherit;background:var(--bg-off);border:none;cursor:pointer;width:100%;padding:13px 14px;font-size:14px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
+            학년별
+            <span id="drawerGradeArrow" class="drawer-acc-arrow" style="color:var(--ink-mute);font-size:12px">▾</span>
+          </button>
+          <div id="drawerGrade" class="drawer-accordion" style="padding:12px 14px 14px">
+            <div class="drawer-chip-grid">
+              <a href="subject.html?grade=초등" class="drawer-chip">초등</a>
+              <a href="subject.html?grade=중등" class="drawer-chip">중등</a>
+              <a href="subject.html?grade=고등" class="drawer-chip">고등</a>
+              <a href="subject.html?grade=수능" class="drawer-chip">수능</a>
+              <a href="subject.html?grade=내신" class="drawer-chip">내신</a>
+              <a href="subject.html?grade=nsu" class="drawer-chip">N수</a>
+            </div>
           </div>
         </div>
-        <!-- 과목별 -->
-        <div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;margin-bottom:8px">과목별</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-            <a href="subject.html?s=korean" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">국어</a>
-            <a href="subject.html?s=english" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">영어</a>
-            <a href="subject.html?s=math" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">수학</a>
-            <a href="subject.html?s=science" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">탐구</a>
-            <a href="subject.html?s=coding" style="padding:8px 10px;background:var(--bg-off);border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none">코딩</a>
+
+        <!-- 과목별 서브 아코디언 -->
+        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--line)">
+          <button onclick="toggleDrawerAccordion('drawerSubject')"
+            style="font-family:inherit;background:var(--bg-off);border:none;cursor:pointer;width:100%;padding:13px 14px;font-size:14px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
+            과목별
+            <span id="drawerSubjectArrow" class="drawer-acc-arrow" style="color:var(--ink-mute);font-size:12px">▾</span>
+          </button>
+          <div id="drawerSubject" class="drawer-accordion" style="padding:12px 14px 14px">
+            <div class="drawer-chip-grid">
+              <a href="subject.html?s=korean" class="drawer-chip">국어</a>
+              <a href="subject.html?s=english" class="drawer-chip">영어</a>
+              <a href="subject.html?s=math" class="drawer-chip">수학</a>
+              <a href="subject.html?s=science" class="drawer-chip">탐구</a>
+              <a href="subject.html?s=coding" class="drawer-chip">코딩</a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
 
     <a href="academy.html" class="drawer-link">학원 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
     <a href="subject.html?s=speaking" class="drawer-link">영어회화 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
-    <a href="subject.html?s=gd" class="drawer-link">검정고시 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+
+    <!-- 검정고시 아코디언 -->
+    <div style="border-bottom:1px solid var(--line)">
+      <button onclick="toggleDrawerAccordion('drawerGd')"
+        style="font-family:inherit;background:none;border:none;cursor:pointer;width:100%;padding:18px 0;font-size:18px;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center">
+        검정고시
+        <span id="drawerGdArrow" class="drawer-acc-arrow" style="color:var(--ink-mute);font-size:14px">▾</span>
+      </button>
+      <div id="drawerGd" class="drawer-accordion" style="padding:0 0 16px">
+        <div class="drawer-chip-grid" style="grid-template-columns:1fr 1fr">
+          <a href="subject.html?s=gd" class="drawer-chip" style="grid-column:span 2;font-size:14px">검정고시 전체</a>
+          <a href="subject.html?s=gd" class="drawer-chip">중졸</a>
+          <a href="subject.html?s=gd" class="drawer-chip">고졸</a>
+          <a href="subject.html?s=gd_high" class="drawer-chip">고득점 대입반</a>
+          <a href="subject.html?s=gd_pass" class="drawer-chip">빠른 합격반</a>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div style="padding:0 24px 40px">
-    <button onclick="openModal()" class="btn-primary" style="width:100%;justify-content:center">상담 신청</button>
+  <div style="padding:16px 24px 40px;display:flex;flex-direction:column;gap:10px">
+    <button onclick="openModal();closeDrawer();" class="btn-primary" style="width:100%;justify-content:center">상담 신청</button>
   </div>
 </div>
 
@@ -1273,8 +1380,8 @@
     <div class="hero-tag">
       <span class="hero-tag-dot"></span>1:1 상담
     </div>
-    <h1 class="hero-h1">성적을<br/><em>정확하게</em><br/>올립니다</h1>
-    <p class="hero-sub">초·중·고 전 과목, 학생의 학교 교재와<br/>수준에 딱 맞는 선생님을 연결합니다.</p>
+    <h1 class="hero-h1">학생에게<br/><em>딱 맞는</em><br/>1:1 맞춤 커리큘럼</h1>
+    <p class="hero-sub">초·중·고 전 과목, 학생의 수준과 학교 교재에 완벽히 맞춘 커리큘럼으로 성적을 올립니다.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="openModal()">상담 신청 →</button>
       <p class="hero-note">평일·주말 오전 9시 — 오후 10시</p>
@@ -1446,7 +1553,7 @@
   <div class="section-inner">
     <div class="section-head">
       <p class="label">How it works</p>
-      <h2 class="section-title" style="margin-top:10px">4단계로<br/>시작합니다</h2>
+      <h2 class="section-title" style="margin-top:10px">1:1 맞춤 커리큘럼<br/>이렇게 만들어집니다</h2>
     </div>
     <div class="step-grid reveal">
       <div class="step-card">
@@ -1456,18 +1563,18 @@
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
-        <div class="step-title">맞춤 선생님<br/>매칭</div>
-        <div class="step-desc">학교 교재와 성향에 맞는 선생님을 24시간 내 연결합니다.</div>
+        <div class="step-title">1:1 맞춤<br/>커리큘럼 설계</div>
+        <div class="step-desc">학생의 수준·학교·시험 일정에 맞춰 커리큘럼을 직접 설계합니다.</div>
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
-        <div class="step-title">첫 수업 &<br/>학습 계획</div>
-        <div class="step-desc">시험 일정 역산 계획을 수립하고 첫 수업을 시작합니다.</div>
+        <div class="step-title">선생님 매칭 &<br/>첫 수업 시작</div>
+        <div class="step-desc">커리큘럼에 맞는 선생님을 24시간 내 연결하고 수업을 시작합니다.</div>
       </div>
       <div class="step-card">
         <div class="step-num">04</div>
-        <div class="step-title">성적 향상<br/>관리</div>
-        <div class="step-desc">매 수업 후 피드백을 학부모님께 투명하게 전달합니다.</div>
+        <div class="step-title">성적 향상<br/>& 피드백</div>
+        <div class="step-desc">매 수업 후 학습 내용과 다음 계획을 학부모님께 투명하게 전달합니다.</div>
       </div>
     </div>
   </div>
@@ -1527,25 +1634,94 @@
 <!-- ══════════════════ 검정고시 (다크) ══════════════════ -->
 <section class="section-dark" id="gd-section">
   <div class="section-inner">
-    <div class="section-head">
-      <p class="label">검정고시</p>
-      <h2 class="section-title" style="color:#fff;margin-top:10px">목표에 맞게<br/>골라서 준비하세요</h2>
-      <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-top:10px;line-height:1.7">중졸·고졸 검정고시, 목표에 따라 맞춤 커리큘럼으로 준비합니다.</p>
+
+    <div class="section-head reveal">
+      <p class="label">검정고시 전문</p>
+      <h2 class="section-title" style="color:#fff;margin-top:10px">중졸·고졸<br/>목표에 맞게 준비하세요</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);margin-top:12px;line-height:1.75;max-width:480px">
+        단순 합격부터 대입 고득점까지 — 학생의 목표에 딱 맞는 1:1 맞춤 커리큘럼으로 설계합니다.
+      </p>
     </div>
 
-    <div class="gd-tabs">
-      <button class="gd-tab" id="gd-jungjeol" onclick="selectGd(this,'jungjeol')">중졸</button>
-      <button class="gd-tab" id="gd-gojol" onclick="selectGd(this,'gojol')">고졸</button>
-      <button class="gd-tab" id="gd-highscore" onclick="selectGd(this,'highscore')">고득점</button>
-      <button class="gd-tab" id="gd-pass" onclick="selectGd(this,'pass')">합격</button>
+    <!-- 중졸 / 고졸 대분류 탭 -->
+    <div style="display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap" class="reveal reveal-d1">
+      <button class="gd-main-tab active" id="gdmain-jungjeol" onclick="switchGdMain('jungjeol')">중졸 검정고시</button>
+      <button class="gd-main-tab" id="gdmain-gojol" onclick="switchGdMain('gojol')">고졸 검정고시</button>
     </div>
-    <div class="gd-panel">
-      <div class="gd-panel-title" id="gd-title"></div>
-      <div class="gd-panel-desc" id="gd-desc"></div>
-      <div class="gd-points" id="gd-points"></div>
+
+    <!-- 중졸 패널 -->
+    <div id="gdpanel-jungjeol" class="gd-main-panel reveal reveal-d2">
+      <div style="display:grid;grid-template-columns:1fr;gap:14px">
+        <div style="grid-template-columns:1fr 1fr;display:grid;gap:14px">
+
+          <!-- 빠른 합격 보장반 -->
+          <div class="gd-track-card">
+            <div class="gd-track-badge" style="background:rgba(255,255,255,0.12)">합격 보장반</div>
+            <h3 class="gd-track-title">빠른 합격 보장반</h3>
+            <p class="gd-track-desc">기초가 부족해도 괜찮습니다. 핵심만 압축해 단기간 안에 안정적인 합격선(평균 60점 이상)을 돌파하는 1:1 맞춤 클래스입니다.</p>
+            <ul class="gd-track-list">
+              <li>최소 6주 집중 합격 과정</li>
+              <li>기출 10년치 패턴 완전 분석</li>
+              <li>7과목 전 과목 60점 이상 목표</li>
+              <li>기초부터 1:1 밀착 지도</li>
+            </ul>
+            <a href="subject.html?s=gd_pass" class="gd-track-btn">상담 신청 →</a>
+          </div>
+
+          <!-- 고득점 대입 전략반 (중졸은 연하게) -->
+          <div class="gd-track-card" style="opacity:0.7">
+            <div class="gd-track-badge" style="background:rgba(255,255,255,0.08)">고득점반</div>
+            <h3 class="gd-track-title">고득점 전략반</h3>
+            <p class="gd-track-desc">합격을 넘어 전 과목 고득점을 목표로 합니다. 취약 과목을 정밀 분석해 실력을 끌어올립니다.</p>
+            <ul class="gd-track-list">
+              <li>전 과목 90점 이상 목표</li>
+              <li>과목별 취약점 정밀 분석</li>
+              <li>고난도 문제 집중 훈련</li>
+            </ul>
+            <a href="subject.html?s=gd_high" class="gd-track-btn">상담 신청 →</a>
+          </div>
+
+        </div>
+      </div>
     </div>
-    <div style="margin-top:28px">
-      <a href="subject.html?s=gd" class="btn-primary" style="font-size:13px;padding:12px 24px;border-radius:12px;text-decoration:none">검정고시 자세히 보기 →</a>
+
+    <!-- 고졸 패널 -->
+    <div id="gdpanel-gojol" class="gd-main-panel" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+        <!-- 고득점 대입 전략반 (고졸 강조) -->
+        <div class="gd-track-card gd-track-featured">
+          <div class="gd-track-badge" style="background:var(--blue);color:#fff">★ 추천</div>
+          <h3 class="gd-track-title">고득점 대입 전략반</h3>
+          <p class="gd-track-desc">단순 합격을 넘어 주요 대학 수시 입시에서 최고 등급 점수를 확보합니다. 전 과목 만점을 목표로 하는 1:1 맞춤 클래스입니다.</p>
+          <ul class="gd-track-list">
+            <li>전 과목 95점 이상 · 만점 목표</li>
+            <li>대입 수시 서류 경쟁력 강화</li>
+            <li>과목별 취약점 정밀 분석</li>
+            <li>고난도 문제 집중 심화 훈련</li>
+          </ul>
+          <a href="subject.html?s=gd_high" class="gd-track-btn" style="background:var(--blue);color:#fff">상담 신청 →</a>
+        </div>
+
+        <!-- 빠른 합격 보장반 -->
+        <div class="gd-track-card">
+          <div class="gd-track-badge" style="background:rgba(255,255,255,0.12)">합격 보장반</div>
+          <h3 class="gd-track-title">빠른 합격 보장반</h3>
+          <p class="gd-track-desc">시간이 촉박하거나 기초가 부족해도 핵심만 압축해 확실하게 합격선을 넘기는 클래스입니다.</p>
+          <ul class="gd-track-list">
+            <li>최소 6주 집중 합격 과정</li>
+            <li>기출 10년치 완전 분석</li>
+            <li>7과목 전 과목 60점 이상 목표</li>
+            <li>직장인·재수생 맞춤 스케줄</li>
+          </ul>
+          <a href="subject.html?s=gd_pass" class="gd-track-btn">상담 신청 →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:32px" class="reveal reveal-d3">
+      <a href="subject.html?s=gd" class="btn-primary" style="font-size:14px;padding:14px 28px;border-radius:12px;text-decoration:none">검정고시 전체 과정 보기 →</a>
     </div>
   </div>
 </section>
@@ -1717,12 +1893,25 @@ const REGION_DATA = {
   tutor: {
     provinces: [
       { name:'서울', icon:'', cities:[
-        { name:'서울 전체', url:'region.html?r=서울', dongs:[] }
+        { name:'서울 전체', url:'region.html?r=서울', dongs:[], districts:[
+        { name:'강남구', dongs:['개포동','논현동','대치동','도곡동','삼성동','압구정동','역삼동','일원동','청담동'] },
+        { name:'서초구', dongs:['반포동','방배동','서초동','양재동','잠원동'] },
+        { name:'송파구', dongs:['문정동','방이동','잠실동','장지동'] },
+        { name:'마포구', dongs:['공덕동','상암동','신수동','염리동','합정동','홍대입구'] },
+        { name:'강서구', dongs:['가양동','등촌동','마곡동','방화동'] },
+        { name:'영등포구', dongs:['당산동','목동','신길동','여의도동'] },
+        { name:'노원구', dongs:['공릉동','월계동','중계동','하계동'] },
+        { name:'기타 구', dongs:['강북','도봉','성북','은평','종로','중구'] }
+      ] }
       ]},
       { name:'경기', icon:'', cities:[
         { name:'수원', url:'region.html?r=수원', dongs:[] },
         { name:'성남', url:'region.html?r=성남', dongs:[] },
-        { name:'고양', url:'region.html?r=고양', dongs:['구산동','덕이동','마두동','백석동','삼송동','원당동','장항동','주엽동','중산동','탄현동','풍동동','행신동','화정동','후곡동'] },
+        { name:'고양', url:'region.html?r=고양', dongs:[], districts:[
+        { name:'일산동구', dongs:['마두동','백석동','장항동','주엽동'] },
+        { name:'일산서구', dongs:['구산동','덕이동','탄현동','풍동동'] },
+        { name:'덕양구', dongs:['삼송동','원당동','행신동','화정동','중산동','후곡동'] }
+      ] },
         { name:'용인', url:'region.html?r=용인', dongs:['구갈동','동백동','보라동','상현동','성복동','신봉동','죽전동','풍덕천동','홍덕동'] },
         { name:'남양주', url:'region.html?r=남양주', dongs:['다산동','도농동','별가람동','별내동','지금동','청학동','평내동','호평동'] },
         { name:'화성', url:'region.html?r=화성', dongs:['동탄1신도시','동탄2신도시','동탄역','목동','반송동','봉담읍','영천동'] },
@@ -1759,7 +1948,12 @@ const REGION_DATA = {
         { name:'삼척', url:'region.html?r=삼척', dongs:[] },
       ]},
       { name:'충북', icon:'', cities:[
-        { name:'청주', url:'region.html?r=청주', dongs:['가경동','강서동','개신동','금천동','내덕동','모충동','방서동','복대동','봉명동','분동','분평동','사창동','산남동','서현동','성화동','수곡동','신봉동','용암동','우암동','율량동','율봉동'] },
+        { name:'청주', url:'region.html?r=청주', dongs:[], districts:[
+        { name:'흥덕구', dongs:['가경동','강서동','개신동','복대동','봉명동','분평동','산남동','서현동','성화동','수곡동','신봉동'] },
+        { name:'청원구', dongs:['내덕동','율량동','율봉동','우암동','용담동'] },
+        { name:'서원구', dongs:['금천동','모충동','방서동','사창동','용암동'] },
+        { name:'상당구', dongs:['분동','용암동','방서동'] }
+      ] },
         { name:'충주', url:'region.html?r=충주', dongs:[] },
         { name:'제천', url:'region.html?r=제천', dongs:[] },
         { name:'보은', url:'region.html?r=보은', dongs:[] },
@@ -1777,7 +1971,12 @@ const REGION_DATA = {
         { name:'당진', url:'region.html?r=당진', dongs:[] },
       ]},
       { name:'대전', icon:'', cities:[
-        { name:'대전 전체', url:'region.html?r=대전', dongs:['관저동','관평동','노은동','대흥동','도안동','둔산동','문화동','반석동','법동','송촌동','신성동','월평동','죽동','중리동','지족동','탄방동','태평동'] }
+        { name:'대전 전체', url:'region.html?r=대전', dongs:[], districts:[
+        { name:'서구', dongs:['관저동','도안동','둔산동','월평동','탄방동'] },
+        { name:'유성구', dongs:['관평동','노은동','반석동','신성동','지족동'] },
+        { name:'중구', dongs:['대흥동','문화동','태평동'] },
+        { name:'동구', dongs:['법동','송촌동','중리동'] }
+      ] }
       ]},
       { name:'세종', icon:'', cities:[
         { name:'세종 전체', url:'region.html?r=세종', dongs:[] }
@@ -2135,12 +2334,19 @@ document.getElementById('consultForm').addEventListener('submit', async function
   }
 });
 
-// ── 햄버거 ──
+// ── 햄버거 & 드로어 ──
 let menuOpen = false;
 const drawer = document.getElementById('mobileDrawer');
 const b1 = document.getElementById('b1');
 const b2 = document.getElementById('b2');
 const b3 = document.getElementById('b3');
+
+function closeDrawer() {
+  menuOpen = false;
+  drawer.classList.remove('open');
+  b1.style.transform = ''; b2.style.opacity = '1'; b3.style.transform = '';
+}
+
 document.getElementById('burgerBtn').addEventListener('click', () => {
   menuOpen = !menuOpen;
   drawer.classList.toggle('open', menuOpen);
@@ -2149,14 +2355,50 @@ document.getElementById('burgerBtn').addEventListener('click', () => {
   b3.style.transform = menuOpen ? 'rotate(-45deg) translate(4px,-4px)' : '';
 });
 
-function toggleDrawer(id) {
+// 아코디언: 드로어 내 서브메뉴
+function toggleDrawerAccordion(id) {
   const el = document.getElementById(id);
   const arrow = document.getElementById(id + 'Arrow');
   if (!el) return;
-  const isOpen = el.style.display === 'block';
-  el.style.display = isOpen ? 'none' : 'block';
-  if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+  const isOpen = el.style.maxHeight && el.style.maxHeight !== '0px';
+  // 모두 닫기
+  document.querySelectorAll('.drawer-accordion').forEach(acc => {
+    acc.style.maxHeight = '0px';
+    acc.style.opacity = '0';
+  });
+  document.querySelectorAll('.drawer-acc-arrow').forEach(a => a.style.transform = '');
+  if (!isOpen) {
+    el.style.maxHeight = el.scrollHeight + 'px';
+    el.style.opacity = '1';
+    if (arrow) arrow.style.transform = 'rotate(180deg)';
+  }
 }
+
+// 드로어 링크 클릭: 스무스 스크롤 후 메뉴 닫기
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[data-scroll]');
+  if (!link) return;
+  e.preventDefault();
+  const target = document.querySelector(link.getAttribute('data-scroll'));
+  if (target) {
+    closeDrawer();
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+});
+
+// 드로어 외부 링크 클릭 시 닫기
+document.querySelector('#mobileDrawer').addEventListener('click', (e) => {
+  if (e.target.tagName === 'A' && !e.target.dataset.scroll) {
+    // href가 실제 경로인지 확인 (# 만 있으면 막기)
+    const href = e.target.getAttribute('href');
+    if (!href || href === '#') { e.preventDefault(); return; }
+    closeDrawer();
+  }
+});
+
+function toggleDrawer(id) { toggleDrawerAccordion(id); }
 function toggleDrawer(id) {
   const el = document.getElementById(id);
   const arrow = document.getElementById(id + 'Arrow');
@@ -2166,10 +2408,30 @@ function toggleDrawer(id) {
 }
 
 // ── reveal ──
-const revealIO = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
-}, { threshold: 0.05 });
-document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+// ── 스크롤 애니메이션 IntersectionObserver ──
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      revealIO.unobserve(e.target); // 한 번 실행 후 해제
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-pop').forEach(el => {
+  revealIO.observe(el);
+});
+
+// 카드 그리드 자식에 순차 딜레이 자동 부여
+document.querySelectorAll('.subject-grid, .step-grid, .review-grid, .drill-grid').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    if (!child.classList.contains('reveal')) {
+      child.classList.add('reveal');
+      child.style.transitionDelay = (i * 0.07) + 's';
+      revealIO.observe(child);
+    }
+  });
+});
 
 // ── FAQ ──
 document.querySelectorAll('.faq-btn').forEach(btn => {
@@ -2219,9 +2481,32 @@ function selectGd(el, key) {
   ).join('');
 }
 
+// ── 검정고시 대분류 탭 ──
+function switchGdMain(key) {
+  document.querySelectorAll('.gd-main-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.gd-main-panel').forEach(p => {
+    p.style.display = 'none';
+  });
+  const btn = document.getElementById('gdmain-' + key);
+  if (btn) btn.classList.add('active');
+  const panel = document.getElementById('gdpanel-' + key);
+  if (panel) {
+    panel.style.display = 'block';
+    panel.style.opacity = '0';
+    panel.style.transform = 'translateY(12px)';
+    requestAnimationFrame(() => {
+      panel.style.transition = 'opacity .45s cubic-bezier(0.16,1,0.3,1), transform .45s cubic-bezier(0.16,1,0.3,1)';
+      panel.style.opacity = '1';
+      panel.style.transform = 'translateY(0)';
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  switchGdMain('jungjeol');
+  // 구버전 호환
   const btn = document.getElementById('gd-jungjeol');
-  if (btn) selectGd(btn, 'jungjeol');
+  if (btn && typeof selectGd === 'function') selectGd(btn, 'jungjeol');
 });
 </script>
 
