@@ -1513,7 +1513,7 @@
       <p class="label">과목 선택</p>
       <h2 class="section-title" style="margin-top:10px">어떤 과목이<br/>필요하세요?</h2>
     </div>
-    <div class="subject-grid reveal">
+    <div class="subject-grid">
       <a href="subject.html?s=korean" class="subject-card">
         <div>
           <div class="s-label">Korean</div>
@@ -1602,7 +1602,7 @@
       <p class="label">How it works</p>
       <h2 class="section-title" style="margin-top:10px">1:1 맞춤 커리큘럼<br/>이렇게 만들어집니다</h2>
     </div>
-    <div class="step-grid reveal">
+    <div class="step-grid">
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-title">상담 신청</div>
@@ -1634,7 +1634,7 @@
       <p class="label">Reviews</p>
       <h2 class="section-title" style="margin-top:10px">수강생 후기</h2>
     </div>
-    <div class="review-grid reveal">
+    <div class="review-grid">
       <div class="review-card">
         <div>
           <div class="review-badge">고2 · 수학</div>
@@ -2496,28 +2496,19 @@ function toggleDrawer(id) {
 
 // ── reveal ──
 // ── 스크롤 애니메이션 IntersectionObserver ──
+// ── 스크롤 애니메이션 ──
 const revealIO = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('on');
-      revealIO.unobserve(e.target); // 한 번 실행 후 해제
+      revealIO.unobserve(e.target);
     }
   });
-}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.04, rootMargin: '0px 0px -20px 0px' });
 
+// reveal 클래스 요소만 관찰 (자식 자동 부여 X — 그리드 깨짐 방지)
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-pop').forEach(el => {
   revealIO.observe(el);
-});
-
-// 카드 그리드 자식에 순차 딜레이 자동 부여
-document.querySelectorAll('.subject-grid, .step-grid, .review-grid, .drill-grid').forEach(grid => {
-  Array.from(grid.children).forEach((child, i) => {
-    if (!child.classList.contains('reveal')) {
-      child.classList.add('reveal');
-      child.style.transitionDelay = (i * 0.07) + 's';
-      revealIO.observe(child);
-    }
-  });
 });
 
 // ── FAQ ──
