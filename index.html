@@ -273,13 +273,18 @@
       display: flex;
       flex-direction: column;
     }
-    /* 모바일: 히어로 높이 40vh */
+    /* 모바일: 히어로 높이 축소 */
     @media(max-width:767px) {
-      .hero { min-height: 40vh; }
-      .hero-content { padding: 48px 20px 56px; }
-      .hero-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); letter-spacing: -2px; }
-      .hero-sub { font-size: 14px; }
-      .spin-wrap svg { width: 52px !important; height: 52px !important; }
+      .hero { min-height: 60vh; }
+      .hero-content { padding: 36px 20px 44px; }
+      .hero-h1 {
+        font-size: clamp(1.9rem, 7.5vw, 2.8rem) !important;
+        letter-spacing: -1.5px;
+        line-height: 1.15;
+      }
+      .hero-sub { font-size: 13px; margin-bottom: 24px; }
+      .spin-wrap svg { width: 48px !important; height: 48px !important; }
+      .hero-float-card { display: none; }
     }
 
     /* 풀스크린 이미지 */
@@ -356,7 +361,7 @@
     @keyframes pulse-dot { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
 
     .hero-h1 {
-      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      font-size: clamp(2.6rem, 8vw, 6.5rem);
       font-weight: 900;
       letter-spacing: -3px;
       line-height: 1.05;
@@ -1138,6 +1143,48 @@
       background:var(--blue-soft);
     }
 
+    /* ── 검정고시 대분류 탭 ── */
+    .gd-main-tab {
+      padding: 13px 28px; border-radius: 40px; font-size: 15px; font-weight: 900;
+      font-family: inherit; cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55);
+      transition: all .2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .gd-main-tab.active { background:#fff; border-color:#fff; color:var(--ink); }
+    .gd-main-tab:hover:not(.active) { border-color:rgba(255,255,255,0.4); color:rgba(255,255,255,0.85); }
+
+    /* ── 트랙 카드 ── */
+    .gd-track-card {
+      background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 20px; padding: 28px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: border-color .2s, background .2s;
+    }
+    .gd-track-card:hover { border-color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.1); }
+    .gd-track-featured { border-color:var(--blue) !important; background:rgba(37,99,235,0.18) !important; }
+    .gd-track-badge {
+      display:inline-flex; align-items:center; font-size:11px; font-weight:700;
+      letter-spacing:1px; padding:5px 14px; border-radius:20px; width:fit-content; color:#fff;
+    }
+    .gd-track-title { font-size:20px; font-weight:900; color:#fff; line-height:1.3; margin:0; }
+    .gd-track-desc { font-size:14px; color:rgba(255,255,255,0.65); line-height:1.75; margin:0; flex:1; }
+    .gd-track-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+    .gd-track-list li { font-size:13px; font-weight:700; color:rgba(255,255,255,0.85); padding-left:18px; position:relative; }
+    .gd-track-list li::before { content:'✓'; position:absolute; left:0; color:var(--blue-mid); font-weight:900; }
+    .gd-track-btn {
+      display:inline-flex; align-items:center; padding:12px 22px; border-radius:12px;
+      background:rgba(255,255,255,0.1); border:1.5px solid rgba(255,255,255,0.25);
+      color:#fff; font-size:14px; font-weight:900; text-decoration:none; width:fit-content;
+      transition:all .2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .gd-track-btn:hover { background:rgba(255,255,255,0.22); }
+    @media(max-width:639px) {
+      #gdpanel-jungjeol > div, #gdpanel-gojol > div { grid-template-columns:1fr !important; }
+      .gd-track-card { padding:20px; }
+      .gd-track-title { font-size:17px; }
+    }
+
     /* 구분선 */
     .divider { border:none; border-top:1px solid var(--line); margin:0; }
   </style>
@@ -1651,8 +1698,7 @@
 
     <!-- 중졸 패널 -->
     <div id="gdpanel-jungjeol" class="gd-main-panel reveal reveal-d2">
-      <div style="display:grid;grid-template-columns:1fr;gap:14px">
-        <div style="grid-template-columns:1fr 1fr;display:grid;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
 
           <!-- 빠른 합격 보장반 -->
           <div class="gd-track-card">
@@ -1681,7 +1727,6 @@
             <a href="subject.html?s=gd_high" class="gd-track-btn">상담 신청 →</a>
           </div>
 
-        </div>
       </div>
     </div>
 
@@ -2360,15 +2405,30 @@ function toggleDrawerAccordion(id) {
   const el = document.getElementById(id);
   const arrow = document.getElementById(id + 'Arrow');
   if (!el) return;
+
   const isOpen = el.style.maxHeight && el.style.maxHeight !== '0px';
-  // 모두 닫기
-  document.querySelectorAll('.drawer-accordion').forEach(acc => {
-    acc.style.maxHeight = '0px';
-    acc.style.opacity = '0';
+
+  // 같은 레벨(형제)만 닫기 — 부모/자식은 건드리지 않음
+  const parent = el.parentElement;
+  parent.parentElement.querySelectorAll(':scope > div > .drawer-accordion').forEach(acc => {
+    if (acc !== el) {
+      acc.style.maxHeight = '0px';
+      acc.style.opacity = '0';
+      // 해당 형제의 화살표도 리셋
+      const siblingBtn = acc.previousElementSibling;
+      if (siblingBtn) {
+        const sibArrow = siblingBtn.querySelector('.drawer-acc-arrow');
+        if (sibArrow) sibArrow.style.transform = '';
+      }
+    }
   });
-  document.querySelectorAll('.drawer-acc-arrow').forEach(a => a.style.transform = '');
-  if (!isOpen) {
-    el.style.maxHeight = el.scrollHeight + 'px';
+
+  if (isOpen) {
+    el.style.maxHeight = '0px';
+    el.style.opacity = '0';
+    if (arrow) arrow.style.transform = '';
+  } else {
+    el.style.maxHeight = el.scrollHeight + 500 + 'px'; // +500 for nested content
     el.style.opacity = '1';
     if (arrow) arrow.style.transform = 'rotate(180deg)';
   }

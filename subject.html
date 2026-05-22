@@ -498,7 +498,6 @@ function render(key) {
  const isExplore = key === 'science';
  const cardHTML = curr => curr.map(item =>
  `<div class="rounded-3xl p-7 border-2 border-slate-100 bg-white">
- <span class="inline-block text-[10px] font-black tracking-[2px] uppercase px-3 py-1 rounded-full mb-4" style="background:var(--blue-soft);color:var(--blue)">${item.lv}</span>
  <div class="text-base font-black mb-4" style="color:var(--ink)">${item.title}</div>
  <ul class="space-y-2">${item.items.map(i => `<li class="text-xs font-light flex gap-2 leading-relaxed" style="color:var(--ink-sub)"><span style="color:var(--blue);flex-shrink:0;margin-top:2px">—</span>${i}</li>`).join('')}</ul>
  </div>`
