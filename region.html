@@ -20,7 +20,7 @@
  theme: {
  extend: {
  fontFamily: { sans: ["'S-CoreDream'", 'sans-serif'] },
- colors: { lime:'#3182F6', sky:'#3182F6', peach:'#EAF2FF', mint:'#EAF2FF', lav:'#3182F6', teal:'#3182F6' }
+ colors: {}
  }
  }
  }
@@ -64,7 +64,7 @@
 
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-10 h-14 bg-white/90 backdrop-blur-sm border-b border-gray-100">
- <a href="index.html" class="font-black text-base tracking-tight"><span class="text-[#3182F6]">스터디</span>레이어</a>
+ <a href="index.html" style="font-weight:900;font-size:16px;letter-spacing:-0.5px"><span style="color:var(--blue)">스터디</span>레이어</a>
  <ul class="hidden md:flex gap-1 text-sm text-gray-500 font-medium items-center" id="gnb">
  <li><a href="index.html" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">홈</a></li>
  <li class="relative group">
@@ -154,17 +154,17 @@
 <!-- 지역 탭 바 -->
 <div class="mt-14 bg-white border-b border-gray-100 overflow-x-auto">
  <div class="flex px-5 md:px-10 gap-0 min-w-max">
- <a href="region.html?r=서울" id="tab-서울" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 서울</a>
- <a href="region.html?r=경기" id="tab-경기" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 경기</a>
- <a href="region.html?r=충청" id="tab-충청" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 충청</a>
- <a href="region.html?r=대전" id="tab-대전" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 대전</a>
- <a href="region.html?r=부산" id="tab-부산" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 부산</a>
- <a href="region.html?r=대구" id="tab-대구" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 대구</a>
- <a href="region.html?r=경상" id="tab-경상" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 경상</a>
- <a href="region.html?r=전라" id="tab-전라" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 전라</a>
- <a href="region.html?r=광주" id="tab-광주" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 광주</a>
- <a href="region.html?r=제주" id="tab-제주" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 제주</a>
- <a href="region.html?r=온라인" id="tab-온라인" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap"> 온라인</a>
+ <a href="region.html?r=서울" id="tab-서울" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">서울</a>
+ <a href="region.html?r=경기" id="tab-경기" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">경기</a>
+ <a href="region.html?r=충청" id="tab-충청" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">충청</a>
+ <a href="region.html?r=대전" id="tab-대전" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">대전</a>
+ <a href="region.html?r=부산" id="tab-부산" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">부산</a>
+ <a href="region.html?r=대구" id="tab-대구" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">대구</a>
+ <a href="region.html?r=경상" id="tab-경상" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">경상</a>
+ <a href="region.html?r=전라" id="tab-전라" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">전라</a>
+ <a href="region.html?r=광주" id="tab-광주" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">광주</a>
+ <a href="region.html?r=제주" id="tab-제주" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">제주</a>
+ <a href="region.html?r=온라인" id="tab-온라인" class="region-tab px-4 py-3.5 text-sm font-bold text-gray-600 border-b-2 border-transparent hover:text-gray-900 whitespace-nowrap">온라인</a>
  </div>
 </div>
 
@@ -173,7 +173,7 @@
  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
  <div>
  <p class="text-xs text-gray-600 mb-3"><a href="index.html" class="hover:text-white transition-colors">홈</a> / 지역별 과외 / <span id="hero-region" class="text-gray-600"></span></p>
- <div id="hero-badge" class="text-[10px] font-bold tracking-[2.5px] uppercase text-[#3182F6] mb-3"></div>
+ <div id="hero-badge" class="text-[10px] font-bold tracking-[2.5px] uppercase text-blue-600 mb-3"></div>
  <h1 id="hero-h1" class="text-4xl md:text-5xl font-black tracking-[-2px] leading-[1.12] text-white mb-5"></h1>
  <p id="hero-desc" class="text-sm font-light text-white/55 leading-relaxed mb-8 max-w-sm"></p>
  <a href="tel:010-2069-8522" class="inline-flex items-center gap-2 font-black text-sm px-7 py-3.5 rounded-2xl transition-colors" style="background:var(--blue);color:#fff"> 상담 신청</a>
@@ -185,16 +185,16 @@
 <!-- 마퀴 -->
 <div class="bg-gray-800 py-3 overflow-hidden border-y border-gray-700">
  <div class="flex whitespace-nowrap marquee">
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>1:1 맞춤 과외</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 내신 대비</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>학교 교재 분석</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 기출 완벽 분석</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-blue-600 inline-block"></span>1:1 맞춤 과외</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-blue-600 tracking-widest uppercase">/ 내신 대비</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-blue-600 inline-block"></span>학교 교재 분석</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-blue-600 tracking-widest uppercase">/ 기출 완벽 분석</span>
  <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full inline-block" style="background:var(--blue)"></span>수능 대비</span>
  <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold tracking-widest" style="color:var(--blue) uppercase">/ 검증된 선생님</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>1:1 맞춤 과외</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 내신 대비</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-[#3182F6] inline-block"></span>학교 교재 분석</span>
- <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-[#3182F6] tracking-widest uppercase">/ 기출 완벽 분석</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-blue-600 inline-block"></span>1:1 맞춤 과외</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-blue-600 tracking-widest uppercase">/ 내신 대비</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full bg-blue-600 inline-block"></span>학교 교재 분석</span>
+ <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-blue-600 tracking-widest uppercase">/ 기출 완벽 분석</span>
  <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold text-white/60 tracking-widest uppercase"><span class="w-1 h-1 rounded-full inline-block" style="background:var(--blue)"></span>수능 대비</span>
  <span class="inline-flex items-center gap-3 px-7 text-[11px] font-bold tracking-widest" style="color:var(--blue) uppercase">/ 검증된 선생님</span>
  </div>
@@ -203,7 +203,7 @@
 <!-- 과목 선택 -->
 <section class="px-5 py-12 md:px-16 md:py-16 bg-white border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[11px] font-black tracking-[4px] uppercase text-[#3182F6] mb-3">과목 선택</p>
+ <p class="text-[11px] font-black tracking-[4px] uppercase text-blue-600 mb-3">과목 선택</p>
  <h2 id="subject-title" class="text-2xl md:text-3xl font-black tracking-[-1.5px] text-gray-900 mb-8"></h2>
  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal">
  <a id="link-korean" href="subject.html?s=korean" class="flex flex-col items-center gap-2 hover:scale-105 transition-transform rounded-2xl py-6 px-4 border-2 border-slate-100 bg-white"><span class="text-2xl"></span><span class="text-sm font-black" style="color:var(--ink)">국어</span></a>
@@ -218,7 +218,7 @@
 <!-- 지역 특징 -->
 <section class="px-5 py-12 md:px-16 md:py-16 bg-gray-50 border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[11px] font-black tracking-[4px] uppercase text-[#3182F6] mb-3">지역 특징</p>
+ <p class="text-[11px] font-black tracking-[4px] uppercase text-blue-600 mb-3">지역 특징</p>
  <h2 class="text-2xl md:text-3xl font-black tracking-[-1.5px] text-gray-900 mb-8" id="feature-title"></h2>
  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 reveal" id="feature-grid"></div>
  </div>
@@ -241,7 +241,7 @@
 <!-- FAQ -->
 <section class="px-5 py-12 md:px-16 md:py-16 bg-white border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
- <p class="text-[11px] font-black tracking-[4px] uppercase text-[#3182F6] mb-3">FAQ</p>
+ <p class="text-[11px] font-black tracking-[4px] uppercase text-blue-600 mb-3">FAQ</p>
  <h2 class="text-2xl md:text-3xl font-black tracking-[-1.5px] text-gray-900 mb-10">자주 묻는 질문</h2>
  <div class="divide-y divide-gray-100 border-t border-gray-100 reveal">
  <div class="faq-item py-1"><button class="faq-btn w-full flex items-center justify-between py-5 gap-4 text-left bg-transparent border-none cursor-pointer" style="font-family:'S-CoreDream',sans-serif"><span class="text-sm font-bold text-gray-900">수업 선생님은 어떤 분들인가요?</span><span class="faq-ico text-xl text-gray-500 flex-shrink-0">+</span></button><div class="faq-ans text-sm font-light text-gray-600 leading-relaxed">교육청에 정식으로 등록된 현직 교사 및 자격증을 보유한 교원만 수업을 진행합니다. 모든 선생님은 등록 전 자격 확인 절차를 거칩니다.</div></div>
@@ -258,7 +258,7 @@
 <section class="px-5 py-12 md:px-16 md:py-16 bg-white border-t border-gray-100">
  <div class="max-w-5xl mx-auto">
  <div class="bg-gray-900 rounded-3xl px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden">
- <div class="absolute top-0 right-0 w-36 h-36 bg-[#3182F6]/10 rounded-full translate-x-6 -translate-y-6 pointer-events-none"></div>
+ <div class="absolute top-0 right-0 w-36 h-36 bg-blue-600/10 rounded-full translate-x-6 -translate-y-6 pointer-events-none"></div>
  <div class="relative">
  <h2 id="cta-title" class="text-3xl md:text-4xl font-black tracking-[-2px] leading-[1.1] text-white mb-2"></h2>
  <p class="text-sm font-light text-white/70">첫 수업 무료 · 24시간 내 매칭</p>
@@ -276,7 +276,7 @@
  <div class="max-w-5xl mx-auto">
  <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-white/[0.08]">
  <div>
- <p class="font-black text-white text-lg tracking-tight"><span class="text-[#3182F6]">스터디</span>레이어</p>
+ <p class="font-black text-white text-lg tracking-tight"><span class="text-blue-600">스터디</span>레이어</p>
  <p class="text-xs text-white/60 mt-1.5">초·중·고 1:1 맞춤 과외</p>
  </div>
  <div class="flex flex-wrap gap-x-12 gap-y-6">
@@ -451,14 +451,14 @@ function render(key) {
  document.getElementById('hero-desc').textContent = d.desc;
  document.getElementById('hero-stats').innerHTML = d.stats.map(s =>
  `<div class="bg-white/5 p-5 flex flex-col justify-end">
- <div class="text-2xl md:text-3xl font-black tracking-tight mb-1" style="color:${s.c}">${s.n}</div>
+ <div class="text-2xl md:text-3xl font-black tracking-tight mb-1" style="color:var(--blue)">${s.n}</div>
  <div class="text-xs text-white/70 leading-relaxed">${s.l}</div>
  </div>`
  ).join('');
  document.getElementById('subject-title').textContent = key + ' 지역 과목 선택';
  document.getElementById('feature-title').textContent = key + ' 과외의 특징';
  document.getElementById('feature-grid').innerHTML = d.features.map(f =>
- `<div class="rounded-3xl p-7" style="background:var(--bg-off);border:1.5px solid var(--line)">
+ `<div class="rounded-3xl p-7" style="background:#F8FAFC;border:1.5px solid #E2E8F0">
  <div class="text-2xl mb-3">${f.icon}</div>
  <div class="text-sm font-black mb-2" style="color:var(--ink)">${f.title}</div>
  <div class="text-xs font-light text-gray-700 leading-relaxed">${f.desc}</div>
