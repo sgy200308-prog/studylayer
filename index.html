@@ -81,34 +81,17 @@
     .spin-badge { animation: spin-slow 12s linear infinite; }
     .marquee { animation: marquee 20s linear infinite; }
 
-    /* ── 스크롤 애니메이션 (Easy Ease / cubic-bezier) ── */
+    /* ── 스크롤 애니메이션 ── */
     .reveal {
       opacity: 0;
-      transform: translateY(32px);
-      transition:
-        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.65s cubic-bezier(0.16,1,0.3,1);
     }
     .reveal.on { opacity: 1; transform: translateY(0); }
-
-    /* 딜레이 변형 */
-    .reveal-d1 { transition-delay: 0.08s; }
-    .reveal-d2 { transition-delay: 0.16s; }
-    .reveal-d3 { transition-delay: 0.24s; }
-    .reveal-d4 { transition-delay: 0.32s; }
-
-    /* 좌/우 슬라이드 변형 */
-    .reveal-left  { opacity:0; transform:translateX(-28px);
-      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
-    .reveal-right { opacity:0; transform:translateX(28px);
-      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
-    .reveal-left.on, .reveal-right.on { opacity:1; transform:translate(0); }
-
-    /* 스케일 팝 변형 */
-    .reveal-pop { opacity:0; transform:scale(0.94) translateY(16px);
-      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .reveal-pop.on { opacity:1; transform:scale(1) translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
 
     /* ── NAV ── */
     .nav {
@@ -1185,16 +1168,27 @@
       .gd-track-title { font-size:17px; }
     }
 
+
+    /* ── 드로어 아코디언 ── */
+    .drawer-accordion {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .4s cubic-bezier(0.16,1,0.3,1), opacity .3s ease;
+    }
+    .drawer-acc-arrow { transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+    .drawer-chip-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 14px; }
+    .drawer-chip {
+      padding: 9px 10px; background: var(--bg-off); border-radius: 8px;
+      font-size: 13px; font-weight: 700; color: var(--ink-sub);
+      text-decoration: none; text-align: center; border: 1.5px solid transparent;
+      transition: border-color .15s, color .15s;
+    }
+    .drawer-chip:hover { border-color: var(--blue); color: var(--blue); }
+    .drawer-chip.blue { background: var(--blue-soft); color: var(--blue); }
+
     /* 구분선 */
     .divider { border:none; border-top:1px solid var(--line); margin:0; }
   </style>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: { fontFamily: { sans: ["'S-CoreDream'", 'sans-serif'] } } }
-    }
-  </script>
 </head>
 <body>
 
@@ -1250,7 +1244,7 @@
   </ul>
 
   <div style="display:flex;align-items:center;gap:12px">
-    <a href="#" onclick="openModal();return false;" class="nav-cta" style="display:none" id="navCtaMobile">상담</a>
+    <a href="#" onclick="openModal();return false;" class="nav-cta" id="navCtaMobile">상담</a>
     <button class="burger" id="burgerBtn" aria-label="메뉴">
       <span id="b1"></span>
       <span id="b2"></span>
@@ -1260,28 +1254,7 @@
 </nav>
 
 <!-- ══════════════════ 모바일 드로어 ══════════════════ -->
-<style>
-  .drawer-accordion {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height .4s cubic-bezier(0.16,1,0.3,1), opacity .3s ease;
-  }
-  .drawer-acc-arrow { transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
-  .drawer-sub-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    color: var(--ink-mute); text-transform: uppercase; margin-bottom: 8px; display: block;
-  }
-  .drawer-chip-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 14px; }
-  .drawer-chip {
-    padding: 9px 10px; background: var(--bg-off); border-radius: 8px;
-    font-size: 13px; font-weight: 700; color: var(--ink-sub);
-    text-decoration: none; text-align: center; border: 1.5px solid transparent;
-    transition: border-color .15s, color .15s;
-  }
-  .drawer-chip:hover { border-color: var(--blue); color: var(--blue); }
-  .drawer-chip.blue { background: var(--blue-soft); color: var(--blue); }
-</style>
+
 
 <div id="mobileDrawer">
   <div class="drawer-nav">
@@ -1485,7 +1458,7 @@
 <!-- ══════════════════ 통계 ══════════════════ -->
 <section class="section" style="padding-bottom:0">
   <div class="section-inner">
-    <div class="stats-row reveal">
+    <div class="stats-row">
       <div class="stat-item">
         <div class="stat-num">205<span class="unit" style="color:var(--blue)">+</span></div>
         <div class="stat-label">전국 학원 지점</div>
@@ -1682,7 +1655,7 @@
 <section class="section-dark" id="gd-section">
   <div class="section-inner">
 
-    <div class="section-head reveal">
+    <div class="section-head">
       <p class="label">검정고시 전문</p>
       <h2 class="section-title" style="color:#fff;margin-top:10px">중졸·고졸<br/>목표에 맞게 준비하세요</h2>
       <p style="font-size:15px;color:rgba(255,255,255,0.55);margin-top:12px;line-height:1.75;max-width:480px">
