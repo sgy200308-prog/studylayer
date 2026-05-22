@@ -1099,12 +1099,12 @@
     /* 드릴 그리드 — 도/시 레벨 */
     .drill-grid {
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
     }
-    @media(min-width:480px){ .drill-grid{ grid-template-columns:repeat(3,1fr); } }
-    @media(min-width:768px){ .drill-grid{ grid-template-columns:repeat(4,1fr); } }
-    @media(min-width:1024px){ .drill-grid{ grid-template-columns:repeat(5,1fr); } }
+    @media(min-width:480px){ .drill-grid{ grid-template-columns:repeat(4,1fr); } }
+    @media(min-width:768px){ .drill-grid{ grid-template-columns:repeat(5,1fr); } }
+    @media(min-width:1024px){ .drill-grid{ grid-template-columns:repeat(6,1fr); } }
 
     .drill-card {
       display:flex; align-items:center; gap:10px;
@@ -1563,13 +1563,13 @@
 
 
 <!-- ══════════════════ 지역 드릴다운 ══════════════════ -->
-<section class="section" id="region-finder" style="border-top:1px solid var(--line)">
+<section class="section" id="region-finder" style="border-top:1px solid var(--line);padding-top:56px;padding-bottom:56px">
   <div class="section-inner">
 
-    <div class="section-head">
+    <div class="section-head" style="margin-bottom:28px">
       <p class="label">지역별 수업 찾기</p>
-      <h2 class="section-title" style="margin-top:10px">우리 동네<br/>수업 찾기</h2>
-      <p style="margin-top:14px;font-size:15px;color:var(--ink-sub);font-weight:400">원하는 카테고리를 선택하세요</p>
+      <h2 class="section-title" style="margin-top:8px">우리 동네<br/>수업 찾기</h2>
+
     </div>
 
     <!-- 카테고리 탭 -->
@@ -2368,9 +2368,9 @@ function renderDongs(city) {
   </a>`;
 }
 
-// 초기 렌더
+// 초기 렌더 - switchCat이 drillTo(0) 포함
 document.addEventListener('DOMContentLoaded', () => {
-  drillTo(0);
+  switchCat('tutor'); // 지역별 과외 탭 기본 활성
 });
 
 // ── 지역 탭 (구버전 호환용 더미) ──
