@@ -2246,10 +2246,32 @@ function drillTo(level, provIdx, cityIdx, distIdx) {
     panel.innerHTML = renderProvinces(data.provinces);
 
   } else if (level === 1) {
-    // 시 목록
-    curProvIdx = provIdx;
-    curCityIdx = null;
+    // 특별시·광역시는 바로 구 목록, 도(道)는 시 목록 표시
+    curProvIdx = provIdx; curCityIdx = null; curDistIdx = null;
     const prov = data.provinces[provIdx];
+
+    // 특별시·광역시 판별 (도시가 1개이고 이름에 '전체' 포함 = 광역시/특별시)
+    const isMetro = prov.cities.length === 1 &&
+                    prov.cities[0].districts &&
+                    prov.cities[0].districts.length > 0 &&
+                    (prov.name === '서울' || prov.name === '부산' || prov.name === '대구' ||
+                     prov.name === '인천' || prov.name === '광주' || prov.name === '대전' ||
+                     prov.name === '울산' || prov.name === '세종');
+
+    if (isMetro) {
+      // 특별시·광역시: 바로 구 목록
+      curCityIdx = 0;
+      const city = prov.cities[0];
+      bread.style.display = 'flex';
+      document.getElementById('bread-province').textContent = prov.name;
+      document.getElementById('bread-sep2').style.display = '';
+      document.getElementById('bread-city').style.display = '';
+      document.getElementById('bread-city').textContent = prov.name;
+      panel.innerHTML = renderDistricts(city.districts, provIdx, 0);
+      return;
+    }
+
+    // 도(道): 시/군 목록 표시
     bread.style.display = 'flex';
     document.getElementById('bread-province').textContent = prov.name;
     document.getElementById('bread-sep2').style.display = 'none';
@@ -2257,7 +2279,7 @@ function drillTo(level, provIdx, cityIdx, distIdx) {
     panel.innerHTML = renderCities(prov.cities, provIdx);
 
   } else if (level === 2) {
-    curCityIdx = cityIdx;
+    curCityIdx = cityIdx; curDistIdx = null;
     const prov = data.provinces[provIdx];
     const city = prov.cities[cityIdx];
 
@@ -2265,18 +2287,14 @@ function drillTo(level, provIdx, cityIdx, distIdx) {
     document.getElementById('bread-province').textContent = prov.name;
     document.getElementById('bread-sep2').style.display = '';
     document.getElementById('bread-city').style.display = '';
-    document.getElementById('bread-city').textContent = city.name;
+    // '전체' 제거하고 표시
+    document.getElementById('bread-city').textContent = city.name.replace(' 전체','');
 
-    // 1순위: 구(districts) 데이터가 있으면 구 선택 단계
     if (city.districts && city.districts.length > 0) {
       panel.innerHTML = renderDistricts(city.districts, provIdx, cityIdx);
-    }
-    // 2순위: 동(dongs) 데이터가 있으면 동 선택 단계
-    else if (city.dongs && city.dongs.length > 0) {
+    } else if (city.dongs && city.dongs.length > 0) {
       panel.innerHTML = renderDongs(city);
-    }
-    // 3순위: 둘 다 없으면 해당 도시 페이지로 이동
-    else {
+    } else {
       location.href = city.url;
     }
   } else if (level === 3) {
@@ -2325,8 +2343,8 @@ function renderCities(cities, provIdx) {
   return `<div class="drill-grid">` +
     cities.map((c, i) => `
       <button class="drill-card" onclick="drillTo(2,${provIdx},${i})">
-        <span class="dc-name">${c.name}</span>
-        ${c.count ? `<span style="font-size:11px;color:var(--ink-mute);background:var(--bg-off);border:1px solid var(--line);border-radius:20px;padding:2px 8px">${c.count}</span>` : `<span class="dc-arr">›</span>`}
+        <span class="dc-name">${c.name.replace(' 전체','')}</span>
+        <span class="dc-arr">›</span>
       </button>`).join('') +
     `</div>`;
 }
