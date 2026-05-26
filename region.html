@@ -296,10 +296,10 @@
     </div>
 
     <!-- FAQ -->
-    <div class="detail-box reveal">
-      <div class="detail-box-title" id="faq-title">자주 묻는 질문</div>
-      <div id="faq-list"></div>
-    </div>
+          <div class="detail-box reveal">
+        <div class="detail-box-title" id="faq-title">자주 묻는 질문</div>
+        <div id="faq-list"></div>
+      </div>
 
   </div>
 </div>
@@ -821,14 +821,19 @@ function render(key) {
   document.getElementById('grade-body').innerHTML = d.grade;
 
   document.getElementById('faq-title').textContent = `${key} 과외 자주 묻는 질문`;
-  document.getElementById('faq-list').innerHTML = (d.faqs || []).map((f, i) =>
-    `<div class="faq-item" style="border-bottom:1px solid var(--line)">
-      <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('faq-open')"
-        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 0;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;gap:12px">
-        <span style="font-size:14px;font-weight:700;color:var(--ink)">Q. ${f.q}</span>
-        <span class="faq-ico" style="font-size:18px;color:var(--ink-mute);flex-shrink:0">+</span>
+  const COMMON_FAQS = [
+    {q:'선생님 찾는 데 얼마나 걸리나요?', a:'상담 신청 후 24시간 이내에 연락드립니다. 빠르면 당일 매칭도 가능합니다.'},
+    {q:'교육비는 어떻게 되나요?', a:'주당 수업 시간에 따라 다르며, 상담 후 맞춤으로 안내해 드립니다. 첫 체험 수업은 무료입니다.'},
+    {q:'커리큘럼은 어떻게 구성되나요?', a:'첫 수업 전 학생 수준과 학교 시험 일정을 파악해 1:1 맞춤 커리큘럼을 설계합니다. 매주 진도와 숙제를 학부모님께 공유해드립니다.'},
+    {q:'수업은 어디서 진행되나요?', a:'온라인과 방문 수업 모두 가능합니다. 학생 상황에 맞게 선택하실 수 있습니다.'},
+  ];
+  document.getElementById('faq-list').innerHTML = COMMON_FAQS.map((f, i) =>
+    `<div class="faq-item" style="border-bottom:1px solid #E2E8F0">
+      <button onclick="toggleFaqR(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 0;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;gap:12px">
+        <span style="font-size:14px;font-weight:700;color:#0F172A">Q. ${f.q}</span>
+        <span class="faq-ico" style="font-size:18px;color:#94A3B8;flex-shrink:0;transition:transform .2s">+</span>
       </button>
-      <div class="faq-ans" style="font-size:13px;color:var(--ink-sub);line-height:1.8;padding-left:4px">${f.a}</div>
+      <div class="faq-ans" style="max-height:0;overflow:hidden;transition:max-height .35s ease;font-size:13px;color:#475569;line-height:1.8;padding-bottom:0">${f.a}</div>
     </div>`
   ).join('');
 
@@ -845,6 +850,25 @@ function render(key) {
   document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
   const activeTab = document.getElementById('tab-' + key);
   if (activeTab) activeTab.classList.add('active');
+}
+
+function toggleFaqR(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('faq-open');
+  document.querySelectorAll('#faq-list .faq-item').forEach(i => {
+    i.classList.remove('faq-open');
+    i.querySelector('.faq-ans').style.maxHeight = '0';
+    i.querySelector('.faq-ans').style.paddingBottom = '0';
+    i.querySelector('.faq-ico').style.transform = '';
+    i.querySelector('.faq-ico').textContent = '+';
+  });
+  if (!isOpen) {
+    item.classList.add('faq-open');
+    item.querySelector('.faq-ans').style.maxHeight = '200px';
+    item.querySelector('.faq-ans').style.paddingBottom = '14px';
+    item.querySelector('.faq-ico').style.transform = 'rotate(45deg)';
+    item.querySelector('.faq-ico').textContent = '+';
+  }
 }
 
 function renderDistricts(key, districts) {
