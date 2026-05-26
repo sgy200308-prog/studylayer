@@ -497,10 +497,10 @@ function render(key) {
  const col = COLORS[key] || '#3182F6';
 
  document.title = d.name + ' 과외 전문 — 스터디레이어';
- document.querySelector('meta[name="description"]').setAttribute('content',
+ document.querySelector('meta[name="description"]') && document.querySelector('meta[name="description"]').setAttribute('content',
  `${d.name} 과외 전문. 교육청 등록 교사로만 수업. 초·중·고 전 학년 1:1 맞춤 수업. 첫 수업 무료.`
  );
- document.querySelector('meta[name="keywords"]').setAttribute('content',
+ document.querySelector('meta[name="keywords"]') && document.querySelector('meta[name="keywords"]').setAttribute('content',
  `${d.name} 과외, ${d.name} 내신, ${d.name} 수능, 초등 ${d.name} 과외, 중등 ${d.name} 과외, 고등 ${d.name} 과외, 1:1 ${d.name} 과외`
  );
  document.getElementById('hero-breadcrumb').textContent = d.name;
