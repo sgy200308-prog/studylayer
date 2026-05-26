@@ -1549,7 +1549,6 @@
       <button class="rtab active" id="cat-tutor" onclick="switchCat('tutor')">지역별 과외</button>
       <button class="rtab"    id="cat-academy" onclick="switchCat('academy')">학원 찾기</button>
       <button class="rtab"    id="cat-gd"   onclick="switchCat('gd')">검정고시</button>
-      <button class="rtab"    onclick="openModal()">문의하기</button>
     </div>
 
     <!-- 브레드크럼 -->
@@ -2246,20 +2245,31 @@ function drillTo(level, provIdx, cityIdx, distIdx) {
     panel.innerHTML = renderProvinces(data.provinces);
 
   } else if (level === 1) {
-    // 특별시·광역시는 바로 구 목록, 도(道)는 시 목록 표시
     curProvIdx = provIdx; curCityIdx = null; curDistIdx = null;
     const prov = data.provinces[provIdx];
 
-    // 특별시·광역시 판별 (도시가 1개이고 이름에 '전체' 포함 = 광역시/특별시)
+    // academy/gd: 시 클릭 → 바로 해당 URL 이동 (구 단계 없음)
+    if (curCat !== 'tutor') {
+      if (prov.cities.length === 1) {
+        location.href = prov.cities[0].url;
+        return;
+      }
+      bread.style.display = 'flex';
+      document.getElementById('bread-province').textContent = prov.name;
+      document.getElementById('bread-sep2').style.display = 'none';
+      document.getElementById('bread-city').style.display = 'none';
+      panel.innerHTML = renderCities(prov.cities, provIdx);
+      return;
+    }
+
+    // tutor: 특별시·광역시는 바로 구 목록, 도(道)는 시 목록
+    const METROS = ['서울','부산','대구','인천','광주','대전','울산','세종'];
     const isMetro = prov.cities.length === 1 &&
                     prov.cities[0].districts &&
                     prov.cities[0].districts.length > 0 &&
-                    (prov.name === '서울' || prov.name === '부산' || prov.name === '대구' ||
-                     prov.name === '인천' || prov.name === '광주' || prov.name === '대전' ||
-                     prov.name === '울산' || prov.name === '세종');
+                    METROS.includes(prov.name);
 
     if (isMetro) {
-      // 특별시·광역시: 바로 구 목록
       curCityIdx = 0;
       const city = prov.cities[0];
       bread.style.display = 'flex';
@@ -2271,7 +2281,6 @@ function drillTo(level, provIdx, cityIdx, distIdx) {
       return;
     }
 
-    // 도(道): 시/군 목록 표시
     bread.style.display = 'flex';
     document.getElementById('bread-province').textContent = prov.name;
     document.getElementById('bread-sep2').style.display = 'none';
@@ -2283,11 +2292,16 @@ function drillTo(level, provIdx, cityIdx, distIdx) {
     const prov = data.provinces[provIdx];
     const city = prov.cities[cityIdx];
 
+    // academy/gd: 바로 URL 이동
+    if (curCat !== 'tutor') {
+      location.href = city.url;
+      return;
+    }
+
     bread.style.display = 'flex';
     document.getElementById('bread-province').textContent = prov.name;
     document.getElementById('bread-sep2').style.display = '';
     document.getElementById('bread-city').style.display = '';
-    // '전체' 제거하고 표시
     document.getElementById('bread-city').textContent = city.name.replace(' 전체','');
 
     if (city.districts && city.districts.length > 0) {
