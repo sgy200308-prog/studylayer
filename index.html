@@ -1914,20 +1914,20 @@ const REGION_DATA = {
         { name:'강남구', dongs:['개포동','논현동','대치동','도곡동','삼성동','압구정동','역삼동','일원동','청담동'] },
         { name:'서초구', dongs:['반포동','방배동','서초동','양재동','잠원동'] },
         { name:'송파구', dongs:['문정동','방이동','잠실동','장지동'] },
-        { name:'마포구', dongs:['공덕동','상암동','신수동','염리동','합정동','홍대입구'] },
+        { name:'마포구', dongs:['공덕동','상암동','신수동','합정동'] },
         { name:'강서구', dongs:['가양동','등촌동','마곡동','방화동'] },
         { name:'영등포구', dongs:['당산동','목동','신길동','여의도동'] },
         { name:'노원구', dongs:['공릉동','월계동','중계동','하계동'] },
-        { name:'기타 구', dongs:['강북','도봉','성북','은평','종로','중구'] }
+        { name:'강북·도봉', dongs:['미아동','번동','수유동','창동','도봉동'] }
       ] }
       ]},
       { name:'경기', icon:'', cities:[
         { name:'수원', url:'region.html?r=수원', dongs:[] },
         { name:'성남', url:'region.html?r=성남', dongs:[] },
         { name:'고양', url:'region.html?r=고양', dongs:[], districts:[
-        { name:'일산동구', dongs:['마두동','백석동','장항동','주엽동'] },
+        { name:'일산동구', dongs:['마두동','백석동','장항동','주엽동','중산동'] },
         { name:'일산서구', dongs:['구산동','덕이동','탄현동','풍동동'] },
-        { name:'덕양구', dongs:['삼송동','원당동','행신동','화정동','중산동','후곡동'] }
+        { name:'덕양구', dongs:['삼송동','원당동','행신동','화정동','후곡동'] }
       ] },
         { name:'용인', url:'region.html?r=용인', dongs:['구갈동','동백동','보라동','상현동','성복동','신봉동','죽전동','풍덕천동','홍덕동'] },
         { name:'남양주', url:'region.html?r=남양주', dongs:['다산동','도농동','별가람동','별내동','지금동','청학동','평내동','호평동'] },
@@ -1967,9 +1967,9 @@ const REGION_DATA = {
       { name:'충북', icon:'', cities:[
         { name:'청주', url:'region.html?r=청주', dongs:[], districts:[
         { name:'흥덕구', dongs:['가경동','강서동','개신동','복대동','봉명동','분평동','산남동','서현동','성화동','수곡동','신봉동'] },
-        { name:'청원구', dongs:['내덕동','율량동','율봉동','우암동','용담동'] },
+        { name:'청원구', dongs:['내덕동','율량동','율봉동','우암동'] },
         { name:'서원구', dongs:['금천동','모충동','방서동','사창동','용암동'] },
-        { name:'상당구', dongs:['분동','용암동','방서동'] }
+        { name:'상당구', dongs:['분동'] }
       ] },
         { name:'충주', url:'region.html?r=충주', dongs:[] },
         { name:'제천', url:'region.html?r=제천', dongs:[] },
@@ -1990,7 +1990,7 @@ const REGION_DATA = {
       { name:'대전', icon:'', cities:[
         { name:'대전 전체', url:'region.html?r=대전', dongs:[], districts:[
         { name:'서구', dongs:['관저동','도안동','둔산동','월평동','탄방동'] },
-        { name:'유성구', dongs:['관평동','노은동','반석동','신성동','지족동'] },
+        { name:'유성구', dongs:['관평동','노은동','반석동','신성동','지족동','죽동'] },
         { name:'중구', dongs:['대흥동','문화동','태평동'] },
         { name:'동구', dongs:['법동','송촌동','중리동'] }
       ] }
@@ -2286,12 +2286,16 @@ function drillTo(level, provIdx, cityIdx) {
     const city = prov.cities[cityIdx];
     const dist = city.districts[distIdx];
 
+    // 도시명 추출 (city.url 또는 city.name 에서)
+    const cityNameForDong = city.url && city.url.includes('?r=')
+      ? city.url.split('?r=')[1]
+      : city.name;
+
     document.getElementById('bread-city').textContent = city.name + ' · ' + dist.name;
 
     if (dist.dongs && dist.dongs.length > 0) {
-      panel.innerHTML = renderDongs(dist);
+      panel.innerHTML = renderDongs(dist, cityNameForDong);
     } else {
-      // 동 데이터 없으면 해당 시 페이지로
       location.href = city.url;
     }
   }
@@ -2327,20 +2331,28 @@ function renderCities(cities, provIdx) {
     `</div>`;
 }
 
-function renderDongs(city) {
-  const cityName = city.url.includes('?r=')
-    ? city.url.split('?r=')[1]
-    : city.url.split('/').pop().replace('-검정고시.html','').replace('-과외.html','');
+function renderDongs(distOrCity, cityName) {
+  // cityName을 직접 받거나, url에서 추출
+  const cName = cityName || (
+    distOrCity.url
+      ? (distOrCity.url.includes('?r=')
+          ? distOrCity.url.split('?r=')[1]
+          : distOrCity.url.split('/').pop().replace('-검정고시.html','').replace('-과외.html',''))
+      : distOrCity.name
+  );
 
-  // 실제 GitHub local/ 폴더의 파일명 형식: 청주-가경동-과외.html
-  const dongLinks = city.dongs.map(d =>
-    `<a href="local/${cityName}-${d}-과외.html" class="dong-chip">${d}</a>`
-  ).join('');
+  const dongs = distOrCity.dongs || [];
 
-  return `<div class="dong-chip-grid">${dongLinks}</div>
-  <a href="${city.url}" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none">
-    ${cityName} 전체 과외 보기 →
-  </a>`;
+  const dongLinks = dongs.map(d => {
+    const href = `local/${cName}-${d}-과외.html`;
+    return `<a href="${href}" class="dong-chip">${d}</a>`;
+  }).join('');
+
+  const regionLink = distOrCity.url
+    ? `<a href="${distOrCity.url}" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none">${cName} 전체 과외 보기 →</a>`
+    : '';
+
+  return `<div class="dong-chip-grid">${dongLinks}</div>${regionLink}`;
 }
 
 // 초기 렌더 - switchCat이 drillTo(0) 포함
