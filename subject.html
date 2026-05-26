@@ -531,13 +531,13 @@ function render(key) {
  `<div class="col-span-full mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-blue-50 px-4 py-1.5 rounded-full"> 과학 커리큘럼</span></div>`
  + cardHTML(SUBJECTS.science.curr) +
  `<div class="col-span-full mt-5 mb-1"><span class="inline-flex items-center gap-2 text-sm font-black text-gray-900 bg-blue-600 px-4 py-1.5 rounded-full"> 사회 커리큘럼</span></div>`
- + cardHTML(SUBJECTS.social.curr);
+ + (SUBJECTS.social ? cardHTML(SUBJECTS.social.curr) : "");
  } else {
  document.getElementById('curr-grid').innerHTML = cardHTML(d.curr);
  }
 
  // 후기 — 탐구면 과학+사회 합치기
- const reviewData = isExplore ? [...SUBJECTS.science.reviews, ...SUBJECTS.social.reviews] : d.reviews;
+ const reviewData = isExplore ? [...SUBJECTS.science.reviews, ...(SUBJECTS.social ? SUBJECTS.social.reviews : [])] : d.reviews;
  document.getElementById('review-title').textContent = isExplore ? '탐구 수강 후기' : d.name + ' 수강 후기';
  document.getElementById('review-grid').innerHTML = reviewData.map(r =>
  `<div class="rounded-3xl p-7 border-2 border-slate-100 bg-white">
