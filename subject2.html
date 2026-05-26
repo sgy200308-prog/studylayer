@@ -576,7 +576,11 @@ function render(key) {
 
 // URL 파라미터
 const key = new URLSearchParams(location.search).get('s') || 'math';
-render(key);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => render(key));
+} else {
+  render(key);
+}
 
 // FAQ
 document.querySelectorAll('.faq-btn').forEach(btn => {
