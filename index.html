@@ -1201,20 +1201,23 @@
     <li class="nav-dropdown">
       <button>과외 ▾</button>
       <div class="dropdown-menu" style="min-width:520px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;padding:16px">
-        <!-- 지역별 -->
+        <!-- 과목별 -->
         <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">과목별</div>
+          <a href="subject2.html?s=math">수학</a>
+          <a href="subject2.html?s=english">영어</a>
+          <a href="subject2.html?s=korean">국어</a>
+          <a href="subject2.html?s=science">사회·과학</a>
+          <a href="subject2.html?s=coding">한국사</a>
+        </div>
+        <!-- 지역별 -->
+        <div style="border-left:1px solid var(--line);padding-left:12px">
           <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">지역별</div>
           <a href="region.html?r=서울">서울</a>
           <a href="region.html?r=경기">경기</a>
           <a href="region.html?r=인천">인천</a>
           <a href="region.html?r=대전">대전</a>
-          <a href="region.html?r=대구">대구</a>
           <a href="region.html?r=부산">부산</a>
-          <a href="region.html?r=광주">광주</a>
-          <a href="region.html?r=충청">충청</a>
-          <a href="region.html?r=경상">경상</a>
-          <a href="region.html?r=전라">전라</a>
-          <a href="region.html?r=제주">제주</a>
           <a href="region.html" style="color:var(--blue);font-weight:900">전체 지역 →</a>
         </div>
         <!-- 학년별 -->
@@ -1226,19 +1229,10 @@
           <a href="subject2.html?grade=수능">수능 대비</a>
           <a href="subject2.html?grade=내신">내신 대비</a>
         </div>
-        <!-- 과목별 -->
-        <div style="border-left:1px solid var(--line);padding-left:12px">
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">과목별</div>
-          <a href="subject2.html?s=korean">국어</a>
-          <a href="subject2.html?s=english">영어</a>
-          <a href="subject2.html?s=math">수학</a>
-          <a href="subject2.html?s=science">탐구</a>
-          <a href="subject2.html?s=coding">코딩</a>
-        </div>
       </div>
     </li>
     <li><a href="academy.html">학원</a></li>
-    <li><a href="subject2.html?s=speaking">영어회화</a></li>
+    <li><a href="subject2.html?s=speaking">회화</a></li>
     <li><a href="subject2.html?s=gd">검정고시</a></li>
     <li><a href="#" class="nav-cta" onclick="openModal();return false;">상담 신청</a></li>
   </ul>
@@ -1335,7 +1329,7 @@
     </div>
 
     <a href="academy.html" class="drawer-link">학원 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
-    <a href="subject2.html?s=speaking" class="drawer-link">영어회화 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+    <a href="subject2.html?s=speaking" class="drawer-link">회화 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
 
     <!-- 검정고시 아코디언 -->
     <div style="border-bottom:1px solid var(--line)">
@@ -1577,22 +1571,22 @@
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-title">상담 신청</div>
-        <div class="step-desc">전화로 학생의 현재 수준, 목표 과목, 학년을 말씀해 주세요.</div>
+        <div class="step-desc">학생 현황과 목표를 파악하고 맞춤 선생님을 탐색합니다.</div>
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
-        <div class="step-title">1:1 맞춤<br/>커리큘럼 설계</div>
-        <div class="step-desc">학생의 수준·학교·시험 일정에 맞춰 커리큘럼을 직접 설계합니다.</div>
+        <div class="step-title">모의 수업</div>
+        <div class="step-desc">선생님과 첫 체험 수업을 무료로 진행합니다.</div>
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
-        <div class="step-title">선생님 매칭 &<br/>첫 수업 시작</div>
-        <div class="step-desc">커리큘럼에 맞는 선생님을 24시간 내 연결하고 수업을 시작합니다.</div>
+        <div class="step-title">커리큘럼 설계</div>
+        <div class="step-desc">학교 시험 일정과 수준에 맞춰 1:1 커리큘럼을 설계합니다.</div>
       </div>
       <div class="step-card">
         <div class="step-num">04</div>
-        <div class="step-title">성적 향상<br/>& 피드백</div>
-        <div class="step-desc">매 수업 후 학습 내용과 다음 계획을 학부모님께 투명하게 전달합니다.</div>
+        <div class="step-title">성적 향상</div>
+        <div class="step-desc">매 수업 후 피드백과 진도 공유로 꾸준히 성적을 올립니다.</div>
       </div>
     </div>
   </div>
@@ -1812,13 +1806,13 @@
           <div class="footer-col-title">안내</div>
           <a href="#process">수업 방식</a>
           <a href="#reviews">수강 후기</a>
-          <a href="tel:010-2069-8522">전화 상담</a>
+          <a href="index.html#consult">전화 상담</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 스터디레이어. All rights reserved.</span>
-      <a href="tel:010-2069-8522" class="footer-tel">010-2069-8522</a>
+      <a href="index.html#consult" class="footer-tel">상담 신청</a>
     </div>
   </div>
 </footer>

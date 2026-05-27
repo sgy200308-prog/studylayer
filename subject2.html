@@ -71,7 +71,7 @@
     .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;}
     @media(max-width:500px){.curr-grid{grid-template-columns:1fr;}}
     .curr-card{border:1.5px solid var(--line);border-radius:16px;padding:22px;}
-    .curr-card.blue{background:var(--blue);border-color:var(--blue);}
+    .curr-card.blue{border:1.5px solid var(--line);}
     .curr-step{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);margin-bottom:8px;}
     .curr-card.blue .curr-step{color:rgba(255,255,255,0.6);}
     .curr-title{font-size:15px;font-weight:900;color:var(--ink);margin-bottom:8px;}
@@ -150,9 +150,9 @@
     <li><a href="region.html">지역</a></li>
     <li><a href="academy.html">학원</a></li>
     <li><a href="subject2.html?s=gd">검정고시</a></li>
-    <li><a href="tel:010-2069-8522" class="nav-cta">상담 신청</a></li>
+    <li><a href="index.html#consult" class="nav-cta">상담 신청</a></li>
   </ul>
-  <a href="tel:010-2069-8522" style="display:flex;align-items:center;padding:8px 16px;background:var(--blue);color:#fff;font-weight:900;font-size:13px;border-radius:16px;text-decoration:none;" class="md-hide">상담</a>
+  <a href="index.html#consult" style="display:flex;align-items:center;padding:8px 16px;background:var(--blue);color:#fff;font-weight:900;font-size:13px;border-radius:16px;text-decoration:none;" class="md-hide">상담</a>
 </nav>
 
 <!-- 히어로 -->
@@ -164,7 +164,7 @@
     <div id="hero-tag" class="hero-tag"></div>
     <h1 id="hero-h1" class="hero-h1"></h1>
     <p id="hero-desc" class="hero-desc"></p>
-    <a href="tel:010-2069-8522" class="btn">상담 신청</a>
+    <a href="index.html#consult" class="btn">상담 신청</a>
     <div id="hero-stats" class="hero-stats"></div>
   </div>
 </section>
@@ -217,7 +217,7 @@
         <div class="curr-title" style="font-size:15px;font-weight:900;color:var(--ink);margin-bottom:6px;">상담 & 진단</div>
         <div style="font-size:12px;color:var(--ink-sub);line-height:1.6;">현재 수준과 목표 파악. 학교 기출 분석.</div>
       </div>
-      <div style="background:var(--blue);border-radius:16px;padding:22px;">
+      <div style="border:1.5px solid var(--line);border-radius:16px;padding:22px;">
         <div class="curr-step" style="color:rgba(255,255,255,0.6);">STEP 02</div>
         <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:6px;">선생님 매칭</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.6;">24시간 내 맞춤 선생님 연결.</div>
@@ -285,11 +285,11 @@
   <div class="cta-inner">
     <div>
       <div id="cta-title" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:6px;"></div>
-      <div class="cta-tel">010-2069-8522</div>
+      <div class="cta-tel">상담 신청하기 →</div>
       <div class="cta-sub">평일·주말 오전 9시 — 오후 10시</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <a href="tel:010-2069-8522" class="btn">전화 상담</a>
+      <a href="index.html#consult" class="btn">상담 신청</a>
       <a href="index.html#consult" class="btn" style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);">온라인 상담</a>
     </div>
   </div>
@@ -302,7 +302,7 @@
       <div style="font-size:16px;font-weight:900;color:#fff;"><span style="color:#60A5FA;">스터디</span>레이어</div>
       <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">초·중·고 1:1 맞춤 과외</div>
     </div>
-    <a href="tel:010-2069-8522" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;">010-2069-8522</a>
+    <a href="index.html#consult" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;">상담 신청하기 →</a>
   </div>
 </footer>
 
@@ -462,7 +462,7 @@ const SUBJECTS = {
     ]
   },
   speaking:{
-    name:'영어회화', tag:'영어회화 과외', h1:'영어회화,\n자신있게 말합니다',
+    name:'회화', tag:'회화 과외', h1:'회화,\n자신있게 말합니다',
     desc:'원어민급 발음과 실전 회화 능력을 키웁니다. 일상 대화부터 OPIc·토익스피킹 고득점까지 목표에 맞게 집중 훈련합니다.',
     stats:[{n:'95%',l:'수강 만족도'},{n:'OPIc',l:'IM~AL'},{n:'1:1',l:'집중 훈련'},{n:'24h',l:'매칭 소요'}],
     curr:[
