@@ -23,7 +23,7 @@
     .nav-drop-btn{padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;color:var(--ink-sub);background:none;border:none;cursor:pointer;font-family:inherit;transition:background .15s;}
     .nav-drop-btn:hover{background:var(--bg-off);color:var(--ink);}
     .nav-drop-menu{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;min-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.08);display:none;grid-template-columns:1fr 1fr;gap:0;z-index:100;}
-    .nav-drop:hover .nav-drop-menu{display:grid;}
+    .nav-drop-menu.open{display:grid;}
     .drop-col-title{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px;margin-bottom:4px;}
     .nav-drop-menu a{display:block;padding:7px 8px;border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none;transition:background .12s;}
     .nav-drop-menu a:hover{background:var(--bg-off);color:var(--ink);}
@@ -613,6 +613,24 @@ function toggleFaq(btn) {
     item.querySelector('.faq-ans').style.maxHeight = '300px';
   }
 }
+
+// 드롭다운 클릭 토글
+document.addEventListener('DOMContentLoaded', function() {
+  const dropBtn = document.querySelector('.nav-drop-btn');
+  const dropMenu = document.querySelector('.nav-drop-menu');
+  if (dropBtn && dropMenu) {
+    dropBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      dropMenu.classList.remove('open');
+    });
+    dropMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+});
 
 // 초기 실행
 document.addEventListener('DOMContentLoaded', function() {
