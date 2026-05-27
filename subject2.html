@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="스터디레이어 과외 전문"/>
+  <meta name="keywords" content="과외,수학과외,영어과외,국어과외"/>
+  <meta name="robots" content="index,follow"/>
+  <meta property="og:type" content="website"/>
+  <title>과외 전문 — 스터디레이어</title>
+  <link rel="icon" href="/images/favicon.ico"/>
+  <style>
+    
+    @font-face{font-family:'S-CoreDream';font-weight:700;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');}
+    @font-face{font-family:'S-CoreDream';font-weight:900;src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8ExtraBold.woff') format('woff');}
+    :root{--blue:#2563EB;--blue-dark:#1D4ED8;--blue-soft:#EFF6FF;--ink:#0F172A;--ink-sub:#475569;--ink-mute:#94A3B8;--line:#E2E8F0;--bg-off:#F8FAFC;--dark:#0F172A;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'S-CoreDream',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden;}
+
+    /* 드롭다운 */
+    .nav-drop{position:relative;}
+    .nav-drop-btn{padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;color:var(--ink-sub);background:none;border:none;cursor:pointer;font-family:inherit;transition:background .15s;}
+    .nav-drop-btn:hover{background:var(--bg-off);color:var(--ink);}
+    .nav-drop-menu{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;min-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.08);display:none;grid-template-columns:1fr 1fr;gap:0;z-index:100;}
+    .nav-drop-menu.open{display:grid;}
+    .drop-col-title{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px;margin-bottom:4px;}
+    .nav-drop-menu a{display:block;padding:7px 8px;border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none;transition:background .12s;}
+    .nav-drop-menu a:hover{background:var(--bg-off);color:var(--ink);}
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    .nav-logo{font-weight:900;font-size:16px;text-decoration:none;color:var(--ink);}
+    .nav-logo span{color:var(--blue);}
+    .nav-links{display:none;gap:2px;list-style:none;}
+    @media(min-width:768px){.nav-links{display:flex;align-items:center;}}
+    .nav-links a{padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none;transition:background .15s;}
+    .nav-links a:hover{background:var(--bg-off);color:var(--ink);}
+    .nav-cta{background:var(--blue)!important;color:#fff!important;border-radius:20px!important;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;background:var(--blue);color:#fff;font-weight:900;font-size:14px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:background .15s;}
+    .btn:hover{background:var(--blue-dark);}
+    /* 히어로 */
+    .hero{background:var(--dark);padding:48px 20px 40px;}
+    .hero-inner{max-width:900px;margin:0 auto;}
+    .hero-tag{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);margin-bottom:10px;}
+    .hero-h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:900;letter-spacing:-2px;line-height:1.1;color:#fff;margin-bottom:14px;}
+    .hero-desc{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.8;max-width:520px;margin-bottom:24px;}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;margin-top:32px;}
+    .hero-stat{background:rgba(255,255,255,0.05);padding:16px;text-align:center;}
+    .hero-stat-n{font-size:20px;font-weight:900;color:var(--blue);letter-spacing:-1px;}
+    .hero-stat-l{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;}
+    @media(max-width:480px){.hero-stats{grid-template-columns:repeat(2,1fr);}}
+    /* 과목 탭 */
+    .tabs-wrap{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:56px;z-index:40;}
+    .tabs-inner{max-width:900px;margin:0 auto;padding:0 20px;}
+    /* 데스크탑 탭 */
+    .tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:0;}
+    .tab{padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-mute);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit;white-space:nowrap;margin-bottom:-1px;transition:all .15s;}
+    .tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+    /* 모바일 탭 - 2줄 그리드 */
+    @media(max-width:640px){
+      .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 0;border-bottom:none;overflow:visible;}
+      .tab{padding:10px 6px;font-size:12px;border-radius:10px;border:1.5px solid var(--line);border-bottom:1.5px solid var(--line);text-align:center;margin-bottom:0;white-space:nowrap;}
+      .tab.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+      .tabs-wrap{border-bottom:1px solid var(--line);}
+    }
+    /* 패널 */
+    .panels{max-width:900px;margin:0 auto;padding:40px 20px;}
+    .panel{display:none;}
+    .panel.active{display:block;}
+    /* 커리큘럼 */
+    .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;}
+    @media(max-width:500px){.curr-grid{grid-template-columns:1fr;}}
+    .curr-card{border:1.5px solid var(--line);border-radius:16px;padding:22px;}
+    .curr-card.blue{border:1.5px solid var(--line);}
+    .curr-step{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);margin-bottom:8px;}
+    .curr-card.blue .curr-step{color:rgba(255,255,255,0.6);}
+    .curr-title{font-size:15px;font-weight:900;color:var(--ink);margin-bottom:8px;}
+    .curr-card.blue .curr-title{color:#fff;}
+    .curr-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .curr-list li{font-size:12px;color:var(--ink-sub);padding-left:14px;position:relative;line-height:1.6;}
+    .curr-list li::before{content:'—';position:absolute;left:0;color:var(--blue);}
+    .curr-card.blue .curr-list li{color:rgba(255,255,255,0.8);}
+    .curr-card.blue .curr-list li::before{color:rgba(255,255,255,0.5);}
+    /* 후기 */
+    .review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    @media(max-width:500px){.review-grid{grid-template-columns:1fr;}}
+    .review-card{border:1.5px solid var(--line);border-radius:16px;padding:22px;}
+    .review-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;background:var(--blue-soft);color:var(--blue);margin-bottom:12px;}
+    .review-text{font-size:13px;color:var(--ink-sub);line-height:1.75;margin-bottom:12px;}
+    .review-name{font-size:12px;font-weight:700;color:var(--ink);}
+    /* CTA */
+    .cta-section{background:var(--dark);padding:48px 20px;}
+    .cta-inner{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
+    @media(min-width:640px){.cta-inner{flex-direction:row;align-items:center;justify-content:space-between;}}
+    .cta-tel{font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
+    .cta-sub{font-size:13px;color:rgba(255,255,255,0.4);margin-top:4px;}
+    /* 마퀴 */
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .marquee-wrap{background:var(--dark);border-top:1px solid rgba(255,255,255,0.07);overflow:hidden;padding:12px 0;}
+    .marquee{display:flex;gap:32px;animation:marquee 22s linear infinite;width:max-content;}
+    .marquee span{font-size:12px;font-weight:700;color:rgba(255,255,255,0.3);white-space:nowrap;}
+    .marquee span.blue{color:var(--blue);}
+    /* 섹션 타이틀 */
+    .section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+    .section-title{font-size:24px;font-weight:900;color:var(--ink);margin-bottom:6px;letter-spacing:-1px;}
+    .section-desc{font-size:14px;color:var(--ink-sub);margin-bottom:28px;line-height:1.7;}
+    /* 포인트 박스 */
+    .point-box{background:var(--blue-soft);border-radius:14px;padding:20px;margin-bottom:28px;}
+    .point-text{font-size:13px;font-weight:700;color:#1D4ED8;line-height:1.7;}
+    /* FAQ */
+    .faq-item{border-bottom:1px solid var(--line);}
+    .faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 0;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;gap:12px;}
+    .faq-q{font-size:14px;font-weight:700;color:var(--ink);}
+    .faq-ico{font-size:20px;color:var(--ink-mute);flex-shrink:0;transition:transform .2s;line-height:1;}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease;font-size:13px;color:var(--ink-sub);line-height:1.8;}
+    /* 푸터 */
+    footer{background:var(--dark);padding:40px 20px 32px;}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span>스터디</span>레이어</a>
+  <ul class="nav-links">
+    <li><a href="index.html">홈</a></li>
+    <li class="nav-drop">
+      <button class="nav-drop-btn">과외 ▾</button>
+      <div class="nav-drop-menu">
+        <div class="drop-col">
+          <div class="drop-col-title">과목별</div>
+          <a href="subject2.html?s=math" onclick="switchTabLink('math')">수학</a>
+          <a href="subject2.html?s=english" onclick="switchTabLink('english')">영어</a>
+          <a href="subject2.html?s=korean" onclick="switchTabLink('korean')">국어</a>
+          <a href="subject2.html?s=science" onclick="switchTabLink('science')">탐구</a>
+          <a href="subject2.html?s=coding" onclick="switchTabLink('coding')">코딩</a>
+          <a href="subject2.html?s=speaking" onclick="switchTabLink('speaking')">회화</a>
+          <a href="subject2.html?s=gd" onclick="switchTabLink('gd')">검정고시</a>
+        </div>
+        <div class="drop-col" style="border-left:1px solid #E2E8F0;padding-left:12px">
+          <div class="drop-col-title">지역별</div>
+          <a href="region.html?r=서울">서울</a>
+          <a href="region.html?r=경기">경기</a>
+          <a href="region.html?r=대전">대전</a>
+          <a href="region.html?r=충북">충북</a>
+          <a href="region.html" style="color:#2563EB;font-weight:900">전체 →</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="region.html">지역</a></li>
+    <li><a href="academy.html">학원</a></li>
+    <li><a href="subject2.html?s=gd">검정고시</a></li>
+    <li><a href="index.html#consult" class="nav-cta">상담 신청</a></li>
+  </ul>
+  <a href="index.html#consult" style="display:flex;align-items:center;padding:8px 16px;background:var(--blue);color:#fff;font-weight:900;font-size:13px;border-radius:16px;text-decoration:none;" class="md-hide">상담</a>
+</nav>
+
+<!-- 히어로 -->
+<section class="hero" style="padding-top:calc(56px + 48px)">
+  <div class="hero-inner">
+    <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:10px">
+      <a href="index.html" style="color:rgba(255,255,255,0.4);text-decoration:none">홈</a> / <span id="hero-breadcrumb"></span>
+    </p>
+    <div id="hero-tag" class="hero-tag"></div>
+    <h1 id="hero-h1" class="hero-h1"></h1>
+    <p id="hero-desc" class="hero-desc"></p>
+    <a href="index.html#consult" class="btn">상담 신청</a>
+    <div id="hero-stats" class="hero-stats"></div>
+  </div>
+</section>
+
+<!-- 마퀴 -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="blue">• 수강 후기</span><span>/ 자주 묻는 질문</span><span class="blue">상담 신청</span><span>/ 1:1 맞춤</span><span class="blue">• 커리큘럼</span><span>/ 수업 방식</span>
+    <span class="blue">• 수강 후기</span><span>/ 자주 묻는 질문</span><span class="blue">상담 신청</span><span>/ 1:1 맞춤</span><span class="blue">• 커리큘럼</span><span>/ 수업 방식</span>
+  </div>
+</div>
+
+<!-- 과목 탭 -->
+<div class="tabs-wrap">
+  <div class="tabs-inner">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('math',this)">수학</button>
+      <button class="tab" onclick="switchTab('english',this)">영어</button>
+      <button class="tab" onclick="switchTab('korean',this)">국어</button>
+      <button class="tab" onclick="switchTab('science',this)">탐구</button>
+      <button class="tab" onclick="switchTab('coding',this)">코딩</button>
+      <button class="tab" onclick="switchTab('speaking',this)">회화</button>
+      <button class="tab" onclick="switchTab('gd',this)">검정고시</button>
+    </div>
+  </div>
+</div>
+
+<!-- 패널 -->
+<div class="panels">
+
+  <!-- 커리큘럼 -->
+  <div style="margin-bottom:48px">
+    <p class="section-label">CURRICULUM</p>
+    <h2 class="section-title" id="curr-title"></h2>
+    <p class="section-desc" id="curr-desc"></p>
+    <div id="curr-grid" class="curr-grid"></div>
+    <div id="point-box" class="point-box" style="display:none">
+      <p id="point-text" class="point-text"></p>
+    </div>
+  </div>
+
+  <!-- 수업 방식 -->
+  <div style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--line)">
+    <p class="section-label">HOW IT WORKS</p>
+    <h2 class="section-title">이렇게 수업합니다</h2>
+    <p class="section-desc">학생 맞춤 커리큘럼으로 체계적으로 진행합니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+      <div style="border:1.5px solid var(--line);border-radius:16px;padding:22px;">
+        <div class="curr-step">STEP 01</div>
+        <div class="curr-title" style="font-size:15px;font-weight:900;color:var(--ink);margin-bottom:6px;">상담 & 진단</div>
+        <div style="font-size:12px;color:var(--ink-sub);line-height:1.6;">현재 수준과 목표 파악. 학교 기출 분석.</div>
+      </div>
+      <div style="border:1.5px solid var(--line);border-radius:16px;padding:22px;">
+        <div class="curr-step">STEP 02</div>
+        <div style="font-size:15px;font-weight:900;color:var(--ink);margin-bottom:6px;">선생님 매칭</div>
+        <div style="font-size:12px;color:var(--ink-sub);line-height:1.6;">24시간 내 맞춤 선생님 연결.</div>
+      </div>
+      <div style="border:1.5px solid var(--line);border-radius:16px;padding:22px;">
+        <div class="curr-step">STEP 03</div>
+        <div class="curr-title" style="font-size:15px;font-weight:900;color:var(--ink);margin-bottom:6px;">1:1 수업</div>
+        <div style="font-size:12px;color:var(--ink-sub);line-height:1.6;">학교 교재·시험 일정에 맞춰 진행.</div>
+      </div>
+      <div style="border:1.5px solid var(--line);border-radius:16px;padding:22px;">
+        <div class="curr-step">STEP 04</div>
+        <div class="curr-title" style="font-size:15px;font-weight:900;color:var(--ink);margin-bottom:6px;">피드백</div>
+        <div style="font-size:12px;color:var(--ink-sub);line-height:1.6;">매 수업 후 학부모님께 진도 공유.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수강 후기 -->
+  <div style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--line)">
+    <p class="section-label">REVIEWS</p>
+    <h2 id="review-title" class="section-title"></h2>
+    <div id="review-grid" class="review-grid"></div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="margin-bottom:48px;padding-top:40px;border-top:1px solid var(--line)">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">자주 묻는 질문</h2>
+    <div id="faq-list">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Q. 선생님 찾는 데 얼마나 걸리나요?</span>
+          <span class="faq-ico">+</span>
+        </button>
+        <div class="faq-ans">상담 신청 후 24시간 이내에 연락드립니다. 빠르면 당일 매칭도 가능합니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Q. 교육비는 어떻게 되나요?</span>
+          <span class="faq-ico">+</span>
+        </button>
+        <div class="faq-ans">주당 수업 시간에 따라 다르며, 상담 후 맞춤으로 안내해 드립니다. 첫 체험 수업은 무료입니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Q. 커리큘럼은 어떻게 구성되나요?</span>
+          <span class="faq-ico">+</span>
+        </button>
+        <div class="faq-ans">첫 수업 전 학생 수준과 학교 시험 일정을 파악해 1:1 맞춤 커리큘럼을 설계합니다. 매주 진도와 숙제를 학부모님께 공유해드립니다.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Q. 수업은 어디서 진행되나요?</span>
+          <span class="faq-ico">+</span>
+        </button>
+        <div class="faq-ans">온라인과 방문 수업 모두 가능합니다. 학생 상황에 맞게 선택하실 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div>
+      <div id="cta-title" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:6px;"></div>
+      <div class="cta-tel">상담 신청하기 →</div>
+      <div class="cta-sub">평일·주말 오전 9시 — 오후 10시</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <a href="index.html#consult" class="btn">상담 신청</a>
+      <a href="index.html#consult" class="btn" style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);">온라인 상담</a>
+    </div>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer>
+  <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <div>
+      <div style="font-size:16px;font-weight:900;color:#fff;"><span style="color:#60A5FA;">스터디</span>레이어</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:3px;">초·중·고 1:1 맞춤 과외</div>
+    </div>
+    <a href="index.html#consult" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;">상담 신청하기 →</a>
+  </div>
+</footer>
+
+<script>
+const COLORS = {math:'#2563EB',english:'#2563EB',korean:'#2563EB',science:'#2563EB',coding:'#2563EB',speaking:'#2563EB',gd:'#2563EB',gd_high:'#2563EB',gd_pass:'#2563EB'};
+
+const SUBJECTS = {
+ math:{
+ name:'수학', tag:'수학 과외', h1:'수학,\n제대로 잡겠습니다',
+ desc:'개념부터 심화까지, 학교 시험에 최적화된 수학 1:1 과외입니다. 단순 문제풀이가 아닌 원리를 이해하는 수업으로 어떤 유형도 스스로 풀 수 있게 만들어 드립니다.',
+ stats:[{n:'98%',l:'수학 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'1,200+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+ curr:[
+ {lv:'초등',color:'#3182F6',title:'기초부터 탄탄하게',items:['자연수·분수·소수 개념 정립','연산 정확도 & 속도 훈련','도형·측정 기초 완성','교과서 단원별 집중 수업']},
+ {lv:'중등',color:'#3182F6',title:'내신 완벽 대비',items:['방정식·함수 개념 완성','학교 기출 분석 및 유형 정리','서술형 풀이법 훈련','중간·기말 집중 특강']},
+ {lv:'고등',color:'#EAF2FF',title:'수능·내신 동시 대비',items:['수1·수2·미적분 전 범위','수능 기출 30개년 분석','킬러문항 공략법','내신 변형문제 완벽 대응']}
+ ],
+ reviews:[
+ {badge:'초5 · 수학',color:'#3182F6',text:'연산이 너무 약했는데 <strong>개념부터 차근차근</strong> 잡아주셔서 수학을 이제 좋아해요!',name:'김OO 학부모',sub:'초등학교 5학년 자녀',chip:'기초 완성'},
+ {badge:'중2 · 수학',color:'#3182F6',text:'<strong>내신 성적 향상</strong>으로 올랐어요. 기출 분석이 정말 탁월하셨어요.',name:'이OO 학생',sub:'중학교 2학년',chip:'실력 향상'},
+ {badge:'고3 · 수학',color:'#3182F6',text:'수능 수학 <strong>성적 향상</strong>까지 올렸습니다. 킬러 문항 전략이 핵심이었어요.',name:'박OO 학생',sub:'고등학교 3학년',chip:'수능 목표 달성'}
+ ]
+ },
+ english:{
+ name:'영어', tag:'영어 과외', h1:'영어,\n자신감을 만듭니다',
+ desc:'듣기·말하기·읽기·쓰기 전 영역을 아우르는 1:1 영어 과외입니다. 내신 대비부터 수능 영어, 회화까지 목표에 맞게 맞춤 수업합니다.',
+ stats:[{n:'97%',l:'영어 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'950+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+ curr:[
+ {lv:'초등',color:'#3182F6',title:'파닉스·기초 회화',items:['알파벳·파닉스 완성','기초 문법 및 패턴 학습','영어 일기·받아쓰기 훈련','교과서 단어·본문 완벽 암기']},
+ {lv:'중등',color:'#3182F6',title:'내신·문법 완성',items:['중학 핵심 문법 전 범위','학교 기출 지문 분석','서술형·영작문 훈련','독해 속도 및 정확도 향상']},
+ {lv:'고등',color:'#EAF2FF',title:'수능·내신 동시 공략',items:['수능 유형별 풀이 전략','빈칸·순서·삽입 킬러 유형','학교 기출 변형 문제 대비','어법·어휘 집중 완성']}
+ ],
+ reviews:[
+ {badge:'초4 · 영어',color:'#3182F6',text:'파닉스부터 차근차근 잡아주셔서 <strong>영어를 두려워하지 않게</strong> 됐어요.',name:'정OO 학부모',sub:'초등학교 4학년 자녀',chip:'기초 완성'},
+ {badge:'중3 · 영어',color:'#3182F6',text:'중학 문법을 완전히 정리하고 <strong>내신 목표 달성</strong> 받았습니다!',name:'최OO 학생',sub:'중학교 3학년',chip:'목표 달성'},
+ {badge:'고2 · 영어',color:'#3182F6',text:'수능 영어 <strong>성적 향상</strong>으로 올랐어요.',name:'윤OO 학생',sub:'고등학교 2학년',chip:'실력 향상'}
+ ]
+ },
+ korean:{
+ name:'국어', tag:'국어 과외', h1:'국어,\n논리로 완성합니다',
+ desc:'문학·비문학·문법·쓰기를 체계적으로 잡는 1:1 국어 과외입니다. 독해력과 논리적 사고력을 기르고 서술형과 논술까지 대비합니다.',
+ stats:[{n:'96%',l:'국어 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'780+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+ curr:[
+ {lv:'초등',color:'#EAF2FF',title:'독해·어휘 기초',items:['낱말·문장 독해력 기초','교과서 문학 작품 이해','독서록·일기 쓰기 훈련','맞춤법·띄어쓰기 완성']},
+ {lv:'중등',color:'#3182F6',title:'문학·비문학 완성',items:['현대시·소설 분석법','비문학 지문 독해 전략','중학 문법 전 범위 정리','서술형 답안 작성 훈련']},
+ {lv:'고등',color:'#3182F6',title:'수능·내신 전략',items:['수능 국어 유형별 공략','문학·비문학 고난도 지문','언어와 매체 / 화법과 작문','논술·서술형 심화 훈련']}
+ ],
+ reviews:[
+ {badge:'초5 · 국어',color:'#EAF2FF',text:'독서 이해력이 부족했는데 <strong>3개월 만에 독해 속도가 확</strong> 빨라졌어요.',name:'강OO 학부모',sub:'초등학교 5학년 자녀',chip:'독해력 향상'},
+ {badge:'중2 · 국어',color:'#3182F6',text:'비문학이 너무 어려웠는데 <strong>지문 분석법</strong>을 배우고 나서 완전히 달라졌어요.',name:'오OO 학생',sub:'중학교 2학년',chip:'실력 향상'},
+ {badge:'고3 · 국어',color:'#3182F6',text:'수능 국어 <strong>성적 향상</strong>으로 올랐습니다.',name:'한OO 학생',sub:'고등학교 3학년',chip:'실력 향상'}
+ ]
+ },
+ science:{
+ name:'탐구', tag:'탐구 과외 (과학 + 사회)', h1:'탐구,\n제대로 파고듭니다',
+ desc:'과학과 사회, 두 과목을 한 번에. 단순 암기가 아닌 원리와 흐름으로 이해하는 1:1 탐구 과외입니다.',
+ stats:[{n:'95%',l:'탐구 만족도'},{n:'실력 향상',l:'평균 향상'},{n:'1,160+',l:'누적 수강생'},{n:'24h',l:'매칭 소요'}],
+ curr:[
+      {lv:'과학',color:'#EAF2FF',title:'과학 과외',items:['중학교 통합과학 핵심 개념','고등 생명과학·지구과학·물리학·화학 I','수능 탐구 과목 전략 수립','학교별 기출 문제 분석']},
+      {lv:'사회',color:'#3182F6',title:'사회 과외',items:['중학교 사회·역사 내신 완성','고등 생활과윤리·사회문화·한국지리','수능 사탐 과목 전략 수립','서술형·수행평가 완벽 대비']},
+      {lv:'한국사',color:'#EAF2FF',title:'한국사 과외',items:['중학교 역사 내신 완성','고등 한국사 개념+흐름 정리','수능 한국사 필수 개념 압축','한국사능력검정시험 대비']}
+    ],
+    reviews:[
+      {badge:'고득점 · 고졸',color:'#3182F6',text:'고졸 검정고시에서 <strong>평균 88점</strong>으로 합격해 원하는 대학에 지원할 수 있었어요.',name:'최OO',sub:'고졸 검정고시 고득점 합격',chip:'88점 합격'},
+      {badge:'고득점 · 고졸',color:'#3182F6',text:'취약과목이었던 수학을 <strong>집중 공략해 82점</strong>을 받았어요.',name:'정OO',sub:'수학 고득점 달성',chip:'목표 달성'},
+      {badge:'고득점 · 중졸',color:'#3182F6',text:'중졸 검정고시 <strong>전 과목 90점 이상</strong>으로 합격했습니다!',name:'강OO',sub:'중졸 검정고시 합격',chip:'전 과목 90+'}
+    ]
+  }
+  ,gd_pass:{
+    name:'합격 플랜', tag:'빠른 합격 전문 과외', h1:'검정고시,\n최단기간 합격합니다',
+    desc:'시간이 촉박한 분을 위한 압축 합격 과정입니다. 핵심만 짚고 기출 패턴을 완전히 익혀 최단 기간 안에 합격을 실현합니다.',
+    stats:[{n:'8주+',l:'최단 합격 기간'},{n:'기출',l:'10년치 완전 분석'},{n:'핵심',l:'압축 수업'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'1~2주',color:'#3182F6',title:'핵심 개념 압축',items:['과목별 핵심 개념만 압축 정리','검정고시 출제 빈도 분석','자주 나오는 유형 우선 공략','취약 과목 집중 진단']},
+      {lv:'3~4주',color:'#3182F6',title:'기출 완전 정복',items:['최근 10년 기출 완전 분석','출제 패턴 완전 습득','오답 유형 반복 훈련','과목별 60점 이상 확보 전략']},
+      {lv:'7~8주',color:'#3182F6',title:'실전 마무리',items:['모의고사 실전 반복 풀이','시간 배분 전략 완성','시험 당일 컨디션 관리','합격 후 상급 학교 진학 상담']}
+    ],
+    reviews:[
+      {badge:'합격 · 고졸',color:'#3182F6',text:'독학으로 계속 실패했는데 <strong>8주 만에 고졸 합격</strong>했어요!',name:'윤OO',sub:'고졸 검정고시 합격',chip:'8주 합격'},
+      {badge:'합격 · 중졸',color:'#3182F6',text:'기초도 없었는데 <strong>핵심만 압축</strong>해서 가르쳐 주셔서 바로 합격했어요.',name:'조OO',sub:'중졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'합격 · 고졸',color:'#3182F6',text:'<strong>8주 만에 전 과목 합격</strong>. 기출 분석이 정말 탁월했어요.',name:'임OO',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
+    ]
+  }
+  ,speaking:{
+    name:'영어 회화', tag:'영어 회화 전문 과외', h1:'영어 회화,\n자신있게 말합니다',
+    desc:'문법 중심이 아닌 실전 회화 중심 수업입니다. 일상 대화부터 비즈니스 영어, 공인시험(OPIc·토익스피킹)까지 목표에 맞게 준비합니다.',
+    stats:[{n:'1:1',l:'맞춤 수업'},{n:'원어민급',l:'발음 교정'},{n:'24h',l:'매칭 소요'},{n:'무료',l:'첫 수업'}],
+    curr:[
+      {lv:'입문',color:'#3182F6',title:'기초 회화',items:['기본 문장 패턴 완성','일상 대화 표현 익히기','발음·억양 교정','영어에 대한 자신감 키우기']},
+      {lv:'중급',color:'#3182F6',title:'실전 회화',items:['다양한 주제 자유 토론','원어민식 표현 습득','뉴스·영화로 배우는 영어','OPIc·토익스피킹 기초']},
+      {lv:'고급',color:'#3182F6',title:'고급·시험 대비',items:['OPIc AL·IH 목표','토익스피킹 레벨 7·8','비즈니스 영어 회화','프레젠테이션·인터뷰 영어']}
+    ],
+    reviews:[
+      {badge:'성인 · 회화',color:'#3182F6',text:'영어로 말하는 게 너무 두려웠는데 <strong>3개월 만에 OPIc IM</strong> 받았어요!',name:'김OO',sub:'직장인 수강생',chip:'OPIc IM'},
+      {badge:'고2 · 회화',color:'#3182F6',text:'해외여행 전에 급하게 배웠는데 <strong>실제로 외국인과 대화</strong>할 수 있었어요.',name:'이OO 학생',sub:'고등학교 2학년',chip:'실력 향상'},
+      {badge:'성인 · 비즈니스',color:'#3182F6',text:'비즈니스 영어가 필요했는데 <strong>실무에 바로 쓸 수 있는</strong> 표현들을 배웠어요.',name:'박OO',sub:'직장인 수강생',chip:'비즈니스 영어'}
+    ]
+  }
+  ,gd:{
+    name:'검정고시', tag:'검정고시 전문 과외', h1:'검정고시,\n확실하게 합격합니다',
+    desc:'중졸·고졸 검정고시 전 과목을 1:1로 밀착 지도합니다. 목표에 맞게 중졸·고졸·고득점·합격 플랜을 선택하세요.',
+    stats:[{n:'98%',l:'합격률'},{n:'3개월',l:'평균 합격 기간'},{n:'500+',l:'합격생 배출'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'중졸',color:'#3182F6',title:'중졸 검정고시',items:['국어·수학·영어·사회·과학·도덕·기술가정 7과목','전 과목 60점 이상 합격 목표','평균 2~3개월 준비 기간','기초부터 1:1 밀착 지도']},
+      {lv:'고졸',color:'#3182F6',title:'고졸 검정고시',items:['국어·수학·영어·사회·과학·한국사·도덕 7과목','전 과목 60점 이상 합격 목표','평균 3~4개월 준비 기간','대학 진학·취업 연계 가능']},
+      {lv:'고득점',color:'#3182F6',title:'고득점 커리큘럼',items:['95점 이상 고득점 목표','과목별 취약점 정밀 분석','고난도 문제 집중 훈련','대학 입시 서류 경쟁력 강화']},
+      {lv:'합격',color:'#3182F6',title:'합격 커리큘럼',items:['최소 8주 집중 합격 과정','기출 10년치 완전 분석','시험 출제 패턴 완전 습득','시험 직전 모의고사 반복 훈련']}
+    ],
+    reviews:[
+      {badge:'검정고시 · 고졸',color:'#3182F6',text:'독학으로 계속 실패했는데 <strong>3개월 만에 고졸 검정고시 합격</strong>했어요!',name:'김OO',sub:'고졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'검정고시 · 중졸',color:'#3182F6',text:'기초가 너무 부족했는데 선생님이 <strong>처음부터 차근차근</strong> 잡아주셔서 합격했어요.',name:'이OO',sub:'중졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'검정고시 · 고졸',color:'#3182F6',text:'짧은 기간 안에 <strong>전 과목 60점 이상</strong>으로 합격했습니다. 감사해요!',name:'박OO',sub:'고졸 검정고시 합격',chip:'전 과목 합격'}
+    ]
+  }
+  ,gd_high:{
+    name:'고득점 검정고시', tag:'고득점 전략 과외', h1:'검정고시,\n95점 이상 도전합니다',
+    desc:'단순 합격을 넘어 95점 이상 고득점을 목표로 합니다. 대학 입시 서류에 검정고시 점수가 반영되므로 높은 점수가 유리합니다. 과목별 취약점을 정밀 분석하고 고난도 문제를 집중 훈련합니다.',
+    stats:[{n:'95점+',l:'목표 점수'},{n:'과목별',l:'취약점 분석'},{n:'입시',l:'서류 경쟁력'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'진단',color:'#3182F6',title:'취약점 정밀 진단',items:['과목별 현재 수준 정밀 분석','취약 단원 집중 진단','목표 점수 역산 계획 수립','맞춤 커리큘럼 설계']},
+      {lv:'심화',color:'#3182F6',title:'고득점 집중 훈련',items:['고난도 문제 유형 집중 공략','과목별 95점 이상 전략','오답 패턴 완전 제거','모의고사 반복 실전 훈련']},
+      {lv:'마무리',color:'#3182F6',title:'실전 마무리',items:['시험 직전 핵심 요약 정리','시간 배분 전략 훈련','대학 입시 연계 상담','합격 후 진학 전략 수립']}
+    ],
+    reviews:[
+      {badge:'고득점 · 고졸',color:'#3182F6',text:'고졸 검정고시에서 <strong>평균 96점</strong>으로 합격해 원하는 대학에 지원할 수 있었어요.',name:'최OO',sub:'고졸 검정고시 고득점 합격',chip:'96점 합격'},
+      {badge:'합격 · 고졸',color:'#3182F6',text:'3개월 공부해서 <strong>전 과목 무사히 합격</strong>했어요. 혼자였으면 정말 힘들었을 것 같아요.',name:'정OO',sub:'고졸 검정고시 합격',chip:'합격 완료'},
+      {badge:'단기 · 중졸',color:'#3182F6',text:'중졸 검정고시 <strong>8주 만에 합격</strong>했어요! 핵심만 짚어줘서 시간 낭비가 없었어요.',name:'강OO',sub:'중졸 검정고시 단기 합격',chip:'8주 합격'}
+    ]
+  }
+  ,gd_pass:{
+    name:'합격 플랜', tag:'빠른 합격 전문 과외', h1:'검정고시,\n최단기간 합격합니다',
+    desc:'시간이 촉박한 분을 위한 압축 합격 과정입니다. 핵심만 짚고 기출 패턴을 완전히 익혀 최단 기간 안에 합격을 실현합니다.',
+    stats:[{n:'8주+',l:'최단 합격 기간'},{n:'기출',l:'10년치 완전 분석'},{n:'핵심',l:'압축 수업'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'1~2주',color:'#3182F6',title:'핵심 개념 압축',items:['과목별 핵심 개념만 압축 정리','검정고시 출제 빈도 분석','자주 나오는 유형 우선 공략','취약 과목 집중 진단']},
+      {lv:'3~4주',color:'#3182F6',title:'기출 완전 정복',items:['최근 10년 기출 완전 분석','출제 패턴 완전 습득','오답 유형 반복 훈련','과목별 60점 이상 확보 전략']},
+      {lv:'7~8주',color:'#3182F6',title:'실전 마무리',items:['모의고사 실전 반복 풀이','시간 배분 전략 완성','시험 당일 컨디션 관리','합격 후 상급 학교 진학 상담']}
+    ],
+    reviews:[
+      {badge:'합격 · 고졸',color:'#3182F6',text:'독학으로 계속 실패했는데 <strong>8주 만에 고졸 합격</strong>했어요! 기출만 제대로 풀었더니 됐어요.',name:'윤OO',sub:'고졸 검정고시 합격',chip:'8주 합격'},
+      {badge:'합격 · 중졸',color:'#3182F6',text:'기초도 없었는데 핵심만 압축해서 가르쳐 주셔서 <strong>첫 시도에 바로 합격</strong>했어요.',name:'조OO',sub:'중졸 검정고시 합격',chip:'첫 시도 합격'},
+      {badge:'합격 · 고졸',color:'#3182F6',text:'직장 다니면서 준비했는데 <strong>8주 만에 전 과목 합격</strong>. 짧게 공부하고 합격할 수 있어서 좋았어요.',name:'임OO',sub:'고졸 검정고시 합격',chip:'직장인 합격'}
+    ]
+  },
+  coding:{
+    name:'코딩', tag:'코딩 과외', h1:'코딩,\n제대로 배우겠습니다',
+    desc:'스크래치·파이썬·C언어 등 학생 수준에 맞춘 1:1 코딩 과외입니다. 학교 정보 수업부터 대입 SW특기자까지 목표에 맞게 커리큘럼을 설계합니다.',
+    stats:[{n:'95%',l:'수강 만족도'},{n:'전학년',l:'초·중·고'},{n:'1:1',l:'맞춤 수업'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'기초',title:'스크래치·앱인벤터',items:['블록 코딩 기초','게임·앱 만들기','논리적 사고 훈련','학교 정보 수업 대비']},
+      {lv:'중급',title:'파이썬 기초·응용',items:['파이썬 문법 완성','데이터 처리·자동화','알고리즘 기초','정보올림피아드 준비']},
+      {lv:'고급',title:'C언어·자료구조',items:['C언어 완성','자료구조·알고리즘','대입 SW특기자 대비','코딩 테스트 준비']},
+    ],
+    reviews:[
+      {badge:'중1',text:'파이썬이 이렇게 재미있는 거였는지 몰랐어요. 선생님이 쉽게 설명해 주셔서 금방 따라갔어요.',name:'김OO',sub:'파이썬 기초',chip:'중학생'},
+      {badge:'고2',text:'SW특기자 전형 준비했는데 포트폴리오까지 같이 도와주셔서 정말 감사해요.',name:'이OO',sub:'SW특기자 준비',chip:'고등학생'},
+      {badge:'초6',text:'스크래치로 게임 만들었는데 너무 신기하고 재밌어요!',name:'박OO',sub:'스크래치',chip:'초등학생'},
+    ]
+  },
+  speaking:{
+    name:'회화', tag:'회화 과외', h1:'회화,\n자신있게 말합니다',
+    desc:'원어민급 발음과 실전 회화 능력을 키웁니다. 일상 대화부터 OPIc·토익스피킹 고득점까지 목표에 맞게 집중 훈련합니다.',
+    stats:[{n:'95%',l:'수강 만족도'},{n:'OPIc',l:'IM~AL'},{n:'1:1',l:'집중 훈련'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'기초',title:'기초 회화',items:['발음·억양 교정','일상 대화 표현','영어에 대한 자신감','기초 문법 회화 적용']},
+      {lv:'중급',title:'실전 회화',items:['다양한 주제 자유 토론','원어민식 표현 습득','뉴스·영화로 배우는 영어','OPIc·토익스피킹 기초']},
+      {lv:'고급',title:'고급·시험 대비',items:['OPIc AL·IH 목표','토익스피킹 레벨 7·8','비즈니스 영어 회화','프레젠테이션·인터뷰 영어']},
+    ],
+    reviews:[
+      {badge:'직장인',text:'OPIc IH 받았어요! 선생님이 실전 패턴을 너무 잘 가르쳐 주셔서 2달 만에 올랐어요.',name:'김OO',sub:'OPIc 준비',chip:'직장인'},
+      {badge:'대학생',text:'외국인 친구랑 대화가 자연스럽게 됐어요. 표현이 정말 많이 늘었습니다.',name:'이OO',sub:'회화',chip:'대학생'},
+      {badge:'고3',text:'토익스피킹 준비했는데 레벨 7 받았어요! 너무 기뻐요.',name:'박OO',sub:'토익스피킹',chip:'고등학생'},
+    ]
+  }
+,
+  gd:{
+    name:'검정고시', tag:'검정고시 전문', h1:'검정고시,\n합격 보장합니다',
+    desc:'중졸·고졸 검정고시 전 과목 1:1 맞춤 과외입니다. 기초부터 시작해 단기간에 합격선을 넘기거나 대입 고득점을 목표로 맞춤 커리큘럼을 설계합니다.',
+    stats:[{n:'98%',l:'합격률'},{n:'8주+',l:'단기 완성'},{n:'1:1',l:'맞춤 수업'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'합격',title:'빠른 합격 보장반',items:['핵심 개념 압축 정리','기출 10년치 패턴 분석','7과목 60점 이상 목표','기초부터 1:1 밀착 지도']},
+      {lv:'고득점',title:'고득점 대입 전략반',items:['전 과목 90점 이상 목표','과목별 취약점 정밀 분석','고난도 문제 집중 훈련','대입 서류 경쟁력 강화']},
+    ],
+    reviews:[
+      {badge:'고졸',text:'3개월 만에 고졸 검정고시 합격했어요.',name:'김OO',sub:'고졸 검정고시',chip:'합격'},
+      {badge:'중졸',text:'기초가 없었는데 처음부터 차근차근 가르쳐 주셔서 합격했어요.',name:'이OO',sub:'중졸 검정고시',chip:'합격'},
+      {badge:'고득점',text:'대학 입시 위해 고득점 목표로 했는데 평균 94점 받았어요!',name:'박OO',sub:'고졸 고득점',chip:'대입'},
+    ]
+  },
+  gd_high:{
+    name:'고득점 검정고시', tag:'고득점 대입 전략반', h1:'검정고시,\n95점 이상 도전합니다',
+    desc:'단순 합격을 넘어 95점 이상 고득점을 목표로 합니다. 대학 입시 서류에 검정고시 점수가 반영되므로 높은 점수가 유리합니다.',
+    stats:[{n:'95점+',l:'목표 점수'},{n:'과목별',l:'취약점 분석'},{n:'입시',l:'서류 경쟁력'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'심화',title:'전 과목 고득점 전략',items:['과목별 취약점 정밀 분석','고난도 문제 집중 훈련','95점 이상 목표 커리큘럼','기출 오답 완전 정복']},
+      {lv:'대입',title:'대입 서류 전략',items:['검정고시 점수 극대화','대입 수시 서류 준비','자기소개서 연계','면접 대비']},
+    ],
+    reviews:[
+      {badge:'고득점',text:'전 과목 평균 96점 받았어요. 취약점을 정확히 짚어주셔서 단기간에 올랐어요.',name:'김OO',sub:'고졸 고득점',chip:'대입'},
+      {badge:'대입',text:'수시 서류에 검정고시 점수 넣었는데 면접까지 붙었어요!',name:'이OO',sub:'고졸 대입',chip:'합격'},
+      {badge:'고3',text:'목표 점수 딱 맞게 나왔어요.',name:'박OO',sub:'고졸 고득점',chip:'95점+'},
+    ]
+  },
+  gd_pass:{
+    name:'합격 보장반', tag:'빠른 합격 보장반', h1:'검정고시,\n단기 합격 보장합니다',
+    desc:'기초가 부족해도 괜찮습니다. 핵심만 압축해 단기간에 안정적인 합격선(평균 60점 이상)을 돌파하는 1:1 맞춤 클래스입니다.',
+    stats:[{n:'98%',l:'합격률'},{n:'8주+',l:'최소 과정'},{n:'60점+',l:'합격 목표'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'기초',title:'핵심 압축 합격반',items:['7과목 핵심 개념 압축','기출 10년치 패턴 분석','60점 이상 합격 보장','기초부터 1:1 밀착 지도']},
+      {lv:'단기',title:'시험 직전 특강',items:['시험 4~8주 전 집중 특강','빈출 유형 집중 훈련','오답 패턴 완전 제거','모의고사 실전 연습']},
+    ],
+    reviews:[
+      {badge:'합격',text:'3개월 만에 합격했어요! 핵심만 가르쳐주셔서 감사해요.',name:'임OO',sub:'고졸 검정고시',chip:'직장인'},
+      {badge:'중졸',text:'포기하려 했는데 선생님 덕분에 합격했어요.',name:'최OO',sub:'중졸 검정고시',chip:'합격'},
+      {badge:'주부',text:'아이 키우면서 고졸 자격증 땄어요.',name:'강OO',sub:'고졸 검정고시',chip:'주부'},
+    ]
+  }
+
+};
+
+function cardHTML(curr) {
+  if (!curr) return '';
+  return curr.map((item, i) =>
+    `<div class="curr-card ${i===1?'blue':''}">
+      <div class="curr-step">${item.lv||''}</div>
+      <div class="curr-title">${item.title}</div>
+      <ul class="curr-list">${(item.items||[]).map(it=>`<li>${it}</li>`).join('')}</ul>
+    </div>`
+  ).join('');
+}
+
+function render(key) {
+  const d = SUBJECTS[key] || SUBJECTS.math;
+
+  // SEO
+  document.title = d.name + ' 과외 전문 — 스터디레이어';
+  document.querySelector('meta[name="description"]').setAttribute('content',
+    `${d.name} 과외 전문. 교육청 등록 교사로만 수업. 초·중·고 전 학년 1:1 맞춤 수업.`
+  );
+
+  // 히어로
+  document.getElementById('hero-breadcrumb').textContent = d.name;
+  document.getElementById('hero-tag').textContent = d.tag || d.name + ' 과외';
+  document.getElementById('hero-h1').innerHTML = d.h1.replace(/\n/g,'<br>');
+  document.getElementById('hero-desc').textContent = d.desc;
+  document.getElementById('hero-stats').innerHTML = (d.stats||[]).map(s=>
+    `<div class="hero-stat"><div class="hero-stat-n">${s.n}</div><div class="hero-stat-l">${s.l}</div></div>`
+  ).join('');
+
+  // 커리큘럼
+  document.getElementById('curr-title').textContent = d.name + ' 커리큘럼';
+  document.getElementById('curr-desc').textContent = d.desc;
+
+  const isExplore = key === 'science';
+  if (isExplore) {
+    document.getElementById('curr-grid').innerHTML = cardHTML(SUBJECTS.science.curr);
+  } else {
+    document.getElementById('curr-grid').innerHTML = cardHTML(d.curr);
+  }
+
+  // 후기
+  document.getElementById('review-title').textContent = d.name + ' 수강 후기';
+  document.getElementById('review-grid').innerHTML = (d.reviews||[]).map(r=>
+    `<div class="review-card">
+      <span class="review-badge">${r.badge}</span>
+      <p class="review-text">"${r.text}"</p>
+      <div class="review-name">${r.name} · ${r.sub}</div>
+    </div>`
+  ).join('');
+
+  // CTA
+  document.getElementById('cta-title').textContent = d.name + ' 과외 상담';
+
+  // 탭 활성화
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  const activeTab = document.getElementById('tab-' + key);
+  if (activeTab) activeTab.classList.add('active');
+}
+
+function switchTabLink(key) {
+  if (location.pathname.includes('subject2')) {
+    event.preventDefault();
+    const btn = document.querySelector('.tab');
+    render(key);
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    history.replaceState(null, '', '?s=' + key);
+  }
+}
+
+function switchTab(key, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  render(key);
+  // URL 업데이트
+  history.replaceState(null, '', '?s=' + key);
+}
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-ico').textContent = '+';
+    i.querySelector('.faq-ans').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.querySelector('.faq-ico').textContent = '×';
+    item.querySelector('.faq-ans').style.maxHeight = '300px';
+  }
+}
+
+// 드롭다운 클릭 토글
+document.addEventListener('DOMContentLoaded', function() {
+  const dropBtn = document.querySelector('.nav-drop-btn');
+  const dropMenu = document.querySelector('.nav-drop-menu');
+  if (dropBtn && dropMenu) {
+    dropBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      dropMenu.classList.remove('open');
+    });
+    dropMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+});
+
+// 초기 실행
+document.addEventListener('DOMContentLoaded', function() {
+  const key = new URLSearchParams(location.search).get('s') || 'math';
+  render(key);
+});
+</script>
+</body>
+</html>

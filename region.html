@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+ <meta charset="UTF-8"/>
+ <meta name="description" content="지역별 1:1 맞춤 과외 전문. 교육청 등록 교사로만 수업. 상담 신청."/>
+ <meta name="keywords" content="과외,지역과외,1:1과외,수학과외,영어과외,국어과외,내신과외"/>
+ <meta name="robots" content="index, follow"/>
+ <meta property="og:type" content="website"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>지역 과외 — 스터디레이어</title>
+ <style>
+ @font-face { font-family:'S-CoreDream'; font-weight:300; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); }
+ @font-face { font-family:'S-CoreDream'; font-weight:400; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); }
+ @font-face { font-family:'S-CoreDream'; font-weight:700; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff'); }
+ @font-face { font-family:'S-CoreDream'; font-weight:900; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8ExtraBold.woff') format('woff'); }
+ :root {
+   --blue:#2563EB; --blue-dark:#1D4ED8; --blue-soft:#EFF6FF;
+   --blue-pale:#DBEAFE; --ink:#0F172A; --ink-sub:#475569;
+   --ink-mute:#94A3B8; --line:#E2E8F0; --bg:#fff; --bg-off:#F8FAFC; --dark:#0F172A;
+ }
+ *, *::before, *::after { box-sizing: border-box; }
+ html { scroll-behavior:smooth; }
+ body { font-family:'S-CoreDream',sans-serif; background:#fff; color:var(--ink); margin:0; overflow-x:hidden; }
+ @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+ .marquee { animation:marquee 22s linear infinite; }
+ .faq-ans { max-height:0; overflow:hidden; transition:max-height .4s ease; }
+ .faq-open .faq-ans { max-height:300px; }
+ .faq-ico { transition:transform .2s; display:inline-block; }
+ .faq-open .faq-ico { transform:rotate(45deg); }
+ .reveal { opacity:0; transform:translateY(16px); transition:opacity .6s cubic-bezier(0.16,1,0.3,1),transform .6s cubic-bezier(0.16,1,0.3,1); }
+ .reveal.on { opacity:1; transform:none; }
+ #mobileDrawer { transform:translateX(100%); transition:transform .3s ease; position:fixed; inset:0; z-index:40; background:#fff; display:flex; flex-direction:column; padding-top:60px; }
+ #mobileDrawer.open { transform:translateX(0); }
+ .region-tab { cursor:pointer; transition:all .2s; border-bottom:2px solid transparent; }
+ .region-tab.active { color:var(--blue) !important; border-bottom-color:var(--blue) !important; font-weight:900; }
+
+ /* 지역 설명 섹션 */
+ .detail-section { padding:48px 24px; max-width:800px; margin:0 auto; }
+ @media(min-width:768px){ .detail-section { padding:64px 40px; } }
+
+ .detail-box {
+   background:#fff; border:1.5px solid var(--line); border-radius:20px;
+   padding:32px; margin-bottom:20px;
+ }
+ .detail-box-title {
+   display:flex; align-items:center; gap:10px;
+   font-size:18px; font-weight:900; color:var(--ink);
+   margin-bottom:16px; padding-bottom:14px;
+   border-bottom:1px solid var(--line);
+ }
+ .detail-box-title::before {
+   content:''; width:4px; height:20px; background:var(--blue);
+   border-radius:2px; flex-shrink:0;
+ }
+ .detail-body { font-size:14px; color:var(--ink-sub); line-height:1.85; }
+ .detail-body strong { color:var(--blue); font-weight:900; }
+ .detail-body p { margin:0 0 12px; }
+ .detail-body p:last-child { margin-bottom:0; }
+
+ /* 특징 리스트 */
+ .feature-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+ .feature-list li {
+   display:flex; gap:10px; align-items:flex-start;
+   font-size:14px; color:var(--ink-sub); line-height:1.7;
+ }
+ .feature-list li::before {
+   content:''; width:6px; height:6px; background:var(--blue);
+   border-radius:50%; flex-shrink:0; margin-top:7px;
+ }
+ .feature-list li strong { color:var(--ink); font-weight:900; }
+
+ /* 수업 방식 박스 */
+ .method-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+ @media(min-width:480px){ .method-grid { grid-template-columns:1fr 1fr; } }
+ .method-card {
+   padding:20px; border-radius:14px;
+   border:1.5px solid var(--line); background:#fff;
+ }
+ 
+ .method-step { font-size:10px; font-weight:700; letter-spacing:2px; color:var(--blue); margin-bottom:8px; }
+ .method-card.blue .method-step { color:rgba(255,255,255,0.6); }
+ .method-title { font-size:15px; font-weight:900; color:var(--ink); margin-bottom:4px; }
+ .method-card.blue .method-title { color:#fff; }
+ .method-desc { font-size:12px; color:var(--ink-mute); line-height:1.7; }
+ .method-card.blue .method-desc { color:rgba(255,255,255,0.7); }
+
+ /* 구/동 바로가기 */
+ .district-title { font-size:18px; font-weight:900; color:var(--ink); margin:0 0 16px; padding-bottom:14px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px; }
+ .district-title::before { content:''; width:4px; height:20px; background:var(--blue); border-radius:2px; flex-shrink:0; }
+ .district-chips { display:flex; flex-wrap:wrap; gap:8px; }
+ .district-chip {
+   padding:8px 16px; border-radius:999px;
+   border:1.5px solid var(--line); background:#fff;
+   font-size:13px; font-weight:700; color:var(--ink-sub);
+   text-decoration:none; transition:all .15s;
+   white-space:nowrap;
+ }
+ .district-chip:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-soft); }
+ .district-chip.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+
+ /* CTA 카드 */
+ .cta-card {
+   background:var(--dark); border-radius:20px; padding:32px;
+   display:flex; flex-direction:column; gap:20px;
+ }
+ @media(min-width:640px){ .cta-card { flex-direction:row; align-items:center; justify-content:space-between; } }
+ .cta-tel { font-size:22px; font-weight:900; color:#fff; letter-spacing:-0.5px; }
+ .cta-sub { font-size:13px; color:rgba(255,255,255,0.5); margin-top:4px; }
+ .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; background:var(--blue); color:#fff; font-weight:900; font-size:14px; border-radius:12px; text-decoration:none; border:none; cursor:pointer; font-family:inherit; white-space:nowrap; transition:background .15s; }
+ .cta-btn:hover { background:var(--blue-dark); }
+
+ /* nav */
+ .nav { position:fixed; top:0; left:0; right:0; z-index:50; height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 24px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+ .nav-logo { font-weight:900; font-size:16px; text-decoration:none; color:var(--ink); }
+ .nav-logo span { color:var(--blue); }
+ .nav-links { display:none; gap:2px; list-style:none; margin:0; padding:0; }
+ @media(min-width:768px){ .nav-links { display:flex; align-items:center; } }
+ .nav-links a, .nav-links > li > button { padding:7px 14px; border-radius:20px; font-size:13px; font-weight:700; color:var(--ink-sub); text-decoration:none; background:none; border:none; cursor:pointer; font-family:inherit; transition:background .15s,color .15s; }
+ .nav-links a:hover, .nav-links > li > button:hover { background:var(--bg-off); color:var(--ink); }
+ .nav-cta { background:var(--blue) !important; color:#fff !important; border-radius:20px !important; }
+ .nav-cta:hover { background:var(--blue-dark) !important; }
+ .nav-dropdown { position:relative; }
+ .nav-dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
+ .dropdown-menu { position:absolute; top:calc(100% + 6px); left:0; background:#fff; border:1px solid var(--line); border-radius:14px; padding:6px; min-width:520px; box-shadow:0 8px 24px rgba(0,0,0,0.08); opacity:0; visibility:hidden; transform:translateY(-4px); transition:all .2s ease; z-index:100; display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; padding:16px; }
+ .dm-col-title { font-size:10px; font-weight:700; letter-spacing:2px; color:var(--ink-mute); text-transform:uppercase; padding:0 8px 10px; }
+ .dropdown-menu a { display:block; padding:8px 8px; border-radius:8px; font-size:13px; font-weight:700; color:var(--ink-sub); text-decoration:none; transition:background .12s; }
+ .dropdown-menu a:hover { background:var(--bg-off); color:var(--ink); }
+ .burger { display:flex; flex-direction:column; gap:5px; padding:6px; cursor:pointer; background:none; border:none; }
+ .burger span { width:20px; height:2px; background:var(--ink); display:block; transition:all .25s; border-radius:2px; }
+ @media(min-width:768px){ .burger { display:none; } }
+ </style>
+ <meta property="og:title" content="지역별 과외 — 스터디레이어"/>
+ <meta property="og:description" content="내 동네 1:1 맞춤 과외 선생님 찾기."/>
+ <meta property="og:url" content="https://studylayer.site/region.html"/>
+ <meta property="og:image" content="https://studylayer.site/images/og-image.png"/>
+ <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+ <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png"/>
+ <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span>스터디</span>레이어</a>
+  <ul class="nav-links">
+    <li><a href="index.html">홈</a></li>
+    <li class="nav-dropdown">
+      <button>과외 ▾</button>
+      <div class="dropdown-menu">
+        <div>
+          <div class="dm-col-title">지역별</div>
+          <a href="region.html?r=서울">서울</a>
+          <a href="region.html?r=경기">경기</a>
+          <a href="region.html?r=대전">대전</a>
+          <a href="region.html?r=대구">대구</a>
+          <a href="region.html?r=부산">부산</a>
+          <a href="region.html" style="color:var(--blue);font-weight:900">전체 →</a>
+        </div>
+        <div style="border-left:1px solid var(--line);padding-left:12px">
+          <div class="dm-col-title">학년별</div>
+          <a href="subject2.html?grade=초등">초등 과외</a>
+          <a href="subject2.html?grade=중등">중등 과외</a>
+          <a href="subject2.html?grade=고등">고등 과외</a>
+          <a href="subject2.html?grade=수능">수능 대비</a>
+          <a href="subject2.html?grade=내신">내신 대비</a>
+        </div>
+        <div style="border-left:1px solid var(--line);padding-left:12px">
+          <div class="dm-col-title">과목별</div>
+          <a href="subject2.html?s=korean">국어</a>
+          <a href="subject2.html?s=english">영어</a>
+          <a href="subject2.html?s=math">수학</a>
+          <a href="subject2.html?s=science">탐구</a>
+          <a href="subject2.html?s=coding">코딩</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="academy.html">학원</a></li>
+    <li><a href="subject2.html?s=speaking">회화</a></li>
+    <li><a href="subject2.html?s=gd">검정고시</a></li>
+    <li><a href="index.html#consult" class="nav-cta">상담 신청</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="index.html#consult" class="nav-cta" style="display:none;font-size:12px;font-weight:900;padding:6px 14px;border-radius:16px;text-decoration:none" id="navCtaMobile">상담</a>
+    <button class="burger" id="burgerBtn" aria-label="메뉴">
+      <span id="b1"></span><span id="b2"></span><span id="b3"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- 모바일 드로어 -->
+<div id="mobileDrawer">
+  <nav style="flex:1;overflow-y:auto;padding:16px 24px">
+    <a href="index.html" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">홈 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+    <a href="region.html" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">지역별 과외 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+    <a href="academy.html" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">학원 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+    <a href="subject2.html?s=speaking" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">회화 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+    <a href="subject2.html?s=gd" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-size:18px;font-weight:900;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">검정고시 <span style="color:var(--ink-mute);font-size:12px">→</span></a>
+  </nav>
+  <div style="padding:0 24px 40px">
+    <a href="index.html#consult" style="display:block;width:100%;background:var(--blue);color:#fff;text-align:center;font-weight:900;padding:16px;border-radius:14px;text-decoration:none;font-size:15px">상담 신청</a>
+  </div>
+</div>
+
+<!-- 지역 탭 바 -->
+<div style="margin-top:60px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch">
+  <div style="display:flex;padding:0 24px;min-width:max-content">
+    <a href="region.html?r=서울"  id="tab-서울"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">서울</a>
+    <a href="region.html?r=경기"  id="tab-경기"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">경기</a>
+    <a href="region.html?r=인천"  id="tab-인천"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">인천</a>
+    <a href="region.html?r=강원"  id="tab-강원"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">강원</a>
+    <a href="region.html?r=충북"  id="tab-충북"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">충북</a>
+    <a href="region.html?r=충남"  id="tab-충남"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">충남</a>
+    <a href="region.html?r=대전"  id="tab-대전"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">대전</a>
+    <a href="region.html?r=세종"  id="tab-세종"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">세종</a>
+    <a href="region.html?r=전북"  id="tab-전북"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">전북</a>
+    <a href="region.html?r=전남"  id="tab-전남"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">전남</a>
+    <a href="region.html?r=광주"  id="tab-광주"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">광주</a>
+    <a href="region.html?r=경북"  id="tab-경북"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">경북</a>
+    <a href="region.html?r=경남"  id="tab-경남"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">경남</a>
+    <a href="region.html?r=대구"  id="tab-대구"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">대구</a>
+    <a href="region.html?r=부산"  id="tab-부산"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">부산</a>
+    <a href="region.html?r=울산"  id="tab-울산"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">울산</a>
+    <a href="region.html?r=제주"  id="tab-제주"  class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">제주</a>
+    <a href="region.html?r=온라인" id="tab-온라인" class="region-tab" style="padding:14px 18px;font-size:14px;font-weight:700;color:var(--ink-sub);text-decoration:none;white-space:nowrap">온라인</a>
+  </div>
+</div>
+
+<!-- 히어로 -->
+<section style="background:var(--dark);padding:48px 24px 40px">
+  <div style="max-width:800px;margin:0 auto">
+    <p style="font-size:12px;color:rgba(255,255,255,0.4);margin:0 0 8px">
+      <a href="index.html" style="color:rgba(255,255,255,0.4);text-decoration:none">홈</a> / 지역별 과외 / <span id="hero-region"></span>
+    </p>
+    <div id="hero-badge" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px"></div>
+    <h1 id="hero-h1" style="font-size:clamp(2rem,6vw,3.2rem);font-weight:900;letter-spacing:-2px;line-height:1.1;color:#fff;margin:0 0 16px"></h1>
+    <p id="hero-desc" style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.8;max-width:560px;margin:0 0 28px"></p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="index.html#consult" class="cta-btn">상담 신청</a>
+      <a href="#district-section" style="display:inline-flex;align-items:center;padding:14px 24px;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all .15s" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">구/동별 보기 ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- 통계 바 -->
+<div style="background:var(--bg-off);border-bottom:1px solid var(--line)">
+  <div id="hero-stats" style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)"></div>
+</div>
+
+<!-- 상세 설명 -->
+<div style="background:#fff">
+  <div class="detail-section">
+
+    <!-- 지역 안내 -->
+    <div class="detail-box reveal">
+      <div class="detail-box-title" id="intro-title">지역 과외 안내</div>
+      <div class="detail-body" id="intro-body"></div>
+    </div>
+
+    <!-- 지역 특징 -->
+    <div class="detail-box reveal">
+      <div class="detail-box-title" id="feature-title">과외의 특징</div>
+      <ul class="feature-list" id="feature-list"></ul>
+    </div>
+
+    <!-- 수업 진행 방식 -->
+    <div class="detail-box reveal">
+      <div class="detail-box-title">수업 진행 방식</div>
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="method-step">STEP 01</div>
+          <div class="method-title">상담 신청</div>
+          <div class="method-desc">학생의 현재 수준과 목표를 파악합니다. 전화 한 통으로 바로 시작하세요.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-step">STEP 02</div>
+          <div class="method-title">선생님 매칭</div>
+          <div class="method-desc">24시간 내 지역 학교 기출을 파악한 선생님을 연결합니다.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-step">STEP 03</div>
+          <div class="method-title">1:1 맞춤 커리큘럼</div>
+          <div class="method-desc">학교 교재와 시험 일정에 맞춰 커리큘럼을 직접 설계합니다.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-step">STEP 04</div>
+          <div class="method-title">성적 향상 & 피드백</div>
+          <div class="method-desc">매 수업 후 학습 내용을 학부모님께 투명하게 전달합니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 학년별 전략 -->
+    <div class="detail-box reveal">
+      <div class="detail-box-title" id="grade-title">학년별 학습 전략</div>
+      <div class="detail-body" id="grade-body"></div>
+    </div>
+
+    <!-- FAQ -->
+          <div class="detail-box reveal">
+        <div class="detail-box-title" id="faq-title">자주 묻는 질문</div>
+        <div id="faq-list"></div>
+      </div>
+
+  </div>
+</div>
+
+<!-- 구/동 바로가기 -->
+<div id="district-section" style="background:var(--bg-off);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:48px 24px">
+  <div style="max-width:800px;margin:0 auto">
+    <div id="district-content"></div>
+  </div>
+</div>
+
+<!-- CTA 카드 -->
+<div style="padding:48px 24px;background:#fff">
+  <div style="max-width:800px;margin:0 auto">
+    <div class="cta-card">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:6px" id="cta-region-label">지역 맞춤 과외 상담</div>
+        <div class="cta-tel">상담 신청하기 →</div>
+        <div class="cta-sub">평일·주말 오전 9시 — 오후 10시</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="index.html#consult" class="cta-btn">전화 상담</a>
+        <a href="index.html#consult" class="cta-btn" style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2)">온라인 상담하기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 과목 선택 -->
+<div style="padding:0 24px 48px;background:#fff;border-top:1px solid var(--line)">
+  <div style="max-width:800px;margin:0 auto;padding-top:40px">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin:0 0 8px">과목 선택</p>
+    <h2 id="subject-title" style="font-size:22px;font-weight:900;color:var(--ink);margin:0 0 20px;letter-spacing:-1px"></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px" id="subject-grid">
+      <a href="subject2.html?s=korean" style="display:flex;flex-direction:column;align-items:center;padding:20px 10px;border:1.5px solid var(--line);border-radius:14px;text-decoration:none;font-size:14px;font-weight:900;color:var(--ink);transition:all .15s" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-soft)'" onmouseout="this.style.borderColor='var(--line)';this.style.background=''">국어</a>
+      <a href="subject2.html?s=english" style="display:flex;flex-direction:column;align-items:center;padding:20px 10px;border:1.5px solid var(--line);border-radius:14px;text-decoration:none;font-size:14px;font-weight:900;color:var(--ink);transition:all .15s" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-soft)'" onmouseout="this.style.borderColor='var(--line)';this.style.background=''">영어</a>
+      <a href="subject2.html?s=math" style="display:flex;flex-direction:column;align-items:center;padding:20px 10px;border:1.5px solid var(--line);border-radius:14px;text-decoration:none;font-size:14px;font-weight:900;color:var(--ink);transition:all .15s" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-soft)'" onmouseout="this.style.borderColor='var(--line)';this.style.background=''">수학</a>
+      <a href="subject2.html?s=science" style="display:flex;flex-direction:column;align-items:center;padding:20px 10px;border:1.5px solid var(--line);border-radius:14px;text-decoration:none;font-size:14px;font-weight:900;color:var(--ink);transition:all .15s" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-soft)'" onmouseout="this.style.borderColor='var(--line)';this.style.background=''">탐구</a>
+      <a href="subject2.html?s=coding" style="display:flex;flex-direction:column;align-items:center;padding:20px 10px;border:1.5px solid var(--line);border-radius:14px;text-decoration:none;font-size:14px;font-weight:900;color:var(--ink);transition:all .15s" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-soft)'" onmouseout="this.style.borderColor='var(--line)';this.style.background=''">코딩</a>
+      <a href="subject2.html?s=gd" style="display:flex;flex-direction:column;align-items:center;padding:20px 10px;border:1.5px solid var(--line);border-radius:14px;text-decoration:none;font-size:14px;font-weight:900;color:var(--ink);transition:all .15s" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-soft)'" onmouseout="this.style.borderColor='var(--line)';this.style.background=''">검정고시</a>
+    </div>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<footer style="background:var(--dark);padding:48px 24px 32px">
+  <div style="max-width:800px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:20px">
+      <div>
+        <div style="font-size:17px;font-weight:900;color:#fff"><span style="color:var(--blue)">스터디</span>레이어</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px">초·중·고 1:1 맞춤 과외</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:rgba(255,255,255,0.2)">© 2026 스터디레이어. All rights reserved.</span>
+      <a href="index.html#consult" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.6);text-decoration:none">상담 신청하기 →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════
+// 지역 데이터 (상세 설명 + 구/동 포함)
+// ══════════════════════════════════════════
+const REGIONS = {
+  '서울': {
+    badge: '서울특별시 과외',
+    h1: '서울 과외,\n학교 기출로\n승부합니다',
+    desc: '스터디레이어는 서울 전 지역 초·중·고 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 과외를 연결합니다.',
+    stats: [{n:'98%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'500+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>서울특별시</strong> 전 지역 학부모님이 스터디레이어를 선택하는 이유는 명확합니다. 학생 학교의 기출 경향 3년치를 검증하여 선생님을 선별하고, 매 수업 후 진도와 숙제를 학부모님께 공유합니다.</p>
+<p>서울특별시 지역 학부모님이 과외 선생님과 함께 학습·수준 별 역산 계획을 수립하고, 주간 학습 보고서를 제공합니다. 학생과 선생님이 맞지 않으면 언제든 무료로 교체가 가능합니다.</p>`,
+    features: [
+      { title: '지역 학교 기출 완벽 분석', desc: '강남·강북·마포·노원 등 서울 전 지역 각 학교 시험 경향을 철저히 분석해 내신 최적의 과외를 진행합니다. 단원별 출제 빈도와 유형을 파악해 시험 전 집중 대비가 가능합니다.' },
+      { title: '검증된 선생님 1:1 매칭', desc: '학력·경력 상담 후 수업 3단계 검증을 통과한 선생님만 매칭합니다. 학생과 성향이 맞지 않으면 언제든 무료로 교체가 가능합니다.' },
+      { title: '주간 학습 보고서 제공', desc: '매 수업 후 학습 내용·성취도를 학부모님께 공유합니다. 투명한 학습 관리로 성적 변화를 직접 확인할 수 있습니다.' },
+      { title: '학력 집중 보완', desc: '단원별 취약점을 정확히 파악하여 집중 보완합니다. 학원 수업에서 부족한 부분을 1:1로 집중 보강하는 방식으로 운영합니다.' },
+      { title: '빠르게 매칭', desc: '상담 신청 후 빠르게 서울특별시 지역 맞는 선생님들을 연결해 드립니다. 빠르면 당일 매칭도 가능합니다.' },
+    ],
+    grade: `<p><strong>초등</strong> — 모든 학습의 기초가 되는 시기입니다. 수학·영어·국어 기본 개념을 탄탄히 다지지 않으면 중학교 진학 후 큰 어려움을 겪습니다. 단순 암기가 아닌 이해 중심으로 학습을 키웁니다.</p>
+<p><strong>중등</strong> — 초등과 고등의 연결 고리입니다. 내신 성적이 고등학교 진학 전략에 직접 영향을 미치고, 내신 성적이 고등학교 진학 전략에 직접 영향을 미칩니다. 내신 집중 관리와 함께 고등 과정 선행이 필요합니다.</p>
+<p><strong>고등</strong> — 내신 등급이 대입에 직접 연결됩니다. 서울 지역 고등학교 내신은 경쟁이 치열하므로, 학교별 기출을 목표로 집중 관리가 필요합니다. 수능 4전부터 집중 모드로 전환합니다.</p>`,
+    faqs: [
+      { q: '서울특별시에서 과외 선생님 찾는 데 얼마나 걸리나요?', a: '상담 신청 후 24시간 이내에 연락드립니다. 빠르면 당일 매칭도 가능합니다.' },
+      { q: '학원과 과외를 병행해도 되나요?', a: '학원에서 부족한 부분을 1:1로 집중 보강하는 학생들도 많습니다. 학원 진도에 맞춰 과외 커리큘럼으로 운영합니다.' },
+      { q: '수업료는 어떻게 되나요?', a: '선생님 경력·학력에 따라 다르며, 무료 상담 후 예산에 맞는 선생님을 투명하게 안내해 드립니다. 첫 체험 수업은 무료입니다.' },
+      { q: '성적이 어떻게 나아지나요?', a: '기초부터 시작하면 다르다가 학생의 수준에 따라 다르지만, 보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 과외이지만 집중 대비 4~8주도 운영합니다.' },
+      { q: '몇 개 과목을 수업하면 효과가 나나요?', a: '보통 2~3개 과목을 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 과외이지만 효과가 높습니다.' },
+    ],
+    districts: [
+      { name: '강남구', dongs: ['개포동','논현동','대치동','도곡동','삼성동','압구정동','역삼동','일원동','청담동'] },
+      { name: '서초구', dongs: ['반포동','방배동','서초동','양재동','잠원동'] },
+      { name: '송파구', dongs: ['가락동','문정동','방이동','송파동','잠실동','장지동'] },
+      { name: '강동구', dongs: ['고덕동','길동','둔촌동','명일동','상일동','암사동'] },
+      { name: '마포구', dongs: ['공덕동','노고산동','상암동','신수동','연남동','합정동','홍대입구'] },
+      { name: '영등포구', dongs: ['당산동','목동','신길동','여의도동','영등포동'] },
+      { name: '노원구', dongs: ['공릉동','월계동','중계동','하계동'] },
+      { name: '강서구', dongs: ['가양동','등촌동','마곡동','방화동'] },
+      { name: '동작구', dongs: ['노량진동','대방동','사당동','상도동'] },
+      { name: '관악구', dongs: ['봉천동','신림동'] },
+      { name: '성북구', dongs: ['돈암동','석관동','성북동','장위동'] },
+      { name: '기타구', dongs: ['강북','도봉','은평','종로','중구','용산'] },
+    ]
+  },
+  '경기': {
+    badge: '경기도 과외',
+    h1: '경기 과외,\n학군 맞춤\n커리큘럼',
+    desc: '분당·수원·일산·용인·고양 등 경기 전 지역 학군별 특성에 최적화된 1:1 커리큘럼으로 성적을 올립니다.',
+    stats: [{n:'97%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'300+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>경기도</strong> 전 지역 학교별 내신 기출을 분석하여 1:1 맞춤 과외를 연결합니다. 분당·수원·일산·용인·고양 등 경기 핵심 학군의 출제 경향을 빅데이터로 분석해 최적의 선생님을 매칭합니다.</p>
+<p>경기도 지역 학부모님이 스터디레이어를 선택하는 이유는 학생 학교의 기출 경향 3년치를 검증하여 선생님을 선별하기 때문입니다. 매 수업 후 진도와 피드백을 학부모님께 공유합니다.</p>`,
+    features: [
+      { title: '분당·수원 학군 특화', desc: '분당 정자·수내동, 수원 영통구 등 경기 핵심 학군 출제 경향을 완벽 파악하고 있습니다. 지역 학교 기출을 3년치 분석한 선생님을 매칭합니다.' },
+      { title: '전 지역 방문 가능', desc: '일산·고양·용인·성남·안양·화성·평택 등 경기 전역 방문 과외가 가능합니다. 온라인 수업도 동일한 품질로 제공합니다.' },
+      { title: '내신 등급 향상 관리', desc: '경기 지역 학교 시험 일정에 맞춰 역산 학습 계획을 수립하고 매 수업 피드백을 드립니다.' },
+    ],
+    grade: `<p><strong>초등</strong> — 수학·영어 기초를 탄탄히 다지는 시기입니다. 경기 지역 초등학교 내신과 연계된 학습 계획을 수립합니다.</p>
+<p><strong>중등</strong> — 내신 관리가 본격적으로 시작됩니다. 경기 지역 중학교 기출 경향을 분석해 내신 1등급을 목표로 수업합니다.</p>
+<p><strong>고등</strong> — 수능과 내신을 동시에 대비합니다. 경기 지역 고등학교 내신 경쟁은 치열하므로 체계적인 관리가 필요합니다.</p>`,
+    faqs: [
+      { q: '경기 전역에 방문 과외가 가능한가요?', a: '네, 수원·성남·고양·용인·화성·평택 등 경기 전 지역 방문 과외가 가능합니다. 거리에 따라 교통비가 추가될 수 있습니다.' },
+      { q: '분당 학군 전문 선생님이 있나요?', a: '분당 정자·수내·서현동 등 분당 핵심 학군 학교 기출을 파악한 선생님들이 등록되어 있습니다.' },
+      { q: '온라인 수업도 가능한가요?', a: '방문이 어려운 지역도 온라인으로 동일한 품질의 1:1 수업을 받으실 수 있습니다.' },
+      { q: '수업 일정은 어떻게 잡나요?', a: '선생님과 학생이 직접 협의해 일정을 잡습니다. 학원·학교 일정에 맞춰 유연하게 조율 가능합니다.' },
+    ],
+    districts: [
+      { name: '수원', dongs: ['권선동','매탄동','영통동','우만동','인계동','팔달동'] },
+      { name: '성남·분당', dongs: ['분당구 정자동','분당구 수내동','분당구 서현동','중원구','수정구'] },
+      { name: '고양', dongs: ['덕양구 행신동','덕양구 화정동','일산동구 마두동','일산동구 백석동','일산서구 주엽동'] },
+      { name: '용인', dongs: ['기흥구 구갈동','기흥구 동백동','수지구 상현동','수지구 죽전동','처인구'] },
+      { name: '남양주', dongs: ['다산동','별내동','평내동','호평동'] },
+      { name: '화성', dongs: ['동탄1동','동탄2동','봉담읍'] },
+      { name: '안양·군포', dongs: ['동안구','만안구','군포시'] },
+      { name: '부천', dongs: ['소사구','오정구','원미구'] },
+      { name: '기타', dongs: ['광명','안산','시흥','의정부','파주','김포','하남'] },
+    ]
+  },
+  '대전': {
+    badge: '대전광역시 과외',
+    h1: '대전 과외,\n기출 분석\n전문',
+    desc: '대전 유성·서·동·중·대덕구 주요 학교 기출 경향을 완벽 분석합니다. 24시간 내 지역 전문 선생님을 매칭합니다.',
+    stats: [{n:'96%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'150+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>대전광역시</strong> 유성·서·동·중·대덕구 전 지역 학교 교재와 내신 출제 경향을 완벽 분석합니다. 카이스트·충남대 인근 최상위권 선생님을 포함해 검증된 교사진을 보유하고 있습니다.</p>
+<p>대전 지역 학부모님이 과외 선생님을 선택할 때 가장 중요한 건 학교 기출 파악 여부입니다. 스터디레이어는 대전 주요 중·고등학교 3년치 기출을 분석해 선생님을 매칭합니다.</p>`,
+    features: [
+      { title: '대전 학교 기출 DB 보유', desc: '유성·서·중구 등 대전 주요 학교 기출 문제를 체계적으로 분석한 데이터베이스를 보유합니다. 시험 전 집중 대비가 가능합니다.' },
+      { title: '카이스트 인근 전문', desc: '대덕연구단지·유성구 인근 최상위권 대학원생·교사 선생님을 연결해 드립니다.' },
+      { title: '내신 집중 관리', desc: '대전 지역 학사 일정에 맞춰 시험 전 집중 특강과 내신 역산 플랜을 제공합니다.' },
+    ],
+    grade: `<p><strong>초등</strong> — 수학·영어 기초를 탄탄히 다집니다. 대전 지역 초등 교육과정에 맞춘 학습 계획을 수립합니다.</p>
+<p><strong>중등</strong> — 내신 관리가 본격적으로 시작됩니다. 대전 주요 중학교 기출을 분석해 내신 향상을 목표로 수업합니다.</p>
+<p><strong>고등</strong> — 수능과 내신을 동시에 대비합니다. 대전 지역 주요 고등학교 기출 경향을 파악해 등급 향상을 목표로 합니다.</p>`,
+    faqs: [
+      { q: '대전 전 구에서 방문 과외가 가능한가요?', a: '유성·서·동·중·대덕구 전 구 방문 과외가 가능합니다. 온라인 수업도 동일한 품질로 제공합니다.' },
+      { q: '카이스트 출신 선생님도 있나요?', a: '대덕연구단지·유성구 인근 대학원생·연구원 선생님들이 등록되어 있습니다. 수학·과학 과목에 특히 강합니다.' },
+      { q: '수업료는 어떻게 되나요?', a: '선생님 경력에 따라 다르며, 상담 후 예산에 맞는 선생님을 안내해 드립니다. 첫 수업은 무료입니다.' },
+    ],
+    districts: [
+      { name: '서구', dongs: ['관저동','도안동','둔산동','월평동','탄방동','갈마동'] },
+      { name: '유성구', dongs: ['관평동','노은동','반석동','신성동','지족동','죽동'] },
+      { name: '중구', dongs: ['대흥동','문화동','목동','태평동','유천동'] },
+      { name: '동구', dongs: ['가오동','대동','법동','송촌동','중리동'] },
+      { name: '대덕구', dongs: ['법동','오정동','중리동','신탄진동'] },
+    ]
+  },
+  '충북': {
+    badge: '충청북도 과외',
+    h1: '충북 과외,\n청주 본점\n직영 운영',
+    desc: '청주·충주·제천 등 충북 전 지역 학교 교재와 내신 출제 경향에 최적화된 1:1 과외를 제공합니다.',
+    stats: [{n:'96%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'200+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>청주 본점</strong>을 직영으로 운영하며 충청북도 전역 학교 기출을 가장 잘 파악하고 있습니다. 청주·충주·제천 등 충북 전 지역 방문 과외 및 온라인 수업이 가능합니다.</p>
+<p>충북 지역 학교 시험 일정에 맞춰 역산 학습 계획을 수립하고, 매 수업 후 상세 피드백을 학부모님께 전달합니다.</p>`,
+    features: [
+      { title: '청주 본점 직영', desc: '청주 본점에서 직접 운영하며 충북 지역 학교 기출을 가장 잘 파악합니다.' },
+      { title: '충북 전역 방문', desc: '청주·충주·제천·음성·괴산 등 충북 전역 방문 과외가 가능합니다.' },
+      { title: '지역 밀착 관리', desc: '충북 학교 시험 일정에 맞춰 역산 계획을 수립하고 매 수업 피드백을 드립니다.' },
+    ],
+    grade: `<p><strong>초등</strong> — 청주 지역 초등학교 교육과정에 맞춘 기초 학습을 진행합니다.</p>
+<p><strong>중등</strong> — 청주 주요 중학교 기출을 분석해 내신 향상을 목표로 합니다.</p>
+<p><strong>고등</strong> — 충북 지역 고등학교 내신과 수능을 동시에 관리합니다.</p>`,
+    faqs: [
+      { q: '청주 외 지역도 방문이 가능한가요?', a: '충주·제천·음성·보은 등 충북 전 지역 방문이 가능합니다. 원거리는 온라인 수업을 권장합니다.' },
+      { q: '청주 내 어느 동도 방문이 가능한가요?', a: '가경동·복대동·봉명동·산남동 등 청주 시내 전 지역 방문이 가능합니다.' },
+    ],
+    districts: [
+      { name: '청주 흥덕구', dongs: ['가경동','강서동','개신동','복대동','봉명동','분평동','산남동','서현동','성화동','수곡동','신봉동'] },
+      { name: '청주 청원구', dongs: ['내덕동','율량동','오창읍','오송읍'] },
+      { name: '청주 서원구', dongs: ['금천동','모충동','사창동','용암동'] },
+      { name: '청주 상당구', dongs: ['방서동','용암동','오근장동'] },
+      { name: '충주·제천', dongs: ['충주시','제천시','음성군','괴산군'] },
+    ]
+  },
+  '충남': {
+    badge: '충청남도 과외',
+    h1: '충남 과외,\n천안·아산\n전문',
+    desc: '천안·아산·공주·서산·당진 등 충남 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.',
+    stats: [{n:'95%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'150+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>충청남도</strong> 천안·아산·공주·보령·서산·논산·당진 등 전 지역 학교 교재와 내신 출제 경향에 최적화된 선생님을 연결합니다.</p>`,
+    features: [
+      { title: '천안·아산 전문', desc: '천안·아산 주요 학교 기출 경향을 분석해 최적의 선생님을 매칭합니다.' },
+      { title: '충남 전역 커버', desc: '공주·보령·서산·논산·계룡·당진 등 충남 전 지역 방문 및 온라인 수업이 가능합니다.' },
+    ],
+    grade: `<p><strong>초등·중등</strong> — 천안·아산 지역 학교 교육과정에 맞춘 기초부터 내신까지 관리합니다.</p>
+<p><strong>고등</strong> — 충남 지역 고등학교 내신과 수능 동시 대비 커리큘럼을 제공합니다.</p>`,
+    faqs: [
+      { q: '천안·아산 외 지역도 가능한가요?', a: '공주·서산·논산 등 충남 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '천안', dongs: ['구성동','두정동','백석동','봉명동','불당동','성성동','신방동','쌍용동','청당동'] },
+      { name: '아산', dongs: ['배방읍','신창면','온양동','탕정면'] },
+      { name: '기타 충남', dongs: ['공주시','보령시','서산시','논산시','계룡시','당진시'] },
+    ]
+  },
+  '광주': {
+    badge: '광주광역시 과외',
+    h1: '광주 과외,\n학군 최적화\n1:1',
+    desc: '광주 북·남·서·동·광산구 전 지역 학군에 최적화된 선생님을 24시간 내 매칭합니다.',
+    stats: [{n:'95%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'120+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>광주광역시</strong> 북·남·서·동·광산구 전 지역 학군에 최적화된 선생님을 연결합니다. 상무·봉선·수완 등 핵심 학군의 내신 출제 경향에 특화된 수업을 제공합니다.</p>`,
+    features: [
+      { title: '광주 5개 구 전역', desc: '북·남·서·동·광산구 전 지역 학교 기출 경향을 완벽 분석한 선생님을 매칭합니다.' },
+      { title: '상무·봉선·수완 학군', desc: '광주 핵심 학군 내신 출제 경향에 특화된 수업을 제공합니다.' },
+    ],
+    grade: `<p><strong>초등·중등</strong> — 광주 지역 학교 교육과정에 맞춘 1:1 수업을 진행합니다.</p>
+<p><strong>고등</strong> — 광주 지역 고등학교 내신과 수능을 동시에 관리합니다.</p>`,
+    faqs: [
+      { q: '광주 전 지역 방문이 가능한가요?', a: '북·남·서·동·광산구 전 지역 방문 과외가 가능합니다.' },
+    ],
+    districts: [
+      { name: '서구', dongs: ['상무동','치평동','화정동','풍암동','마륵동'] },
+      { name: '남구', dongs: ['봉선동','주월동','진월동','방림동'] },
+      { name: '광산구', dongs: ['수완동','선운동','운남동','첨단동'] },
+      { name: '북구', dongs: ['일곡동','신용동','운암동','우산동'] },
+      { name: '동구', dongs: ['계림동','학동','지산동'] },
+    ]
+  },
+  '부산': {
+    badge: '부산광역시 과외',
+    h1: '부산 과외,\n전 지역\n연결',
+    desc: '해운대·수영·연제 등 부산 전 지역 학교별 기출 데이터를 기반으로 1:1 맞춤 과외를 연결합니다.',
+    stats: [{n:'95%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'150+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>부산광역시</strong> 해운대·수영·사하·북구 등 전 지역 학교별 기출 데이터를 기반으로 성적 향상을 도와드립니다.</p>`,
+    features: [
+      { title: '해운대·수영 학군', desc: '해운대·수영·연제구 등 부산 핵심 학군 내신 기출 경향을 분석합니다.' },
+      { title: '수능·내신 동시 대비', desc: '부산 지역 수능 경향과 학교 내신을 동시에 준비하는 통합 커리큘럼을 제공합니다.' },
+    ],
+    grade: `<p><strong>초등·중등</strong> — 부산 지역 학교 교육과정에 맞춘 기초·내신 관리를 진행합니다.</p>
+<p><strong>고등</strong> — 수능과 내신을 동시에 관리하며 대입을 준비합니다.</p>`,
+    faqs: [
+      { q: '부산 전 구역 방문이 가능한가요?', a: '해운대·수영·연제·사하·북구 등 부산 전 지역 방문 과외와 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '해운대구', dongs: ['반여동','반송동','우동','좌동','중동'] },
+      { name: '수영구', dongs: ['광안동','민락동','수영동','남천동'] },
+      { name: '연제구', dongs: ['거제동','연산동'] },
+      { name: '사하구', dongs: ['감천동','괴정동','당리동'] },
+      { name: '기타 부산', dongs: ['강서구','금정구','기장군','남구','동구','동래구','부산진구','북구','사상구','서구','영도구','중구'] },
+    ]
+  },
+  '대구': {
+    badge: '대구광역시 과외',
+    h1: '대구 과외,\n수성 학군\n전문',
+    desc: '수성·달서·중구 등 대구 전 지역 내신 기출 경향을 분석하고 1:1 맞춤 수업으로 성적을 올립니다.',
+    stats: [{n:'96%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'150+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>대구광역시</strong> 수성·달서·중구 등 전 지역 내신 기출 경향을 분석합니다. 수성구 범어·황금·만촌 등 핵심 학군 전문 선생님을 매칭합니다.</p>`,
+    features: [
+      { title: '수성구 학군 특화', desc: '범어·황금·만촌·지산동 등 대구 수성구 핵심 학군 출제 경향을 파악한 선생님을 매칭합니다.' },
+      { title: '달서·중구 전문', desc: '달서구·중구·동구 등 대구 전 지역 학교 기출을 분석해 맞춤 수업을 진행합니다.' },
+    ],
+    grade: `<p><strong>초등·중등</strong> — 대구 지역 학교 교육과정에 맞춘 기초·내신 관리를 합니다.</p>
+<p><strong>고등</strong> — 수성구 핵심 학군을 중심으로 수능·내신을 동시에 관리합니다.</p>`,
+    faqs: [
+      { q: '수성구 외 지역도 가능한가요?', a: '달서·중·동·북·서·남구 등 대구 전 구역 방문 과외가 가능합니다.' },
+    ],
+    districts: [
+      { name: '수성구', dongs: ['만촌동','범어동','수성동','신매동','황금동','지산동'] },
+      { name: '달서구', dongs: ['월성동','이곡동','죽전동','감삼동','장기동'] },
+      { name: '달성군', dongs: ['화원읍','논공읍','다사읍'] },
+      { name: '기타 대구', dongs: ['중구','동구','서구','남구','북구'] },
+    ]
+  },
+  '울산': {
+    badge: '울산광역시 과외',
+    h1: '울산 과외,\n지역 맞춤\n1:1',
+    desc: '울산 남·북·중·동구 및 울주군 전 지역 학교 기출에 맞춘 1:1 맞춤 과외를 연결합니다.',
+    stats: [{n:'94%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'80+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>울산광역시</strong> 남·북·중·동구 및 울주군 전 지역 학교 교재와 기출에 맞춘 1:1 과외를 제공합니다.</p>`,
+    features: [
+      { title: '울산 전 지역 커버', desc: '남·북·중·동구·울주군 전 지역 방문 과외와 온라인 수업이 가능합니다.' },
+      { title: '이공계 특화', desc: '울산 지역 이공계 관련 학교의 수학·과학 과목에 특화된 선생님을 매칭합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 울산 지역 학교 교육과정과 기출에 맞춘 체계적인 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '울산 전 구역 방문이 가능한가요?', a: '남·북·중·동구·울주군 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '남구', dongs: ['달동','삼산동','신정동','옥동'] },
+      { name: '북구', dongs: ['매곡동','송정동','연암동'] },
+      { name: '중구', dongs: ['복산동','성남동','학성동'] },
+      { name: '동구·울주군', dongs: ['동구 전역','울주군 전역'] },
+    ]
+  },
+  '경북': {
+    badge: '경상북도 과외',
+    h1: '경북 과외,\n지역 맞춤\n연결',
+    desc: '포항·경주·구미·안동 등 경북 전 지역 학교 기출에 맞춘 1:1 과외를 제공합니다.',
+    stats: [{n:'94%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'100+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>경상북도</strong> 포항·경주·구미·안동·김천·영주 등 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.</p>`,
+    features: [
+      { title: '경북 전역 커버', desc: '포항·경주·구미·안동·김천·영주·경산 등 경북 전 지역 방문과 온라인 수업이 가능합니다.' },
+      { title: '지역 학교 전문', desc: '경북 지역 주요 학교 기출 경향을 분석한 선생님을 매칭합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 경북 지역 학교 교육과정에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '경북 전 지역 방문이 가능한가요?', a: '포항·경주·구미·안동 등 경북 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '포항', dongs: ['남구 전역','북구 전역'] },
+      { name: '구미', dongs: ['구미시 전역'] },
+      { name: '경주·안동', dongs: ['경주시','안동시','영주시','상주시'] },
+      { name: '경산·기타', dongs: ['경산시','김천시','문경시','의성군','청송군','영양군','영덕군','청도군','고령군','성주군','칠곡군','예천군','봉화군','울진군','울릉군'] },
+    ]
+  },
+  '경남': {
+    badge: '경상남도 과외',
+    h1: '경남 과외,\n창원·진주\n전문',
+    desc: '창원·진주·김해·거제·양산 등 경남 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.',
+    stats: [{n:'94%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'100+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>경상남도</strong> 창원·진주·통영·사천·김해·밀양·거제·양산 등 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.</p>`,
+    features: [
+      { title: '경남 전역 커버', desc: '창원·진주·김해·거제·양산 등 경남 전 지역 방문과 온라인 수업이 가능합니다.' },
+      { title: '지역 학교 전문', desc: '경남 주요 학교 기출 경향을 분석해 맞춤 선생님을 매칭합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 경남 지역 학교 교육과정과 기출에 맞춘 체계적인 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '경남 전 지역 방문이 가능한가요?', a: '창원·진주·김해·거제·양산 등 경남 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '창원', dongs: ['마산합포구','마산회원구','성산구','의창구','진해구'] },
+      { name: '진주·사천', dongs: ['진주시','사천시'] },
+      { name: '김해·양산', dongs: ['김해시','양산시'] },
+      { name: '기타 경남', dongs: ['통영시','밀양시','거제시','함안군','창녕군','고성군','남해군','하동군','산청군','함양군','거창군','합천군'] },
+    ]
+  },
+  '전북': {
+    badge: '전라북도 과외',
+    h1: '전북 과외,\n전주·익산\n전문',
+    desc: '전주·익산·군산·정읍·남원 등 전북 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.',
+    stats: [{n:'94%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'100+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>전라북도</strong> 전주·익산·군산·정읍·남원·김제 등 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.</p>`,
+    features: [
+      { title: '전북 전역 커버', desc: '전주·익산·군산·정읍 등 전북 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 전북 지역 학교 교육과정에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '전북 전 지역 방문이 가능한가요?', a: '전주·익산·군산 등 전북 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '전주', dongs: ['덕진구 전역','완산구 전역'] },
+      { name: '익산·군산', dongs: ['익산시','군산시'] },
+      { name: '기타 전북', dongs: ['정읍시','남원시','김제시','완주군','진안군','무주군','장수군','임실군','순창군','고창군','부안군'] },
+    ]
+  },
+  '전남': {
+    badge: '전라남도 과외',
+    h1: '전남 과외,\n목포·순천\n전문',
+    desc: '목포·여수·순천·나주·광양 등 전남 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.',
+    stats: [{n:'93%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'80+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>전라남도</strong> 목포·여수·순천·나주·광양 등 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다. 방문 과외가 어려운 지역은 온라인으로 동일한 품질의 수업을 제공합니다.</p>`,
+    features: [
+      { title: '전남 전역 커버', desc: '목포·여수·순천·나주·광양 등 전남 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 전남 지역 학교 교육과정과 기출에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '전남 전 지역 방문이 가능한가요?', a: '목포·여수·순천 등 전남 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '목포·나주', dongs: ['목포시','나주시'] },
+      { name: '여수·순천', dongs: ['여수시','순천시','광양시'] },
+      { name: '기타 전남', dongs: ['담양군','곡성군','구례군','고흥군','보성군','화순군','장흥군','강진군','해남군','영암군','무안군','함평군','영광군','장성군','완도군','진도군','신안군'] },
+    ]
+  },
+  '강원': {
+    badge: '강원도 과외',
+    h1: '강원 과외,\n춘천·원주\n전문',
+    desc: '춘천·원주·강릉·동해·속초 등 강원 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.',
+    stats: [{n:'93%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'80+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>강원도</strong> 춘천·원주·강릉·동해·속초·태백 등 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다. 방문이 어려운 지역은 온라인으로 제공합니다.</p>`,
+    features: [
+      { title: '강원 전역 커버', desc: '춘천·원주·강릉 등 강원 전 지역 방문과 온라인 수업이 가능합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 강원 지역 학교 교육과정에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '강원 전 지역 방문이 가능한가요?', a: '춘천·원주는 방문, 강릉·동해·속초 등 원거리는 온라인을 권장합니다.' },
+    ],
+    districts: [
+      { name: '춘천', dongs: ['퇴계동','석사동','후평동','효자동'] },
+      { name: '원주', dongs: ['단구동','무실동','반곡동','봉산동'] },
+      { name: '강릉·동해', dongs: ['강릉시','동해시','삼척시'] },
+      { name: '기타 강원', dongs: ['속초시','태백시','홍천군','횡성군','영월군','평창군','정선군','철원군','화천군','양구군','인제군','고성군','양양군'] },
+    ]
+  },
+  '인천': {
+    badge: '인천광역시 과외',
+    h1: '인천 과외,\n전 구역\n연결',
+    desc: '인천 남동·부평·연수·서·강화 등 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다.',
+    stats: [{n:'95%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'150+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>인천광역시</strong> 남동·부평·연수·서·미추홀·계양·강화·옹진 등 전 구역 학교 기출에 맞춘 1:1 과외를 연결합니다. 송도국제도시 등 신도시 지역도 전문으로 커버합니다.</p>`,
+    features: [
+      { title: '인천 전 구역 커버', desc: '남동·부평·연수·서구 등 인천 전 구역 방문 과외가 가능합니다.' },
+      { title: '송도·청라 특화', desc: '송도국제도시·청라지구 등 신도시 지역 학교 기출에 특화된 선생님을 매칭합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 인천 지역 학교 교육과정과 기출에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '인천 전 구역 방문이 가능한가요?', a: '남동·부평·연수·서·미추홀구 등 인천 전 지역 방문 과외가 가능합니다.' },
+    ],
+    districts: [
+      { name: '연수구', dongs: ['동춘동','송도동','연수동','청학동'] },
+      { name: '남동구', dongs: ['간석동','구월동','만수동','서창동'] },
+      { name: '부평구', dongs: ['부평동','삼산동','십정동','청천동'] },
+      { name: '서구', dongs: ['가좌동','검단동','루원시티','청라동'] },
+      { name: '기타 인천', dongs: ['계양구','미추홀구','동구','중구','강화군','옹진군'] },
+    ]
+  },
+  '세종': {
+    badge: '세종특별자치시 과외',
+    h1: '세종 과외,\n신도시 맞춤\n1:1',
+    desc: '세종시 전 지역 학교 기출에 맞춘 1:1 맞춤 과외를 연결합니다.',
+    stats: [{n:'95%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'80+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>세종특별자치시</strong> 전 지역 학교 교재와 기출에 맞춘 1:1 과외를 연결합니다. 세종 신도시 특성에 맞춘 체계적인 학습 관리를 제공합니다.</p>`,
+    features: [
+      { title: '세종 전역 커버', desc: '세종시 전 지역 방문 과외와 온라인 수업이 모두 가능합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 세종 지역 학교 교육과정에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '세종 전 지역 방문이 가능한가요?', a: '세종시 전 지역 방문 과외와 온라인 수업이 가능합니다.' },
+    ],
+    districts: [
+      { name: '세종시', dongs: ['도담동','보람동','새롬동','소담동','아름동','종촌동','한솔동','나성동','다정동','어진동'] },
+    ]
+  },
+  '제주': {
+    badge: '제주특별자치도 과외',
+    h1: '제주 과외,\n섬 어디서나\n1:1',
+    desc: '제주시·서귀포시 전 지역 학교 기출에 맞춘 1:1 과외를 연결합니다. 방문이 어려운 지역은 온라인으로 제공합니다.',
+    stats: [{n:'95%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'50+',l:'등록 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어는 <strong>제주특별자치도</strong> 제주시·서귀포시 전 지역 학교 교재와 기출에 맞춘 1:1 과외를 연결합니다. 방문 과외와 온라인 과외 모두 가능합니다.</p>`,
+    features: [
+      { title: '제주 전역 커버', desc: '제주시·서귀포시 전 지역 방문 과외와 온라인 수업이 가능합니다.' },
+      { title: '온라인 특화', desc: '제주 특성상 방문이 어려운 지역도 온라인으로 육지와 동일한 품질의 수업을 받을 수 있습니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 제주 지역 학교 교육과정에 맞춘 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '제주 전 지역 방문이 가능한가요?', a: '제주시·서귀포시 시내는 방문, 읍·면 지역은 온라인을 권장합니다.' },
+    ],
+    districts: [
+      { name: '제주시', dongs: ['노형동','아라동','연동','오라동','이도동','화북동'] },
+      { name: '서귀포시', dongs: ['서귀동','중문동','대정읍','남원읍','성산읍'] },
+    ]
+  },
+  '온라인': {
+    badge: '온라인 과외',
+    h1: '온라인 과외,\n전국 어디서나\n1:1',
+    desc: '전국 어디서나 온라인으로 검증된 선생님과 1:1 수업을 받을 수 있습니다.',
+    stats: [{n:'97%',l:'수강 만족도'},{n:'24h',l:'매칭 소요'},{n:'500+',l:'전국 선생님'},{n:'전과목',l:'초·중·고'}],
+    intro: `<p>스터디레이어 온라인 과외는 <strong>전국 어디서나</strong> 인터넷만 있으면 검증된 선생님과 1:1 수업을 받을 수 있습니다. 화상 수업 플랫폼으로 방문 과외와 동일한 효과를 냅니다.</p>`,
+    features: [
+      { title: '전국 어디서나', desc: '인터넷만 있으면 어디서든 수업 가능합니다. 방문 과외와 동일한 품질의 수업을 받을 수 있습니다.' },
+      { title: '유연한 스케줄', desc: '학원·학교 일정에 맞춰 유연하게 수업 시간을 조율합니다. 주말·저녁 수업도 가능합니다.' },
+    ],
+    grade: `<p><strong>초등·중등·고등</strong> — 온라인으로도 학생 학교 교재와 기출에 맞춘 완벽한 1:1 수업을 진행합니다.</p>`,
+    faqs: [
+      { q: '온라인 수업은 어떻게 진행되나요?', a: '화상 플랫폼(Zoom, Google Meet 등)을 이용해 실시간으로 진행합니다. 화면 공유로 학습 자료를 함께 봅니다.' },
+      { q: '온라인 수업도 방문 수업만큼 효과적인가요?', a: '선생님과 학생의 집중도에 따라 방문 수업과 동일한 효과를 냅니다. 이동 시간이 없어 오히려 효율적인 경우도 많습니다.' },
+    ],
+    districts: [
+      { name: '전국', dongs: ['서울','경기','인천','부산','대구','광주','대전','울산','세종','강원','충북','충남','전북','전남','경북','경남','제주'] },
+    ]
+  }
+};
+
+// ══════════════════════════════════════════
+// 렌더 함수
+// ══════════════════════════════════════════
+function render(key) {
+  const d = REGIONS[key] || REGIONS[ALIAS[key]] || REGIONS['서울'];
+
+  // SEO
+  document.title = `${key} 과외 전문 — 스터디레이어`;
+  document.querySelector('meta[name="description"]').content =
+    `${key} 지역 1:1 맞춤 과외. 학교 기출 완벽 분석. 교육청 등록 교사만 수업. 첫 수업 무료. ${d.desc}`;
+  document.querySelector('meta[name="keywords"]').content =
+    `${key} 과외,${key} 수학과외,${key} 영어과외,${key} 국어과외,${key} 내신과외,${key} 초등과외,${key} 중등과외,${key} 고등과외`;
+
+  // 히어로
+  document.getElementById('hero-region').textContent = key;
+  document.getElementById('hero-badge').textContent = d.badge;
+  document.getElementById('hero-h1').innerHTML = d.h1.replace(/\n/g, '<br>');
+  document.getElementById('hero-desc').textContent = d.desc;
+
+  // 통계
+  document.getElementById('hero-stats').innerHTML = d.stats.map(s =>
+    `<div style="padding:20px;text-align:center;border-right:1px solid var(--line)">
+      <div style="font-size:22px;font-weight:900;color:var(--blue);letter-spacing:-1px">${s.n}</div>
+      <div style="font-size:11px;color:var(--ink-mute);margin-top:4px;font-weight:400">${s.l}</div>
+    </div>`
+  ).join('');
+
+  // 상세 설명
+  document.getElementById('intro-title').textContent = `${key} 과외 안내`;
+  document.getElementById('intro-body').innerHTML = d.intro;
+
+  document.getElementById('feature-title').textContent = `${key} 과외의 특징`;
+  document.getElementById('feature-list').innerHTML = d.features.map(f =>
+    `<li><div><strong>${f.title}</strong> — ${f.desc}</div></li>`
+  ).join('');
+
+  document.getElementById('grade-title').textContent = `${key} 학년별 학습 전략`;
+  document.getElementById('grade-body').innerHTML = d.grade;
+
+  document.getElementById('faq-title').textContent = `${key} 과외 자주 묻는 질문`;
+  const COMMON_FAQS = [
+    {q:'선생님 찾는 데 얼마나 걸리나요?', a:'상담 신청 후 24시간 이내에 연락드립니다. 빠르면 당일 매칭도 가능합니다.'},
+    {q:'교육비는 어떻게 되나요?', a:'주당 수업 시간에 따라 다르며, 상담 후 맞춤으로 안내해 드립니다. 첫 체험 수업은 무료입니다.'},
+    {q:'커리큘럼은 어떻게 구성되나요?', a:'첫 수업 전 학생 수준과 학교 시험 일정을 파악해 1:1 맞춤 커리큘럼을 설계합니다. 매주 진도와 숙제를 학부모님께 공유해드립니다.'},
+    {q:'수업은 어디서 진행되나요?', a:'온라인과 방문 수업 모두 가능합니다. 학생 상황에 맞게 선택하실 수 있습니다.'},
+  ];
+  document.getElementById('faq-list').innerHTML = COMMON_FAQS.map((f, i) =>
+    `<div class="faq-item" style="border-bottom:1px solid #E2E8F0">
+      <button onclick="toggleFaqR(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 0;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;gap:12px">
+        <span style="font-size:14px;font-weight:700;color:#0F172A">Q. ${f.q}</span>
+        <span class="faq-ico" style="font-size:18px;color:#94A3B8;flex-shrink:0;transition:transform .2s">+</span>
+      </button>
+      <div class="faq-ans" style="max-height:0;overflow:hidden;transition:max-height .35s ease;font-size:13px;color:#475569;line-height:1.8;padding-bottom:0">${f.a}</div>
+    </div>`
+  ).join('');
+
+  // CTA 지역명
+  document.getElementById('cta-region-label').textContent = `${key} 맞춤 과외 상담`;
+
+  // 과목 타이틀
+  document.getElementById('subject-title').textContent = `${key} 지역 과목 선택`;
+
+  // 구/동 바로가기
+  renderDistricts(key, d.districts || []);
+
+  // 탭 활성화
+  document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+  const activeTab = document.getElementById('tab-' + key);
+  if (activeTab) activeTab.classList.add('active');
+}
+
+function toggleFaqR(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('faq-open');
+  document.querySelectorAll('#faq-list .faq-item').forEach(i => {
+    i.classList.remove('faq-open');
+    i.querySelector('.faq-ans').style.maxHeight = '0';
+    i.querySelector('.faq-ans').style.paddingBottom = '0';
+    i.querySelector('.faq-ico').style.transform = '';
+    i.querySelector('.faq-ico').textContent = '+';
+  });
+  if (!isOpen) {
+    item.classList.add('faq-open');
+    item.querySelector('.faq-ans').style.maxHeight = '200px';
+    item.querySelector('.faq-ans').style.paddingBottom = '14px';
+    item.querySelector('.faq-ico').style.transform = 'rotate(45deg)';
+    item.querySelector('.faq-ico').textContent = '+';
+  }
+}
+
+function renderDistricts(key, districts) {
+  const el = document.getElementById('district-content');
+  if (!districts.length) { el.innerHTML = ''; return; }
+
+  el.innerHTML = `
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin:0 0 8px">지역별 과외 바로가기</p>
+    <h2 style="font-size:22px;font-weight:900;color:var(--ink);margin:0 0 28px;letter-spacing:-1px">${key} 구/동별 바로가기</h2>
+    ${districts.map(dist => `
+      <div style="margin-bottom:28px">
+        <div class="district-title">${dist.name}</div>
+        <div class="district-chips">
+          ${dist.dongs.map(dong => {
+            const href = `local/${key}-${dong}-과외.html`;
+            return `<a href="${href}" class="district-chip">${dong}</a>`;
+          }).join('')}
+        </div>
+      </div>
+    `).join('')}
+  `;
+}
+
+// ══════════════════════════════════════════
+// 별칭 매핑 - 구버전 키 / 시 단위 키 → 도 단위 키로 매핑
+// ══════════════════════════════════════════
+const ALIAS = {
+  // 구버전 광역 별칭
+  '충청': '충남', '경상': '경남', '전라': '전북',
+  // 경기 시
+  '수원':'경기','성남':'경기','고양':'경기','용인':'경기','부천':'경기',
+  '안산':'경기','안양':'경기','남양주':'경기','화성':'경기','평택':'경기',
+  '의정부':'경기','파주':'경기','시흥':'경기','김포':'경기','광명':'경기',
+  '군포':'경기','하남':'경기','오산':'경기','이천':'경기','양주':'경기',
+  '구리':'경기','안성':'경기','포천':'경기','의왕':'경기','여주':'경기',
+  // 충북 시
+  '청주':'충북','충주':'충북','제천':'충북','보은':'충북','옥천':'충북','영동':'충북',
+  // 충남 시
+  '천안':'충남','아산':'충남','공주':'충남','보령':'충남','서산':'충남',
+  '논산':'충남','계룡':'충남','당진':'충남',
+  // 전북 시
+  '전주':'전북','군산':'전북','익산':'전북','정읍':'전북','남원':'전북','김제':'전북',
+  // 전남 시
+  '목포':'전남','여수':'전남','순천':'전남','나주':'전남','광양':'전남',
+  // 경북 시
+  '포항':'경북','경주':'경북','김천':'경북','안동':'경북','구미':'경북',
+  '영주':'경북','영천':'경북','상주':'경북','문경':'경북','경산':'경북',
+  // 경남 시
+  '창원':'경남','진주':'경남','통영':'경남','사천':'경남','김해':'경남',
+  '밀양':'경남','거제':'경남','양산':'경남',
+  // 강원 시
+  '춘천':'강원','원주':'강원','강릉':'강원','동해':'강원','태백':'강원',
+  '속초':'강원','삼척':'강원',
+  // 제주
+  '제주시':'제주','서귀포':'제주',
+};
+
+function resolveKey(raw) {
+  if (!raw) return '서울';
+  if (REGIONS[raw]) return raw;          // 정확히 있으면 그대로
+  if (ALIAS[raw]) return ALIAS[raw];      // 별칭이 있으면 변환
+  return raw;                             // 없으면 폴백은 render에서 처리
+}
+
+// 초기 실행
+const r = resolveKey(new URLSearchParams(location.search).get('r'));
+render(r);
+
+// reveal
+const io = new IntersectionObserver(
+  e => e.forEach(x => { if(x.isIntersecting) { x.target.classList.add('on'); io.unobserve(x.target); } }),
+  { threshold: 0.05 }
+);
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// 햄버거
+const bBtn = document.getElementById('burgerBtn');
+const drawer = document.getElementById('mobileDrawer');
+const b1=document.getElementById('b1'), b2=document.getElementById('b2'), b3=document.getElementById('b3');
+let menuOpen = false;
+bBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  drawer.classList.toggle('open', menuOpen);
+  b1.style.transform = menuOpen ? 'rotate(45deg) translate(4px,4px)' : '';
+  b2.style.opacity = menuOpen ? '0' : '1';
+  b3.style.transform = menuOpen ? 'rotate(-45deg) translate(4px,-4px)' : '';
+});
+</script>
+</body>
+</html>
