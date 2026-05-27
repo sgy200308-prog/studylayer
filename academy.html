@@ -1,9 +1,165 @@
 <style>
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo {
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links {
+      display: none;
+      gap: 2px;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    @media(min-width:768px){ .nav-links { display: flex; align-items: center; } }
+    .nav-links a, .nav-links button {
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      color: var(--ink-sub);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .nav-links a:hover, .nav-links button:hover {
+      background: var(--bg-off);
+      color: var(--ink);
+    }
+    .nav-cta {
+      background: var(--blue) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 20px !important;
+      font-weight: 900 !important;
+      font-size: 13px !important;
+      text-decoration: none;
+      transition: background .15s !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* 드롭다운 */
+    .nav-dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 6px;
+      min-width: 150px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: all .2s ease;
+      z-index: 100;
+    }
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 9px 14px !important;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-sub);
+      text-decoration: none;
+      transition: background .12s;
+    }
+    .dropdown-menu a:hover { background: var(--bg-off); color: var(--ink); }
+    .dropdown-menu hr { border: none; border-top: 1px solid var(--line); margin: 4px 0; }
+
+    /* ── 모바일 드로어 ── */
+    #mobileDrawer {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      padding-top: 60px;
+      transform: translateX(100%);
+      transition: transform .3s ease;
+    }
+    #mobileDrawer.open { transform: translateX(0); }
+    .drawer-nav { flex: 1; overflow-y: auto; padding: 16px 24px; }
+    .drawer-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .drawer-sub { display: none; padding: 8px 0 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .drawer-sub.closed { display: none; }
+    .drawer-sub a {
+      padding: 10px 14px;
+      background: var(--bg-off);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-sub);
+      text-decoration: none;
+    }
+    .burger { display: flex; flex-direction: column; gap: 5px; padding: 6px; cursor: pointer; background: none; border: none; }
+    .burger span { width: 20px; height: 2px; background: var(--ink); display: block; transition: all .25s; border-radius: 2px; }
+    @media(min-width:768px) { .burger { display: none; } }
+
+    /* ── 버튼 ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 900;
+      font-family: inherit;
+      font-size: 15px;
+      padding: 16px 36px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .15s, transform .15s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+
 :root {
   --blue:#2563EB; --blue-dark:#1D4ED8; --blue-soft:#EFF6FF;
   --blue-pale:#DBEAFE; --ink:#0F172A; --ink-sub:#475569;
   --ink-mute:#94A3B8; --line:#E2E8F0; --bg:#fff; --bg-off:#F8FAFC; --dark:#0F172A;
 }
+
 </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,48 +171,56 @@
 <body style="font-family:'S-CoreDream',sans-serif;background:#f4f4f4;color:#111;overflow-x:hidden">
 
 <!-- NAV -->
-<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-10 h-14 bg-white/90 backdrop-blur-sm border-b border-gray-100">
- <a href="index.html" class="font-black text-base tracking-tight"><span class="text-blue-600">스터디</span>레이어</a>
- <ul class="hidden md:flex gap-1 text-sm text-gray-500 font-medium items-center">
- <li><a href="index.html" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">홈</a></li>
- <li class="relative group">
- <button class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all flex items-center gap-1" style="font-family:inherit;background:none;border:none;cursor:pointer;font-size:14px;color:#6b7280">과외 <span style="font-size:10px;opacity:.6"></span></button>
- <div class="absolute top-full left-0 mt-1 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
- <a href="subject2.html?s=korean" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 국어</a>
- <a href="subject2.html?s=english" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 영어</a>
- <a href="subject2.html?s=math" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 수학</a>
- <a href="subject2.html?s=science" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 탐구</a>
- <div class="border-t border-gray-100 my-1"></div>
- <a href="subject2.html?s=gd" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 검정고시</a>
- </div>
- </li>
- <li class="relative group">
- <button class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all flex items-center gap-1" style="font-family:inherit;background:none;border:none;cursor:pointer;font-size:14px;color:#6b7280">지역 <span style="font-size:10px;opacity:.6"></span></button>
- <div class="absolute top-full left-0 mt-1 bg-white rounded-2xl shadow-lg border border-gray-100 py-2 min-w-[160px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
- <a href="region.html?r=서울" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 서울</a>
- <a href="region.html?r=경기" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 경기</a>
- <a href="region.html?r=충청" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 충청</a>
- <a href="region.html?r=대전" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 대전</a>
- <a href="region.html?r=부산" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 부산</a>
- <a href="region.html?r=대구" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 대구</a>
- <a href="region.html?r=경상" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 경상</a>
- <a href="region.html?r=전라" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 전라</a>
- <a href="region.html?r=광주" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 광주</a>
- <a href="region.html?r=제주" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50"> 제주</a>
- </div>
- </li>
- <li><a href="academy.html" class="px-4 py-2 rounded-full bg-gray-900 text-white font-bold">학원</a></li>
- <li><a href="subject2.html?s=speaking" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">회화</a></li>
- <li><a href="subject2.html?s=gd" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-gray-900 transition-all">검정고시</a></li>
- </ul>
- <div class="flex items-center gap-3">
- <a href="index.html#consult" class="hidden sm:flex items-center gap-1.5 bg-gray-900 text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-blue-600 hover:text-black transition-colors"> 상담 신청</a>
- <button id="burgerBtn" class="md:hidden flex flex-col gap-[5px] p-1.5">
- <span class="block w-5 h-0.5 bg-gray-800" id="b1"></span>
- <span class="block w-5 h-0.5 bg-gray-800" id="b2"></span>
- <span class="block w-5 h-0.5 bg-gray-800" id="b3"></span>
- </button>
- </div>
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span>스터디</span>레이어</a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">홈</a></li>
+    <li class="nav-dropdown">
+      <button>과외 ▾</button>
+      <div class="dropdown-menu" style="min-width:520px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;padding:16px">
+        <!-- 과목별 -->
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">과목별</div>
+          <a href="subject2.html?s=math">수학</a>
+          <a href="subject2.html?s=english">영어</a>
+          <a href="subject2.html?s=korean">국어</a>
+          <a href="subject2.html?s=science">사회·과학</a>
+          <a href="subject2.html?s=coding">한국사</a>
+        </div>
+        <!-- 지역별 -->
+        <div style="border-left:1px solid var(--line);padding-left:12px">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">지역별</div>
+          <a href="region.html?r=서울">서울</a>
+          <a href="region.html?r=경기">경기</a>
+          <a href="region.html?r=인천">인천</a>
+          <a href="region.html?r=대전">대전</a>
+          <a href="region.html?r=부산">부산</a>
+          <a href="region.html" style="color:var(--blue);font-weight:900">전체 지역 →</a>
+        </div>
+        <!-- 학년별 -->
+        <div style="border-left:1px solid var(--line);padding-left:12px">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px">학년별</div>
+          <a href="subject2.html?grade=초등">초등 과외</a>
+          <a href="subject2.html?grade=중등">중등 과외</a>
+          <a href="subject2.html?grade=고등">고등 과외</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="academy.html">학원</a></li>
+    <li><a href="subject2.html?s=speaking">회화</a></li>
+    <li><a href="subject2.html?s=gd">검정고시</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal();return false;">상담 신청</a></li>
+  </ul>
+
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="#" onclick="openModal();return false;" class="nav-cta" id="navCtaMobile">상담</a>
+    <button class="burger" id="burgerBtn" aria-label="메뉴">
+      <span id="b1"></span>
+      <span id="b2"></span>
+      <span id="b3"></span>
+    </button>
+  </div>
 </nav>
 
 <!-- 모바일 드로어 -->
