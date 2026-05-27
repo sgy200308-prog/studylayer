@@ -17,6 +17,16 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:'S-CoreDream',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden;}
+
+    /* 드롭다운 */
+    .nav-drop{position:relative;}
+    .nav-drop-btn{padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;color:var(--ink-sub);background:none;border:none;cursor:pointer;font-family:inherit;transition:background .15s;}
+    .nav-drop-btn:hover{background:var(--bg-off);color:var(--ink);}
+    .nav-drop-menu{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;min-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.08);display:none;grid-template-columns:1fr 1fr;gap:0;z-index:100;}
+    .nav-drop:hover .nav-drop-menu{display:grid;}
+    .drop-col-title{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;padding:0 8px 10px;margin-bottom:4px;}
+    .nav-drop-menu a{display:block;padding:7px 8px;border-radius:8px;font-size:13px;font-weight:700;color:var(--ink-sub);text-decoration:none;transition:background .12s;}
+    .nav-drop-menu a:hover{background:var(--bg-off);color:var(--ink);}
     /* NAV */
     .nav{position:fixed;top:0;left:0;right:0;z-index:50;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
     .nav-logo{font-weight:900;font-size:16px;text-decoration:none;color:var(--ink);}
@@ -114,10 +124,31 @@
   <a href="index.html" class="nav-logo"><span>스터디</span>레이어</a>
   <ul class="nav-links">
     <li><a href="index.html">홈</a></li>
-    <li><a href="subject2.html?s=math">과외</a></li>
+    <li class="nav-drop">
+      <button class="nav-drop-btn">과외 ▾</button>
+      <div class="nav-drop-menu">
+        <div class="drop-col">
+          <div class="drop-col-title">과목별</div>
+          <a href="subject2.html?s=math" onclick="switchTabLink('math')">수학</a>
+          <a href="subject2.html?s=english" onclick="switchTabLink('english')">영어</a>
+          <a href="subject2.html?s=korean" onclick="switchTabLink('korean')">국어</a>
+          <a href="subject2.html?s=science" onclick="switchTabLink('science')">탐구</a>
+          <a href="subject2.html?s=coding" onclick="switchTabLink('coding')">코딩</a>
+          <a href="subject2.html?s=speaking" onclick="switchTabLink('speaking')">회화</a>
+          <a href="subject2.html?s=gd" onclick="switchTabLink('gd')">검정고시</a>
+        </div>
+        <div class="drop-col" style="border-left:1px solid #E2E8F0;padding-left:12px">
+          <div class="drop-col-title">지역별</div>
+          <a href="region.html?r=서울">서울</a>
+          <a href="region.html?r=경기">경기</a>
+          <a href="region.html?r=대전">대전</a>
+          <a href="region.html?r=충북">충북</a>
+          <a href="region.html" style="color:#2563EB;font-weight:900">전체 →</a>
+        </div>
+      </div>
+    </li>
     <li><a href="region.html">지역</a></li>
     <li><a href="academy.html">학원</a></li>
-    <li><a href="subject2.html?s=speaking">영어회화</a></li>
     <li><a href="subject2.html?s=gd">검정고시</a></li>
     <li><a href="tel:010-2069-8522" class="nav-cta">상담 신청</a></li>
   </ul>
@@ -548,6 +579,16 @@ function render(key) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   const activeTab = document.getElementById('tab-' + key);
   if (activeTab) activeTab.classList.add('active');
+}
+
+function switchTabLink(key) {
+  if (location.pathname.includes('subject2')) {
+    event.preventDefault();
+    const btn = document.querySelector('.tab');
+    render(key);
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    history.replaceState(null, '', '?s=' + key);
+  }
 }
 
 function switchTab(key, btn) {
