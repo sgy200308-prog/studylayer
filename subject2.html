@@ -261,7 +261,10 @@
     /* 푸터 */
     footer{background:var(--dark);padding:40px 20px 32px;}
   
-</style>
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 28px;background:#2563EB;color:#fff;font-weight:900;font-size:14px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;}
+    .btn:hover{background:#1D4ED8;}
+  </style>
 </head>
 <body>
 
@@ -627,31 +630,30 @@ const SUBJECTS = {
     ]
   },
   speaking:{
-    name:'회화', tag:'회화 과외', h1:'회화,\n자신있게 말합니다',
-    desc:'원어민급 발음과 실전 회화 능력을 키웁니다. 일상 대화부터 OPIc·토익스피킹 고득점까지 목표에 맞게 집중 훈련합니다.',
-    stats:[{n:'95%',l:'수강 만족도'},{n:'OPIc',l:'IM~AL'},{n:'1:1',l:'집중 훈련'},{n:'24h',l:'매칭 소요'}],
+    name:'회화', tag:'회화 전문 과외', h1:'회화,\\n자신있게 말합니다',
+    desc:'영어·일본어·중국어 원어민급 회화 수업입니다. 일상 대화부터 비즈니스, 공인시험까지 목표에 맞게 준비합니다.',
+    stats:[{n:'1:1',l:'맞춤 수업'},{n:'원어민급',l:'발음·표현'},{n:'전레벨',l:'기초~고급'},{n:'24h',l:'매칭 소요'}],
     curr:[
-      {lv:'기초',title:'기초 회화',items:['발음·억양 교정','일상 대화 표현','영어에 대한 자신감','기초 문법 회화 적용']},
-      {lv:'중급',title:'실전 회화',items:['다양한 주제 자유 토론','원어민식 표현 습득','뉴스·영화로 배우는 영어','OPIc·토익스피킹 기초']},
-      {lv:'고급',title:'고급·시험 대비',items:['OPIc AL·IH 목표','토익스피킹 레벨 7·8','비즈니스 영어 회화','프레젠테이션·인터뷰 영어']},
+      {lv:'영어',title:'영어 회화',items:['일상 영어 회화 완성','OPIc·토익스피킹 준비','비즈니스 영어 특훈','발음·억양 교정']},
+      {lv:'일본어',title:'일본어 회화',items:['히라가나·가타카나 기초','JLPT N5~N1 대비','일상 일본어 회화','비즈니스 일본어']},
+      {lv:'중국어',title:'중국어 회화',items:['성조·발음 완성','HSK 대비','일상 중국어 회화','비즈니스 중국어']},
     ],
     reviews:[
-      {badge:'직장인',text:'OPIc IH 받았어요! 선생님이 실전 패턴을 너무 잘 가르쳐 주셔서 2달 만에 올랐어요.',name:'김OO',sub:'OPIc 준비',chip:'직장인'},
-      {badge:'대학생',text:'외국인 친구랑 대화가 자연스럽게 됐어요. 표현이 정말 많이 늘었습니다.',name:'이OO',sub:'회화',chip:'대학생'},
-      {badge:'고3',text:'토익스피킹 준비했는데 레벨 7 받았어요! 너무 기뻐요.',name:'박OO',sub:'토익스피킹',chip:'고등학생'},
+      {badge:'직장인',text:'OPIc IH 받았어요! 실전 패턴을 너무 잘 가르쳐 주셔서 2달 만에 올랐어요.',name:'김OO',sub:'영어 OPIc',chip:'직장인'},
+      {badge:'대학생',text:'일본어 N2 합격했어요. 선생님이 실생활 표현을 많이 알려주셔서 좋았어요.',name:'이OO',sub:'일본어 JLPT',chip:'대학생'},
+      {badge:'직장인',text:'중국어 HSK 4급 합격했습니다. 발음부터 차근차근 잡아주셔서 감사해요.',name:'박OO',sub:'중국어 HSK',chip:'직장인'},
     ]
-  }
-,
+  },
   gd:{
-    name:'검정고시', tag:'검정고시 전문', h1:'검정고시,\n합격 보장합니다',
-    desc:'중졸·고졸 검정고시 전 과목 1:1 맞춤 과외입니다. 기초부터 시작해 단기간에 합격선을 넘기거나 대입 고득점을 목표로 맞춤 커리큘럼을 설계합니다.',
+    name:'검정고시', tag:'검정고시 전문', h1:'검정고시,\\n확실하게 합격합니다',
+    desc:'중졸·고졸 검정고시 전 과목 1:1 맞춤 과외입니다. 합격반과 고득점반 중 목표에 맞게 선택하세요.',
     stats:[{n:'98%',l:'합격률'},{n:'8주+',l:'단기 완성'},{n:'1:1',l:'맞춤 수업'},{n:'24h',l:'매칭 소요'}],
     curr:[
-      {lv:'합격',title:'빠른 합격 보장반',items:['핵심 개념 압축 정리','기출 10년치 패턴 분석','7과목 60점 이상 목표','기초부터 1:1 밀착 지도']},
+      {lv:'합격',title:'합격 보장반',items:['핵심 개념 압축 정리','기출 10년치 패턴 분석','7과목 60점 이상 목표','기초부터 1:1 밀착 지도']},
       {lv:'고득점',title:'고득점 대입 전략반',items:['전 과목 90점 이상 목표','과목별 취약점 정밀 분석','고난도 문제 집중 훈련','대입 서류 경쟁력 강화']},
     ],
     reviews:[
-      {badge:'고졸',text:'3개월 만에 고졸 검정고시 합격했어요.',name:'김OO',sub:'고졸 검정고시',chip:'합격'},
+      {badge:'고졸',text:'3개월 만에 고졸 검정고시 합격했어요. 핵심만 딱 짚어주셔서 너무 좋았어요.',name:'김OO',sub:'고졸 검정고시',chip:'합격'},
       {badge:'중졸',text:'기초가 없었는데 처음부터 차근차근 가르쳐 주셔서 합격했어요.',name:'이OO',sub:'중졸 검정고시',chip:'합격'},
       {badge:'고득점',text:'대학 입시 위해 고득점 목표로 했는데 평균 94점 받았어요!',name:'박OO',sub:'고졸 고득점',chip:'대입'},
     ]
@@ -686,7 +688,7 @@ const SUBJECTS = {
   }
 ,
   history:{
-    name:'한국사', tag:'한국사 과외', h1:'한국사,\\n제대로 이해합니다',
+    name:'한국사', tag:'한국사 과외', h1:'한국사,\n제대로 이해합니다',
     desc:'수능 필수 과목인 한국사를 내신과 수능 모두 완벽하게 대비합니다. 시대 흐름을 잡고 핵심 사건을 정확히 이해해 단기간에 등급을 올립니다.',
     stats:[{n:'수능필수',l:'필수 과목'},{n:'전학년',l:'중·고등'},{n:'1:1',l:'맞춤 수업'},{n:'24h',l:'매칭 소요'}],
     curr:[
@@ -726,7 +728,7 @@ function render(key) {
   // 히어로
   document.getElementById('hero-breadcrumb').textContent = d.name;
   document.getElementById('hero-tag').textContent = d.tag || d.name + ' 과외';
-  document.getElementById('hero-h1').innerHTML = d.h1.replace(/\n/g,'<br>');
+  document.getElementById('hero-h1').innerHTML = d.h1.split('\\n').join('<br>');
   document.getElementById('hero-desc').textContent = d.desc;
   document.getElementById('hero-stats').innerHTML = (d.stats||[]).map(s=>
     `<div class="hero-stat"><div class="hero-stat-n">${s.n}</div><div class="hero-stat-l">${s.l}</div></div>`
