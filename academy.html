@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="전국 스터디레이어 학원을 지역별로 찾아보세요."/>
+  <meta name="robots" content="index,follow"/>
+  <title>스터디레이어 학원 — 전국 학원 찾기</title>
 <style>
     .nav {
       position: fixed;
@@ -160,7 +168,28 @@
   --ink-mute:#94A3B8; --line:#E2E8F0; --bg:#fff; --bg-off:#F8FAFC; --dark:#0F172A;
 }
 
-</style>
+
+    /* 모바일 최적화 */
+    @media(max-width:640px) {
+      .academy-grid { grid-template-columns: 1fr !important; }
+      .about-grid { grid-template-columns: 1fr !important; flex-direction: column !important; }
+      .feature-cards { grid-template-columns: 1fr 1fr !important; }
+      .region-tabs { display: flex; flex-wrap: wrap; gap: 6px; overflow-x: visible !important; }
+      .region-tab { font-size: 12px !important; padding: 6px 12px !important; }
+      .academy-card { padding: 16px !important; }
+      section { padding: 32px 16px !important; }
+      h1 { font-size: clamp(1.8rem, 6vw, 3rem) !important; }
+      h2 { font-size: clamp(1.4rem, 5vw, 2rem) !important; }
+      .video-wrap { width: 100% !important; }
+      iframe { width: 100% !important; height: 200px !important; }
+      .stat-cards { grid-template-columns: 1fr 1fr !important; }
+      .feature-highlight { flex-direction: column !important; }
+      .feature-highlight .text-block { padding: 20px !important; }
+      .feature-highlight .img-block { display: none !important; }
+      .btn-primary { width: 100% !important; text-align: center !important; }
+      .tag-chips { flex-wrap: wrap !important; }
+    }
+  </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
