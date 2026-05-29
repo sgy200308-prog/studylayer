@@ -1226,8 +1226,6 @@
           <a href="subject2.html?grade=초등">초등 과외</a>
           <a href="subject2.html?grade=중등">중등 과외</a>
           <a href="subject2.html?grade=고등">고등 과외</a>
-          <a href="subject2.html?grade=수능">수능 대비</a>
-          <a href="subject2.html?grade=내신">내신 대비</a>
         </div>
       </div>
     </li>
@@ -1854,18 +1852,26 @@
             <input type="text" name="재학학교" placeholder="예) 가경중학교" class="form-input"/>
           </div>
           <div class="form-group">
+            <label class="form-label">서비스 구분</label>
+            <select name="서비스구분" required class="form-select" style="font-family:inherit">
+              <option value="" disabled selected>선택해 주세요</option>
+              <option>과외</option>
+              <option>학원</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label class="form-label">과목</label>
             <select name="과목" required class="form-select" style="font-family:inherit">
               <option value="" disabled selected>선택해 주세요</option>
               <option>국어</option><option>영어</option><option>수학</option>
-              <option>탐구 (과학)</option><option>탐구 (사회)</option><option>탐구 (한국사)</option>
-              <option>코딩</option><option>회화</option>
+              <option>과학</option><option>사회</option><option>한국사</option>
+              <option>코딩</option><option>회화 (영어)</option><option>회화 (일본어)</option><option>회화 (중국어)</option>
               <option>검정고시 (중졸)</option><option>검정고시 (고졸)</option><option>전 과목</option>
             </select>
           </div>
-          <div class="form-group">
-            <label class="form-label">주소</label>
-            <input type="text" name="주소" required placeholder="예) 청주시 흥덕구 가경동" class="form-input"/>
+          <div class="form-group full">
+            <label class="form-label">집 주소</label>
+            <input type="text" name="주소" required placeholder="예) 서울시 강남구 대치동 OO아파트 OO동 OO호" class="form-input"/>
           </div>
           <div class="form-group full">
             <label class="form-label">상담 가능 시간</label>
