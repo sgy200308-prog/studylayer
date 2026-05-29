@@ -281,7 +281,8 @@
           <a href="subject2.html?s=english">영어</a>
           <a href="subject2.html?s=korean">국어</a>
           <a href="subject2.html?s=science">사회·과학</a>
-          <a href="subject2.html?s=coding">한국사</a>
+          <a href="subject2.html?s=history">한국사</a>
+          <a href="subject2.html?s=coding">코딩</a>
         </div>
         <!-- 지역별 -->
         <div style="border-left:1px solid var(--line);padding-left:12px">
@@ -348,6 +349,7 @@
       <button class="tab" onclick="switchTab('english',this)">영어</button>
       <button class="tab" onclick="switchTab('korean',this)">국어</button>
       <button class="tab" onclick="switchTab('science',this)">탐구</button>
+      <button class="tab" onclick="switchTab('history',this)">한국사</button>
       <button class="tab" onclick="switchTab('coding',this)">코딩</button>
       <button class="tab" onclick="switchTab('speaking',this)">회화</button>
       <button class="tab" onclick="switchTab('gd',this)">검정고시</button>
@@ -682,13 +684,29 @@ const SUBJECTS = {
       {badge:'주부',text:'아이 키우면서 고졸 자격증 땄어요.',name:'강OO',sub:'고졸 검정고시',chip:'주부'},
     ]
   }
+,
+  history:{
+    name:'한국사', tag:'한국사 과외', h1:'한국사,\\n제대로 이해합니다',
+    desc:'수능 필수 과목인 한국사를 내신과 수능 모두 완벽하게 대비합니다. 시대 흐름을 잡고 핵심 사건을 정확히 이해해 단기간에 등급을 올립니다.',
+    stats:[{n:'수능필수',l:'필수 과목'},{n:'전학년',l:'중·고등'},{n:'1:1',l:'맞춤 수업'},{n:'24h',l:'매칭 소요'}],
+    curr:[
+      {lv:'기초',title:'시대 흐름 완성',items:['선사~고려 핵심 정리','조선·근현대 흐름 파악','시대별 핵심 사건 정리','역사 지도 완전 이해']},
+      {lv:'내신',title:'내신 기출 완성',items:['학교 기출 3년치 분석','단원별 출제 패턴 파악','서술형 답안 완성','변형 문제 집중 훈련']},
+      {lv:'수능',title:'수능 한국사 1등급',items:['수능 필수 개념 완성','최근 5개년 기출 완전 정복','고난도 문항 공략','1등급 목표 집중 관리']},
+    ],
+    reviews:[
+      {badge:'고2',text:'한국사 흐름을 잡으니까 확실히 쉬워졌어요. 수능 1등급 받았습니다.',name:'김OO',sub:'수능 한국사',chip:'1등급'},
+      {badge:'중3',text:'내신 시험 직전에 시작했는데 핵심만 딱 짚어주셔서 90점 받았어요.',name:'이OO',sub:'중학 한국사',chip:'내신'},
+      {badge:'고1',text:'이야기처럼 설명해주셔서 재미있게 공부했어요.',name:'박OO',sub:'한국사 내신',chip:'고등'},
+    ]
+  }
 
 };
 
 function cardHTML(curr) {
   if (!curr) return '';
   return curr.map((item, i) =>
-    `<div class="curr-card ${i===1?'blue':''}">
+    `<div class="curr-card">
       <div class="curr-step">${item.lv||''}</div>
       <div class="curr-title">${item.title}</div>
       <ul class="curr-list">${(item.items||[]).map(it=>`<li>${it}</li>`).join('')}</ul>
